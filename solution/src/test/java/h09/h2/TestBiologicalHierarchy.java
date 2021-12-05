@@ -6,10 +6,22 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Defines the test cases for the class {@link BiologicalHierarchy}.
+ *
+ * @author Nhan Huynh, Darya Nikitina
+ */
 class TestBiologicalHierarchy {
 
+  /**
+   * The instance of a biology hierarchy used to test the methods.
+   */
   private final BiologicalHierarchy hierarchy = new BiologicalHierarchy();
 
+  /**
+   * Tests whether the method {@link BiologicalHierarchy#typeOfVertebrate(Vertebrate)} returns
+   * the correct string.
+   */
   @Test
   void testTypeOfVertebrate() {
     Assertions.assertNull(hierarchy.typeOfVertebrate(new TestVertebrate()));
@@ -22,6 +34,10 @@ class TestBiologicalHierarchy {
     Assertions.assertEquals("Mammal", hierarchy.typeOfVertebrate(new TestLagomorpha()));
   }
 
+  /**
+   * Tests whether the method {@link BiologicalHierarchy#returnAsLagomorphs(List)} returns
+   * the correct animals.
+   */
   @Test
   void testReturnAsLagomorphs() {
     final var animal = new TestAnimal();
@@ -97,6 +113,10 @@ class TestBiologicalHierarchy {
   }
 
 
+  /**
+   * Tests whether the method {@link BiologicalHierarchy#typeOfMammals(List)} returns
+   * the correct outputs of the method calls {@link Mammal#typeOfMammal()}
+   */
   @Test
   void testTypeOfMammal() {
     final var mammal = new TestMammal();
@@ -167,6 +187,9 @@ class TestBiologicalHierarchy {
     Assertions.assertEquals(ele, hierarchy.typeOfMammals(lle));
   }
 
+  /**
+   * Defines a test animal used for testing.
+   */
   private static class TestAnimal implements Animal {
 
     @Override
@@ -175,6 +198,9 @@ class TestBiologicalHierarchy {
     }
   }
 
+  /**
+   * Defines a test vertebrate used for testing.
+   */
   private static class TestVertebrate implements Vertebrate {
 
     @Override
@@ -188,6 +214,9 @@ class TestBiologicalHierarchy {
     }
   }
 
+  /**
+   * Defines a test mammal used for testing.
+   */
   private static class TestMammal implements Mammal {
 
     @Override
@@ -206,6 +235,9 @@ class TestBiologicalHierarchy {
     }
   }
 
+  /**
+   * Defines a test bird used for testing.
+   */
   private static class TestBird implements Bird {
 
     @Override
@@ -224,6 +256,9 @@ class TestBiologicalHierarchy {
     }
   }
 
+  /**
+   * Defines a test placental used for testing.
+   */
   private static class TestPlacental implements Placental {
 
     @Override
@@ -247,6 +282,9 @@ class TestBiologicalHierarchy {
     }
   }
 
+  /**
+   * Defines a test monotreme used for testing.
+   */
   private static class TestMonotreme implements Monotreme {
 
     @Override
@@ -270,6 +308,9 @@ class TestBiologicalHierarchy {
     }
   }
 
+  /**
+   * Defines a test rodent used for testing.
+   */
   private static class TestRodent implements Rodent {
 
     @Override
@@ -298,6 +339,9 @@ class TestBiologicalHierarchy {
     }
   }
 
+  /**
+   * Defines a test lagomorpha used for testing.
+   */
   private static class TestLagomorpha implements Lagomorpha {
 
     @Override

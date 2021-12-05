@@ -3,8 +3,23 @@ package h09.h1;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Defines the test cases for the class {@link FunctionFactory}.
+ *
+ * @author Nhan Huynh, Darya Nikitina
+ */
 class TestFunctionFactory {
 
+  /**
+   * Tests the method {@link FunctionFactory#createFunctionWithFilterMapAndFold(Traits)} using
+   * the following operations:
+   *
+   * <ul>
+   * <li>filter: integers greater than 10
+   * <li>map: integer * 3
+   * <li>fold: x * y mod 100, where x and y are integers
+   * </ul>
+   */
   @Test
   void testCreateFunctionWithFilterMapAndFold1() {
     final var length = 10;
@@ -25,6 +40,16 @@ class TestFunctionFactory {
     );
   }
 
+  /**
+   * Tests the method {@link FunctionFactory#createFunctionWithFilterMapAndFold(Traits)} using
+   * the following operations:
+   *
+   * <ul>
+   * <li>filter: First letter must be capitalized followed by lowercase letters
+   * <li>map: Length of string without whitespaces
+   * <li>fold: boolean if all strings length are smaller than 3
+   * </ul>
+   */
   @Test
   void testCreateFunctionWithFilterMapAndFold2() {
     final Traits<String, Integer, Boolean> traits = new Traits<>(
@@ -64,14 +89,40 @@ class TestFunctionFactory {
     Assertions.assertTrue(fct.apply(stringsFalse));
   }
 
+  /**
+   * Returns {@code true} if the specified person does not live in Darmstadt.
+   *
+   * @param person the person to check its postal code
+   *
+   * @return @code true} if the specified person does not live in Darmstadt
+   */
   private static boolean isNotFromDarmstadt(final Person person) {
     return person.getPostalCode()!=64289;
   }
 
+  /**
+   * Returns the absolute value of the difference between two numbers.
+   *
+   * @param a the first number to calculate the distance
+   * @param b the second number to calculate the distance
+   *
+   * @return the absolute value of the difference between two numbers.
+   */
   private static int distance(final int a, final int b) {
     return Math.abs(a - b);
   }
 
+  /**
+   * Tests the method {@link FunctionFactory#createFunctionWithFilterMapFoldAndCombine(Traits)}
+   * using the following operations:
+   *
+   * <ul>
+   * <li>filter: Persons that do not live in Darmstadt
+   * <li>map: Postal code of the person
+   * <lu>combine: The absolute value of the difference between two postal code
+   * <li>fold: The sum of the differences
+   * </ul>
+   */
   @Test
   void testCreateFunctionWithFilterMapFoldAndCombine() {
     final Traits<Person, Integer, Integer> traits = new Traits<>(
