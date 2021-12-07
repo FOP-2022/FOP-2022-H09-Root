@@ -36,14 +36,14 @@ public class MyFunctionWithFilterMapAndFold1<X, Y, Z> extends
    */
   @Override
   public Z apply(final X[] elements) {
-    final Predicate<X> pred = traits.getPred();
+    final var pred = traits.getPred();
     int size = 0;
     for (final var element : elements) {
       if (pred.test(element)) {
         size++;
       }
     }
-    @SuppressWarnings("unchecked") final X[] filtered = (X[]) new Object[size];
+    @SuppressWarnings("unchecked") final var filtered = (X[]) new Object[size];
     int index = 0;
     for (final var element : elements) {
       if (pred.test(element)) {
@@ -51,13 +51,13 @@ public class MyFunctionWithFilterMapAndFold1<X, Y, Z> extends
       }
     }
 
-    final Function<X, Y> fct = traits.getFct();
-    @SuppressWarnings("unchecked") final Y[] mapped = (Y[]) new Object[size];
+    final var fct = traits.getFct();
+    @SuppressWarnings("unchecked") final var mapped = (Y[]) new Object[size];
     for (int i = 0; i < mapped.length; i++) {
       mapped[i] = fct.apply(filtered[i]);
     }
 
-    final BiFunction<Y, Z, Z> op = traits.getOp();
+    final var op = traits.getOp();
     Z accumulator = traits.getInit();
 
     for (final var element : mapped) {

@@ -1,9 +1,5 @@
 package h09.h1;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Predicate;
-
 /**
  * A function that provides an operation that filter a set of elements, which will be then
  * mapped, combines the adjacent mapped elements and then reduced (folded) to a single value.
@@ -36,20 +32,24 @@ public class MyFunctionWithAdjacent<X, Y, Z> extends FunctionWithFilterMapAndFol
    */
   @Override
   public Z apply(final X[] elements) {
-    final Predicate<X> pred = traits.getPred();
-    final Function<X, Y> fct = traits.getFct();
-    final BiFunction<Y, Z, Z> op = traits.getOp();
-    final BiFunction<Y, Y, Y> combine = traits.getCombine();
-    Z accumulator = traits.getInit();
+    final var pred = traits.getPred();
+    final var fct = traits.getFct();
+    final var op = traits.getOp();
+    final var combine = traits.getCombine();
+    var accumulator = traits.getInit();
 
     Y previous = null;
-
+    int i = 0;
     for (final var element : elements) {
       if (pred.test(element)) {
         final var mapped = fct.apply(element);
         if (previous!=null) {
           accumulator = op.apply(combine.apply(previous, mapped), accumulator);
         }
+        if (accumulator instanceof Integer && ((Integer) accumulator).intValue()==0) {
+          System.out.println(i);
+        }
+        i++;
         previous = mapped;
       }
     }

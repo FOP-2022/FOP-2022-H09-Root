@@ -45,7 +45,7 @@ public class Rabbit implements Leporidae {
   }
 
   @Override
-  public String typeOfLagomorph() {
+  public String typeOfLagomorpha() {
     return "Leporidae";
   }
 

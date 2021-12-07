@@ -350,7 +350,7 @@ class TestBiologicalHierarchy {
     }
 
     @Override
-    public String typeOfLagomorph() {
+    public String typeOfLagomorpha() {
       return null;
     }
 
