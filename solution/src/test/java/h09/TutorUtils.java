@@ -359,9 +359,21 @@ public final class TutorUtils {
                                                 final List<Predicate<Integer>> presence,
                                                 final List<Predicate<Integer>> absence,
                                                 final String message) {
-    if (presence!=null && presence.stream().noneMatch(modifier -> modifier.test(modifiers)) ||
-      absence!=null && absence.stream().anyMatch(modifier -> modifier.test(modifiers))) {
-      Assertions.fail(message);
+    if (presence!=null) {
+      for (final var predicate : presence) {
+        if (!predicate.test(modifiers)) {
+          Assertions.fail(message);
+          return;
+        }
+      }
+    }
+    if (absence!=null) {
+      for (final var predicate : absence) {
+        if (predicate.test(modifiers)) {
+          Assertions.fail(message);
+          return;
+        }
+      }
     }
   }
 

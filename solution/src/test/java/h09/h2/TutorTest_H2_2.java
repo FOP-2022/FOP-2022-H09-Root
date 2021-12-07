@@ -132,8 +132,8 @@ final class TutorTest_H2_2 {
     @Test
     @DisplayName("Criterion: Only modifiers public")
     void testModifiers() {
-      TutorUtils.assertModifiers(getTestClass(), List.of(Modifier.PUBLIC, Modifier.FINAL),
-        List.of(Modifier.STATIC, Modifier.ABSTRACT));
+      TutorUtils.assertModifiers(getTestClass(), List.of(Modifier.PUBLIC),
+        List.of(Modifier.STATIC, Modifier.ABSTRACT, Modifier.FINAL));
     }
 
     @Test
