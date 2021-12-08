@@ -321,7 +321,7 @@ final class TutorTest_H1_4 {
       void testType() {
         final var field = TutorUtils.getField(getFieldClass(), FIELD_NAME_COMBINE);
         final var type = field.getGenericType();
-        TutorUtils.assertGenericType(BiFunction.class, "Y, Y, Y", type);
+        TutorUtils.assertGenericType(BiFunction.class, "Y, ? super Y, Y", type);
       }
     }
 
