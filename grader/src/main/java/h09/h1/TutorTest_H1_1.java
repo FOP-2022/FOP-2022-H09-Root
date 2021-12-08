@@ -139,7 +139,7 @@ final class TutorTest_H1_1 {
     void testType() {
       final var field = TutorUtils.getField(getTestClass(), FIELD_NAME_FILTER);
       final var type = field.getGenericType();
-      TutorUtils.assertGenericType(Predicate.class, "X", type);
+      TutorUtils.assertGenericType(Predicate.class, "? super X", type);
     }
   }
 
@@ -163,7 +163,7 @@ final class TutorTest_H1_1 {
     void testType() {
       final var field = TutorUtils.getField(getTestClass(), FIELD_NAME_MAP);
       final var type = field.getGenericType();
-      TutorUtils.assertGenericType(Function.class, "X, Y", type);
+      TutorUtils.assertGenericType(Function.class, "? super X, ? extends Y", type);
     }
   }
 
@@ -187,7 +187,7 @@ final class TutorTest_H1_1 {
     void testType() {
       final var field = TutorUtils.getField(getTestClass(), FIELD_NAME_FOLD);
       final var type = field.getGenericType();
-      TutorUtils.assertGenericType(BiFunction.class, "Y, Z, Z", type);
+      TutorUtils.assertGenericType(BiFunction.class, "Z, ? super Y, Z", type);
     }
   }
 
@@ -250,9 +250,9 @@ final class TutorTest_H1_1 {
       // Check parameter types
       @SuppressWarnings("unchecked") final Entry<Class<?>, String>[] expected =
         (Entry<Class<?>, String>[]) Array.newInstance(Entry.class, 3);
-      expected[0] = new SimpleEntry<>(Predicate.class, "X");
-      expected[1] = new SimpleEntry<>(Function.class, "X, Y");
-      expected[2] = new SimpleEntry<>(BiFunction.class, "Y, Z, Z");
+      expected[0] = new SimpleEntry<>(Predicate.class, "? super X");
+      expected[1] = new SimpleEntry<>(Function.class, "? super X, ? extends Y");
+      expected[2] = new SimpleEntry<>(BiFunction.class, "Z, ? super Y, Z");
 
       for (int i = 0; i < expected.length; i++) {
         final var entry = expected[i];

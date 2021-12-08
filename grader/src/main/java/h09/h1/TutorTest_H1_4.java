@@ -269,7 +269,7 @@ final class TutorTest_H1_4 {
         final Predicate<Integer> expectedFilter = x -> x % 2==0;
         final Function<Integer, String> expectedMap = String::valueOf;
         final BiFunction<String, String, String> expectedCombine = String::concat;
-        final BiFunction<String, Integer, Integer> expectedFold = (s, i) -> s.length() + i;
+        final BiFunction<Integer, String, Integer> expectedFold = (i, s) -> s.length() + i;
         final var expectedInit = 523;
 
         final var traitsConstructor = TutorUtils.getConstructor(getFieldClass(), Predicate.class,
@@ -363,9 +363,9 @@ final class TutorTest_H1_4 {
           // Check parameter types
           @SuppressWarnings("unchecked") final Entry<Class<?>, String>[] expected =
             (Entry<Class<?>, String>[]) Array.newInstance(Entry.class, 3);
-          expected[0] = new SimpleEntry<>(Predicate.class, "X");
-          expected[1] = new SimpleEntry<>(Function.class, "X, Y");
-          expected[2] = new SimpleEntry<>(BiFunction.class, "Y, Z, Z");
+          expected[0] = new SimpleEntry<>(Predicate.class, "? super X");
+          expected[1] = new SimpleEntry<>(Function.class, "? super X, ? extends Y");
+          expected[2] = new SimpleEntry<>(BiFunction.class, "Z, ? super Y, Z");
 
           for (int i = 0; i < expected.length; i++) {
             final var entry = expected[i];
@@ -447,9 +447,9 @@ final class TutorTest_H1_4 {
           // Check parameter types
           @SuppressWarnings("unchecked") final Entry<Class<?>, String>[] expected =
             (Entry<Class<?>, String>[]) Array.newInstance(Entry.class, 3);
-          expected[0] = new SimpleEntry<>(Predicate.class, "X");
-          expected[1] = new SimpleEntry<>(Function.class, "X, Y");
-          expected[2] = new SimpleEntry<>(BiFunction.class, "Y, Z, Z");
+          expected[0] = new SimpleEntry<>(Predicate.class, "? super X");
+          expected[1] = new SimpleEntry<>(Function.class, "? super X, ? extends Y");
+          expected[2] = new SimpleEntry<>(BiFunction.class, "Z, ? super Y, Z");
 
           for (int i = 0; i < expected.length; i++) {
             final var entry = expected[i];
