@@ -3,7 +3,6 @@ package h09.h1;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 /**
  * A traits which provides filter, map, fold combine operations.
@@ -34,13 +33,11 @@ public class Traits<X, Y, Z> {
    */
   private final BiFunction<Z, ? super Y, Z> op;
 
-
   /**
    * The combine operator to combine wo given arguments from the same type. This is equivalent to
    * H07 {@code IntBinaryOperator}.
    */
-  private final BiFunction<Y, Y, Y> combine;
-
+  private final BiFunction<Y, ? super Y, Y> combine;
 
   /**
    * The initial value of the fold operation.
@@ -58,7 +55,7 @@ public class Traits<X, Y, Z> {
    */
   public Traits(final Predicate<? super X> pred, final Function<? super X, ? extends Y> fct,
                 final BiFunction<Z, ? super Y, Z> op,
-                final BiFunction<Y, Y, Y> combine, final Z init) {
+                final BiFunction<Y, ? super Y, Y> combine, final Z init) {
     this.pred = pred;
     this.fct = fct;
     this.op = op;
@@ -121,7 +118,7 @@ public class Traits<X, Y, Z> {
    *
    * @return two given arguments from the same type
    */
-  public BiFunction<Y, Y, Y> getCombine() {
+  public BiFunction<Y, ? super Y, Y> getCombine() {
     return combine;
   }
 }
