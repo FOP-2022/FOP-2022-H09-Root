@@ -3,6 +3,7 @@ package h09.h1;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 /**
  * A traits which provides filter, map, fold combine operations.
@@ -19,19 +20,20 @@ public class Traits<X, Y, Z> {
    * The predicate used to filter elements (filtering). This is equivalent to H07 {@code
    * PersonFilter}.
    */
-  private final Predicate<X> pred;
+  private final Predicate<? super X> pred;
 
   /**
    * The function used to map elements (mapping). This is equivalent to H07 {@code
    * PersonToIntFunction}.
    */
-  private final Function<X, Y> fct;
+  private final Function<? super X, ? extends Y> fct;
 
   /**
    * The operator to use an operation on two given arguments and produce a result from it (folding).
    * This is equivalent to H07 {@code IntBinaryOperator}.
    */
-  private final BiFunction<Z, Y, Z> op;
+  private final BiFunction<Z, ? super Y, Z> op;
+
 
   /**
    * The combine operator to combine wo given arguments from the same type. This is equivalent to
@@ -54,8 +56,8 @@ public class Traits<X, Y, Z> {
    * @param combine the operator to combine two given arguments
    * @param init    the initial value of the traits
    */
-  public Traits(final Predicate<X> pred, final Function<X, Y> fct,
-                final BiFunction<Z, Y, Z> op,
+  public Traits(final Predicate<? super X> pred, final Function<? super X, ? extends Y> fct,
+                final BiFunction<Z, ? super Y, Z> op,
                 final BiFunction<Y, Y, Y> combine, final Z init) {
     this.pred = pred;
     this.fct = fct;
@@ -72,8 +74,8 @@ public class Traits<X, Y, Z> {
    * @param op   the operator to produce a result from two given arguments
    * @param init the initial value of the traits
    */
-  public Traits(final Predicate<X> pred, final Function<X, Y> fct,
-                final BiFunction<Z, Y, Z> op,
+  public Traits(final Predicate<? super X> pred, final Function<? super X, ? extends Y> fct,
+                final BiFunction<Z, ? super Y, Z> op,
                 final Z init) {
     this(pred, fct, op, null, init);
   }
@@ -83,7 +85,7 @@ public class Traits<X, Y, Z> {
    *
    * @return the predicate to filter elements
    */
-  public Predicate<X> getPred() {
+  public Predicate<? super X> getPred() {
     return pred;
   }
 
@@ -92,7 +94,7 @@ public class Traits<X, Y, Z> {
    *
    * @return the function to map the elements
    */
-  public Function<X, Y> getFct() {
+  public Function<? super X, ? extends Y> getFct() {
     return fct;
   }
 
@@ -101,7 +103,7 @@ public class Traits<X, Y, Z> {
    *
    * @return the operator to produce a result from two given arguments
    */
-  public BiFunction<Z, Y, Z> getOp() {
+  public BiFunction<Z, ? super Y, Z> getOp() {
     return op;
   }
 
