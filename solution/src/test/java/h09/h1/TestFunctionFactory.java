@@ -72,8 +72,8 @@ class TestFunctionFactory {
         return false;
       },
       s -> s.replaceAll("\\s", "").length(),
-      (length, acc) -> length <= 3,
-      false
+      (acc, length) -> acc && length <= 3,
+      true
     );
     final var fct = FunctionFactory.createFunctionWithFilterMapAndFold(traits);
 
@@ -86,7 +86,7 @@ class TestFunctionFactory {
       "Java", "Racket", "No  ", "Yes"
     };
     Assertions.assertTrue(fct.apply(stringsTrue));
-    Assertions.assertTrue(fct.apply(stringsFalse));
+    Assertions.assertFalse(fct.apply(stringsFalse));
   }
 
   /**

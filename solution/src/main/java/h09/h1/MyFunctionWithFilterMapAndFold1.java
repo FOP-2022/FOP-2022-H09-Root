@@ -61,7 +61,7 @@ public class MyFunctionWithFilterMapAndFold1<X, Y, Z> extends
     Z accumulator = traits.getInit();
 
     for (final var element : mapped) {
-      accumulator = op.apply(element, accumulator);
+      accumulator = op.apply(accumulator, element);
     }
     return accumulator;
   }

@@ -39,17 +39,12 @@ public class MyFunctionWithAdjacent<X, Y, Z> extends FunctionWithFilterMapAndFol
     var accumulator = traits.getInit();
 
     Y previous = null;
-    int i = 0;
     for (final var element : elements) {
       if (pred.test(element)) {
         final var mapped = fct.apply(element);
         if (previous!=null) {
-          accumulator = op.apply(combine.apply(previous, mapped), accumulator);
+          accumulator = op.apply(accumulator, combine.apply(previous, mapped));
         }
-        if (accumulator instanceof Integer && ((Integer) accumulator).intValue()==0) {
-          System.out.println(i);
-        }
-        i++;
         previous = mapped;
       }
     }

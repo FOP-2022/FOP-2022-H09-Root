@@ -31,7 +31,7 @@ public class Traits<X, Y, Z> {
    * The operator to use an operation on two given arguments and produce a result from it (folding).
    * This is equivalent to H07 {@code IntBinaryOperator}.
    */
-  private final BiFunction<Y, Z, Z> op;
+  private final BiFunction<Z, Y, Z> op;
 
   /**
    * The combine operator to combine wo given arguments from the same type. This is equivalent to
@@ -54,7 +54,8 @@ public class Traits<X, Y, Z> {
    * @param combine the operator to combine two given arguments
    * @param init    the initial value of the traits
    */
-  public Traits(final Predicate<X> pred, final Function<X, Y> fct, final BiFunction<Y, Z, Z> op,
+  public Traits(final Predicate<X> pred, final Function<X, Y> fct,
+                final BiFunction<Z, Y, Z> op,
                 final BiFunction<Y, Y, Y> combine, final Z init) {
     this.pred = pred;
     this.fct = fct;
@@ -71,7 +72,8 @@ public class Traits<X, Y, Z> {
    * @param op   the operator to produce a result from two given arguments
    * @param init the initial value of the traits
    */
-  public Traits(final Predicate<X> pred, final Function<X, Y> fct, final BiFunction<Y, Z, Z> op,
+  public Traits(final Predicate<X> pred, final Function<X, Y> fct,
+                final BiFunction<Z, Y, Z> op,
                 final Z init) {
     this(pred, fct, op, null, init);
   }
@@ -99,7 +101,7 @@ public class Traits<X, Y, Z> {
    *
    * @return the operator to produce a result from two given arguments
    */
-  public BiFunction<Y, Z, Z> getOp() {
+  public BiFunction<Z, Y, Z> getOp() {
     return op;
   }
 
