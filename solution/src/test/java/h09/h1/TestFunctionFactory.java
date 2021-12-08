@@ -150,13 +150,45 @@ class TestFunctionFactory {
     Assertions.assertEquals(18004, fct.apply(persons));
   }
 
+  /**
+   * Represents a person.
+   */
   private static class Person {
+
+    /**
+     * The last name of this person.
+     */
     private String lastName;
+
+    /**
+     * The first name of this person.
+     */
     private String firstName;
+
+    /**
+     * The street where this person lives.
+     */
     private String street;
+
+    /**
+     * The house number of a street where this person lives.
+     */
     private int houseNumber;
+
+    /**
+     * The postal code where the person lives and the street is located.
+     */
     private int postalCode;
 
+    /**
+     * Constructs and initialized a person with its name and location where the person lives.
+     *
+     * @param lastName    the last name of the person
+     * @param firstName   the first name of the person
+     * @param street      the street where the person lives
+     * @param houseNumber the house number where the person lives
+     * @param postalCode  the postal code where the person lives
+     */
     public Person(String lastName, String firstName, String street, int houseNumber,
                   int postalCode) {
       this.lastName = lastName;
@@ -166,43 +198,92 @@ class TestFunctionFactory {
       this.postalCode = postalCode;
     }
 
-
+    /**
+     * Returns the last name of this person.
+     *
+     * @return the last name of this person
+     */
     public String getLastName() {
       return lastName;
     }
 
+    /**
+     * Sets the last name of the person to the specified value.
+     *
+     * @param lastName the new last name of the person
+     */
     public void setLastName(String lastName) {
       this.lastName = lastName;
     }
 
+    /**
+     * Returns the first name of this person.
+     *
+     * @return the first name of this person
+     */
     public String getFirstName() {
       return firstName;
     }
 
+    /**
+     * Sets the first name of the person to the specified value.
+     *
+     * @param firstName the new first name of the person
+     */
     public void setFirstName(String firstName) {
       this.firstName = firstName;
     }
 
+    /**
+     * Returns the street where this person lives.
+     *
+     * @return the street where this person lives
+     */
     public String getStreet() {
       return street;
     }
 
+    /**
+     * Sets the street where the person lives to the specified value.
+     *
+     * @param street the new street where the person should live
+     */
     public void setStreet(String street) {
       this.street = street;
     }
 
+    /**
+     * Returns the house number of a street where this person lives
+     *
+     * @return the house number of a street where this person lives
+     */
     public int getHouseNumber() {
       return houseNumber;
     }
 
+    /**
+     * Sets the house number of a street where the person lives to the specified value.
+     *
+     * @param houseNumber the new house number where the person lives
+     */
     public void setHouseNumber(int houseNumber) {
       this.houseNumber = houseNumber;
     }
 
+    /**
+     * The postal code where the person lives and the street is located.
+     *
+     * @return postal code where the person lives and the street is located
+     */
     public int getPostalCode() {
       return postalCode;
     }
 
+    /**
+     * Sets the postal code where the person lives to the specified value.
+     *
+     * @param postalCode the new postal code where the person lives
+     */
     public void setPostalCode(int postalCode) {
       this.postalCode = postalCode;
     }
