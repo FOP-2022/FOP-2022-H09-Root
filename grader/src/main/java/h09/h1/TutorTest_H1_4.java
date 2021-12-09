@@ -79,6 +79,12 @@ final class TutorTest_H1_4 {
   private static final String METHOD_NAME = "apply";
 
   /**
+   * The name of the method which defines the fold operation.
+   */
+  private static final String METHOD_NAME_COMBINE = String.format("get%s%s",
+    FIELD_NAME_COMBINE.substring(0, 1).toUpperCase(), FIELD_NAME_COMBINE.substring(1));
+
+  /**
    * Returns the class instance of the class {@value #CLASS_NAME} which should be tested.
    *
    * @return the class instance of the class {@value #CLASS_NAME} which should be tested.
@@ -322,6 +328,27 @@ final class TutorTest_H1_4 {
         final var field = TutorUtils.getField(getFieldClass(), FIELD_NAME_COMBINE);
         final var type = field.getGenericType();
         TutorUtils.assertGenericType(BiFunction.class, "Y, ? super Y, Y", type);
+      }
+
+      @Test
+      @DisplayName("Criterion: Getter method")
+      void testGetter() {
+        final var method = TutorUtils.getMethod(getFieldClass(), METHOD_NAME_COMBINE);
+
+        // Check modifier
+        TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC), List.of(Modifier.STATIC,
+          Modifier.FINAL));
+
+        // Check return type
+        final var expected = BiFunction.class;
+        final var actual = method.getReturnType();
+        Assertions.assertEquals(expected, actual,
+          String.format("Expected return type %s, given %s.", expected, actual));
+
+        final var name = method.getGenericReturnType().getTypeName();
+        Assertions.assertEquals(
+          String.format("%s<Y, ? super Y, Y>", BiFunction.class.getCanonicalName()), name,
+          String.format("Expected return type name ? super X, given %s.", name));
       }
     }
 

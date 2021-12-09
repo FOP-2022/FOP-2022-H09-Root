@@ -50,9 +50,33 @@ final class TutorTest_H1_1 {
   private static final String FIELD_NAME_FOLD = "op";
 
   /**
-   * The name of the field which defines the initial value for the fold operation.
+   * The name of the method which defines the initial value for the fold operation.
    */
   private static final String FIELD_NAME_INITIAL = "init";
+
+  /**
+   * The name of the method which defines the filter operation.
+   */
+  private static final String METHOD_NAME_FILTER = String.format("get%s%s",
+    FIELD_NAME_FILTER.substring(0, 1).toUpperCase(), FIELD_NAME_FILTER.substring(1));
+
+  /**
+   * The name of the method which defines the map operation.
+   */
+  private static final String METHOD_NAME_MAP = String.format("get%s%s",
+    FIELD_NAME_MAP.substring(0, 1).toUpperCase(), FIELD_NAME_MAP.substring(1));
+
+  /**
+   * The name of the method which defines the fold operation.
+   */
+  private static final String METHOD_NAME_FOLD = String.format("get%s%s",
+    FIELD_NAME_FOLD.substring(0, 1).toUpperCase(), FIELD_NAME_FOLD.substring(1));
+
+  /**
+   * The name of the method which defines the initial value for the fold operation.
+   */
+  private static final String METHOD_NAME_INITIAL = String.format("get%s%s",
+    FIELD_NAME_INITIAL.substring(0, 1).toUpperCase(), FIELD_NAME_INITIAL.substring(1));
 
   /**
    * Returns the class instance of the class {@value CLASS_NAME} which should be tested.
@@ -141,6 +165,27 @@ final class TutorTest_H1_1 {
       final var type = field.getGenericType();
       TutorUtils.assertGenericType(Predicate.class, "? super X", type);
     }
+
+    @Test
+    @DisplayName("Criterion: Getter method")
+    void testGetter() {
+      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_FILTER);
+
+      // Check modifier
+      TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC), List.of(Modifier.STATIC,
+        Modifier.FINAL));
+
+      // Check return type
+      final var expected = Predicate.class;
+      final var actual = method.getReturnType();
+      Assertions.assertEquals(expected, actual,
+        String.format("Expected return type %s, given %s.", expected, actual));
+
+      final var name = method.getGenericReturnType().getTypeName();
+      Assertions.assertEquals(
+        String.format("%s<? super X>", Predicate.class.getCanonicalName()), name,
+        String.format("Expected return type name ? super X, given %s.", name));
+    }
   }
 
   /**
@@ -165,6 +210,27 @@ final class TutorTest_H1_1 {
       final var type = field.getGenericType();
       TutorUtils.assertGenericType(Function.class, "? super X, ? extends Y", type);
     }
+
+    @Test
+    @DisplayName("Criterion: Getter method")
+    void testGetter() {
+      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_MAP);
+
+      // Check modifier
+      TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC), List.of(Modifier.STATIC,
+        Modifier.FINAL));
+
+      // Check return type
+      final var expected = Function.class;
+      final var actual = method.getReturnType();
+      Assertions.assertEquals(expected, actual,
+        String.format("Expected return type %s, given %s.", expected, actual));
+
+      final var name = method.getGenericReturnType().getTypeName();
+      Assertions.assertEquals(
+        String.format("%s<? super X, ? extends Y>", Function.class.getCanonicalName()), name,
+        String.format("Expected return type name ? super X, given %s.", name));
+    }
   }
 
   /**
@@ -188,6 +254,27 @@ final class TutorTest_H1_1 {
       final var field = TutorUtils.getField(getTestClass(), FIELD_NAME_FOLD);
       final var type = field.getGenericType();
       TutorUtils.assertGenericType(BiFunction.class, "Z, ? super Y, Z", type);
+    }
+
+    @Test
+    @DisplayName("Criterion: Getter method")
+    void testGetter() {
+      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_FOLD);
+
+      // Check modifier
+      TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC), List.of(Modifier.STATIC,
+        Modifier.FINAL));
+
+      // Check return type
+      final var expected = BiFunction.class;
+      final var actual = method.getReturnType();
+      Assertions.assertEquals(expected, actual,
+        String.format("Expected return type %s, given %s.", expected, actual));
+
+      final var name = method.getGenericReturnType().getTypeName();
+      Assertions.assertEquals(
+        String.format("%s<Z, ? super Y, Z>", BiFunction.class.getCanonicalName()), name,
+        String.format("Expected return type name ? super X, given %s.", name));
     }
   }
 
@@ -215,6 +302,26 @@ final class TutorTest_H1_1 {
       final var actual = type.getTypeName();
       Assertions.assertEquals(expected, actual,
         String.format("Expected type %s, given %s.", expected, actual));
+    }
+
+    @Test
+    @DisplayName("Criterion: Getter method")
+    void testGetter() {
+      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_INITIAL);
+
+      // Check modifier
+      TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC), List.of(Modifier.STATIC,
+        Modifier.FINAL));
+
+      // Check return type
+      final var expected = Object.class;
+      final var actual = method.getReturnType();
+      Assertions.assertEquals(expected, actual,
+        String.format("Expected return type %s, given %s.", expected, actual));
+
+      final var name = method.getGenericReturnType().getTypeName();
+      Assertions.assertEquals("Z", name,
+        String.format("Expected return type name ? super X, given %s.", name));
     }
   }
 

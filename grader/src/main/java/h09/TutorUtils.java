@@ -202,7 +202,7 @@ public final class TutorUtils {
   }
 
   /**
-   * Retrieves the {@link Method} with the specified name a parameters of the specified object.
+   * Retrieves the {@link Method} with the specified name and parameters of the specified object.
    * <p>
    * If the method could not be found, the assertions will fail.
    *
@@ -228,7 +228,7 @@ public final class TutorUtils {
   }
 
   /**
-   * Retrieves the {@link Method} with the specified name a parameters of the specified object.
+   * Retrieves the {@link Method} with the specified name and parameters of the specified object.
    * <p>
    * If the method could not be found, the assertions will fail.
    *
