@@ -1,9 +1,5 @@
 package h09.h1;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Predicate;
-
 /**
  * A function that provides an operation that filter a set of elements, which will be then mapped
  * and reduced (folded) to a single value.

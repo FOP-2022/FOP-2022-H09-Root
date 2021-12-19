@@ -28,7 +28,6 @@ class TestBiologicalHierarchy {
     Assertions.assertEquals("Mammal", hierarchy.typeOfVertebrate(new TestMammal()));
     Assertions.assertEquals("Bird", hierarchy.typeOfVertebrate(new TestBird()));
     Assertions.assertEquals("Mammal", hierarchy.typeOfVertebrate(new TestPlacental()));
-    Assertions.assertEquals("Mammal", hierarchy.typeOfVertebrate(new TestMammal()));
     Assertions.assertEquals("Mammal", hierarchy.typeOfVertebrate(new TestMonotreme()));
     Assertions.assertEquals("Mammal", hierarchy.typeOfVertebrate(new TestRodent()));
     Assertions.assertEquals("Mammal", hierarchy.typeOfVertebrate(new TestLagomorpha()));
