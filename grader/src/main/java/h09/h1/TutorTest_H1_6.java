@@ -10,7 +10,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
+import org.sourcegrade.jagr.api.testing.TestCycle;
+import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -51,10 +54,10 @@ public final class TutorTest_H1_6 {
   public final class TestMethod1 {
 
     @Test
+    @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirement - Only lambdas")
-    void testRequirement() {
-      // TODO Jagr API
-      final var processor = SpoonUtils.process(null, TutorConstants.H1_6_PATH_TO_SOURCE,
+    void testRequirement(final TestCycle testCycle) {
+      final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
         new LambdaExpressionsMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_1));
       final var actualTypes = processor.getTypes();
       final var expectedTypes = TutorConstants.H1_6_METHOD_1_LAMBDAS;
@@ -80,10 +83,10 @@ public final class TutorTest_H1_6 {
   public final class TestMethod2 {
 
     @Test
+    @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirement - Only lambdas")
-    void testRequirement() {
-      // TODO Jagr API
-      final var processor = SpoonUtils.process(null, TutorConstants.H1_6_PATH_TO_SOURCE,
+    void testRequirement(final TestCycle testCycle) {
+      final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
         new LambdaExpressionsMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_2));
       final var actualTypes = processor.getTypes();
       final var expectedTypes = TutorConstants.H1_6_METHOD_2_LAMBDAS;
@@ -109,10 +112,10 @@ public final class TutorTest_H1_6 {
   public final class TestMethod3 {
 
     @Test
+    @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirement - Only method references")
-    void testRequirement() {
-      // TODO Jagr API
-      final var processor = SpoonUtils.process(null, TutorConstants.H1_6_PATH_TO_SOURCE,
+    void testRequirement(final TestCycle testCycle) {
+      final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
         new LambdaExpressionsMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_2));
       final var actualTypes = processor.getTypes();
       final var expectedTypes = TutorConstants.H1_6_METHOD_3_LAMBDAS;

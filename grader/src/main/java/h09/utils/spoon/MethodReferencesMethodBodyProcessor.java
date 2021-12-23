@@ -20,8 +20,8 @@ public class MethodReferencesMethodBodyProcessor extends AbstractProcessor<CtMet
    */
   private final String methodName;
 
-    /**
-     * Contains all method references.
+  /**
+   * Contains all method references.
    */
   private final List<CtExecutableReferenceExpression<?, ?>> methodReferences;
   /**

@@ -7,12 +7,8 @@ import spoon.processing.Processor;
 import spoon.support.QueueProcessingManager;
 import spoon.support.compiler.VirtualFile;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public final class SpoonUtils {
 
@@ -22,18 +18,12 @@ public final class SpoonUtils {
   }
 
   public static VirtualFile getSourceCode(final TestCycle testCycle, final String path) {
-    try {
-      // TODO Jagr API
-//      final var source = testCycle.getSubmission().getSourceFile(path);
-//      if (source!=null) {
-//        return Assertions.fail(String.format("The specified source code %s could not be accessed.",
-//          path));
-//      }
-//      return new VirtualFile(source.getContent());
-      return new VirtualFile(Files.lines(Path.of(path)).collect(Collectors.joining("\n")));
-    } catch (IOException e) {
-      return Assertions.fail(String.format("The source code %s could not accessed.", path), e);
+    final var source = testCycle.getSubmission().getSourceFile(path);
+    if (source==null) {
+      return Assertions.fail(String.format("The specified source code %s could not be accessed.",
+        path));
     }
+    return new VirtualFile(source.getContent());
   }
 
   public static <P extends Processor<?>> P process(final TestCycle testCycle, final String path,

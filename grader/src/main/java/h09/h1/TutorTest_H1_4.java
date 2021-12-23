@@ -11,7 +11,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
+import org.sourcegrade.jagr.api.testing.TestCycle;
+import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -64,10 +67,10 @@ public final class TutorTest_H1_4 {
     }
 
     @Test
+    @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Check imports")
-    void testImports() {
-      // TODO replace with Jagr API
-      TutorUtils_H1.assertImports(null, TutorConstants.H1_4_PATH_TO_SOURCE,
+    void testImports(final TestCycle testCycle) {
+      TutorUtils_H1.assertImports(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
         TutorConstants.H1_IMPORT_BLACK_LIST);
     }
   }
@@ -197,10 +200,10 @@ public final class TutorTest_H1_4 {
   }
 
   @Test
+  @ExtendWith(TestCycleResolver.class)
   @DisplayName("Criterion: Requirement - No arrays")
-  void testRequirementArrays() {
-    // TODO replace with Jagr API
-    final var processor = SpoonUtils.process(null, TutorConstants.H1_4_PATH_TO_SOURCE,
+  void testRequirementArrays(final TestCycle testCycle) {
+    final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
       new ArraysInstantiationMethodBodyProcessor(TutorConstants.H1_2_METHOD_NAME));
 
     final var expected = 0;
@@ -212,11 +215,10 @@ public final class TutorTest_H1_4 {
   }
 
   @Test
+  @ExtendWith(TestCycleResolver.class)
   @DisplayName("Criterion: Requirement - Only one foreach")
-  void testRequirementForeachLoop() {
-
-    // TODO replace with Jagr API
-    final var processor = SpoonUtils.process(null, TutorConstants.H1_4_PATH_TO_SOURCE,
+  void testRequirementForeachLoop(final TestCycle testCycle) {
+    final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
       new LoopsMethodBodyProcessor(TutorConstants.H1_2_METHOD_NAME));
 
     final var expectedForEach = 1;

@@ -10,8 +10,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.sourcegrade.jagr.api.testing.TestCycle;
+import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
 import spoon.reflect.code.CtConstructorCall;
 import spoon.reflect.reference.CtTypeReference;
 
@@ -102,17 +104,17 @@ public final class TutorTest_H2_3 {
     };
 
     @Test
+    @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirements - At least 3 possible animals")
-    void testRequirements3() {
-      // TODO replace with Jagr API
-      assertRequirements(null, TutorConstants.H2_3_METHOD_NAME_1, 3, expectedAnimals);
+    void testRequirements3(final TestCycle testCycle) {
+      assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_1, 3, expectedAnimals);
     }
 
     @Test
+    @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirements - At least 7 possible animals")
-    void testRequirements7() {
-      // TODO replace with Jagr API
-      assertRequirements(null, TutorConstants.H2_3_METHOD_NAME_1, 7, expectedAnimals);
+    void testRequirements7(final TestCycle testCycle) {
+      assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_1, 7, expectedAnimals);
     }
   }
 
@@ -129,17 +131,17 @@ public final class TutorTest_H2_3 {
     };
 
     @Test
+    @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirements - At least 4 possible animals")
-    void testRequirements4() {
-      // TODO replace with Jagr API
-      assertRequirements(null, TutorConstants.H2_3_METHOD_NAME_2, 4, expectedAnimals);
+    void testRequirements4(final TestCycle testCycle) {
+      assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_2, 4, expectedAnimals);
     }
 
     @Test
+    @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirements - At least 9 possible animals")
-    void testRequirements9() {
-      // TODO replace with Jagr API
-      assertRequirements(null, TutorConstants.H2_3_METHOD_NAME_2, 9, expectedAnimals);
+    void testRequirements9(final TestCycle testCycle) {
+      assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_2, 9, expectedAnimals);
     }
   }
 
@@ -154,17 +156,17 @@ public final class TutorTest_H2_3 {
     };
 
     @Test
+    @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirements - At least 3 possible animals")
-    void testRequirements3() {
-      // TODO replace with Jagr API
-      assertRequirements(null, TutorConstants.H2_3_METHOD_NAME_3, 3, expectedAnimals);
+    void testRequirements3(final TestCycle testCycle) {
+      assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_3, 3, expectedAnimals);
     }
 
     @Test
+    @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirements - At least 6 possible animals")
-    void testRequirements6() {
-      // TODO replace with Jagr API
-      assertRequirements(null, TutorConstants.H2_3_METHOD_NAME_3, 6, expectedAnimals);
+    void testRequirements6(final TestCycle testCycle) {
+      assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_3, 6, expectedAnimals);
     }
   }
 }
