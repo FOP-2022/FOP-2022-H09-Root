@@ -1,408 +1,348 @@
 package h09.h1;
 
-import h09.TutorUtils;
-import h09.TutorUtils.Modifier;
+import h09.utils.Modifier;
+import h09.utils.TutorConstants;
+import h09.utils.TutorMessage;
+import h09.utils.TutorUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
-import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.util.AbstractMap.SimpleEntry;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
-/**
- * Defines the JUnit test cases for the class defined in H1.1.
- *
- * @author Nhan Huynh, Darya Nikitina
- */
+@TestForSubmission("h09")
 @DisplayName("Criterion: Class Traits")
-final class TutorTest_H1_1 {
+public final class TutorTest_H1_1 {
 
-  /**
-   * The name of the package where the class for the test cases should exist.
-   */
-  private static final String PACKAGE_NAME = "h09.h1";
-
-  /**
-   * The name of the class which should be tested.
-   */
-  private static final String CLASS_NAME = "Traits";
-
-  /**
-   * The name of the field which defines the filter operation.
-   */
-  private static final String FIELD_NAME_FILTER = "pred";
-
-  /**
-   * The name of the field which defines the map operation.
-   */
-  private static final String FIELD_NAME_MAP = "fct";
-
-  /**
-   * The name of the field which defines the fold operation.
-   */
-  private static final String FIELD_NAME_FOLD = "op";
-
-  /**
-   * The name of the method which defines the initial value for the fold operation.
-   */
-  private static final String FIELD_NAME_INITIAL = "init";
-
-  /**
-   * The name of the method which defines the filter operation.
-   */
-  private static final String METHOD_NAME_FILTER = String.format("get%s%s",
-    FIELD_NAME_FILTER.substring(0, 1).toUpperCase(), FIELD_NAME_FILTER.substring(1));
-
-  /**
-   * The name of the method which defines the map operation.
-   */
-  private static final String METHOD_NAME_MAP = String.format("get%s%s",
-    FIELD_NAME_MAP.substring(0, 1).toUpperCase(), FIELD_NAME_MAP.substring(1));
-
-  /**
-   * The name of the method which defines the fold operation.
-   */
-  private static final String METHOD_NAME_FOLD = String.format("get%s%s",
-    FIELD_NAME_FOLD.substring(0, 1).toUpperCase(), FIELD_NAME_FOLD.substring(1));
-
-  /**
-   * The name of the method which defines the initial value for the fold operation.
-   */
-  private static final String METHOD_NAME_INITIAL = String.format("get%s%s",
-    FIELD_NAME_INITIAL.substring(0, 1).toUpperCase(), FIELD_NAME_INITIAL.substring(1));
-
-  /**
-   * Returns the class instance of the class {@value CLASS_NAME} which should be tested.
-   *
-   * @return the class instance of the class {@value CLASS_NAME} which should be tested.
-   */
   private static Class<?> getTestClass() {
-    return TutorUtils.getClass(PACKAGE_NAME, CLASS_NAME);
+    return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_1_CLASS_NAME);
   }
 
-  /**
-   * Tests whether the type parameters X, Y and Z are correctly defined.
-   */
-  private static void assertTypeParameters() {
-    final var typeVariables = getTestClass().getTypeParameters();
-
-    // Check if type parameters exists
-    Assertions.assertNotNull(typeVariables,
-      String.format("The class %s should contain the type parameter X, Y and Z, given %s.",
-        CLASS_NAME, Arrays.toString(typeVariables)));
-
-    // Check number of type parameters
-    Assertions.assertEquals(3, typeVariables.length,
-      String.format("The class %s should contain the type parameter X, Y and Z, given %s.",
-        CLASS_NAME, Arrays.toString(typeVariables)));
-
-    // Check name of the type parameters
-    final String[] types = {"X", "Y", "Z"};
-    for (int i = 0; i < types.length; i++) {
-      final var expected = types[i];
-      final var actual = typeVariables[i].getTypeName();
-      Assertions.assertEquals(expected, actual,
-        String.format("The class %s expected the type parameter %s, given %s.",
-          CLASS_NAME, expected, actual));
-    }
-  }
-
-  /**
-   * Defines the JUnit tests cases related to the class header.
-   */
   @Nested
   @DisplayName("Criterion: Class Header")
-  final class TestClassHeader {
+  public final class TestClassHeader {
 
     @Test
     @DisplayName("Criterion: Only modifiers public")
     void testModifiers() {
-      TutorUtils.assertModifiers(getTestClass(), List.of(Modifier.PUBLIC),
-        List.of(Modifier.ABSTRACT, Modifier.FINAL, Modifier.STATIC));
+      final var actual = getTestClass();
+      final var expected = Modifier.ABSTRACT
+        .nand(Modifier.FINAL, Modifier.STATIC)
+        .and(Modifier.PUBLIC);
+      TutorUtils.assertModifiers(expected, actual);
     }
 
     @Test
     @DisplayName("Criterion: No extension")
     void testExtension() {
-      final var superClass = getTestClass().getSuperclass();
-      Assertions.assertEquals(Object.class, superClass,
-        String.format("The class should not extend another class, given %s.", superClass));
+      final var expected = Object.class;
+      final var actual = getTestClass().getSuperclass();
+      Assertions.assertEquals(
+        expected, actual, TutorMessage.CLASS_EXTENSION_MISMATCH.format(expected, actual)
+      );
     }
 
     @Test
     @DisplayName("Criterion: Type parameter X, Y, Z")
     void testTypeParameters() {
-      assertTypeParameters();
+      final var clazz = getTestClass();
+      TutorUtils_H1.assertClassTypeParameters(clazz);
     }
   }
 
-  /**
-   * Defines the JUnit tests cases related to the field {@value FIELD_NAME_FILTER}.
-   */
   @Nested
   @DisplayName("Criterion: Field for filter operation")
-  final class TestFieldPred {
+  public final class TestField1 {
+
+    private Field getTestField() {
+      final var clazz = getTestClass();
+      return TutorUtils.assertField(clazz, TutorConstants.H1_1_FIELD_NAME_1);
+    }
 
     @Test
     @DisplayName("Criterion: Only modifiers private final")
     void testModifiers() {
-      final var field = TutorUtils.getField(getTestClass(), FIELD_NAME_FILTER);
-      TutorUtils.assertModifiers(field, List.of(Modifier.PRIVATE, Modifier.FINAL),
-        List.of(Modifier.STATIC));
+      final var actual = getTestField();
+      final var expected = Modifier.STATIC.negate().and(Modifier.PRIVATE, Modifier.FINAL);
+      TutorUtils.assertModifiers(expected, actual);
     }
 
     @Test
-    @DisplayName("Criterion: Type Predicate<X>")
+    @DisplayName("Criterion: Type Predicate<? super X>")
     void testType() {
-      final var field = TutorUtils.getField(getTestClass(), FIELD_NAME_FILTER);
-      final var type = field.getGenericType();
-      TutorUtils.assertGenericType(Predicate.class, "? super X", type);
+      final var actual = getTestField();
+      final var type = actual.getGenericType();
+      TutorUtils.assertGenericType(
+        TutorConstants.H1_1_FIELD_TYPE_1, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_1, type
+      );
     }
 
     @Test
     @DisplayName("Criterion: Getter method")
     void testGetter() {
-      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_FILTER);
+      final var method = TutorUtils.assertMethod(getTestClass(), TutorConstants.H1_1_METHOD_NAME_1);
 
       // Check modifier
-      TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC), List.of(Modifier.STATIC,
-        Modifier.FINAL));
+      TutorUtils.assertModifiers(Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC), method);
 
       // Check return type
-      final var expected = Predicate.class;
+      final var expected = TutorConstants.H1_1_FIELD_TYPE_1;
       final var actual = method.getReturnType();
-      Assertions.assertEquals(expected, actual,
-        String.format("Expected return type %s, given %s.", expected, actual));
+      Assertions.assertEquals(
+        expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
+      );
 
       final var name = method.getGenericReturnType().getTypeName();
       Assertions.assertEquals(
-        String.format("%s<? super X>", Predicate.class.getCanonicalName()), name,
-        String.format("Expected return type name ? super X, given %s.", name));
+        String.format(
+          "%s<%s>", expected.getCanonicalName(), TutorConstants.H1_1_FIELD_TYPE_PARAMETER_1
+        ), name, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
+      );
     }
   }
 
-  /**
-   * Defines the JUnit tests cases related to the field {@value FIELD_NAME_MAP}.
-   */
   @Nested
   @DisplayName("Criterion: Field for map operation")
-  final class TestFieldFct {
+  public final class TestField2 {
+
+    private Field getTestField() {
+      final var clazz = getTestClass();
+      return TutorUtils.assertField(clazz, TutorConstants.H1_1_FIELD_NAME_2);
+    }
 
     @Test
     @DisplayName("Criterion: Only modifiers private final")
     void testModifiers() {
-      final var field = TutorUtils.getField(getTestClass(), FIELD_NAME_MAP);
-      TutorUtils.assertModifiers(field, List.of(Modifier.PRIVATE, Modifier.FINAL),
-        List.of(Modifier.STATIC));
+      final var actual = getTestField();
+      final var expected = Modifier.STATIC.negate().and(Modifier.PRIVATE, Modifier.FINAL);
+      TutorUtils.assertModifiers(expected, actual);
     }
 
     @Test
-    @DisplayName("Criterion: Type Predicate<X>")
+    @DisplayName("Criterion: Type Function<? super X, ? extends Y>")
     void testType() {
-      final var field = TutorUtils.getField(getTestClass(), FIELD_NAME_MAP);
-      final var type = field.getGenericType();
-      TutorUtils.assertGenericType(Function.class, "? super X, ? extends Y", type);
+      final var actual = getTestField();
+      final var type = actual.getGenericType();
+      TutorUtils.assertGenericType(
+        TutorConstants.H1_1_FIELD_TYPE_2, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_2, type
+      );
     }
 
     @Test
     @DisplayName("Criterion: Getter method")
     void testGetter() {
-      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_MAP);
+      final var method = TutorUtils.assertMethod(getTestClass(), TutorConstants.H1_1_METHOD_NAME_2);
 
       // Check modifier
-      TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC), List.of(Modifier.STATIC,
-        Modifier.FINAL));
+      TutorUtils.assertModifiers(Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC), method);
 
       // Check return type
-      final var expected = Function.class;
+      final var expected = TutorConstants.H1_1_FIELD_TYPE_2;
       final var actual = method.getReturnType();
-      Assertions.assertEquals(expected, actual,
-        String.format("Expected return type %s, given %s.", expected, actual));
+      Assertions.assertEquals(
+        expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
+      );
 
       final var name = method.getGenericReturnType().getTypeName();
       Assertions.assertEquals(
-        String.format("%s<? super X, ? extends Y>", Function.class.getCanonicalName()), name,
-        String.format("Expected return type name ? super X, given %s.", name));
+        String.format(
+          "%s<%s>", expected.getCanonicalName(), TutorConstants.H1_1_FIELD_TYPE_PARAMETER_2
+        ), name, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
+      );
     }
   }
 
-  /**
-   * Defines the JUnit tests cases related to the field {@value FIELD_NAME_FOLD}
-   */
   @Nested
   @DisplayName("Criterion: Field for fold operation")
-  final class TestFieldOp {
+  public final class TestField3 {
+
+    private Field getTestField() {
+      final var clazz = getTestClass();
+      return TutorUtils.assertField(clazz, TutorConstants.H1_1_FIELD_NAME_3);
+    }
 
     @Test
     @DisplayName("Criterion: Only modifiers private final")
     void testModifiers() {
-      final var field = TutorUtils.getField(getTestClass(), FIELD_NAME_FOLD);
-      TutorUtils.assertModifiers(field, List.of(Modifier.PRIVATE, Modifier.FINAL),
-        List.of(Modifier.STATIC));
+      final var actual = getTestField();
+      final var expected = Modifier.STATIC.negate().and(Modifier.PRIVATE, Modifier.FINAL);
+      TutorUtils.assertModifiers(expected, actual);
     }
 
     @Test
-    @DisplayName("Criterion: Type BiFunction<Y, Z, Z>")
+    @DisplayName("Criterion: Type BiFunction<Z, ? super Y, Z")
     void testType() {
-      final var field = TutorUtils.getField(getTestClass(), FIELD_NAME_FOLD);
-      final var type = field.getGenericType();
-      TutorUtils.assertGenericType(BiFunction.class, "Z, ? super Y, Z", type);
+      final var actual = getTestField();
+      final var type = actual.getGenericType();
+      TutorUtils.assertGenericType(
+        TutorConstants.H1_1_FIELD_TYPE_3, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_3, type
+      );
     }
 
     @Test
     @DisplayName("Criterion: Getter method")
     void testGetter() {
-      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_FOLD);
+      final var method = TutorUtils.assertMethod(getTestClass(), TutorConstants.H1_1_METHOD_NAME_3);
 
       // Check modifier
-      TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC), List.of(Modifier.STATIC,
-        Modifier.FINAL));
+      TutorUtils.assertModifiers(Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC), method);
 
       // Check return type
-      final var expected = BiFunction.class;
+      final var expected = TutorConstants.H1_1_FIELD_TYPE_3;
       final var actual = method.getReturnType();
-      Assertions.assertEquals(expected, actual,
-        String.format("Expected return type %s, given %s.", expected, actual));
+      Assertions.assertEquals(
+        expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
+      );
 
       final var name = method.getGenericReturnType().getTypeName();
       Assertions.assertEquals(
-        String.format("%s<Z, ? super Y, Z>", BiFunction.class.getCanonicalName()), name,
-        String.format("Expected return type name ? super X, given %s.", name));
+        String.format(
+          "%s<%s>", expected.getCanonicalName(), TutorConstants.H1_1_FIELD_TYPE_PARAMETER_3
+        ), name,
+        TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
+      );
     }
   }
 
-  /**
-   * Defines the JUnit tests cases related to the field {@value FIELD_NAME_INITIAL}.
-   */
   @Nested
   @DisplayName("Criterion: Field for the initial value of the fold operation")
-  final class TestFieldInit {
+  public final class TestField4 {
+
+    private Field getTestField() {
+      final var clazz = getTestClass();
+      return TutorUtils.assertField(clazz, TutorConstants.H1_1_FIELD_NAME_4);
+    }
 
     @Test
     @DisplayName("Criterion: Only modifiers private final")
     void testModifiers() {
-      final var field = TutorUtils.getField(getTestClass(), FIELD_NAME_INITIAL);
-      TutorUtils.assertModifiers(field, List.of(Modifier.PRIVATE, Modifier.FINAL),
-        List.of(Modifier.STATIC));
+      final var actual = getTestField();
+      final var expected = Modifier.STATIC.negate().and(Modifier.PRIVATE, Modifier.FINAL);
+      TutorUtils.assertModifiers(expected, actual);
     }
 
     @Test
-    @DisplayName("Criterion: Type BiFunction<Y, Z, Z>")
+    @DisplayName("Criterion: Type Z")
     void testType() {
-      final var field = TutorUtils.getField(getTestClass(), FIELD_NAME_INITIAL);
+      final var field = getTestField();
       final var type = field.getGenericType();
-      final var expected = "Z";
+      final var expected = TutorConstants.H1_1_FIELD_TYPE_PARAMETER_4;
       final var actual = type.getTypeName();
-      Assertions.assertEquals(expected, actual,
-        String.format("Expected type %s, given %s.", expected, actual));
+      Assertions.assertEquals(
+        expected, actual, TutorMessage.TYPE_PARAMETER_MISMATCH.format(expected, actual)
+      );
     }
 
     @Test
     @DisplayName("Criterion: Getter method")
     void testGetter() {
-      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_INITIAL);
+      final var method = TutorUtils.assertMethod(getTestClass(), TutorConstants.H1_1_METHOD_NAME_4);
 
       // Check modifier
-      TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC), List.of(Modifier.STATIC,
-        Modifier.FINAL));
+      TutorUtils.assertModifiers(Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC), method);
 
       // Check return type
-      final var expected = Object.class;
+      final var expected = TutorConstants.H1_1_FIELD_TYPE_4;
       final var actual = method.getReturnType();
-      Assertions.assertEquals(expected, actual,
-        String.format("Expected return type %s, given %s.", expected, actual));
+      Assertions.assertEquals(
+        expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
+      );
 
-      final var name = method.getGenericReturnType().getTypeName();
-      Assertions.assertEquals("Z", name,
-        String.format("Expected return type name ? super X, given %s.", name));
+      final var expectedName = TutorConstants.H1_1_FIELD_TYPE_PARAMETER_4;
+      final var actualName = method.getGenericReturnType().getTypeName();
+      Assertions.assertEquals(
+        expectedName, actualName, TutorMessage.RETURN_TYPE_MISMATCH.format(expectedName, actualName)
+      );
     }
   }
 
-  /**
-   * Defines the JUnit tests cases related to the constructor.
-   */
   @Nested
   @DisplayName("Criterion: Constructor")
-  final class TestConstructor {
+  public final class TestConstructor {
+
+    private Constructor<?> getTestConstructor() {
+      final var clazz = getTestClass();
+      return TutorUtils.assertConstructor(
+        clazz,
+        TutorConstants.H1_1_FIELD_TYPE_1,
+        TutorConstants.H1_1_FIELD_TYPE_2,
+        TutorConstants.H1_1_FIELD_TYPE_3,
+        TutorConstants.H1_1_FIELD_TYPE_4
+      );
+    }
 
     @Test
     @DisplayName("Criterion: Only modifier public")
     void testModifiers() {
-      final var constructor = TutorUtils.getConstructor(
-        getTestClass(), Predicate.class, Function.class, BiFunction.class, Object.class
-      );
-      TutorUtils.assertModifiers(constructor, List.of(Modifier.PUBLIC));
+      final var actual = getTestClass();
+      final var expected = Modifier.PUBLIC;
+      TutorUtils.assertModifiers(expected, actual);
     }
 
     @Test
-    @DisplayName("Criterion: Parameter Predicate<X>, Function<X, Y>, BiFunction<Y, Z, Z>, Z")
+    @DisplayName("Criterion: Parameter Predicate<? super X>, Function<? super X, ? extends Y>, " +
+      "BiFunction<Z, ? super Y, Z>, Z")
     void testParameterTypes() {
-      // Get constructor
-      final var constructor = TutorUtils.getConstructor(
-        getTestClass(), Predicate.class, Function.class, BiFunction.class, Object.class
+      final var constructor = getTestConstructor();
+      TutorUtils.assertConstructorParameters(
+        constructor, List.of(
+          new SimpleEntry<>(
+            TutorConstants.H1_1_FIELD_TYPE_1, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_1
+          ),
+          new SimpleEntry<>(
+            TutorConstants.H1_1_FIELD_TYPE_2, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_2
+          ),
+          new SimpleEntry<>(
+            TutorConstants.H1_1_FIELD_TYPE_3, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_3
+          ),
+          new SimpleEntry<>(
+            TutorConstants.H1_1_FIELD_TYPE_4, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_4
+          )
+        )
       );
-
-      // Check number of parameters
-      final var types = constructor.getGenericParameterTypes();
-      Assertions.assertEquals(4, types.length,
-        String.format("The constructor must have 4 parameters, given: %s", Arrays.toString(types)));
-
-      // Check parameter types
-      @SuppressWarnings("unchecked") final Entry<Class<?>, String>[] expected =
-        (Entry<Class<?>, String>[]) Array.newInstance(Entry.class, 3);
-      expected[0] = new SimpleEntry<>(Predicate.class, "? super X");
-      expected[1] = new SimpleEntry<>(Function.class, "? super X, ? extends Y");
-      expected[2] = new SimpleEntry<>(BiFunction.class, "Z, ? super Y, Z");
-
-      for (int i = 0; i < expected.length; i++) {
-        final var entry = expected[i];
-        TutorUtils.assertGenericType(entry.getKey(), entry.getValue(), types[i]);
-      }
-
-      final var z = types[3].getTypeName();
-      Assertions.assertEquals("Z", z,
-        String.format("The type of the init must be Z, given: %s", z));
     }
 
     @Test
     @DisplayName("Criterion: Initialization of fields")
     void testFields() {
-      final Predicate<Integer> expectedFilter = x -> x < 10;
-      final Function<Integer, Integer> expectedMap = x -> x;
-      final BiFunction<Integer, Integer, Integer> expectedFold = (a, b) -> a * b;
-      final Integer expectedInit = 1;
+      final var constructor = getTestConstructor();
 
-      final var traitsConstructor = TutorUtils.getConstructor(getTestClass(), Predicate.class,
-        Function.class, BiFunction.class, Object.class);
+      final var expectedField1 = TutorConstants.H1_1_FIELD_EXAMPLE_1_1;
+      final var expectedField2 = TutorConstants.H1_1_FIELD_EXAMPLE_1_2;
+      final var expectedField3 = TutorConstants.H1_1_FIELD_EXAMPLE_1_3;
+      final var expectedField4 = TutorConstants.H1_1_FIELD_EXAMPLE_1_4;
 
-      final var instance = TutorUtils.invokeConstructor(traitsConstructor, expectedFilter,
-        expectedMap, expectedFold, expectedInit);
+      final var instance = TutorUtils.invokeConstructor(
+        constructor, expectedField1, expectedField2, expectedField3, expectedField4
+      );
 
       // Check if fields are initialized
-      final var actualFilter = TutorUtils.getField(instance, FIELD_NAME_FILTER);
-      final var actualMap = TutorUtils.getField(instance, FIELD_NAME_MAP);
-      final var actualFold = TutorUtils.getField(instance, FIELD_NAME_FOLD);
-      final var actualInit = TutorUtils.getField(instance, FIELD_NAME_INITIAL);
+      final var actualField1 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_1);
+      final var actualField2 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_2);
+      final var actualField3 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_3);
+      final var actualField4 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_4);
 
-      Assertions.assertEquals(expectedFilter, TutorUtils.getContent(actualFilter, instance),
-        String.format("Expected the type %s for the filter operation, given %s",
-          expectedFilter, actualFilter));
-      Assertions.assertEquals(expectedMap, TutorUtils.getContent(actualMap, instance),
-        String.format("Expected the type %s for the map operation, given %s",
-          expectedMap, actualMap));
-      Assertions.assertEquals(expectedFold, TutorUtils.getContent(actualFold, instance),
-        String.format("Expected the type %s for the fold operation, given %s",
-          expectedFold, actualFold));
-      Assertions.assertEquals(expectedInit, TutorUtils.getContent(actualInit, instance),
-        String.format("Expected the type %s for the initial value for the fold operation, given %s",
-          expectedInit, actualInit));
+      Assertions.assertEquals(
+        expectedField1, TutorUtils.getFieldContent(actualField1, instance),
+        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField1, actualField1)
+      );
+      Assertions.assertEquals(
+        expectedField2, TutorUtils.getFieldContent(actualField2, instance),
+        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField2, actualField2)
+      );
+      Assertions.assertEquals(
+        expectedField3, TutorUtils.getFieldContent(actualField3, instance),
+        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField3, actualField3)
+      );
+      Assertions.assertEquals(
+        expectedField4, TutorUtils.getFieldContent(actualField4, instance),
+        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField4, actualField4)
+      );
     }
   }
 }

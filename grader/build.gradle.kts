@@ -3,6 +3,7 @@ repositories {
 }
 
 dependencies {
-  implementation("org.sourcegrade:jagr-grader-api:0.1.0-SNAPSHOT")
+  implementation("org.sourcegrade:jagr-grader-api:0.3-SNAPSHOT")
+  implementation("fr.inria.gforge.spoon:spoon-gradle-plugin:1.4")
   implementation(project(":solution"))
 }

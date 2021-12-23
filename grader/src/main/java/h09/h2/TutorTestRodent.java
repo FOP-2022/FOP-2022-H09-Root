@@ -1,10 +1,5 @@
 package h09.h2;
 
-/**
- * Defines a dummy {@code Rodent} used for testing.
- *
- * @author Nhan Huynh, Darya Nikitibna
- */
 public final class TutorTestRodent implements Rodent {
 
   @Override

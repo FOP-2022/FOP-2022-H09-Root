@@ -1,274 +1,237 @@
 package h09.h1;
 
-import h09.TutorUtils;
-import h09.TutorUtils.Modifier;
+import h09.utils.Modifier;
+import h09.utils.TutorConstants;
+import h09.utils.TutorMessage;
+import h09.utils.TutorUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.lang.reflect.Method;
 
-/**
- * Defines the JUnit test cases for the class defined in H1.5.
- *
- * @author Nhan Huynh, Darya Nikitina
- */
+@TestForSubmission("h09")
 @DisplayName("Criterion: Class FunctionFactory")
-final class TutorTest_H1_5 {
+public final class TutorTest_H1_5 {
 
-  /**
-   * The name of the package where the class for the test cases should exist.
-   */
-  private static final String PACKAGE_NAME = "h09.h1";
-
-  /**
-   * The name of the class which should be tested.
-   */
-  private static final String CLASS_NAME = "FunctionFactory";
-
-  /**
-   * The name of the class parameter of the factory method.
-   */
-  private static final String CLASS_PARAMETER = "Traits";
-
-
-  private static final String METHOD_FORMAL_RETURN_TYPE = "FunctionWithFilterMapAndFold";
-
-  /**
-   * The name of the first factory method which only supports filter, map and fold operation.
-   */
-  private static final String METHOD_NAME_1 = "createFunctionWithFilterMapAndFold";
-
-  /**
-   * The actual return type of the method {@value METHOD_NAME_1}.
-   */
-  private static final String METHOD_RETURN_TYPE_1 = "MyFunctionWithFilterMapAndFold1";
-
-  /**
-   * The name of the first factory method which only supports filter, map , combine and fold
-   * operation.
-   */
-  private static final String METHOD_NAME_2 = "createFunctionWithFilterMapFoldAndCombine";
-
-  /**
-   * The actual return type of the method {@value METHOD_NAME_2}.
-   */
-  private static final String METHOD_RETURN_TYPE_2 = "MyFunctionWithAdjacent";
-
-  /**
-   * Returns the class instance of the class {@value CLASS_NAME} which should be tested.
-   *
-   * @return the class instance of the class {@value CLASS_NAME} which should be tested.
-   */
   private static Class<?> getTestClass() {
-    return TutorUtils.getClass(PACKAGE_NAME, CLASS_NAME);
+    return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_5_CLASS_NAME);
   }
 
-  /**
-   * Returns the class instance of the class {@value CLASS_PARAMETER} which should be tested.
-   *
-   * @return the class instance of the class {@value CLASS_PARAMETER} which should be tested.
-   */
   private static Class<?> getTestClassParameter() {
-    return TutorUtils.getClass(PACKAGE_NAME, CLASS_PARAMETER);
+    return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_1_CLASS_NAME);
   }
 
-  /**
-   * Defines the JUnit tests cases related to the class header.
-   */
   @Nested
   @DisplayName("Criterion: Class Header")
-  final class TestClassHeader {
+  public final class TestClassHeader {
 
     @Test
     @DisplayName("Criterion: Only modifiers public final")
     void testModifiers() {
-      TutorUtils.assertModifiers(getTestClass(), List.of(Modifier.PUBLIC, Modifier.FINAL),
-        List.of(Modifier.STATIC, Modifier.ABSTRACT));
+      final var actual = getTestClass();
+      final var expected = Modifier.STATIC.nand(Modifier.ABSTRACT).and(Modifier.PUBLIC,
+        Modifier.FINAL);
+      TutorUtils.assertModifiers(expected, actual);
     }
 
     @Test
     @DisplayName("Criterion: No type parameter")
     void testTypeParameter() {
-      final var types = getTestClass().getTypeParameters();
-      Assertions.assertEquals(0, types.length,
-        String.format("The class should not contain a generic type parameter, given: %s",
-          types.length));
+      final var clazz = getTestClass();
+      final var types = clazz.getTypeParameters();
+      final var expected = 0;
+      final var actual = types.length;
+      Assertions.assertEquals(
+        expected, actual,
+        TutorMessage.CLASS_TYPE_PARAMETER_MISMATCH_SIZE.format(clazz.getSimpleName(), expected, actual)
+      );
     }
   }
 
-  /**
-   * Defines the JUnit tests cases related to the constructor.
-   */
   @Nested
   @DisplayName("Criterion: Constructor")
-  final class TestConstructor {
+  public final class TestConstructor {
 
     @Test
     @DisplayName("Criterion: Only modifier private")
     void testModifiers() {
-      final var constructor = TutorUtils.getConstructor(getTestClass());
-      TutorUtils.assertModifiers(constructor, List.of(Modifier.PRIVATE));
+      final var clazz = getTestClass();
+      final var actual = TutorUtils.assertConstructor(clazz);
+      final var expected = Modifier.PRIVATE;
+      TutorUtils.assertModifiers(expected, actual);
     }
   }
 
-  /**
-   * Defines the JUnit tests cases related to the method {@value METHOD_NAME_1}.
-   */
   @Nested
   @DisplayName("Criterion: Method createFunctionWithFilterMapAndFold")
-  final class TestMethod1 {
+  public final class TestMethod1 {
+
+    private Method getTestMethod() {
+      final var clazz = getTestClass();
+      final var parameters = getTestClassParameter();
+      return TutorUtils.assertMethod(clazz, TutorConstants.H1_5_METHOD_NAME_1, parameters);
+    }
 
     @Test
     @DisplayName("Criterion: Only modifiers public static")
     void testModifiers() {
-      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_1,
-        getTestClassParameter());
-      TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC, Modifier.STATIC));
+      final var actual = getTestMethod();
+      final var expected = Modifier.PUBLIC.and(Modifier.STATIC);
+      TutorUtils.assertModifiers(expected, actual);
     }
 
     @Test
     @DisplayName("Criterion: Parameter Traits<X, Y, Z>")
     void testParameters() {
       final var classParameter = getTestClassParameter();
-      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_1, classParameter);
+      final var method = getTestMethod();
       final var types = method.getParameterTypes();
 
       // Check number of parameters
       final var expectedLength = 1;
       final var actualLength = types.length;
       Assertions.assertEquals(expectedLength, actualLength,
-        String.format("The method should contain %s type parameter, given %s.", expectedLength,
+        TutorMessage.METHOD_PARAMETER_MISMATCH_SIZE.format(method.getName(), expectedLength,
           actualLength));
 
       // Check type of parameters
       final var actualClass = types[0];
       Assertions.assertEquals(classParameter, actualClass,
-        String.format("Expected the parameter of type %s, given %s.", classParameter,
+        TutorMessage.METHOD_PARAMETER_MISMATCH.format(method.getName(), classParameter,
           actualClass));
 
       // Check generic types
       final var parametrized = method.getParameters()[0].getParameterizedType();
-      TutorUtils.assertGenericType(classParameter, "X, Y, Z", parametrized);
+      TutorUtils.assertGenericType(classParameter, TutorConstants.H1_TYPE_PARAMETERS, parametrized);
     }
 
     @Test
     @DisplayName("Criterion: Return type FunctionWithFilterMapAndFold<X, Y, Z>")
     void testReturnType() {
-      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_1,
-        getTestClassParameter());
-      final var returnType = TutorUtils.getClass(PACKAGE_NAME, METHOD_FORMAL_RETURN_TYPE);
+      final var method = getTestMethod();
+      final var expected = TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME,
+        TutorConstants.H1_2_CLASS_NAME);
 
-      Assertions.assertEquals(returnType, method.getReturnType());
-      TutorUtils.assertGenericType(returnType, "X, Y, Z", method.getGenericReturnType());
+      final var actual = method.getReturnType();
+      Assertions.assertEquals(expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected
+        , actual));
+      TutorUtils.assertGenericType(expected, TutorConstants.H1_TYPE_PARAMETERS, method.getGenericReturnType());
     }
 
     @Test
-    @DisplayName("Criterion: Return value FunctionWithFilterMapAndFold2<X, Y, Z>")
+    @DisplayName("Criterion: Return value MyFunctionWithFilterMapAndFold<X, Y, Z>")
     void testReturnValue() {
-      // Traits object
-      final var classParameter = getTestClassParameter();
+      final var expectedField1 = TutorConstants.H1_1_FIELD_EXAMPLE_3_1;
+      final var expectedField2 = TutorConstants.H1_1_FIELD_EXAMPLE_3_2;
+      final var expectedField3 = TutorConstants.H1_1_FIELD_EXAMPLE_3_3;
+      final var expectedField4 = TutorConstants.H1_1_FIELD_EXAMPLE_3_4;
 
-      final Predicate<Integer> expectedFilter = x -> x % 2==0;
-      final Function<Integer, String> expectedMap = String::valueOf;
-      final BiFunction<String, Integer, Integer> expectedFold = (s, i) -> s.length() + i;
-      final var expectedInit = 523;
+      final var parameterClass = getTestClassParameter();
+      final var parameterConstructor = TutorUtils.assertConstructor(parameterClass,
+        TutorConstants.H1_1_FIELD_TYPE_1, TutorConstants.H1_1_FIELD_TYPE_2,
+        TutorConstants.H1_1_FIELD_TYPE_3, TutorConstants.H1_1_FIELD_TYPE_4);
 
-      final var traitsConstructor = TutorUtils.getConstructor(classParameter, Predicate.class,
-        Function.class, BiFunction.class, Object.class);
-
-      final var traits = TutorUtils.invokeConstructor(traitsConstructor, expectedFilter,
-        expectedMap, expectedFold, expectedInit);
+      final var parameterInstance = TutorUtils.invokeConstructor(parameterConstructor, expectedField1,
+        expectedField2, expectedField3, expectedField4);
 
       // Invoke Method
-      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_1, classParameter);
+      final var method = getTestMethod();
 
-      final var actual = TutorUtils.invokeMethod(method, null, traits);
-      final var expected = TutorUtils.getClass(PACKAGE_NAME, METHOD_RETURN_TYPE_1);
-      Assertions.assertEquals(expected, actual.getClass(),
-        String.format("Expected return value %s, given: %s.", expected, actual.getClass()));
+      final var actual = TutorUtils.invokeMethod(method, null, parameterInstance);
+      final var expected = TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME,
+        TutorConstants.H1_3_CLASS_NAME);
+      final var actualClass = actual.getClass();
+      Assertions.assertEquals(expected, actualClass,
+        TutorMessage.RETURN_VALUE_MISMATCH.format(method.getName(), expected, actualClass));
     }
   }
 
-  /**
-   * Defines the JUnit tests cases related to the method {@value METHOD_NAME_2}.
-   */
   @Nested
   @DisplayName("Criterion: Method createFunctionWithFilterMapFoldAndCombine")
-  final class TestMethod2 {
+  public final class TestMethod2 {
+
+    private Method getTestMethod() {
+      final var clazz = getTestClass();
+      final var parameters = getTestClassParameter();
+      return TutorUtils.assertMethod(clazz, TutorConstants.H1_5_METHOD_NAME_2, parameters);
+    }
 
     @Test
     @DisplayName("Criterion: Only modifiers public static")
     void testModifiers() {
-      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_2,
-        getTestClassParameter());
-      TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC, Modifier.STATIC));
+      final var actual = getTestMethod();
+      final var expected = Modifier.PUBLIC.and(Modifier.STATIC);
+      TutorUtils.assertModifiers(expected, actual);
     }
 
     @Test
     @DisplayName("Criterion: Parameter Traits<X, Y, Z>")
     void testParameters() {
       final var classParameter = getTestClassParameter();
-      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_2, classParameter);
+      final var method = getTestMethod();
       final var types = method.getParameterTypes();
 
       // Check number of parameters
       final var expectedLength = 1;
       final var actualLength = types.length;
       Assertions.assertEquals(expectedLength, actualLength,
-        String.format("The method should contain %s type parameter, given %s.", expectedLength,
+        TutorMessage.METHOD_PARAMETER_MISMATCH_SIZE.format(method.getName(), expectedLength,
           actualLength));
 
       // Check type of parameters
       final var actualClass = types[0];
       Assertions.assertEquals(classParameter, actualClass,
-        String.format("Expected the parameter of type %s, given %s.", classParameter,
+        TutorMessage.METHOD_PARAMETER_MISMATCH.format(method.getName(), classParameter,
           actualClass));
 
       // Check generic types
       final var parametrized = method.getParameters()[0].getParameterizedType();
-      TutorUtils.assertGenericType(classParameter, "X, Y, Z", parametrized);
+      TutorUtils.assertGenericType(classParameter, TutorConstants.H1_TYPE_PARAMETERS, parametrized);
     }
 
     @Test
     @DisplayName("Criterion: Return type FunctionWithFilterMapAndFold<X, Y, Z>")
     void testReturnType() {
-      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_2,
-        getTestClassParameter());
-      final var returnType = TutorUtils.getClass(PACKAGE_NAME, METHOD_FORMAL_RETURN_TYPE);
+      final var method = getTestMethod();
+      final var expected = TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME,
+        TutorConstants.H1_2_CLASS_NAME);
 
-      Assertions.assertEquals(returnType, method.getReturnType());
-      TutorUtils.assertGenericType(returnType, "X, Y, Z", method.getGenericReturnType());
+      final var actual = method.getReturnType();
+      Assertions.assertEquals(expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected
+        , actual));
+      TutorUtils.assertGenericType(expected, TutorConstants.H1_TYPE_PARAMETERS, method.getGenericReturnType());
     }
 
     @Test
-    @DisplayName("Criterion: Return value FunctionWithFilterMapAndFold2<X, Y, Z>")
+    @DisplayName("Criterion: Return value MyFunctionWithAdjacent<X, Y, Z>")
     void testReturnValue() {
-      // Traits object
-      final var classParameter = getTestClassParameter();
+      final var expectedField1 = TutorConstants.H1_1_FIELD_EXAMPLE_3_1;
+      final var expectedField2 = TutorConstants.H1_1_FIELD_EXAMPLE_3_2;
+      final var expectedField3 = TutorConstants.H1_1_FIELD_EXAMPLE_3_3;
+      final var expectedField4 = TutorConstants.H1_1_FIELD_EXAMPLE_3_4;
+      final var expectedField5 = TutorConstants.H1_1_FIELD_EXAMPLE_3_5;
 
-      final Predicate<Integer> expectedFilter = x -> x % 2==0;
-      final Function<Integer, String> expectedMap = String::valueOf;
-      final BiFunction<String, Integer, Integer> expectedFold = (s, i) -> s.length() + i;
-      final var expectedInit = 523;
+      final var parameterClass = getTestClassParameter();
+      final var parameterConstructor = TutorUtils.assertConstructor(parameterClass,
+        TutorConstants.H1_1_FIELD_TYPE_1, TutorConstants.H1_1_FIELD_TYPE_2,
+        TutorConstants.H1_1_FIELD_TYPE_3, TutorConstants.H1_1_FIELD_TYPE_4,
+        TutorConstants.H1_4_FIELD_TYPE);
 
-      final var traitsConstructor = TutorUtils.getConstructor(classParameter, Predicate.class,
-        Function.class, BiFunction.class, Object.class);
-
-      final var traits = TutorUtils.invokeConstructor(traitsConstructor, expectedFilter,
-        expectedMap, expectedFold, expectedInit);
+      final var parameterInstance = TutorUtils.invokeConstructor(parameterConstructor, expectedField1,
+        expectedField2, expectedField3, expectedField4, expectedField5);
 
       // Invoke Method
-      final var method = TutorUtils.getMethod(getTestClass(), METHOD_NAME_2, classParameter);
+      final var method = getTestMethod();
 
-      final var actual = TutorUtils.invokeMethod(method, null, traits);
-      final var expected = TutorUtils.getClass(PACKAGE_NAME, METHOD_RETURN_TYPE_2);
-      Assertions.assertEquals(expected, actual.getClass(),
-        String.format("Expected return value %s, given: %s.", expected, actual.getClass()));
+      final var actual = TutorUtils.invokeMethod(method, null, parameterInstance);
+      final var expected = TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME,
+        TutorConstants.H1_4_CLASS_NAME);
+      final var actualClass = actual.getClass();
+      Assertions.assertEquals(expected, actualClass,
+        TutorMessage.RETURN_VALUE_MISMATCH.format(method.getName(), expected, actualClass));
     }
   }
 }

@@ -1,195 +1,101 @@
 package h09.h2;
 
-import h09.TutorUtils;
-import h09.TutorUtils.Modifier;
+import h09.utils.Modifier;
+import h09.utils.TutorConstants;
+import h09.utils.TutorMessage;
+import h09.utils.TutorUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Defines the JUnit test cases for the class defined in H2.2.
- *
- * @author Nhan Huynh, Darya Nikitina
- */
-@DisplayName("Criterion: Class BiologicalHierarchy")
-final class TutorTest_H2_2 {
+@TestForSubmission("h09")
+@DisplayName("Criterion: Class BiologyHierarchy")
+public final class
+TutorTest_H2_2 {
 
-  /**
-   * The name of the package where the class for the test cases should exist.
-   */
-  private static final String PACKAGE_NAME = "h09.h2";
-
-  /**
-   * The name of the class which should be tested.
-   */
-  private static final String CLASS_NAME = "BiologicalHierarchy";
-
-  /**
-   * The name of the class {@code Animal} which should be tested.
-   */
-  private static final String CLASS_NAME_ANIMAL = "Animal";
-
-  /**
-   * The name of the class {@code Vertebrate} which should be tested.
-   */
-  private static final String CLASS_NAME_VERTEBRATE = "Vertebrate";
-
-  /**
-   * The name of the class {@code Mammal} which should be tested.
-   */
-  private static final String CLASS_NAME_MAMMAL = "Mammal";
-
-  /**
-   * The name of the class {@code Bird} which should be tested.
-   */
-  private static final String CLASS_NAME_BIRD = "Bird";
-
-  /**
-   * The name of the class {@code Placental} which should be tested.
-   */
-  private static final String CLASS_NAME_PLACENTAL = "Placental";
-
-  /**
-   * The name of the class {@code Monotreme} which should be tested.
-   */
-  private static final String CLASS_NAME_MONOTREME = "Monotreme";
-
-  /**
-   * The name of the class {@code Lagomorpha} which should be tested.
-   */
-  private static final String CLASS_NAME_LAGOMORPHA = "Lagomorpha";
-
-  /**
-   * The name of the class {@code Rodent} which should be tested.
-   */
-  private static final String CLASS_NAME_RODENT = "Rodent";
-
-  /**
-   * The name of the class {@code Leporidae} which should be tested.
-   */
-  private static final String CLASS_NAME_LEPORIDAE = "Leporidae";
-
-  /**
-   * The name of the method specified in H2.2 (1).
-   */
-  private static final String METHOD_NAME_1 = "typeOfVertebrate";
-
-  /**
-   * The name of the method specified in H2.2 (2).
-   */
-  private static final String METHOD_NAME_2 = "returnAsLagomorphs";
-
-  /**
-   * The name of the method specified in H2.2 (3).
-   */
-  private static final String METHOD_NAME_3 = "typeOfMammals";
-
-  /**
-   * Returns the class instance of the class {@value CLASS_NAME} which should be tested.
-   *
-   * @return the class instance of the class {@value CLASS_NAME} which should be tested.
-   */
   private static Class<?> getTestClass() {
-    return TutorUtils.getClass(PACKAGE_NAME, CLASS_NAME);
+    return TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME, TutorConstants.H2_2_CLASS_NAME);
   }
 
-  /**
-   * Returns the class instance of the specified animal.
-   *
-   * @param name the class name of the animal
-   *
-   * @return the class instance of the specified animal
-   */
-  private static Class<?> getTestAnimalClass(final String name) {
-    return TutorUtils.getClass(PACKAGE_NAME, String.format("TutorTest%s", name));
+  private static Constructor<?> getTestConstructor() {
+    final var clazz = getTestClass();
+    return TutorUtils.assertConstructor(clazz);
   }
 
-  /**
-   * Returns an instance of the specified animal.
-   *
-   * @param name the class name of the animal
-   *
-   * @return an instance of the specified animal
-   */
-  private static Object getTestAnimal(final String name) {
-    final var clazz = getTestAnimalClass(name);
-    final var constructor = TutorUtils.getConstructor(clazz);
+  private static Object getTestAnimal(final String animal) {
+    final var clazz = TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME, animal);
+    final var constructor = TutorUtils.assertConstructor(clazz);
     return TutorUtils.invokeConstructor(constructor);
   }
 
-  /**
-   * Defines the JUnit tests cases related to the class header.
-   */
   @Nested
   @DisplayName("Criterion: Class Header")
-  final class TestClassHeader {
+  public final class TestClassHeader {
 
     @Test
     @DisplayName("Criterion: Only modifiers public")
     void testModifiers() {
-      TutorUtils.assertModifiers(getTestClass(), List.of(Modifier.PUBLIC),
-        List.of(Modifier.STATIC, Modifier.ABSTRACT, Modifier.FINAL));
+      final var actual = getTestClass();
+      final var expected = Modifier.STATIC.nand(Modifier.ABSTRACT, Modifier.FINAL)
+        .and(Modifier.PUBLIC);
+      TutorUtils.assertModifiers(expected, actual);
     }
 
     @Test
     @DisplayName("Criterion: No type parameter")
     void testTypeParameter() {
-      final var types = getTestClass().getTypeParameters();
-      Assertions.assertEquals(0, types.length,
-        String.format("The class should not contain a generic type parameter, given: %s",
-          types.length));
+      final var clazz = getTestClass();
+      final var types = clazz.getTypeParameters();
+      final var expected = 0;
+      final var actual = types.length;
+      Assertions.assertEquals(expected, actual,
+        TutorMessage.CLASS_TYPE_PARAMETER_MISMATCH_SIZE.format(clazz.getSimpleName(), expected,
+          actual));
     }
   }
 
-  /**
-   * Defines the JUnit test cases related for the method {@code typeOfVertebrate}.
-   */
   @Nested
   @DisplayName("Criterion: Method typeOfVertebrate")
-  final class TestMethod1 {
+  public final class TestMethod1 {
 
-    /**
-     * Returns the method that should be tested.
-     *
-     * @return the method that should be tested.
-     */
-    private Method getMethod() {
-      return TutorUtils.getMethod(getTestClass(), METHOD_NAME_1, getClassParameter());
+    private Method getTestMethod() {
+      final var clazz = getTestClass();
+      final var parameter = getParameterClass();
+      return TutorUtils.assertMethod(clazz, TutorConstants.H2_2_METHOD_NAME_1, parameter);
     }
 
-    /**
-     * Returns the class instance of the parameter.
-     *
-     * @return the class instance of the parameter.
-     */
-    private Class<?> getClassParameter() {
-      return TutorUtils.getClass(PACKAGE_NAME, CLASS_NAME_VERTEBRATE);
+    private Class<?> getParameterClass() {
+      return TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME,
+        TutorConstants.H2_2_METHOD_TYPE_PARAMETER_1);
     }
 
     @Test
     @DisplayName("Criterion: Only modifiers public")
     void testModifiers() {
-      final var method = getMethod();
-      TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC),
-        List.of(Modifier.FINAL, Modifier.ABSTRACT, Modifier.STATIC));
+      final var actual = getTestMethod();
+      final var expected = Modifier.STATIC.nand(Modifier.FINAL, Modifier.ABSTRACT)
+        .and(Modifier.PUBLIC);
+      TutorUtils.assertModifiers(expected, actual);
     }
-
 
     @Test
     @DisplayName("Criterion: Generic method <T extends Vertebrate>")
     void testGeneric() {
-      final var method = getMethod();
+      final var method = getTestMethod();
       final var types = method.getTypeParameters();
 
       // Check generic type name
-      final var expectedType = "T";
+      final var expectedType = TutorConstants.H2_2_METHOD_BOUND_1;
       final var actualType = types[0].getTypeName();
-      Assertions.assertEquals(expectedType, actualType);
+      Assertions.assertEquals(expectedType, actualType,
+        TutorMessage.TYPE_PARAMETER_MISMATCH.format(expectedType, actualType));
 
       // Check bound
       final var actualBound = types[0].getBounds();
@@ -197,114 +103,111 @@ final class TutorTest_H2_2 {
       final var actualLength = actualBound.length;
 
       Assertions.assertEquals(expectedLength, actualLength,
-        String.format("Expected only %s bound, given %s.", expectedLength, actualLength));
+        TutorMessage.TYPE_PARAMETERS_MISMATCH_SIZE.format(expectedLength, actualLength));
 
       // Check bound type
-      final var expectedBoundType = getClassParameter().getName();
+      final var parameter = getParameterClass();
+      final var expectedBoundType = parameter.getName();
       final var actualBoundType = actualBound[0].getTypeName();
       Assertions.assertEquals(expectedBoundType, actualBoundType,
-        String.format("Expected bound of %s, given %s.", expectedBoundType, actualBoundType));
+        TutorMessage.TYPE_PARAMETER_MISMATCH.format(expectedBoundType, actualBoundType));
     }
 
     @Test
     @DisplayName("Criterion: Parameter T")
     void testParameters() {
-      final var method = getMethod();
+      final var method = getTestMethod();
       final var parameters = method.getGenericParameterTypes();
 
       // Check parameter
       final var expectedParameters = 1;
       final var actualParameters = parameters.length;
       Assertions.assertEquals(expectedParameters, actualParameters,
-        String.format("The method should have %s parameter(s), given %s.", expectedParameters,
+        TutorMessage.METHOD_PARAMETER_MISMATCH_SIZE.format(method.getName(), expectedParameters,
           actualParameters));
 
       // Check type
-      final var expectedType = "T";
+      final var expectedType = TutorConstants.H2_2_METHOD_BOUND_1;
       final var actualType = parameters[0].getTypeName();
       Assertions.assertEquals(expectedType, actualType,
-        String.format("The type of the parameter should be %s, given %s.", expectedType,
-          actualType));
+        TutorMessage.METHOD_PARAMETER_MISMATCH.format(method.getName(), expectedType, actualType));
     }
 
     @Test
     @DisplayName("Criterion: Result")
     void testResult() {
-      final var clazz = getTestClass();
-      final var constructor = TutorUtils.getConstructor(clazz);
+      final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
-      final var method = getMethod();
-
+      final var method = getTestMethod();
       Assertions.assertNull(
-        TutorUtils.invokeMethod(method, instance, getTestAnimal(CLASS_NAME_VERTEBRATE)));
-      Assertions.assertEquals(CLASS_NAME_MAMMAL,
-        TutorUtils.invokeMethod(method, instance, getTestAnimal(CLASS_NAME_MAMMAL)));
-      Assertions.assertEquals(CLASS_NAME_BIRD,
-        TutorUtils.invokeMethod(method, instance, getTestAnimal(CLASS_NAME_BIRD)));
-      Assertions.assertEquals(CLASS_NAME_MAMMAL,
-        TutorUtils.invokeMethod(method, instance, getTestAnimal(CLASS_NAME_PLACENTAL)));
-      Assertions.assertEquals(CLASS_NAME_MAMMAL,
-        TutorUtils.invokeMethod(method, instance, getTestAnimal(CLASS_NAME_MONOTREME)));
-      Assertions.assertEquals(CLASS_NAME_MAMMAL,
-        TutorUtils.invokeMethod(method, instance, getTestAnimal(CLASS_NAME_LAGOMORPHA)));
+        TutorUtils.invokeMethod(method, instance, getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_2)));
+      Assertions.assertEquals(TutorConstants.H2_1_CLASS_NAME_3,
+        TutorUtils.invokeMethod(method, instance,
+          getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_3)));
+      Assertions.assertEquals(TutorConstants.H2_1_CLASS_NAME_4,
+        TutorUtils.invokeMethod(method, instance,
+          getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_4)));
+      Assertions.assertEquals(TutorConstants.H2_1_CLASS_NAME_3,
+        TutorUtils.invokeMethod(method, instance,
+          getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_5)));
+      Assertions.assertEquals(TutorConstants.H2_1_CLASS_NAME_3,
+        TutorUtils.invokeMethod(method, instance,
+          getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_6)));
+      Assertions.assertEquals(TutorConstants.H2_1_CLASS_NAME_3,
+        TutorUtils.invokeMethod(method, instance,
+          getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_7)));
     }
   }
 
-  /**
-   * Defines the JUnit test cases related for the method {@code returnAsLagomorphs:}.
-   */
   @Nested
-  @DisplayName("Criterion: Method returnAsLagomorphs:")
-  final class TestMethod2 {
+  @DisplayName("Criterion: Method returnAsLagomorphs")
+  public final class TestMethod2 {
 
-    /**
-     * Returns the method that should be tested.
-     *
-     * @return the method that should be tested.
-     */
-    private Method getMethod() {
-      return TutorUtils.getMethod(getTestClass(), METHOD_NAME_2, List.class);
+    private Method getTestMethod() {
+      final var clazz = getTestClass();
+      return TutorUtils.assertMethod(clazz, TutorConstants.H2_2_METHOD_NAME_2,
+        TutorConstants.H2_2_METHOD_CLASS_PARAMETER_2);
     }
 
     @Test
     @DisplayName("Criterion: Only modifiers public")
     void testModifiers() {
-      final var method = getMethod();
-      TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC),
-        List.of(Modifier.FINAL, Modifier.ABSTRACT, Modifier.STATIC));
+      final var actual = getTestMethod();
+      final var expected = Modifier.STATIC.nand(Modifier.FINAL, Modifier.ABSTRACT)
+        .and(Modifier.PUBLIC);
+      TutorUtils.assertModifiers(expected, actual);
     }
 
     @Test
     @DisplayName("Criterion: Parameter List<? super Lagomorph>")
     void testParameters() {
-      final var method = getMethod();
+      final var method = getTestMethod();
       final var parameters = method.getGenericParameterTypes();
 
-      // Check parameters
+      // Check parameter
       final var expectedParameters = 1;
       final var actualParameters = parameters.length;
       Assertions.assertEquals(expectedParameters, actualParameters,
-        String.format("The method should have %s parameter(s), given %s.", expectedParameters,
+        TutorMessage.METHOD_PARAMETER_MISMATCH_SIZE.format(method.getName(), expectedParameters,
           actualParameters));
 
       // Check type
+      final var expectedType = TutorConstants.H2_2_METHOD_BOUND_2;
       final var actualType = parameters[0];
-      TutorUtils.assertGenericType(List.class,
-        String.format("? super %s.%s", PACKAGE_NAME, CLASS_NAME_LAGOMORPHA), actualType);
+      TutorUtils.assertGenericType(TutorConstants.H2_2_METHOD_CLASS_PARAMETER_2, expectedType, actualType);
     }
 
     @Test
     @DisplayName("Criterion: Result List<Placental>")
     void testResultListOfPlacental() {
-      final var clazz = getTestClass();
-      final var constructor = TutorUtils.getConstructor(clazz);
+      final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
-      final var method = getMethod();
+      final var method = getTestMethod();
 
-      final var placental = getTestAnimal(CLASS_NAME_PLACENTAL);
-      final var rodent = getTestAnimal(CLASS_NAME_RODENT);
-      final var lagomorpha = getTestAnimal(CLASS_NAME_LAGOMORPHA);
-      final var leporidae = getTestAnimal(CLASS_NAME_LEPORIDAE);
+      final var placental = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_5);
+      final var rodent = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_8);
+      final var lagomorpha = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_7);
+      final var leporidae = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_9);
 
       final var animals = List.of(
         placental,
@@ -324,17 +227,16 @@ final class TutorTest_H2_2 {
     @Test
     @DisplayName("Criterion: Result List<Mammal>")
     void testResultListOfMammal() {
-      final var clazz = getTestClass();
-      final var constructor = TutorUtils.getConstructor(clazz);
+      final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
-      final var method = getMethod();
+      final var method = getTestMethod();
 
-      final var mammal = getTestAnimal(CLASS_NAME_MAMMAL);
-      final var placental = getTestAnimal(CLASS_NAME_PLACENTAL);
-      final var monotreme = getTestAnimal(CLASS_NAME_MONOTREME);
-      final var rodent = getTestAnimal(CLASS_NAME_RODENT);
-      final var lagomorpha = getTestAnimal(CLASS_NAME_LAGOMORPHA);
-      final var leporidae = getTestAnimal(CLASS_NAME_LEPORIDAE);
+      final var mammal = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_3);
+      final var placental = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_5);
+      final var monotreme = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_6);
+      final var rodent = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_8);
+      final var lagomorpha = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_7);
+      final var leporidae = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_9);
 
       final var animals = List.of(
         mammal,
@@ -357,19 +259,18 @@ final class TutorTest_H2_2 {
     @Test
     @DisplayName("Criterion: Result List<Vertebrate>")
     void testResultListOfVertebrate() {
-      final var clazz = getTestClass();
-      final var constructor = TutorUtils.getConstructor(clazz);
+      final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
-      final var method = getMethod();
+      final var method = getTestMethod();
 
-      final var vertebrate = getTestAnimal(CLASS_NAME_VERTEBRATE);
-      final var mammal = getTestAnimal(CLASS_NAME_MAMMAL);
-      final var bird = getTestAnimal(CLASS_NAME_BIRD);
-      final var placental = getTestAnimal(CLASS_NAME_PLACENTAL);
-      final var monotreme = getTestAnimal(CLASS_NAME_MONOTREME);
-      final var rodent = getTestAnimal(CLASS_NAME_RODENT);
-      final var lagomorpha = getTestAnimal(CLASS_NAME_LAGOMORPHA);
-      final var leporidae = getTestAnimal(CLASS_NAME_LEPORIDAE);
+      final var vertebrate = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_2);
+      final var mammal = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_3);
+      final var bird = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_4);
+      final var placental = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_5);
+      final var monotreme = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_6);
+      final var rodent = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_8);
+      final var lagomorpha = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_7);
+      final var leporidae = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_9);
 
       final var animals = List.of(
         vertebrate,
@@ -393,20 +294,19 @@ final class TutorTest_H2_2 {
     @Test
     @DisplayName("Criterion: Result List<Animal>")
     void testResultListOfAnimal() {
-      final var clazz = getTestClass();
-      final var constructor = TutorUtils.getConstructor(clazz);
+      final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
-      final var method = getMethod();
+      final var method = getTestMethod();
 
-      final var animal = getTestAnimal(CLASS_NAME_ANIMAL);
-      final var vertebrate = getTestAnimal(CLASS_NAME_VERTEBRATE);
-      final var mammal = getTestAnimal(CLASS_NAME_MAMMAL);
-      final var bird = getTestAnimal(CLASS_NAME_BIRD);
-      final var placental = getTestAnimal(CLASS_NAME_PLACENTAL);
-      final var monotreme = getTestAnimal(CLASS_NAME_MONOTREME);
-      final var rodent = getTestAnimal(CLASS_NAME_RODENT);
-      final var lagomorpha = getTestAnimal(CLASS_NAME_LAGOMORPHA);
-      final var leporidae = getTestAnimal(CLASS_NAME_LEPORIDAE);
+      final var animal = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_1);
+      final var vertebrate = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_2);
+      final var mammal = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_3);
+      final var bird = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_4);
+      final var placental = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_5);
+      final var monotreme = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_6);
+      final var rodent = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_8);
+      final var lagomorpha = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_7);
+      final var leporidae = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_9);
 
       final var animals = List.of(
         animal,
@@ -431,20 +331,19 @@ final class TutorTest_H2_2 {
     @Test
     @DisplayName("Criterion: Result List<Object>")
     void testResultListOfObject() {
-      final var clazz = getTestClass();
-      final var constructor = TutorUtils.getConstructor(clazz);
+      final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
-      final var method = getMethod();
+      final var method = getTestMethod();
 
-      final var animal = getTestAnimal(CLASS_NAME_ANIMAL);
-      final var vertebrate = getTestAnimal(CLASS_NAME_VERTEBRATE);
-      final var mammal = getTestAnimal(CLASS_NAME_MAMMAL);
-      final var bird = getTestAnimal(CLASS_NAME_BIRD);
-      final var placental = getTestAnimal(CLASS_NAME_PLACENTAL);
-      final var monotreme = getTestAnimal(CLASS_NAME_MONOTREME);
-      final var rodent = getTestAnimal(CLASS_NAME_RODENT);
-      final var lagomorpha = getTestAnimal(CLASS_NAME_LAGOMORPHA);
-      final var leporidae = getTestAnimal(CLASS_NAME_LEPORIDAE);
+      final var animal = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_1);
+      final var vertebrate = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_2);
+      final var mammal = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_3);
+      final var bird = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_4);
+      final var placental = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_5);
+      final var monotreme = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_6);
+      final var rodent = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_8);
+      final var lagomorpha = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_7);
+      final var leporidae = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_9);
 
       final var animals = List.of(
         animal,
@@ -469,63 +368,58 @@ final class TutorTest_H2_2 {
     }
   }
 
-  /**
-   * Defines the JUnit test cases related for the method {@code typeOfMammals}.
-   */
   @Nested
-  @DisplayName("Criterion: Method typeOfMammals")
-  final class TestMethod3 {
+  @DisplayName("Criterion: Method testTypeOfMammals:")
+  public final class TestMethod3 {
 
-    /**
-     * Returns the method that should be tested.
-     *
-     * @return the method that should be tested.
-     */
-    private Method getMethod() {
-      return TutorUtils.getMethod(getTestClass(), METHOD_NAME_3, List.class);
+    private Method getTestMethod() {
+      final var clazz = getTestClass();
+      return TutorUtils.assertMethod(clazz, TutorConstants.H2_2_METHOD_NAME_3,
+        TutorConstants.H2_2_METHOD_CLASS_PARAMETER_3);
     }
 
     @Test
     @DisplayName("Criterion: Only modifiers public")
     void testModifiers() {
-      final var method = getMethod();
-      TutorUtils.assertModifiers(method, List.of(Modifier.PUBLIC),
-        List.of(Modifier.FINAL, Modifier.ABSTRACT, Modifier.STATIC));
+      final var actual = getTestMethod();
+      final var expected = Modifier.STATIC.nand(Modifier.FINAL, Modifier.ABSTRACT)
+        .and(Modifier.PUBLIC);
+      TutorUtils.assertModifiers(expected, actual);
     }
 
     @Test
     @DisplayName("Criterion: Parameter List<? extends Mammal>")
     void testParameters() {
-      final var method = getMethod();
+      final var method = getTestMethod();
       final var parameters = method.getGenericParameterTypes();
 
-      // Check parameters
+      // Check parameter
       final var expectedParameters = 1;
       final var actualParameters = parameters.length;
       Assertions.assertEquals(expectedParameters, actualParameters,
-        String.format("The method should have %s parameter(s), given %s.", expectedParameters,
+        TutorMessage.METHOD_PARAMETER_MISMATCH_SIZE.format(method.getName(), expectedParameters,
           actualParameters));
 
       // Check type
+      final var expectedType = TutorConstants.H2_2_METHOD_BOUND_3;
       final var actualType = parameters[0];
-      TutorUtils.assertGenericType(List.class,
-        String.format("? extends %s.%s", PACKAGE_NAME, CLASS_NAME_MAMMAL), actualType);
+      TutorUtils.assertGenericType(TutorConstants.H2_2_METHOD_CLASS_PARAMETER_3, expectedType,
+        actualType);
     }
 
     @Test
     @DisplayName("Criterion: Result List<Mammal>")
     void testResultListOfMammal() {
-      final var clazz = getTestClass();
-      final var constructor = TutorUtils.getConstructor(clazz);
+      final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
-      final var method = getMethod();
+      final var method = getTestMethod();
 
-      final var mammal = getTestAnimal(CLASS_NAME_MAMMAL);
-      final var placental = getTestAnimal(CLASS_NAME_PLACENTAL);
-      final var monotreme = getTestAnimal(CLASS_NAME_MONOTREME);
-      final var rodent = getTestAnimal(CLASS_NAME_RODENT);
-      final var lagomorpha = getTestAnimal(CLASS_NAME_LAGOMORPHA);
-      final var leporidae = getTestAnimal(CLASS_NAME_LEPORIDAE);
+      final var mammal = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_3);
+      final var placental = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_5);
+      final var monotreme = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_6);
+      final var rodent = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_8);
+      final var lagomorpha = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_7);
+      final var leporidae = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_9);
 
       final var animals = List.of(
         mammal,
@@ -545,15 +439,14 @@ final class TutorTest_H2_2 {
     @Test
     @DisplayName("Criterion: Result List<Placental>")
     void testResultListOfPlacental() {
-      final var clazz = getTestClass();
-      final var constructor = TutorUtils.getConstructor(clazz);
+      final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
-      final var method = getMethod();
+      final var method = getTestMethod();
 
-      final var placental = getTestAnimal(CLASS_NAME_PLACENTAL);
-      final var rodent = getTestAnimal(CLASS_NAME_RODENT);
-      final var lagomorpha = getTestAnimal(CLASS_NAME_LAGOMORPHA);
-      final var leporidae = getTestAnimal(CLASS_NAME_LEPORIDAE);
+      final var placental = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_5);
+      final var rodent = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_8);
+      final var lagomorpha = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_7);
+      final var leporidae = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_9);
 
       final var animals = List.of(
         placental,
@@ -570,12 +463,11 @@ final class TutorTest_H2_2 {
     @Test
     @DisplayName("Criterion: Result List<Monotreme>")
     void testResultListOfMonotreme() {
-      final var clazz = getTestClass();
-      final var constructor = TutorUtils.getConstructor(clazz);
+      final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
-      final var method = getMethod();
+      final var method = getTestMethod();
 
-      final var monotreme = getTestAnimal(CLASS_NAME_MONOTREME);
+      final var monotreme = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_6);
 
       final var animals = List.of(
         monotreme
@@ -589,13 +481,12 @@ final class TutorTest_H2_2 {
     @Test
     @DisplayName("Criterion: Result List<Lagomorpha>")
     void testResultListOfLagomorph() {
-      final var clazz = getTestClass();
-      final var constructor = TutorUtils.getConstructor(clazz);
+      final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
-      final var method = getMethod();
+      final var method = getTestMethod();
 
-      final var lagomorpha = getTestAnimal(CLASS_NAME_LAGOMORPHA);
-      final var leporidae = getTestAnimal(CLASS_NAME_LEPORIDAE);
+      final var lagomorpha = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_7);
+      final var leporidae = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_9);
 
       final var animals = List.of(
         lagomorpha,
@@ -610,12 +501,11 @@ final class TutorTest_H2_2 {
     @Test
     @DisplayName("Criterion: Result List<Rodent>")
     void testResultListOfRodent() {
-      final var clazz = getTestClass();
-      final var constructor = TutorUtils.getConstructor(clazz);
+      final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
-      final var method = getMethod();
+      final var method = getTestMethod();
 
-      final var rodent = getTestAnimal(CLASS_NAME_RODENT);
+      final var rodent = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_8);
 
       final var animals = List.of(
         rodent
@@ -629,12 +519,11 @@ final class TutorTest_H2_2 {
     @Test
     @DisplayName("Criterion: Result List<Leporidae>")
     void testResultListOfLeporidae() {
-      final var clazz = getTestClass();
-      final var constructor = TutorUtils.getConstructor(clazz);
+      final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
-      final var method = getMethod();
+      final var method = getTestMethod();
 
-      final var leporidae = getTestAnimal(CLASS_NAME_LEPORIDAE);
+      final var leporidae = getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_9);
 
       final var animals = List.of(
         leporidae
@@ -646,3 +535,4 @@ final class TutorTest_H2_2 {
     }
   }
 }
+
