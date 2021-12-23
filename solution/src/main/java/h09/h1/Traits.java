@@ -50,12 +50,12 @@ public class Traits<X, Y, Z> {
    * @param pred    the predicate to filter elements
    * @param fct     the function to map the elements
    * @param op      the operator to produce a result from two given arguments
-   * @param combine the operator to combine two given arguments
    * @param init    the initial value of the traits
+   * @param combine the operator to combine two given arguments
    */
   public Traits(final Predicate<? super X> pred, final Function<? super X, ? extends Y> fct,
-                final BiFunction<Z, ? super Y, Z> op,
-                final BiFunction<Y, ? super Y, Y> combine, final Z init) {
+                final BiFunction<Z, ? super Y, Z> op, final Z init,
+                final BiFunction<Y, ? super Y, Y> combine) {
     this.pred = pred;
     this.fct = fct;
     this.op = op;
@@ -74,7 +74,7 @@ public class Traits<X, Y, Z> {
   public Traits(final Predicate<? super X> pred, final Function<? super X, ? extends Y> fct,
                 final BiFunction<Z, ? super Y, Z> op,
                 final Z init) {
-    this(pred, fct, op, null, init);
+    this(pred, fct, op, init, null);
   }
 
   /**

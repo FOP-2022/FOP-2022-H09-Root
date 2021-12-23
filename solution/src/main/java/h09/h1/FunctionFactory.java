@@ -25,7 +25,7 @@ public final class FunctionFactory {
    */
   public static <X, Y, Z> FunctionWithFilterMapAndFold<X, Y, Z> createFunctionWithFilterMapAndFold(
     final Traits<X, Y, Z> traits) {
-    return new MyFunctionWithFilterMapAndFold1<>(traits);
+    return new MyFunctionWithFilterMapAndFold<>(traits);
   }
 
   /**

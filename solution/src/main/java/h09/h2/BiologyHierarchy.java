@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * A biological animal hierarchy which allows interacting with the animals
  */
-public class BiologicalHierarchy {
+public class BiologyHierarchy {
 
   /**
    * Returns the type of the specified vertebrate

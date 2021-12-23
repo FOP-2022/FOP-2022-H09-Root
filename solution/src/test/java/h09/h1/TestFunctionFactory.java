@@ -129,8 +129,8 @@ class TestFunctionFactory {
       TestFunctionFactory::isNotFromDarmstadt,
       Person::getPostalCode,
       Integer::sum,
-      TestFunctionFactory::distance,
-      0
+      0,
+      TestFunctionFactory::distance
     );
 
     final var fct = FunctionFactory.createFunctionWithFilterMapFoldAndCombine(traits);

@@ -10,15 +10,14 @@ package h09.h1;
  *
  * @author Nhan Huynh, Darya Nikitina
  */
-public class MyFunctionWithFilterMapAndFold1<X, Y, Z> extends
-  FunctionWithFilterMapAndFold<X, Y, Z> {
+public class MyFunctionWithFilterMapAndFold<X, Y, Z> extends FunctionWithFilterMapAndFold<X, Y, Z> {
 
   /**
    * Constructs and initialized a function that enables filter, map, fold operation.
    *
    * @param traits the traits used to access filter, map, fold
    */
-  public MyFunctionWithFilterMapAndFold1(final Traits<X, Y, Z> traits) {
+  public MyFunctionWithFilterMapAndFold(final Traits<X, Y, Z> traits) {
     super(traits);
   }
 

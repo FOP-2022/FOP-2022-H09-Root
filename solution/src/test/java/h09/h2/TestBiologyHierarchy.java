@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the test cases for the class {@link BiologicalHierarchy}.
+ * Defines the test cases for the class {@link BiologyHierarchy}.
  *
  * @author Nhan Huynh, Darya Nikitina
  */
-class TestBiologicalHierarchy {
+class TestBiologyHierarchy {
 
   /**
    * The instance of a biology hierarchy used to test the methods.
    */
-  private final BiologicalHierarchy hierarchy = new BiologicalHierarchy();
+  private final BiologyHierarchy hierarchy = new BiologyHierarchy();
 
   /**
-   * Tests whether the method {@link BiologicalHierarchy#typeOfVertebrate(Vertebrate)} returns
+   * Tests whether the method {@link BiologyHierarchy#typeOfVertebrate(Vertebrate)} returns
    * the correct string.
    */
   @Test
@@ -34,7 +34,7 @@ class TestBiologicalHierarchy {
   }
 
   /**
-   * Tests whether the method {@link BiologicalHierarchy#returnAsLagomorphs(List)} returns
+   * Tests whether the method {@link BiologyHierarchy#returnAsLagomorphs(List)} returns
    * the correct animals.
    */
   @Test
@@ -113,11 +113,11 @@ class TestBiologicalHierarchy {
 
 
   /**
-   * Tests whether the method {@link BiologicalHierarchy#typeOfMammals(List)} returns
+   * Tests whether the method {@link BiologyHierarchy#typeOfMammals(List)} returns
    * the correct outputs of the method calls {@link Mammal#typeOfMammal()}
    */
   @Test
-  void testTypeOfMammal() {
+  void testTypeOfMammals() {
     final var mammal = new TestMammal();
     final var placental = new TestPlacental();
     final var monotreme = new TestMonotreme();
