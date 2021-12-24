@@ -122,44 +122,14 @@ public final class TutorTest_H1_3 {
     @DisplayName("Criterion: Parameter X[]")
     void testParameters() {
       final var method = getTestMethod();
-      final var types = method.getParameterTypes();
-
-      // Check number of parameters
-      final var expectedNumberParameters = 1;
-      final var actualNumberParameters = types.length;
-      Assertions.assertEquals(
-        expectedNumberParameters, actualNumberParameters,
-        TutorMessage.METHOD_PARAMETER_MISMATCH_SIZE.format(
-          method.getName(), expectedNumberParameters, actualNumberParameters)
-      );
-
-      // Check type of parameters
-      final var expectedType = TutorConstants.H1_2_METHOD_CLASS_PARAMETER;
-      final var actualType = types[0];
-      Assertions.assertEquals(
-        expectedType, actualType,
-        TutorMessage.METHOD_PARAMETER_MISMATCH.format(method.getName(), expectedType, actualType)
-      );
+      TutorUtils_H1.assertParametersH1_2(method);
     }
 
     @Test
     @DisplayName("Criterion: Return type Z")
     void testReturnType() {
       final var method = getTestMethod();
-      final var actualType = method.getReturnType();
-
-      // Check type parameter
-      final var expectedType = TutorConstants.H1_2_METHOD_CLASS_RETURN;
-      Assertions.assertEquals(
-        expectedType, actualType, TutorMessage.RETURN_TYPE_MISMATCH.format(expectedType, actualType)
-      );
-
-      // Check type parameter name
-      final var expectedName = TutorConstants.H1_2_METHOD_RETURN_TYPE_PARAMETER;
-      final var actualName = method.getGenericReturnType().getTypeName();
-      Assertions.assertEquals(
-        expectedName, actualName, TutorMessage.RETURN_TYPE_MISMATCH.format(expectedName, actualName)
-      );
+      TutorUtils_H1.assertReturnTypeH1_2(method);
     }
 
     @Test

@@ -24,6 +24,37 @@ public final class TutorTest_H1_5 {
     return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_1_CLASS_NAME);
   }
 
+  private static void assertParameters(final Class<?> classParameter, final Method method) {
+    final var types = method.getParameterTypes();
+
+    // Check number of parameters
+    final var expectedLength = 1;
+    final var actualLength = types.length;
+    Assertions.assertEquals(expectedLength, actualLength,
+      TutorMessage.METHOD_PARAMETER_MISMATCH_SIZE.format(method.getName(), expectedLength,
+        actualLength));
+
+    // Check type of parameters
+    final var actualClass = types[0];
+    Assertions.assertEquals(classParameter, actualClass,
+      TutorMessage.METHOD_PARAMETER_MISMATCH.format(method.getName(), classParameter,
+        actualClass));
+
+    // Check generic types
+    final var parametrized = method.getParameters()[0].getParameterizedType();
+    TutorUtils.assertGenericType(classParameter, TutorConstants.H1_TYPE_PARAMETERS, parametrized);
+  }
+
+  private static void assertReturnType(final Method method) {
+    final var expected = TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME,
+      TutorConstants.H1_2_CLASS_NAME);
+
+    final var actual = method.getReturnType();
+    Assertions.assertEquals(expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected
+      , actual));
+    TutorUtils.assertGenericType(expected, TutorConstants.H1_TYPE_PARAMETERS, method.getGenericReturnType());
+  }
+
   @Nested
   @DisplayName("Criterion: Class Header")
   public final class TestClassHeader {
@@ -88,37 +119,13 @@ public final class TutorTest_H1_5 {
     void testParameters() {
       final var classParameter = getTestClassParameter();
       final var method = getTestMethod();
-      final var types = method.getParameterTypes();
-
-      // Check number of parameters
-      final var expectedLength = 1;
-      final var actualLength = types.length;
-      Assertions.assertEquals(expectedLength, actualLength,
-        TutorMessage.METHOD_PARAMETER_MISMATCH_SIZE.format(method.getName(), expectedLength,
-          actualLength));
-
-      // Check type of parameters
-      final var actualClass = types[0];
-      Assertions.assertEquals(classParameter, actualClass,
-        TutorMessage.METHOD_PARAMETER_MISMATCH.format(method.getName(), classParameter,
-          actualClass));
-
-      // Check generic types
-      final var parametrized = method.getParameters()[0].getParameterizedType();
-      TutorUtils.assertGenericType(classParameter, TutorConstants.H1_TYPE_PARAMETERS, parametrized);
+      assertParameters(classParameter, method);
     }
 
     @Test
     @DisplayName("Criterion: Return type FunctionWithFilterMapAndFold<X, Y, Z>")
     void testReturnType() {
-      final var method = getTestMethod();
-      final var expected = TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME,
-        TutorConstants.H1_2_CLASS_NAME);
-
-      final var actual = method.getReturnType();
-      Assertions.assertEquals(expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected
-        , actual));
-      TutorUtils.assertGenericType(expected, TutorConstants.H1_TYPE_PARAMETERS, method.getGenericReturnType());
+      assertReturnType(getTestMethod());
     }
 
     @Test
@@ -172,37 +179,13 @@ public final class TutorTest_H1_5 {
     void testParameters() {
       final var classParameter = getTestClassParameter();
       final var method = getTestMethod();
-      final var types = method.getParameterTypes();
-
-      // Check number of parameters
-      final var expectedLength = 1;
-      final var actualLength = types.length;
-      Assertions.assertEquals(expectedLength, actualLength,
-        TutorMessage.METHOD_PARAMETER_MISMATCH_SIZE.format(method.getName(), expectedLength,
-          actualLength));
-
-      // Check type of parameters
-      final var actualClass = types[0];
-      Assertions.assertEquals(classParameter, actualClass,
-        TutorMessage.METHOD_PARAMETER_MISMATCH.format(method.getName(), classParameter,
-          actualClass));
-
-      // Check generic types
-      final var parametrized = method.getParameters()[0].getParameterizedType();
-      TutorUtils.assertGenericType(classParameter, TutorConstants.H1_TYPE_PARAMETERS, parametrized);
+      assertParameters(classParameter, method);
     }
 
     @Test
     @DisplayName("Criterion: Return type FunctionWithFilterMapAndFold<X, Y, Z>")
     void testReturnType() {
-      final var method = getTestMethod();
-      final var expected = TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME,
-        TutorConstants.H1_2_CLASS_NAME);
-
-      final var actual = method.getReturnType();
-      Assertions.assertEquals(expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected
-        , actual));
-      TutorUtils.assertGenericType(expected, TutorConstants.H1_TYPE_PARAMETERS, method.getGenericReturnType());
+      assertReturnType(getTestMethod());
     }
 
     @Test

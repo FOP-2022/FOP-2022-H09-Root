@@ -17,7 +17,6 @@ import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
 import spoon.reflect.code.CtConstructorCall;
 import spoon.reflect.reference.CtTypeReference;
 
-import java.lang.reflect.Constructor;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -29,11 +28,6 @@ public final class TutorTest_H2_3 {
 
   private static Class<?> getTestClass() {
     return TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME, TutorConstants.H2_3_CLASS_NAME);
-  }
-
-  private static Constructor<?> getTestConstructor() {
-    final var clazz = getTestClass();
-    return TutorUtils.assertConstructor(clazz);
   }
 
   private static void assertRequirements(final TestCycle testCycle, final String methodName,

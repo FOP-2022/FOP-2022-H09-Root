@@ -62,6 +62,7 @@ public final class TutorTest_H2_1 {
           assertModifier(animal);
           final var extension = TutorConstants.H2_1_ANIMAL_CLASS_AND_INHERITANCE.get(animal);
           assertInterfaceExtensions(animal, extension);
+          assertMethodModifiers(animal);
           assertMethodReturnType(animal);
           passedAnimals.add(animal);
           passed++;
@@ -81,7 +82,7 @@ public final class TutorTest_H2_1 {
 
     public void assertMethodModifiers(final String name) {
       final var actual = getMethod(name);
-      final var expected = Modifier.DEFAULT.and(Modifier.STATIC);
+      final var expected = Modifier.DEFAULT.nand(Modifier.STATIC);
       TutorUtils.assertModifiers(expected, actual);
     }
 
@@ -177,7 +178,6 @@ public final class TutorTest_H2_1 {
       @Test
       @DisplayName("Criterion: Extend Leporidae")
       void testSuperClass() {
-        final var clazz = getTestClass();
         assertInterfaceExtensions(TutorConstants.H2_1_CLASS_NAME_10, TutorConstants.H2_1_CLASS_NAME_9);
       }
     }
@@ -289,7 +289,6 @@ public final class TutorTest_H2_1 {
 
       private void assertTypeOfXReturnValue(final String name, final String expected) {
         resetCounter(() -> {
-          final var clazz = getTestClass();
           final var constructor = getTestConstructor();
           final var instance = TutorUtils.invokeConstructor(constructor);
           final var method = getMethod(name);
