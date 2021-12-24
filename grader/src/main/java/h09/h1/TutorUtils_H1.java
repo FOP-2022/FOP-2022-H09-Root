@@ -10,9 +10,18 @@ import org.sourcegrade.jagr.api.testing.TestCycle;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
+/**
+ * Defines the utility operations related to the JUnit test cases for the task H1.
+ *
+ * @author Nhan Huynh, Darya Nikitina
+ */
 final class TutorUtils_H1 {
 
   private TutorUtils_H1() {
@@ -113,4 +122,83 @@ final class TutorUtils_H1 {
       expectedName, actualName, TutorMessage.RETURN_TYPE_MISMATCH.format(expectedName, actualName)
     );
   }
+
+  public static void assertConstructorParameterTypesH1_1(final Constructor<?> constructor,
+                                                         final boolean combine) {
+    final List<Entry<Class<?>, String>> parameters = new ArrayList<>(
+      List.of(
+        new SimpleEntry<>(
+          TutorConstants.H1_1_FIELD_TYPE_1, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_1
+        ),
+        new SimpleEntry<>(
+          TutorConstants.H1_1_FIELD_TYPE_2, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_2
+        ),
+        new SimpleEntry<>(
+          TutorConstants.H1_1_FIELD_TYPE_3, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_3
+        ),
+        new SimpleEntry<>(
+          TutorConstants.H1_1_FIELD_TYPE_4, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_4
+        )
+      )
+    );
+    if (combine) {
+      parameters.add(
+        new SimpleEntry<>(
+          TutorConstants.H1_4_FIELD_TYPE, TutorConstants.H1_4_FIELD_TYPE_PARAMETER
+        )
+      );
+    }
+    TutorUtils.assertConstructorParameters(constructor, parameters);
+  }
+
+  public static void assertConstructorFieldsH1_1(final Constructor<?> constructor,
+                                                 final boolean combine) {
+    final var expectedField1 = TutorConstants.H1_1_FIELD_EXAMPLE_3_1;
+    final var expectedField2 = TutorConstants.H1_1_FIELD_EXAMPLE_3_2;
+    final var expectedField3 = TutorConstants.H1_1_FIELD_EXAMPLE_3_3;
+    final var expectedField4 = TutorConstants.H1_1_FIELD_EXAMPLE_3_4;
+    final var expectedField5 = combine ? null:TutorConstants.H1_1_FIELD_EXAMPLE_3_5;
+
+    final var instance = combine ?
+      TutorUtils.invokeConstructor(
+        constructor, expectedField1, expectedField2, expectedField3, expectedField4, expectedField5
+      )
+      :
+      TutorUtils.invokeConstructor(
+        constructor, expectedField1, expectedField2, expectedField3, expectedField4
+      );
+
+    // Check if fields are initialized
+    final var actualField1 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_1);
+    final var actualField2 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_2);
+    final var actualField3 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_3);
+    final var actualField4 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_4);
+    final var actualField5 = combine ? null:TutorUtils.assertField(instance,
+      TutorConstants.H1_4_FIELD_NAME);
+
+    Assertions.assertEquals(
+      expectedField1, TutorUtils.getFieldContent(actualField1, instance),
+      TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField1, actualField1)
+    );
+    Assertions.assertEquals(
+      expectedField2, TutorUtils.getFieldContent(actualField2, instance),
+      TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField2, actualField2)
+    );
+    Assertions.assertEquals(
+      expectedField3, TutorUtils.getFieldContent(actualField3, instance),
+      TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField3, actualField3)
+    );
+    Assertions.assertEquals(
+      expectedField4, TutorUtils.getFieldContent(actualField4, instance),
+      TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField4, actualField4)
+    );
+
+    if (combine) {
+      Assertions.assertEquals(
+        expectedField5, TutorUtils.getFieldContent(actualField5, instance),
+        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField5, actualField4)
+      );
+    }
+  }
+
 }

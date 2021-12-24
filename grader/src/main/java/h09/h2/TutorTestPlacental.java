@@ -1,5 +1,10 @@
 package h09.h2;
 
+/**
+ * Defines a dummy {@code Placental} used for testing.
+ *
+ * @author Nhan Huynh, Darya Nikitibna
+ */
 public final class TutorTestPlacental implements Placental {
 
   @Override

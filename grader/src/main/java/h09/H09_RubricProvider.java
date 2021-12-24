@@ -610,8 +610,8 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H1_5_3 = Criterion.builder()
-    .shortDescription("Die Methodensignatur von createFunctionWithFilterMapAndFold ist " +
-      "vollständig und korrekt.")
+    .shortDescription("Die Methodensignatur von createFunctionWithFilterMapFold und" +
+      "createFunctionWithFilterMapFoldAndCombine sind vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
@@ -626,6 +626,15 @@ public final class H09_RubricProvider implements RubricProvider {
             ),
             JUnitTestRef.ofMethod(
               () -> TutorTest_H1_5.TestMethod1.class.getMethod("testReturnType")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_5.TestMethod2.class.getMethod("testModifiers")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_5.TestMethod2.class.getMethod("testParameters")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_5.TestMethod2.class.getMethod("testReturnType")
             )
           )
         )
@@ -651,32 +660,8 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
-  public static final Criterion H1_5_5 = Criterion.builder()
-    .shortDescription("Die Methodensignatur von createFunctionWithFilterMapFoldAndCombine ist " +
-      "vollständig und korrekt.")
-    .maxPoints(1)
-    .minPoints(0)
-    .grader(
-      Grader.testAwareBuilder()
-        .requirePass(
-          JUnitTestRef.and(
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_5.TestMethod2.class.getMethod("testModifiers")
-            ),
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_5.TestMethod2.class.getMethod("testParameters")
-            ),
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_5.TestMethod2.class.getMethod("testReturnType")
-            )
-          )
-        )
-        .pointsPassedMax()
-        .pointsFailedMin()
-        .build())
-    .build();
 
-  public static final Criterion H1_5_6 = Criterion.builder()
+  public static final Criterion H1_5_5 = Criterion.builder()
     .shortDescription("Die Rückgabewert von der Methode createFunctionWithFilterMapFoldAndCombine" +
       " ist vollständig und korrekt.")
     .maxPoints(1)
@@ -695,7 +680,7 @@ public final class H09_RubricProvider implements RubricProvider {
 
   public static final Criterion H1_5 = Criterion.builder()
     .shortDescription("H1.5: Klasse FunctionFactory")
-    .addChildCriteria(H1_5_1, H1_5_2, H1_5_3, H1_5_4, H1_5_5, H1_5_6)
+    .addChildCriteria(H1_5_1, H1_5_2, H1_5_3, H1_5_4, H1_5_5)
     .build();
 
   /* *********************************************************************

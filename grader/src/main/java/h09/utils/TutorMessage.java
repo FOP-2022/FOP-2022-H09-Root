@@ -51,6 +51,7 @@ public enum TutorMessage {
 
   LAMBDA_MISMATCH("Expected lambda %s, given %s."),
   LAMBDAS_MISMATCH_SIZE("Expected %s lambdas, given %s."),
+  LAMBDA_METHOD_REFERENCE_MISMATCH("Expected method reference %s, given %s."),
 
   /* *********************************************************************
    *                               Method                                *
@@ -59,7 +60,7 @@ public enum TutorMessage {
   METHOD_NOT_FOUND("The method %s with the parameters %s could not be found in the class %s."),
   METHOD_NO_INVOKE("The method %s with the parameters %s in the class %s could not be invoked."),
   METHOD_PARAMETER_MISMATCH("The method %s expected the parameter types %s, given %s."),
-  METHOD_PARAMETER_MISMATCH_SIZE("The method %s must have  %s parameters, given: %s"),
+  METHOD_PARAMETER_MISMATCH_SIZE("The method %s must have  %s parameters, given: %s."),
 
   /* *********************************************************************
    *                              Modifier                               *
@@ -117,7 +118,7 @@ public enum TutorMessage {
   /**
    * Constructs and initialized a tutor message using the specified format.
    *
-   * @param format
+   * @param format the message format which will be used to format a message
    */
   TutorMessage(final String format) {
     this.format = format;
@@ -126,7 +127,7 @@ public enum TutorMessage {
   /**
    * Formats this message using the specified arguments.
    *
-   * @param args the arguments used for the mssage format
+   * @param args the arguments used for the message format
    *
    * @return the formatted message
    */

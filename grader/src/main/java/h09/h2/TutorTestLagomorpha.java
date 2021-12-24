@@ -1,5 +1,10 @@
 package h09.h2;
 
+/**
+ * Defines a dummy {@code Lagomorpha} used for testing.
+ *
+ * @author Nhan Huynh, Darya Nikitibna
+ */
 public final class TutorTestLagomorpha implements Lagomorpha {
 
   @Override

@@ -14,9 +14,18 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+/**
+ * Defines the JUnit test cases related to the class defined in the task H1.2.
+ *
+ * @author Nhan Huynh, Darya Nikitina
+ */
 @TestForSubmission("h09")
 @DisplayName("Criterion: Class FunctionWithFilterMapAndFold")
 public final class TutorTest_H1_2 {
+
+  /* *********************************************************************
+   *                            Utilities                                *
+   **********************************************************************/
 
   private static Class<?> getTestClass() {
     return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_2_CLASS_NAME);
@@ -25,6 +34,10 @@ public final class TutorTest_H1_2 {
   private static Class<?> getTestFieldClass() {
     return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_1_CLASS_NAME);
   }
+
+  /* *********************************************************************
+   *                            Class Header                             *
+   **********************************************************************/
 
   @Nested
   @DisplayName("Criterion: Class Header")
@@ -56,6 +69,10 @@ public final class TutorTest_H1_2 {
     }
   }
 
+  /* *********************************************************************
+   *                               Field                                 *
+   **********************************************************************/
+
   @Nested
   @DisplayName("Criterion: Field traits")
   public final class TestField {
@@ -83,6 +100,10 @@ public final class TutorTest_H1_2 {
     }
   }
 
+  /* *********************************************************************
+   *                            Constructor                              *
+   **********************************************************************/
+
   @Nested
   @DisplayName("Criterion: Constructor")
   public final class TestConstructor {
@@ -109,6 +130,10 @@ public final class TutorTest_H1_2 {
       TutorUtils_H1.assertConstructorParameterH1(constructor, parameterClass);
     }
   }
+
+  /* *********************************************************************
+   *                               Method                                *
+   **********************************************************************/
 
   @Nested
   @DisplayName("Criterion: Method apply")

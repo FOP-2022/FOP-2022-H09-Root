@@ -15,10 +15,18 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Defines the JUnit test cases related to the class defined in the task H2.2.
+ *
+ * @author Nhan Huynh, Darya Nikitina
+ */
 @TestForSubmission("h09")
 @DisplayName("Criterion: Class BiologyHierarchy")
-public final class
-TutorTest_H2_2 {
+public final class TutorTest_H2_2 {
+
+  /* *********************************************************************
+   *                            Utilities                                *
+   **********************************************************************/
 
   private static Class<?> getTestClass() {
     return TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME, TutorConstants.H2_2_CLASS_NAME);
@@ -34,6 +42,10 @@ TutorTest_H2_2 {
     final var constructor = TutorUtils.assertConstructor(clazz);
     return TutorUtils.invokeConstructor(constructor);
   }
+
+  /* *********************************************************************
+   *                            Class Header                             *
+   **********************************************************************/
 
   @Nested
   @DisplayName("Criterion: Class Header")
@@ -60,6 +72,10 @@ TutorTest_H2_2 {
           actual));
     }
   }
+
+  /* *********************************************************************
+   *                              Method 1                               *
+   **********************************************************************/
 
   @Nested
   @DisplayName("Criterion: Method typeOfVertebrate")
@@ -158,6 +174,10 @@ TutorTest_H2_2 {
           getTestAnimal(TutorConstants.H2_3_CLASS_NAME_TUTOR_7)));
     }
   }
+
+  /* *********************************************************************
+   *                              Method 2                               *
+   **********************************************************************/
 
   @Nested
   @DisplayName("Criterion: Method returnAsLagomorphs")
@@ -367,6 +387,10 @@ TutorTest_H2_2 {
         TutorUtils.invokeMethod(method, instance, animals));
     }
   }
+
+  /* *********************************************************************
+   *                              Method 3                               *
+   **********************************************************************/
 
   @Nested
   @DisplayName("Criterion: Method testTypeOfMammals:")

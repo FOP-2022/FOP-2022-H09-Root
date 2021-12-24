@@ -12,9 +12,18 @@ import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
 import java.lang.reflect.Method;
 
+/**
+ * Defines the JUnit test cases related to the class defined in the task H1.5.
+ *
+ * @author Nhan Huynh, Darya Nikitina
+ */
 @TestForSubmission("h09")
 @DisplayName("Criterion: Class FunctionFactory")
 public final class TutorTest_H1_5 {
+
+  /* *********************************************************************
+   *                            Utilities                                *
+   **********************************************************************/
 
   private static Class<?> getTestClass() {
     return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_5_CLASS_NAME);
@@ -55,6 +64,10 @@ public final class TutorTest_H1_5 {
     TutorUtils.assertGenericType(expected, TutorConstants.H1_TYPE_PARAMETERS, method.getGenericReturnType());
   }
 
+  /* *********************************************************************
+   *                            Class Header                             *
+   **********************************************************************/
+
   @Nested
   @DisplayName("Criterion: Class Header")
   public final class TestClassHeader {
@@ -82,6 +95,10 @@ public final class TutorTest_H1_5 {
     }
   }
 
+  /* *********************************************************************
+   *                            Constructor                              *
+   **********************************************************************/
+
   @Nested
   @DisplayName("Criterion: Constructor")
   public final class TestConstructor {
@@ -95,6 +112,10 @@ public final class TutorTest_H1_5 {
       TutorUtils.assertModifiers(expected, actual);
     }
   }
+
+  /* *********************************************************************
+   *                            Method 1                                 *
+   **********************************************************************/
 
   @Nested
   @DisplayName("Criterion: Method createFunctionWithFilterMapAndFold")
@@ -155,6 +176,10 @@ public final class TutorTest_H1_5 {
         TutorMessage.RETURN_VALUE_MISMATCH.format(method.getName(), expected, actualClass));
     }
   }
+
+  /* *********************************************************************
+   *                            Method 2                                 *
+   **********************************************************************/
 
   @Nested
   @DisplayName("Criterion: Method createFunctionWithFilterMapFoldAndCombine")

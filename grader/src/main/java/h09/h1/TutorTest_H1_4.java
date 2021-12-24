@@ -19,13 +19,20 @@ import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.List;
 import java.util.stream.IntStream;
 
+/**
+ * Defines the JUnit test cases related to the classes defined in the task H1.4.
+ *
+ * @author Nhan Huynh, Darya Nikitina
+ */
 @TestForSubmission("h09")
 @DisplayName("Criterion: Class MyFunctionWithAdjacent")
 public final class TutorTest_H1_4 {
+
+  /* *********************************************************************
+   *                            Utilities                                *
+   **********************************************************************/
 
   private static Class<?> getTestClass() {
     return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_4_CLASS_NAME);
@@ -34,6 +41,10 @@ public final class TutorTest_H1_4 {
   private static Class<?> getTestFieldClass() {
     return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_1_CLASS_NAME);
   }
+
+  /* *********************************************************************
+   *                            Class Header                             *
+   **********************************************************************/
 
   @Nested
   @DisplayName("Criterion: Class Header")
@@ -75,6 +86,10 @@ public final class TutorTest_H1_4 {
     }
   }
 
+  /* *********************************************************************
+   *                            Constructor                              *
+   **********************************************************************/
+
   @Nested
   @DisplayName("Criterion: Constructor")
   public final class TestConstructor {
@@ -101,6 +116,10 @@ public final class TutorTest_H1_4 {
       TutorUtils_H1.assertConstructorParameterH1(constructor, parameterClass);
     }
   }
+
+  /* *********************************************************************
+   *                               Method                                *
+   **********************************************************************/
 
   @Nested
   @DisplayName("Criterion: Method apply")
@@ -216,6 +235,10 @@ public final class TutorTest_H1_4 {
     );
   }
 
+  /* *********************************************************************
+   *                               Field                                 *
+   **********************************************************************/
+
   @Nested
   @DisplayName("Criterion: Traits - Field combine")
   public final class TestH1ExtraField {
@@ -271,6 +294,10 @@ public final class TutorTest_H1_4 {
       }
     }
 
+    /* *********************************************************************
+     *                            Constructor                              *
+     **********************************************************************/
+
     @Nested
     @DisplayName("Criterion: Constructor")
     public final class TestConstructor {
@@ -300,53 +327,14 @@ public final class TutorTest_H1_4 {
           "Y>, BiFunction<Y, Z, Z>, Z")
         void testParameterTypes() {
           final var constructor = getTestConstructor();
-          TutorUtils.assertConstructorParameters(constructor, List.of(
-            new SimpleEntry<>(TutorConstants.H1_1_FIELD_TYPE_1,
-              TutorConstants.H1_1_FIELD_TYPE_PARAMETER_1),
-            new SimpleEntry<>(TutorConstants.H1_1_FIELD_TYPE_2,
-              TutorConstants.H1_1_FIELD_TYPE_PARAMETER_2),
-            new SimpleEntry<>(TutorConstants.H1_1_FIELD_TYPE_3,
-              TutorConstants.H1_1_FIELD_TYPE_PARAMETER_3),
-            new SimpleEntry<>(TutorConstants.H1_1_FIELD_TYPE_4,
-              TutorConstants.H1_1_FIELD_TYPE_PARAMETER_4)
-          ));
+          TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, false);
         }
 
         @Test
         @DisplayName("Criterion: Initialization of fields")
         void testFields() {
           final var constructor = getTestConstructor();
-
-          final var expectedField1 = TutorConstants.H1_1_FIELD_EXAMPLE_3_1;
-          final var expectedField2 = TutorConstants.H1_1_FIELD_EXAMPLE_3_2;
-          final var expectedField3 = TutorConstants.H1_1_FIELD_EXAMPLE_3_3;
-          final var expectedField4 = TutorConstants.H1_1_FIELD_EXAMPLE_3_4;
-
-          final var instance = TutorUtils.invokeConstructor(constructor,
-            expectedField1, expectedField2, expectedField3, expectedField4);
-
-          // Check if fields are initialized
-          final var actualField1 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_1);
-          final var actualField2 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_2);
-          final var actualField3 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_3);
-          final var actualField4 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_4);
-
-          Assertions.assertEquals(
-            expectedField1, TutorUtils.getFieldContent(actualField1, instance),
-            TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField1, actualField1)
-          );
-          Assertions.assertEquals(
-            expectedField2, TutorUtils.getFieldContent(actualField2, instance),
-            TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField2, actualField2)
-          );
-          Assertions.assertEquals(
-            expectedField3, TutorUtils.getFieldContent(actualField3, instance),
-            TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField3, actualField3)
-          );
-          Assertions.assertEquals(
-            expectedField4, TutorUtils.getFieldContent(actualField4, instance),
-            TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField4, actualField4)
-          );
+          TutorUtils_H1.assertConstructorFieldsH1_1(constructor, false);
         }
       }
 
@@ -375,62 +363,14 @@ public final class TutorTest_H1_4 {
           "Y>, BiFunction<Y, Z, Z>, Z, BiFunction<Y, ? super Y, Y>")
         void testParameterTypes() {
           final var constructor = getTestConstructor();
-          TutorUtils.assertConstructorParameters(constructor, List.of(
-            new SimpleEntry<>(TutorConstants.H1_1_FIELD_TYPE_1,
-              TutorConstants.H1_1_FIELD_TYPE_PARAMETER_1),
-            new SimpleEntry<>(TutorConstants.H1_1_FIELD_TYPE_2,
-              TutorConstants.H1_1_FIELD_TYPE_PARAMETER_2),
-            new SimpleEntry<>(TutorConstants.H1_1_FIELD_TYPE_3,
-              TutorConstants.H1_1_FIELD_TYPE_PARAMETER_3),
-            new SimpleEntry<>(TutorConstants.H1_1_FIELD_TYPE_4,
-              TutorConstants.H1_1_FIELD_TYPE_PARAMETER_4),
-            new SimpleEntry<>(TutorConstants.H1_4_FIELD_TYPE,
-              TutorConstants.H1_4_FIELD_TYPE_PARAMETER)
-          ));
+          TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, true);
         }
 
         @Test
         @DisplayName("Criterion: Initialization of fields")
         void testFields() {
           final var constructor = getTestConstructor();
-
-          final var expectedField1 = TutorConstants.H1_1_FIELD_EXAMPLE_3_1;
-          final var expectedField2 = TutorConstants.H1_1_FIELD_EXAMPLE_3_2;
-          final var expectedField3 = TutorConstants.H1_1_FIELD_EXAMPLE_3_3;
-          final var expectedField4 = TutorConstants.H1_1_FIELD_EXAMPLE_3_4;
-          final var expectedField5 = TutorConstants.H1_1_FIELD_EXAMPLE_3_5;
-
-          final var instance = TutorUtils.invokeConstructor(constructor,
-            expectedField1, expectedField2, expectedField3, expectedField4, expectedField5);
-
-          // Check if fields are initialized
-          final var actualField1 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_1);
-          final var actualField2 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_2);
-          final var actualField3 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_3);
-          final var actualField4 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_4);
-          final var actualField5 = TutorUtils.assertField(instance,
-            TutorConstants.H1_4_FIELD_NAME);
-
-          Assertions.assertEquals(
-            expectedField1, TutorUtils.getFieldContent(actualField1, instance),
-            TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField1, actualField1)
-          );
-          Assertions.assertEquals(
-            expectedField2, TutorUtils.getFieldContent(actualField2, instance),
-            TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField2, actualField2)
-          );
-          Assertions.assertEquals(
-            expectedField3, TutorUtils.getFieldContent(actualField3, instance),
-            TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField3, actualField3)
-          );
-          Assertions.assertEquals(
-            expectedField4, TutorUtils.getFieldContent(actualField4, instance),
-            TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField4, actualField4)
-          );
-          Assertions.assertEquals(
-            expectedField5, TutorUtils.getFieldContent(actualField5, instance),
-            TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField5, actualField4)
-          );
+          TutorUtils_H1.assertConstructorFieldsH1_1(constructor, true);
         }
       }
     }

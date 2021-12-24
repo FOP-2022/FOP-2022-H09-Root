@@ -1,5 +1,10 @@
 package h09.h2;
 
+/**
+ * Defines a dummy {@code Leporidae} used for testing.
+ *
+ * @author Nhan Huynh, Darya Nikitibna
+ */
 public final class TutorTestLeporidae implements Leporidae {
 
   @Override

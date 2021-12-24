@@ -22,9 +22,18 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Defines the JUnit test cases related to the class defined in the task H2.3.
+ *
+ * @author Nhan Huynh, Darya Nikitina
+ */
 @TestForSubmission("h09")
 @DisplayName("Criterion: Class TestBiologyHierarchy")
 public final class TutorTest_H2_3 {
+
+  /* *********************************************************************
+   *                            Utilities                                *
+   **********************************************************************/
 
   private static Class<?> getTestClass() {
     return TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME, TutorConstants.H2_3_CLASS_NAME);
@@ -86,6 +95,10 @@ public final class TutorTest_H2_3 {
     }
   }
 
+  /* *********************************************************************
+   *                              Method 1                               *
+   **********************************************************************/
+
   @Nested
   @DisplayName("Criterion: Method testTypeOfVertebrate")
   public final class TestMethod1 {
@@ -111,6 +124,10 @@ public final class TutorTest_H2_3 {
       assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_1, 7, expectedAnimals);
     }
   }
+
+  /* *********************************************************************
+   *                              Method 2                               *
+   **********************************************************************/
 
   @Nested
   @DisplayName("Criterion: Method testReturnAsLagomorphs")
@@ -138,6 +155,10 @@ public final class TutorTest_H2_3 {
       assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_2, 9, expectedAnimals);
     }
   }
+
+  /* *********************************************************************
+   *                              Method 3                               *
+   **********************************************************************/
 
   @Nested
   @DisplayName("Criterion: Method testTypeOfMammals")

@@ -18,10 +18,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
+/**
+ * Defines the JUnit test cases related to the interfaces and classes defined in the task H2.1.
+ *
+ * @author Nhan Huynh, Darya Nikitina
+ */
 @TestForSubmission("h09")
 @DisplayName("Criterion: Animal Hierarchy")
 public final class TutorTest_H2_1 {
 
+  /* *********************************************************************
+   *                            Utilities                                *
+   **********************************************************************/
 
   private static Class<?> getTestClass(final String animal) {
     return TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME, animal);
@@ -48,6 +56,10 @@ public final class TutorTest_H2_1 {
           actual));
     }
   }
+
+  /* *********************************************************************
+   *                            Interfaces                               *
+   **********************************************************************/
 
   @Nested
   @DisplayName("Criterion: Interfaces")
@@ -108,9 +120,17 @@ public final class TutorTest_H2_1 {
     }
   }
 
+  /* *********************************************************************
+   *                          Class Rabbit                               *
+   **********************************************************************/
+
   @Nested
   @DisplayName("Criterion: Class Rabbit")
   public final class TestRabbit {
+
+    /* *********************************************************************
+     *                            Utilities                                *
+     **********************************************************************/
 
     private Class<?> getTestClass() {
       return TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME, TutorConstants.H2_1_CLASS_NAME_10);
@@ -162,6 +182,10 @@ public final class TutorTest_H2_1 {
       }
     }
 
+    /* *********************************************************************
+     *                            Class Header                             *
+     **********************************************************************/
+
     @Nested
     @DisplayName("Criterion: Class header")
     public final class TestClassHeader {
@@ -181,6 +205,10 @@ public final class TutorTest_H2_1 {
         assertInterfaceExtensions(TutorConstants.H2_1_CLASS_NAME_10, TutorConstants.H2_1_CLASS_NAME_9);
       }
     }
+
+    /* *********************************************************************
+     *                           Static Field                              *
+     **********************************************************************/
 
     @Nested
     @DisplayName("Criterion: Static field int - Name counter")
@@ -202,6 +230,10 @@ public final class TutorTest_H2_1 {
       }
     }
 
+    /* *********************************************************************
+     *                              Field                                  *
+     **********************************************************************/
+
     @Nested
     @DisplayName("Criterion: Field int - Name of the individual")
     public final class TestField {
@@ -214,6 +246,10 @@ public final class TutorTest_H2_1 {
         TutorUtils.assertModifiers(expected, actual);
       }
     }
+
+    /* *********************************************************************
+     *                            Constructor                              *
+     **********************************************************************/
 
     @Nested
     @DisplayName("Criterion: Constructor")
@@ -282,6 +318,10 @@ public final class TutorTest_H2_1 {
         });
       }
     }
+
+    /* *********************************************************************
+     *                              Methods                                *
+     **********************************************************************/
 
     @Nested
     @DisplayName("Criterion: Method typeofX")

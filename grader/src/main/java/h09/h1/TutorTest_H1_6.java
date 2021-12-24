@@ -5,6 +5,7 @@ import h09.utils.TutorConstants;
 import h09.utils.TutorMessage;
 import h09.utils.TutorUtils;
 import h09.utils.spoon.LambdaExpressionsMethodBodyProcessor;
+import h09.utils.spoon.MethodReferencesMethodBodyProcessor;
 import h09.utils.spoon.SpoonUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -14,17 +15,42 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.sourcegrade.jagr.api.testing.TestCycle;
 import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
+import spoon.reflect.reference.CtTypeReference;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.List;
 
+/**
+ * Defines the JUnit test cases related to the class defined in the task H1.6.
+ *
+ * @author Nhan Huynh, Darya Nikitina
+ */
 @TestForSubmission("h09")
 @DisplayName("Criterion: Class TestFunctionFactory")
 public final class TutorTest_H1_6 {
 
   private static Class<?> getTestClass() {
     return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_6_CLASS_NAME);
+  }
+
+  private static void assertNumberOfLambdas(final String[] expectedTypes,
+                                            final List<CtTypeReference<?>> actualTypes,
+                                            final TutorMessage message) {
+    // Check number of lambdas
+    final var actualSize = actualTypes.size();
+    final var expectedSize = expectedTypes.length;
+    Assertions.assertEquals(expectedSize, actualSize,
+      TutorMessage.LAMBDAS_MISMATCH_SIZE.format(expectedSize, actualSize));
+
+    // Check types
+    for (int i = 0; i < expectedSize; i++) {
+      final var actual = actualTypes.get(i).toString();
+      final var expected = expectedTypes[i];
+      Assertions.assertEquals(expected, actual,
+        message.format(expected, actual));
+    }
   }
 
   @Nested
@@ -62,19 +88,7 @@ public final class TutorTest_H1_6 {
       final var actualTypes = processor.getTypes();
       final var expectedTypes = TutorConstants.H1_6_METHOD_1_LAMBDAS;
 
-      // Check number of lambdas
-      final var actualSize = actualTypes.size();
-      final var expectedSize = expectedTypes.length;
-      Assertions.assertEquals(expectedSize, actualSize,
-        TutorMessage.LAMBDAS_MISMATCH_SIZE.format(expectedSize, actualSize));
-
-      // Check types
-      for (int i = 0; i < expectedSize; i++) {
-        final var actual = actualTypes.get(i).toString();
-        final var expected = expectedTypes[i];
-        Assertions.assertEquals(expected, actual,
-          TutorMessage.LAMBDA_MISMATCH.format(expected, actual));
-      }
+      assertNumberOfLambdas(expectedTypes, actualTypes, TutorMessage.LAMBDA_MISMATCH);
     }
   }
 
@@ -91,19 +105,7 @@ public final class TutorTest_H1_6 {
       final var actualTypes = processor.getTypes();
       final var expectedTypes = TutorConstants.H1_6_METHOD_2_LAMBDAS;
 
-      // Check number of lambdas
-      final var actualSize = actualTypes.size();
-      final var expectedSize = expectedTypes.length;
-      Assertions.assertEquals(expectedSize, actualSize,
-        TutorMessage.LAMBDAS_MISMATCH_SIZE.format(expectedSize, actualSize));
-
-      // Check types
-      for (int i = 0; i < expectedSize; i++) {
-        final var actual = actualTypes.get(i).toString();
-        final var expected = expectedTypes[i];
-        Assertions.assertEquals(expected, actual,
-          TutorMessage.LAMBDA_MISMATCH.format(expected, actual));
-      }
+      assertNumberOfLambdas(expectedTypes, actualTypes, TutorMessage.LAMBDA_MISMATCH);
     }
   }
 
@@ -116,23 +118,11 @@ public final class TutorTest_H1_6 {
     @DisplayName("Criterion: Requirement - Only method references")
     void testRequirement(final TestCycle testCycle) {
       final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
-        new LambdaExpressionsMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_2));
+        new MethodReferencesMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_2));
       final var actualTypes = processor.getTypes();
       final var expectedTypes = TutorConstants.H1_6_METHOD_3_LAMBDAS;
 
-      // Check number of lambdas
-      final var actualSize = actualTypes.size();
-      final var expectedSize = expectedTypes.length;
-      Assertions.assertEquals(expectedSize, actualSize,
-        TutorMessage.LAMBDAS_MISMATCH_SIZE.format(expectedSize, actualSize));
-
-      // Check types
-      for (int i = 0; i < expectedSize; i++) {
-        final var actual = actualTypes.get(i).toString();
-        final var expected = expectedTypes[i];
-        Assertions.assertEquals(expected, actual,
-          TutorMessage.LAMBDA_MISMATCH.format(expected, actual));
-      }
+      assertNumberOfLambdas(expectedTypes, actualTypes, TutorMessage.LAMBDA_METHOD_REFERENCE_MISMATCH);
     }
 
     @Nested
