@@ -38,6 +38,7 @@ public class MyFunctionWithAdjacent<X, Y, Z> extends FunctionWithFilterMapAndFol
     final var combine = traits.getCombine();
     var accumulator = traits.getInit();
 
+    // Combine operation needs the index i and i+1
     Y previous = null;
     for (final var element : elements) {
       if (pred.test(element)) {

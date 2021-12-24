@@ -1,5 +1,6 @@
 package h09.utils;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -131,7 +132,7 @@ public final class TutorConstants {
    * The excluded imports, which may not be used in H1.3 and H1.4.
    */
   public static final Class<?>[] H1_IMPORT_BLACK_LIST = {
-    Arrays.class, Collection.class, Collections.class, List.class, Stream.class
+    Array.class, Arrays.class, Collection.class, Collections.class, List.class, Stream.class
   };
 
   /**

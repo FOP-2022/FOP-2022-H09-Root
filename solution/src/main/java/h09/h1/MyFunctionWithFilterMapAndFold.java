@@ -31,6 +31,7 @@ public class MyFunctionWithFilterMapAndFold<X, Y, Z> extends FunctionWithFilterM
    */
   @Override
   public Z apply(final X[] elements) {
+    // Filter elements
     final var pred = traits.getPred();
     int size = 0;
     for (final var element : elements) {
@@ -38,6 +39,9 @@ public class MyFunctionWithFilterMapAndFold<X, Y, Z> extends FunctionWithFilterM
         size++;
       }
     }
+
+    // Map the filtered elements
+    // Compute mapped elements array length
     @SuppressWarnings("unchecked") final var filtered = (X[]) new Object[size];
     int index = 0;
     for (final var element : elements) {
@@ -46,12 +50,14 @@ public class MyFunctionWithFilterMapAndFold<X, Y, Z> extends FunctionWithFilterM
       }
     }
 
+    // Fill array
     final var fct = traits.getFct();
     @SuppressWarnings("unchecked") final var mapped = (Y[]) new Object[size];
     for (int i = 0; i < mapped.length; i++) {
       mapped[i] = fct.apply(filtered[i]);
     }
 
+    // Fold mapped elements
     final var op = traits.getOp();
     Z accumulator = traits.getInit();
 
