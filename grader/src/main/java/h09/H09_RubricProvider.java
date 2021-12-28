@@ -29,30 +29,6 @@ public final class H09_RubricProvider implements RubricProvider {
    **********************************************************************/
 
   public static final Criterion H1_1_1 = Criterion.builder()
-    .shortDescription("Die Klassensignatur ist vollständig und korrekt.")
-    .maxPoints(1)
-    .minPoints(0)
-    .grader(
-      Grader.testAwareBuilder()
-        .requirePass(
-          JUnitTestRef.and(
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_1.TestClassHeader.class.getMethod("testModifiers")
-            ),
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_1.TestClassHeader.class.getMethod("testExtension")
-            ),
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_1.TestClassHeader.class.getMethod("testTypeParameters")
-            )
-          )
-        )
-        .pointsPassedMax()
-        .pointsFailedMin()
-        .build())
-    .build();
-
-  public static final Criterion H1_1_2 = Criterion.builder()
     .shortDescription("Die Objektattribute existieren und haben die korrekten Modifiers.")
     .maxPoints(1)
     .minPoints(0)
@@ -79,7 +55,7 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
-  public static final Criterion H1_1_3 = Criterion.builder()
+  public static final Criterion H1_1_2 = Criterion.builder()
     .shortDescription("Die Getter-Methoden für die Objektattribute sind vollständig und korrekt.")
     .maxPoints(0)
     .minPoints(-1)
@@ -106,7 +82,7 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
-  public static final Criterion H1_1_4 = Criterion.builder()
+  public static final Criterion H1_1_3 = Criterion.builder()
     .shortDescription("Die Typparameter der Objektattribute sind vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
@@ -133,14 +109,23 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
-  public static final Criterion H1_1_5 = Criterion.builder()
-    .shortDescription("Der Konstruktor ist vollständig und korrekt.")
+  public static final Criterion H1_1_4 = Criterion.builder()
+    .shortDescription("Die Klasse ist vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
       Grader.testAwareBuilder()
         .requirePass(
           JUnitTestRef.and(
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_1.TestClassHeader.class.getMethod("testModifiers")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_1.TestClassHeader.class.getMethod("testExtension")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_1.TestClassHeader.class.getMethod("testTypeParameters")
+            ),
             JUnitTestRef.ofMethod(
               () -> TutorTest_H1_1.TestConstructor.class.getMethod("testModifiers")
             ),
@@ -159,7 +144,7 @@ public final class H09_RubricProvider implements RubricProvider {
 
   public static final Criterion H1_1 = Criterion.builder()
     .shortDescription("H1.1: Klasse Traits")
-    .addChildCriteria(H1_1_1, H1_1_2, H1_1_3, H1_1_4, H1_1_5)
+    .addChildCriteria(H1_1_1, H1_1_2, H1_1_3, H1_1_4)
     .build();
 
   /* *********************************************************************
