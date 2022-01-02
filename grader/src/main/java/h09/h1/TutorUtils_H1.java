@@ -157,7 +157,7 @@ final class TutorUtils_H1 {
     final var expectedField2 = TutorConstants.H1_1_FIELD_EXAMPLE_3_2;
     final var expectedField3 = TutorConstants.H1_1_FIELD_EXAMPLE_3_3;
     final var expectedField4 = TutorConstants.H1_1_FIELD_EXAMPLE_3_4;
-    final var expectedField5 = combine ? null:TutorConstants.H1_1_FIELD_EXAMPLE_3_5;
+    final var expectedField5 = !combine ? null:TutorConstants.H1_1_FIELD_EXAMPLE_3_5;
 
     final var instance = combine ?
       TutorUtils.invokeConstructor(
@@ -173,7 +173,7 @@ final class TutorUtils_H1 {
     final var actualField2 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_2);
     final var actualField3 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_3);
     final var actualField4 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_4);
-    final var actualField5 = combine ? null:TutorUtils.assertField(instance,
+    final var actualField5 = !combine ? null:TutorUtils.assertField(instance,
       TutorConstants.H1_4_FIELD_NAME);
 
     Assertions.assertEquals(
