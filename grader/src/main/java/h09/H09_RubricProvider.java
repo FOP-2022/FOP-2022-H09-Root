@@ -292,8 +292,8 @@ public final class H09_RubricProvider implements RubricProvider {
 
   public static final Criterion H1_3_3 = Criterion.builder()
     .shortDescription("Die Methodensignatur ist vollständig und korrekt.")
-    .maxPoints(-1)
-    .minPoints(0)
+    .maxPoints(0)
+    .minPoints(-1)
     .grader(
       Grader.testAwareBuilder()
         .requirePass(
