@@ -31,13 +31,13 @@
         "h09/utils/TutorConstants.java",
         "h09/utils/TutorMessage.java",
         "h09/utils/TutorUtils.java",
-        "h09/spoon/ArraysInstantiationMethodBodyProcessor.java",
-        "h09/spoon/ConstructorsCallMethodBodyProcessor.java",
-        "h09/spoon/ImportsClassProcessor.java",
-        "h09/spoon/LambdaExpressionsMethodBodyProcessor.java",
-        "h09/spoon/LoopsMethodBodyProcessor.java",
-        "h09/spoon/MethodReferencesMethodBodyProcessor.java",
-        "h09/spoon/SpoonUtils.java"
+        "h09/utils/spoon/ArraysInstantiationMethodBodyProcessor.java",
+        "h09/utils/spoon/ConstructorsCallMethodBodyProcessor.java",
+        "h09/utils/spoon/ImportsClassProcessor.java",
+        "h09/utils/spoon/LambdaExpressionsMethodBodyProcessor.java",
+        "h09/utils/spoon/LoopsMethodBodyProcessor.java",
+        "h09/utils/spoon/MethodReferencesMethodBodyProcessor.java",
+        "h09/utils/spoon/SpoonUtils.java"
       ]
     },
     {
@@ -47,7 +47,8 @@
         "h09/h1/FunctionWithFilterMapAndFold.java",
         "h09/h1/MyFunctionWithAdjacent.java",
         "h09/h1/MyFunctionWithFilterMapAndFold.java",
-        "h09/h1/Animal.java",
+        "h09/h1/Traits.java",
+        "h09/h2/Animal.java",
         "h09/h2/BiologyHierarchy.java",
         "h09/h2/Bird.java",
         "h09/h2/Lagomorpha.java",
