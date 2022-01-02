@@ -74,7 +74,7 @@ public final class TutorTest_H1_5 {
 
     @Test
     @DisplayName("Criterion: Only modifiers public final")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestClass();
       final var expected = Modifier.STATIC.nand(Modifier.ABSTRACT).and(Modifier.PUBLIC,
         Modifier.FINAL);
@@ -83,7 +83,7 @@ public final class TutorTest_H1_5 {
 
     @Test
     @DisplayName("Criterion: No type parameter")
-    void testTypeParameter() {
+    public void testTypeParameter() {
       final var clazz = getTestClass();
       final var types = clazz.getTypeParameters();
       final var expected = 0;
@@ -105,7 +105,7 @@ public final class TutorTest_H1_5 {
 
     @Test
     @DisplayName("Criterion: Only modifier private")
-    void testModifiers() {
+    public void testModifiers() {
       final var clazz = getTestClass();
       final var actual = TutorUtils.assertConstructor(clazz);
       final var expected = Modifier.PRIVATE;
@@ -129,7 +129,7 @@ public final class TutorTest_H1_5 {
 
     @Test
     @DisplayName("Criterion: Only modifiers public static")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestMethod();
       final var expected = Modifier.PUBLIC.and(Modifier.STATIC);
       TutorUtils.assertModifiers(expected, actual);
@@ -137,7 +137,7 @@ public final class TutorTest_H1_5 {
 
     @Test
     @DisplayName("Criterion: Parameter Traits<X, Y, Z>")
-    void testParameters() {
+    public void testParameters() {
       final var classParameter = getTestClassParameter();
       final var method = getTestMethod();
       assertParameters(classParameter, method);
@@ -145,13 +145,13 @@ public final class TutorTest_H1_5 {
 
     @Test
     @DisplayName("Criterion: Return type FunctionWithFilterMapAndFold<X, Y, Z>")
-    void testReturnType() {
+    public void testReturnType() {
       assertReturnType(getTestMethod());
     }
 
     @Test
     @DisplayName("Criterion: Return value MyFunctionWithFilterMapAndFold<X, Y, Z>")
-    void testReturnValue() {
+    public void testReturnValue() {
       final var expectedField1 = TutorConstants.H1_1_FIELD_EXAMPLE_3_1;
       final var expectedField2 = TutorConstants.H1_1_FIELD_EXAMPLE_3_2;
       final var expectedField3 = TutorConstants.H1_1_FIELD_EXAMPLE_3_3;
@@ -193,7 +193,7 @@ public final class TutorTest_H1_5 {
 
     @Test
     @DisplayName("Criterion: Only modifiers public static")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestMethod();
       final var expected = Modifier.PUBLIC.and(Modifier.STATIC);
       TutorUtils.assertModifiers(expected, actual);
@@ -201,7 +201,7 @@ public final class TutorTest_H1_5 {
 
     @Test
     @DisplayName("Criterion: Parameter Traits<X, Y, Z>")
-    void testParameters() {
+    public void testParameters() {
       final var classParameter = getTestClassParameter();
       final var method = getTestMethod();
       assertParameters(classParameter, method);
@@ -209,13 +209,13 @@ public final class TutorTest_H1_5 {
 
     @Test
     @DisplayName("Criterion: Return type FunctionWithFilterMapAndFold<X, Y, Z>")
-    void testReturnType() {
+    public void testReturnType() {
       assertReturnType(getTestMethod());
     }
 
     @Test
     @DisplayName("Criterion: Return value MyFunctionWithAdjacent<X, Y, Z>")
-    void testReturnValue() {
+    public void testReturnValue() {
       final var expectedField1 = TutorConstants.H1_1_FIELD_EXAMPLE_3_1;
       final var expectedField2 = TutorConstants.H1_1_FIELD_EXAMPLE_3_2;
       final var expectedField3 = TutorConstants.H1_1_FIELD_EXAMPLE_3_3;

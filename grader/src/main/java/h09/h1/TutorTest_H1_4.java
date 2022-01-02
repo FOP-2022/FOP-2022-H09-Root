@@ -52,7 +52,7 @@ public final class TutorTest_H1_4 {
 
     @Test
     @DisplayName("Criterion: Only modifier public")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestClass();
       final var expected = Modifier.STATIC.nand(Modifier.ABSTRACT, Modifier.FINAL)
         .and(Modifier.PUBLIC);
@@ -61,7 +61,7 @@ public final class TutorTest_H1_4 {
 
     @Test
     @DisplayName("Criterion: Extension of FunctionWithFilterMapAndFold")
-    void testExtension() {
+    public void testExtension() {
       final var expected = TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME,
         TutorConstants.H1_2_CLASS_NAME);
       final var actual = getTestClass().getSuperclass();
@@ -72,7 +72,7 @@ public final class TutorTest_H1_4 {
 
     @Test
     @DisplayName("Criterion: Type parameter X, Y, Z")
-    void testTypeParameters() {
+    public void testTypeParameters() {
       final var clazz = getTestClass();
       TutorUtils_H1.assertClassTypeParameters(clazz);
     }
@@ -80,7 +80,7 @@ public final class TutorTest_H1_4 {
     @Test
     @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Check imports")
-    void testImports(final TestCycle testCycle) {
+    public void testImports(final TestCycle testCycle) {
       TutorUtils_H1.assertImports(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
         TutorConstants.H1_IMPORT_BLACK_LIST);
     }
@@ -102,7 +102,7 @@ public final class TutorTest_H1_4 {
 
     @Test
     @DisplayName("Criterion: Only modifier public")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestConstructor();
       final var expected = Modifier.PUBLIC;
       TutorUtils.assertModifiers(expected, actual);
@@ -110,7 +110,7 @@ public final class TutorTest_H1_4 {
 
     @Test
     @DisplayName("Criterion: Parameter Traits<X, Y, Z>")
-    void testParameter() {
+    public void testParameter() {
       final var constructor = getTestConstructor();
       final var parameterClass = getTestFieldClass();
       TutorUtils_H1.assertConstructorParameterH1(constructor, parameterClass);
@@ -133,7 +133,7 @@ public final class TutorTest_H1_4 {
 
     @Test
     @DisplayName("Criterion: Only modifiers public abstract")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestMethod();
       final var expected = Modifier.STATIC.nand(Modifier.ABSTRACT).and(Modifier.PUBLIC);
       TutorUtils.assertModifiers(expected, actual);
@@ -141,21 +141,21 @@ public final class TutorTest_H1_4 {
 
     @Test
     @DisplayName("Criterion: Parameter X[]")
-    void testParameters() {
+    public void testParameters() {
       final var method = getTestMethod();
       TutorUtils_H1.assertParametersH1_2(method);
     }
 
     @Test
     @DisplayName("Criterion: Return type Z")
-    void testReturnType() {
+    public void testReturnType() {
       final var method = getTestMethod();
       TutorUtils_H1.assertReturnTypeH1_2(method);
     }
 
     @Test
     @DisplayName("Criterion: Return value")
-    void testReturnValue() {
+    public void testReturnValue() {
       // Traits object
       final var expectedField1 = TutorConstants.H1_1_FIELD_EXAMPLE_3_1;
       final var expectedField2 = TutorConstants.H1_1_FIELD_EXAMPLE_3_2;
@@ -191,7 +191,7 @@ public final class TutorTest_H1_4 {
   @Test
   @ExtendWith(TestCycleResolver.class)
   @DisplayName("Criterion: Requirement - No arrays")
-  void testRequirementArrays(final TestCycle testCycle) {
+  public void testRequirementArrays(final TestCycle testCycle) {
     final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
       new ArraysInstantiationMethodBodyProcessor(TutorConstants.H1_2_METHOD_NAME));
 
@@ -206,7 +206,7 @@ public final class TutorTest_H1_4 {
   @Test
   @ExtendWith(TestCycleResolver.class)
   @DisplayName("Criterion: Requirement - Only one foreach")
-  void testRequirementForeachLoop(final TestCycle testCycle) {
+  public void testRequirementForeachLoop(final TestCycle testCycle) {
     final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
       new LoopsMethodBodyProcessor(TutorConstants.H1_2_METHOD_NAME));
 
@@ -254,7 +254,7 @@ public final class TutorTest_H1_4 {
 
       @Test
       @DisplayName("Criterion: Only modifiers private final")
-      void testModifiers() {
+      public void testModifiers() {
         final var actual = getTestField();
         final var expected = Modifier.STATIC.negate().and(Modifier.PRIVATE, Modifier.FINAL);
         TutorUtils.assertModifiers(expected, actual);
@@ -262,7 +262,7 @@ public final class TutorTest_H1_4 {
 
       @Test
       @DisplayName("Criterion: Type BiFunction<Y, ? super Y, Y>")
-      void testType() {
+      public void testType() {
         final var actual = getTestField();
         final var type = actual.getGenericType();
         TutorUtils.assertGenericType(
@@ -272,7 +272,7 @@ public final class TutorTest_H1_4 {
 
       @Test
       @DisplayName("Criterion: Getter method")
-      void testGetter() {
+      public void testGetter() {
         final var method = TutorUtils.assertMethod(getTestFieldClass(), TutorConstants.H1_4_METHOD_NAME);
 
         // Check modifier
@@ -306,7 +306,7 @@ public final class TutorTest_H1_4 {
       @DisplayName("Criterion: 3 arguments Constructor")
       public final class Test3Args {
 
-        public Constructor<?> getTestConstructor() {
+        private Constructor<?> getTestConstructor() {
           final var clazz = getTestFieldClass();
           final Class<?>[] parameters = {TutorConstants.H1_1_FIELD_TYPE_1,
             TutorConstants.H1_1_FIELD_TYPE_2, TutorConstants.H1_1_FIELD_TYPE_3,
@@ -316,7 +316,7 @@ public final class TutorTest_H1_4 {
 
         @Test
         @DisplayName("Criterion: Only modifier public")
-        void testModifiers() {
+        public void testModifiers() {
           final var actual = getTestConstructor();
           final var expected = Modifier.PUBLIC;
           TutorUtils.assertModifiers(expected, actual);
@@ -325,14 +325,14 @@ public final class TutorTest_H1_4 {
         @Test
         @DisplayName("Criterion: Parameter Predicate<? super X>, Function<? super X, ? extends " +
           "Y>, BiFunction<Y, Z, Z>, Z")
-        void testParameterTypes() {
+        public void testParameterTypes() {
           final var constructor = getTestConstructor();
           TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, false);
         }
 
         @Test
         @DisplayName("Criterion: Initialization of fields")
-        void testFields() {
+        public void testFields() {
           final var constructor = getTestConstructor();
           TutorUtils_H1.assertConstructorFieldsH1_1(constructor, false);
         }
@@ -342,7 +342,7 @@ public final class TutorTest_H1_4 {
       @DisplayName("Criterion: 4 arguments Constructor")
       public final class Test4Args {
 
-        public Constructor<?> getTestConstructor() {
+        private Constructor<?> getTestConstructor() {
           final var clazz = getTestFieldClass();
           final Class<?>[] parameters = {TutorConstants.H1_1_FIELD_TYPE_1,
             TutorConstants.H1_1_FIELD_TYPE_2, TutorConstants.H1_1_FIELD_TYPE_3,
@@ -352,7 +352,7 @@ public final class TutorTest_H1_4 {
 
         @Test
         @DisplayName("Criterion: Only modifier public")
-        void testModifiers() {
+        public void testModifiers() {
           final var actual = getTestConstructor();
           final var expected = Modifier.PUBLIC;
           TutorUtils.assertModifiers(expected, actual);
@@ -361,14 +361,14 @@ public final class TutorTest_H1_4 {
         @Test
         @DisplayName("Criterion: Parameter Predicate<? super X>, Function<? super X, ? extends " +
           "Y>, BiFunction<Y, Z, Z>, Z, BiFunction<Y, ? super Y, Y>")
-        void testParameterTypes() {
+        public void testParameterTypes() {
           final var constructor = getTestConstructor();
           TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, true);
         }
 
         @Test
         @DisplayName("Criterion: Initialization of fields")
-        void testFields() {
+        public void testFields() {
           final var constructor = getTestConstructor();
           TutorUtils_H1.assertConstructorFieldsH1_1(constructor, true);
         }

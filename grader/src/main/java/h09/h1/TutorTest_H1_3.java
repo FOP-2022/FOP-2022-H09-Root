@@ -50,7 +50,7 @@ public final class TutorTest_H1_3 {
 
     @Test
     @DisplayName("Criterion: Only modifier public")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestClass();
       final var expected = Modifier.STATIC.nand(Modifier.ABSTRACT, Modifier.FINAL)
         .and(Modifier.PUBLIC);
@@ -59,7 +59,7 @@ public final class TutorTest_H1_3 {
 
     @Test
     @DisplayName("Criterion: Extension of FunctionWithFilterMapAndFold")
-    void testExtension() {
+    public void testExtension() {
       final var expected = TutorUtils.assertClass(
         TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_2_CLASS_NAME
       );
@@ -71,7 +71,7 @@ public final class TutorTest_H1_3 {
 
     @Test
     @DisplayName("Criterion: Type parameter X, Y, Z")
-    void testTypeParameters() {
+    public void testTypeParameters() {
       final var clazz = getTestClass();
       TutorUtils_H1.assertClassTypeParameters(clazz);
     }
@@ -79,7 +79,7 @@ public final class TutorTest_H1_3 {
     @Test
     @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Check imports")
-    void testImports(final TestCycle testCycle) {
+    public void testImports(final TestCycle testCycle) {
       TutorUtils_H1.assertImports(testCycle, TutorConstants.H1_3_PATH_TO_SOURCE,
         TutorConstants.H1_IMPORT_BLACK_LIST);
     }
@@ -93,7 +93,7 @@ public final class TutorTest_H1_3 {
   @DisplayName("Criterion: Constructor")
   public final class TestConstructor {
 
-    public Constructor<?> getTestConstructor() {
+    private Constructor<?> getTestConstructor() {
       final var clazz = getTestClass();
       final var parameter = getTestFieldClass();
       return TutorUtils.assertConstructor(clazz, parameter);
@@ -101,7 +101,7 @@ public final class TutorTest_H1_3 {
 
     @Test
     @DisplayName("Criterion: Only modifier public")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestConstructor();
       final var expected = Modifier.PUBLIC;
       TutorUtils.assertModifiers(expected, actual);
@@ -109,7 +109,7 @@ public final class TutorTest_H1_3 {
 
     @Test
     @DisplayName("Criterion: Parameter Traits<X, Y, Z>")
-    void testParameter() {
+    public void testParameter() {
       final var constructor = getTestConstructor();
       final var parameterClass = getTestFieldClass();
       TutorUtils_H1.assertConstructorParameterH1(constructor, parameterClass);
@@ -133,7 +133,7 @@ public final class TutorTest_H1_3 {
 
     @Test
     @DisplayName("Criterion: Only modifiers public")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestMethod();
       final var expected = Modifier.STATIC.nand(Modifier.ABSTRACT).and(Modifier.PUBLIC);
       TutorUtils.assertModifiers(expected, actual);
@@ -141,21 +141,21 @@ public final class TutorTest_H1_3 {
 
     @Test
     @DisplayName("Criterion: Parameter X[]")
-    void testParameters() {
+    public void testParameters() {
       final var method = getTestMethod();
       TutorUtils_H1.assertParametersH1_2(method);
     }
 
     @Test
     @DisplayName("Criterion: Return type Z")
-    void testReturnType() {
+    public void testReturnType() {
       final var method = getTestMethod();
       TutorUtils_H1.assertReturnTypeH1_2(method);
     }
 
     @Test
     @DisplayName("Criterion: Return value")
-    void testReturnValue() {
+    public void testReturnValue() {
       // Traits object
       final var expectedField1 = TutorConstants.H1_1_FIELD_EXAMPLE_2_1;
       final var expectedField2 = TutorConstants.H1_1_FIELD_EXAMPLE_2_2;
@@ -191,7 +191,7 @@ public final class TutorTest_H1_3 {
     @Test
     @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirement - Arrays as intermediate storage")
-    void testRequirementArrays(final TestCycle testCycle) {
+    public void testRequirementArrays(final TestCycle testCycle) {
       final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_3_PATH_TO_SOURCE,
         new ArraysInstantiationMethodBodyProcessor(TutorConstants.H1_2_METHOD_NAME));
 

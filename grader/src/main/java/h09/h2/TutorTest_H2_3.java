@@ -79,7 +79,7 @@ public final class TutorTest_H2_3 {
 
     @Test
     @DisplayName("Criterion: Only modifiers package-private")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestClass();
       final var expected = Modifier.FINAL.negate().and(Modifier.PACKAGE_PRIVATE);
       TutorUtils.assertModifiers(expected, actual);
@@ -87,7 +87,7 @@ public final class TutorTest_H2_3 {
 
     @Test
     @DisplayName("Criterion: No extension")
-    void testExtension() {
+    public void testExtension() {
       final var actual = getTestClass().getSuperclass();
       final var expected = Object.class;
       Assertions.assertEquals(expected, actual,
@@ -144,14 +144,14 @@ public final class TutorTest_H2_3 {
     @Test
     @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirements - At least 4 possible animals")
-    void testRequirements4(final TestCycle testCycle) {
+    public void testRequirements4(final TestCycle testCycle) {
       assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_2, 4, expectedAnimals);
     }
 
     @Test
     @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirements - At least 9 possible animals")
-    void testRequirements9(final TestCycle testCycle) {
+    public void testRequirements9(final TestCycle testCycle) {
       assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_2, 9, expectedAnimals);
     }
   }
@@ -173,14 +173,14 @@ public final class TutorTest_H2_3 {
     @Test
     @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirements - At least 3 possible animals")
-    void testRequirements3(final TestCycle testCycle) {
+    public void testRequirements3(final TestCycle testCycle) {
       assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_3, 3, expectedAnimals);
     }
 
     @Test
     @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirements - At least 6 possible animals")
-    void testRequirements6(final TestCycle testCycle) {
+    public void testRequirements6(final TestCycle testCycle) {
       assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_3, 6, expectedAnimals);
     }
   }

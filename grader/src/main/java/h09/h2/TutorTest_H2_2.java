@@ -53,7 +53,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Only modifiers public")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestClass();
       final var expected = Modifier.STATIC.nand(Modifier.ABSTRACT, Modifier.FINAL)
         .and(Modifier.PUBLIC);
@@ -62,7 +62,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: No type parameter")
-    void testTypeParameter() {
+    public void testTypeParameter() {
       final var clazz = getTestClass();
       final var types = clazz.getTypeParameters();
       final var expected = 0;
@@ -94,7 +94,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Only modifiers public")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestMethod();
       final var expected = Modifier.STATIC.nand(Modifier.FINAL, Modifier.ABSTRACT)
         .and(Modifier.PUBLIC);
@@ -103,7 +103,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Generic method <T extends Vertebrate>")
-    void testGeneric() {
+    public void testGeneric() {
       final var method = getTestMethod();
       final var types = method.getTypeParameters();
 
@@ -131,7 +131,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Parameter T")
-    void testParameters() {
+    public void testParameters() {
       final var method = getTestMethod();
       final var parameters = method.getGenericParameterTypes();
 
@@ -151,7 +151,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Result")
-    void testResult() {
+    public void testResult() {
       final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
       final var method = getTestMethod();
@@ -191,7 +191,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Only modifiers public")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestMethod();
       final var expected = Modifier.STATIC.nand(Modifier.FINAL, Modifier.ABSTRACT)
         .and(Modifier.PUBLIC);
@@ -200,7 +200,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Parameter List<? super Lagomorph>")
-    void testParameters() {
+    public void testParameters() {
       final var method = getTestMethod();
       final var parameters = method.getGenericParameterTypes();
 
@@ -219,7 +219,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Result List<Placental>")
-    void testResultListOfPlacental() {
+    public void testResultListOfPlacental() {
       final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
       final var method = getTestMethod();
@@ -246,7 +246,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Result List<Mammal>")
-    void testResultListOfMammal() {
+    public void testResultListOfMammal() {
       final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
       final var method = getTestMethod();
@@ -278,7 +278,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Result List<Vertebrate>")
-    void testResultListOfVertebrate() {
+    public void testResultListOfVertebrate() {
       final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
       final var method = getTestMethod();
@@ -313,7 +313,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Result List<Animal>")
-    void testResultListOfAnimal() {
+    public void testResultListOfAnimal() {
       final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
       final var method = getTestMethod();
@@ -350,7 +350,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Result List<Object>")
-    void testResultListOfObject() {
+    public void testResultListOfObject() {
       final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
       final var method = getTestMethod();
@@ -404,7 +404,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Only modifiers public")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestMethod();
       final var expected = Modifier.STATIC.nand(Modifier.FINAL, Modifier.ABSTRACT)
         .and(Modifier.PUBLIC);
@@ -413,7 +413,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Parameter List<? extends Mammal>")
-    void testParameters() {
+    public void testParameters() {
       final var method = getTestMethod();
       final var parameters = method.getGenericParameterTypes();
 
@@ -433,7 +433,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Result List<Mammal>")
-    void testResultListOfMammal() {
+    public void testResultListOfMammal() {
       final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
       final var method = getTestMethod();
@@ -462,7 +462,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Result List<Placental>")
-    void testResultListOfPlacental() {
+    public void testResultListOfPlacental() {
       final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
       final var method = getTestMethod();
@@ -486,7 +486,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Result List<Monotreme>")
-    void testResultListOfMonotreme() {
+    public void testResultListOfMonotreme() {
       final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
       final var method = getTestMethod();
@@ -504,7 +504,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Result List<Lagomorpha>")
-    void testResultListOfLagomorph() {
+    public void testResultListOfLagomorph() {
       final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
       final var method = getTestMethod();
@@ -524,7 +524,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Result List<Rodent>")
-    void testResultListOfRodent() {
+    public void testResultListOfRodent() {
       final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
       final var method = getTestMethod();
@@ -542,7 +542,7 @@ public final class TutorTest_H2_2 {
 
     @Test
     @DisplayName("Criterion: Result List<Leporidae>")
-    void testResultListOfLeporidae() {
+    public void testResultListOfLeporidae() {
       final var constructor = getTestConstructor();
       final var instance = TutorUtils.invokeConstructor(constructor);
       final var method = getTestMethod();

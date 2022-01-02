@@ -109,13 +109,13 @@ public final class TutorTest_H2_1 {
 
     @Test
     @DisplayName("Criterion: At least 4 interfaces are complete and correct")
-    void testInterfaces4() {
+    public void testInterfaces4() {
       assertInterfaces(4);
     }
 
     @Test
     @DisplayName("Criterion: At least 9 interfaces are complete and correct")
-    void testInterfaces9() {
+    public void testInterfaces9() {
       assertInterfaces(9);
     }
   }
@@ -192,7 +192,7 @@ public final class TutorTest_H2_1 {
 
       @Test
       @DisplayName("Criterion: Only modifiers public")
-      void testModifiers() {
+      public void testModifiers() {
         final var actual = getTestClass();
         final var expected = Modifier.STATIC.nand(Modifier.ABSTRACT, Modifier.FINAL)
           .and(Modifier.PUBLIC);
@@ -201,7 +201,7 @@ public final class TutorTest_H2_1 {
 
       @Test
       @DisplayName("Criterion: Extend Leporidae")
-      void testSuperClass() {
+      public void testSuperClass() {
         assertInterfaceExtensions(TutorConstants.H2_1_CLASS_NAME_10, TutorConstants.H2_1_CLASS_NAME_9);
       }
     }
@@ -216,7 +216,7 @@ public final class TutorTest_H2_1 {
 
       @Test
       @DisplayName("Criterion: Only modifiers private static")
-      void testModifiers() {
+      public void testModifiers() {
         final var actual = getStaticField();
         final var expected = Modifier.FINAL.negate().and(Modifier.PRIVATE, Modifier.STATIC);
         TutorUtils.assertModifiers(expected, actual);
@@ -224,7 +224,7 @@ public final class TutorTest_H2_1 {
 
       @Test
       @DisplayName("Criterion: Initialization value is 1")
-      void testValue() {
+      public void testValue() {
         final var field = getStaticField();
         Assertions.assertEquals(1, TutorUtils.getFieldContent(field));
       }
@@ -240,7 +240,7 @@ public final class TutorTest_H2_1 {
 
       @Test
       @DisplayName("Criterion: Only modifiers private final")
-      void testModifiers() {
+      public void testModifiers() {
         final var actual = getNonStaticField();
         final var expected = Modifier.STATIC.negate().and(Modifier.PRIVATE, Modifier.FINAL);
         TutorUtils.assertModifiers(expected, actual);
@@ -257,7 +257,7 @@ public final class TutorTest_H2_1 {
 
       @Test
       @DisplayName("Criterion: public")
-      void testModifiers() {
+      public void testModifiers() {
         final var actual = getTestConstructor();
         final var expected = Modifier.PUBLIC;
         TutorUtils.assertModifiers(expected, actual);
@@ -265,7 +265,7 @@ public final class TutorTest_H2_1 {
 
       @Test
       @DisplayName("Criterion: Instantiation of objects increase static field")
-      void testFieldStatic() {
+      public void testFieldStatic() {
         resetCounter(() -> {
           final var constructor = getTestConstructor();
           for (int i = 0; i < 5; i++) {
@@ -283,7 +283,7 @@ public final class TutorTest_H2_1 {
 
       @Test
       @DisplayName("Criterion: Instantiation of objects increase non-static field")
-      void testField() {
+      public void testField() {
         resetCounter(() -> {
           final var constructor = getTestConstructor();
           for (int i = 0; i < 5; i++) {
@@ -301,7 +301,7 @@ public final class TutorTest_H2_1 {
 
       @Test
       @DisplayName("Criterion: Method nameOfIndividual return value")
-      void testMethodNameOfIndividual() {
+      public void testMethodNameOfIndividual() {
         resetCounter(() -> {
           final var constructor = getTestConstructor();
           final var clazz = getTestClass();
@@ -341,28 +341,28 @@ public final class TutorTest_H2_1 {
 
       @Test
       @DisplayName("Criterion: Method typeOfAnimal return value")
-      void testTypeOfAnimal() {
+      public void testTypeOfAnimal() {
         assertTypeOfXReturnValue(TutorConstants.H2_1_CLASS_NAME_1,
           TutorConstants.H2_1_CLASS_NAME_2);
       }
 
       @Test
       @DisplayName("Criterion: Method typeOfVertebrate return value")
-      void testTypeOfVertebrate() {
+      public void testTypeOfVertebrate() {
         assertTypeOfXReturnValue(TutorConstants.H2_1_CLASS_NAME_2,
           TutorConstants.H2_1_CLASS_NAME_3);
       }
 
       @Test
       @DisplayName("Criterion: Method typeOfMammal return value")
-      void testTypeOfMammal() {
+      public void testTypeOfMammal() {
         assertTypeOfXReturnValue(TutorConstants.H2_1_CLASS_NAME_3,
           TutorConstants.H2_1_CLASS_NAME_5);
       }
 
       @Test
       @DisplayName("Criterion: Method typeOfPlacental return value")
-      void testTypeOfPlacental() {
+      public void testTypeOfPlacental() {
         assertTypeOfXReturnValue(TutorConstants.H2_1_CLASS_NAME_5,
           TutorConstants.H2_1_CLASS_NAME_7);
       }
@@ -370,7 +370,7 @@ public final class TutorTest_H2_1 {
 
       @Test
       @DisplayName("Criterion: Method typeOfLagomorpha return value")
-      void testTypeOfLagomorph() {
+      public void testTypeOfLagomorpha() {
         assertTypeOfXReturnValue(TutorConstants.H2_1_CLASS_NAME_7,
           TutorConstants.H2_1_CLASS_NAME_9);
       }

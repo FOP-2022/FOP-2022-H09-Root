@@ -59,7 +59,7 @@ public final class TutorTest_H1_6 {
 
     @Test
     @DisplayName("Criterion: Only modifiers package-private")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestClass();
       final var expected = Modifier.FINAL.negate().and(Modifier.PACKAGE_PRIVATE);
       TutorUtils.assertModifiers(expected, actual);
@@ -67,7 +67,7 @@ public final class TutorTest_H1_6 {
 
     @Test
     @DisplayName("Criterion: No extension")
-    void testExtension() {
+    public void testExtension() {
       final var actual = getTestClass().getSuperclass();
       final var expected = Object.class;
       Assertions.assertEquals(expected, actual,
@@ -82,7 +82,7 @@ public final class TutorTest_H1_6 {
     @Test
     @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirement - Only lambdas")
-    void testRequirement(final TestCycle testCycle) {
+    public void testRequirement(final TestCycle testCycle) {
       final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
         new LambdaExpressionsMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_1));
       final var actualTypes = processor.getTypes();
@@ -99,7 +99,7 @@ public final class TutorTest_H1_6 {
     @Test
     @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirement - Only lambdas")
-    void testRequirement(final TestCycle testCycle) {
+    public void testRequirement(final TestCycle testCycle) {
       final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
         new LambdaExpressionsMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_2));
       final var actualTypes = processor.getTypes();
@@ -116,7 +116,7 @@ public final class TutorTest_H1_6 {
     @Test
     @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirement - Only method references")
-    void testRequirement(final TestCycle testCycle) {
+    public void testRequirement(final TestCycle testCycle) {
       final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
         new MethodReferencesMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_2));
       final var actualTypes = processor.getTypes();
@@ -140,7 +140,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Only modifiers package-private")
-        void testModifiers() {
+        public void testModifiers() {
           final var actual = getTestClassPerson();
           final var expected = Modifier.PUBLIC.nand(Modifier.FINAL);
           TutorUtils.assertModifiers(expected, actual);
@@ -148,7 +148,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: No extension")
-        void testExtension() {
+        public void testExtension() {
           final var actual = getTestClassPerson().getSuperclass();
           final var expected = Object.class;
           Assertions.assertEquals(expected, actual,
@@ -172,7 +172,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Only modifiers package-private")
-        void testModifiers() {
+        public void testModifiers() {
           final var actual = getTestField();
           final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PRIVATE);
           TutorUtils.assertModifiers(expected, actual);
@@ -180,7 +180,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Getter method")
-        void testGetter() {
+        public void testGetter() {
           final var method = getTestMethod(TutorConstants.H1_6_METHOD_NAME_4);
 
           // Check modifier
@@ -196,7 +196,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Setter method")
-        void testSetter() {
+        public void testSetter() {
           final var method = getTestMethod(TutorConstants.H1_6_METHOD_NAME_9,
             TutorConstants.H1_6_FIELD_TYPE_1);
 
@@ -228,7 +228,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Only modifiers package-private")
-        void testModifiers() {
+        public void testModifiers() {
           final var actual = getTestField();
           final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PRIVATE);
           TutorUtils.assertModifiers(expected, actual);
@@ -236,7 +236,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Getter method")
-        void testGetter() {
+        public void testGetter() {
           final var method = getTestMethod(TutorConstants.H1_6_METHOD_NAME_5);
 
           // Check modifier
@@ -252,7 +252,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Setter method")
-        void testSetter() {
+        public void testSetter() {
           final var method = getTestMethod(TutorConstants.H1_6_METHOD_NAME_10,
             TutorConstants.H1_6_FIELD_TYPE_2);
 
@@ -284,7 +284,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Only modifiers package-private")
-        void testModifiers() {
+        public void testModifiers() {
           final var actual = getTestField();
           final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PRIVATE);
           TutorUtils.assertModifiers(expected, actual);
@@ -292,7 +292,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Getter method")
-        void testGetter() {
+        public void testGetter() {
           final var method = getTestMethod(TutorConstants.H1_6_METHOD_NAME_6);
 
           // Check modifier
@@ -308,7 +308,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Setter method")
-        void testSetter() {
+        public void testSetter() {
           final var method = getTestMethod(TutorConstants.H1_6_METHOD_NAME_11,
             TutorConstants.H1_6_FIELD_TYPE_3);
 
@@ -340,7 +340,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Only modifiers package-private")
-        void testModifiers() {
+        public void testModifiers() {
           final var actual = getTestField();
           final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PRIVATE);
           TutorUtils.assertModifiers(expected, actual);
@@ -348,7 +348,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Getter method")
-        void testGetter() {
+        public void testGetter() {
           final var method = getTestMethod(TutorConstants.H1_6_METHOD_NAME_7);
 
           // Check modifier
@@ -364,7 +364,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Setter method")
-        void testSetter() {
+        public void testSetter() {
           final var method = getTestMethod(TutorConstants.H1_6_METHOD_NAME_12,
             TutorConstants.H1_6_FIELD_TYPE_4);
 
@@ -396,7 +396,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Only modifiers package-private")
-        void testModifiers() {
+        public void testModifiers() {
           final var actual = getTestField();
           final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PRIVATE);
           TutorUtils.assertModifiers(expected, actual);
@@ -404,7 +404,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Getter method")
-        void testGetter() {
+        public void testGetter() {
           final var method = getTestMethod(TutorConstants.H1_6_METHOD_NAME_8);
 
           // Check modifier
@@ -420,7 +420,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Setter method")
-        void testSetter() {
+        public void testSetter() {
           final var method = getTestMethod(TutorConstants.H1_6_METHOD_NAME_13,
             TutorConstants.H1_6_FIELD_TYPE_5);
 
@@ -454,7 +454,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Only modifier public")
-        void testModifiers() {
+        public void testModifiers() {
           final var actual = getTestConstructor();
           final var expected = Modifier.FINAL.negate().and(Modifier.PUBLIC);
           TutorUtils.assertModifiers(expected, actual);
@@ -462,7 +462,7 @@ public final class TutorTest_H1_6 {
 
         @Test
         @DisplayName("Criterion: Initialization of fields")
-        void testFields() {
+        public void testFields() {
           final var constructor = getTestConstructor();
 
           final var expectedField1 = TutorConstants.H1_6_FIELD_EXAMPLE_1;

@@ -45,7 +45,7 @@ public final class TutorTest_H1_2 {
 
     @Test
     @DisplayName("Criterion: Only modifiers public abstract")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestClass();
       final var expected = Modifier.STATIC.negate().and(Modifier.PUBLIC, Modifier.ABSTRACT);
       TutorUtils.assertModifiers(expected, actual);
@@ -53,7 +53,7 @@ public final class TutorTest_H1_2 {
 
     @Test
     @DisplayName("Criterion: No extension")
-    void testExtension() {
+    public void testExtension() {
       final var expected = Object.class;
       final var actual = getTestClass().getSuperclass();
       Assertions.assertEquals(
@@ -63,7 +63,7 @@ public final class TutorTest_H1_2 {
 
     @Test
     @DisplayName("Criterion: Type parameter X, Y, Z")
-    void testTypeParameters() {
+    public void testTypeParameters() {
       final var clazz = getTestClass();
       TutorUtils_H1.assertClassTypeParameters(clazz);
     }
@@ -83,7 +83,7 @@ public final class TutorTest_H1_2 {
 
     @Test
     @DisplayName("Criterion: Only modifiers protected final")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestField();
       final var expected = Modifier.STATIC.negate().and(Modifier.PROTECTED, Modifier.FINAL);
       TutorUtils.assertModifiers(expected, actual);
@@ -91,7 +91,7 @@ public final class TutorTest_H1_2 {
 
     @Test
     @DisplayName("Criterion: Type Traits<X, Y, Z>")
-    void testType() {
+    public void testType() {
       final var field = getTestField();
       final var clazz = getTestFieldClass();
       TutorUtils.assertGenericType(
@@ -108,7 +108,7 @@ public final class TutorTest_H1_2 {
   @DisplayName("Criterion: Constructor")
   public final class TestConstructor {
 
-    public Constructor<?> getTestConstructor() {
+    private Constructor<?> getTestConstructor() {
       final var clazz = getTestClass();
       final var parameter = getTestFieldClass();
       return TutorUtils.assertConstructor(clazz, parameter);
@@ -116,7 +116,7 @@ public final class TutorTest_H1_2 {
 
     @Test
     @DisplayName("Criterion: Only modifier public")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestConstructor();
       final var expected = Modifier.PUBLIC;
       TutorUtils.assertModifiers(expected, actual);
@@ -124,7 +124,7 @@ public final class TutorTest_H1_2 {
 
     @Test
     @DisplayName("Criterion: Parameter Traits<X, Y, Z>")
-    void testParameter() {
+    public void testParameter() {
       final var constructor = getTestConstructor();
       final var parameterClass = getTestFieldClass();
       TutorUtils_H1.assertConstructorParameterH1(constructor, parameterClass);
@@ -147,7 +147,7 @@ public final class TutorTest_H1_2 {
 
     @Test
     @DisplayName("Criterion: Only modifiers public abstract")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestMethod();
       final var expected = Modifier.STATIC.negate().and(Modifier.PUBLIC, Modifier.ABSTRACT);
       TutorUtils.assertModifiers(expected, actual);
@@ -155,14 +155,14 @@ public final class TutorTest_H1_2 {
 
     @Test
     @DisplayName("Criterion: Parameter X[]")
-    void testParameters() {
+    public void testParameters() {
       final var method = getTestMethod();
       TutorUtils_H1.assertParametersH1_2(method);
     }
 
     @Test
     @DisplayName("Criterion: Return type Z")
-    void testReturnType() {
+    public void testReturnType() {
       final var method = getTestMethod();
       TutorUtils_H1.assertReturnTypeH1_2(method);
     }

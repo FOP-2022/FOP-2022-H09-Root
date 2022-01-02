@@ -974,7 +974,8 @@ public final class H09_RubricProvider implements RubricProvider {
               () -> TutorTest_H2_1.TestRabbit.TestMethodsTypeOfX.class.getMethod("testTypeOfPlacental")
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_1.TestRabbit.TestMethodsTypeOfX.class.getMethod("testTypeOfLagomorph")
+              () -> TutorTest_H2_1.TestRabbit.TestMethodsTypeOfX.class.getMethod(
+                "testTypeOfLagomorpha")
             )
           )
         )
@@ -1083,19 +1084,19 @@ public final class H09_RubricProvider implements RubricProvider {
         .requirePass(
           JUnitTestRef.and(
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_2.TestMethod1.class.getMethod("testResultListOfPlacental")
+              () -> TutorTest_H2_2.TestMethod2.class.getMethod("testResultListOfPlacental")
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_2.TestMethod1.class.getMethod("testResultListOfMammal")
+              () -> TutorTest_H2_2.TestMethod2.class.getMethod("testResultListOfMammal")
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_2.TestMethod1.class.getMethod("testResultListOfVertebrate")
+              () -> TutorTest_H2_2.TestMethod2.class.getMethod("testResultListOfVertebrate")
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_2.TestMethod1.class.getMethod("testResultListOfAnimal")
+              () -> TutorTest_H2_2.TestMethod2.class.getMethod("testResultListOfAnimal")
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_2.TestMethod1.class.getMethod("testResultListOfObject")
+              () -> TutorTest_H2_2.TestMethod2.class.getMethod("testResultListOfObject")
             )
           )
         )
@@ -1113,10 +1114,10 @@ public final class H09_RubricProvider implements RubricProvider {
         .requirePass(
           JUnitTestRef.and(
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_2.TestMethod2.class.getMethod("testModifiers")
+              () -> TutorTest_H2_2.TestMethod3.class.getMethod("testModifiers")
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_2.TestMethod2.class.getMethod("testParameters")
+              () -> TutorTest_H2_2.TestMethod3.class.getMethod("testParameters")
             )
           )
         )

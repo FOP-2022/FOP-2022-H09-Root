@@ -40,7 +40,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Only modifiers public")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestClass();
       final var expected = Modifier.ABSTRACT
         .nand(Modifier.FINAL, Modifier.STATIC)
@@ -50,7 +50,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: No extension")
-    void testExtension() {
+    public void testExtension() {
       final var expected = Object.class;
       final var actual = getTestClass().getSuperclass();
       Assertions.assertEquals(
@@ -60,7 +60,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Type parameter X, Y, Z")
-    void testTypeParameters() {
+    public void testTypeParameters() {
       final var clazz = getTestClass();
       TutorUtils_H1.assertClassTypeParameters(clazz);
     }
@@ -81,7 +81,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Only modifiers private final")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestField();
       final var expected = Modifier.STATIC.negate().and(Modifier.PRIVATE, Modifier.FINAL);
       TutorUtils.assertModifiers(expected, actual);
@@ -89,7 +89,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Type Predicate<? super X>")
-    void testType() {
+    public void testType() {
       final var actual = getTestField();
       final var type = actual.getGenericType();
       TutorUtils.assertGenericType(
@@ -99,7 +99,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Getter method")
-    void testGetter() {
+    public void testGetter() {
       final var method = TutorUtils.assertMethod(getTestClass(), TutorConstants.H1_1_METHOD_NAME_1);
 
       // Check modifier
@@ -136,7 +136,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Only modifiers private final")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestField();
       final var expected = Modifier.STATIC.negate().and(Modifier.PRIVATE, Modifier.FINAL);
       TutorUtils.assertModifiers(expected, actual);
@@ -144,7 +144,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Type Function<? super X, ? extends Y>")
-    void testType() {
+    public void testType() {
       final var actual = getTestField();
       final var type = actual.getGenericType();
       TutorUtils.assertGenericType(
@@ -154,7 +154,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Getter method")
-    void testGetter() {
+    public void testGetter() {
       final var method = TutorUtils.assertMethod(getTestClass(), TutorConstants.H1_1_METHOD_NAME_2);
 
       // Check modifier
@@ -191,7 +191,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Only modifiers private final")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestField();
       final var expected = Modifier.STATIC.negate().and(Modifier.PRIVATE, Modifier.FINAL);
       TutorUtils.assertModifiers(expected, actual);
@@ -199,7 +199,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Type BiFunction<Z, ? super Y, Z")
-    void testType() {
+    public void testType() {
       final var actual = getTestField();
       final var type = actual.getGenericType();
       TutorUtils.assertGenericType(
@@ -209,7 +209,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Getter method")
-    void testGetter() {
+    public void testGetter() {
       final var method = TutorUtils.assertMethod(getTestClass(), TutorConstants.H1_1_METHOD_NAME_3);
 
       // Check modifier
@@ -247,7 +247,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Only modifiers private final")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestField();
       final var expected = Modifier.STATIC.negate().and(Modifier.PRIVATE, Modifier.FINAL);
       TutorUtils.assertModifiers(expected, actual);
@@ -255,7 +255,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Type Z")
-    void testType() {
+    public void testType() {
       final var field = getTestField();
       final var type = field.getGenericType();
       final var expected = TutorConstants.H1_1_FIELD_TYPE_PARAMETER_4;
@@ -267,7 +267,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Getter method")
-    void testGetter() {
+    public void testGetter() {
       final var method = TutorUtils.assertMethod(getTestClass(), TutorConstants.H1_1_METHOD_NAME_4);
 
       // Check modifier
@@ -309,7 +309,7 @@ public final class TutorTest_H1_1 {
 
     @Test
     @DisplayName("Criterion: Only modifier public")
-    void testModifiers() {
+    public void testModifiers() {
       final var actual = getTestClass();
       final var expected = Modifier.PUBLIC;
       TutorUtils.assertModifiers(expected, actual);
@@ -318,14 +318,14 @@ public final class TutorTest_H1_1 {
     @Test
     @DisplayName("Criterion: Parameter Predicate<? super X>, Function<? super X, ? extends Y>, " +
       "BiFunction<Z, ? super Y, Z>, Z")
-    void testParameterTypes() {
+    public void testParameterTypes() {
       final var constructor = getTestConstructor();
       TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, false);
     }
 
     @Test
     @DisplayName("Criterion: Initialization of fields")
-    void testFields() {
+    public void testFields() {
       final var constructor = getTestConstructor();
       TutorUtils_H1.assertConstructorFieldsH1_1(constructor, false);
     }
