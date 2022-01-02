@@ -32,15 +32,13 @@ public final class TutorConstants {
   /**
    * Returns the path to the source code which will start from the source set.
    *
-   * @param sourceSet   the source set to look for the class
    * @param packageName the package name where the class can be found
    * @param className   the class name of the source code
    *
    * @return the  path to the source code
    */
-  private static String getPathToSource(final String sourceSet, final String packageName,
-                                        final String className) {
-    return String.format("%s%s/%s.java", sourceSet, packageName.replace(".", "/"), className);
+  private static String getPathToSource(final String packageName, final String className) {
+    return String.format("%s/%s.java", packageName.replace(".", "/"), className);
   }
 
   /**
@@ -167,18 +165,18 @@ public final class TutorConstants {
   /**
    * The path to the source code of the task H1.3.
    */
-  public static final String H1_3_PATH_TO_SOURCE = getPathToSource(SOURCESET_MAIN,
-    H1_PACKAGE_NAME, H1_3_CLASS_NAME);
+  public static final String H1_3_PATH_TO_SOURCE = getPathToSource(H1_PACKAGE_NAME,
+    H1_3_CLASS_NAME);
   /**
    * The path to the source code of the task H1.4.
    */
-  public static final String H1_4_PATH_TO_SOURCE = getPathToSource(SOURCESET_MAIN,
-    H1_PACKAGE_NAME, H1_4_CLASS_NAME);
+  public static final String H1_4_PATH_TO_SOURCE = getPathToSource(H1_PACKAGE_NAME,
+    H1_4_CLASS_NAME);
   /**
    * The path to the source code of the task H1.6.
    */
-  public static final String H1_6_PATH_TO_SOURCE = getPathToSource(SOURCESET_TEST,
-    H1_PACKAGE_NAME, H1_6_CLASS_NAME);
+  public static final String H1_6_PATH_TO_SOURCE = getPathToSource(H1_PACKAGE_NAME,
+    H1_6_CLASS_NAME);
 
   /**
    * The generic type parameters used in the tasks in H1.
@@ -666,8 +664,8 @@ public final class TutorConstants {
   /**
    * The path to the source code of the task H2.3.
    */
-  public static final String H2_3_PATH_TO_SOURCE = getPathToSource(SOURCESET_TEST,
-    H2_PACKAGE_NAME, H2_3_CLASS_NAME);
+  public static final String H2_3_PATH_TO_SOURCE = getPathToSource(H2_PACKAGE_NAME,
+    H2_3_CLASS_NAME);
 
   /**
    * The method name of the class {@value H2_1_CLASS_NAME_1}.

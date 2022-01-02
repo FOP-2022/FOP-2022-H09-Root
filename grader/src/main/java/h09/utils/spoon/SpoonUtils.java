@@ -1,5 +1,6 @@
 package h09.utils.spoon;
 
+import h09.utils.TutorMessage;
 import org.junit.jupiter.api.Assertions;
 import org.sourcegrade.jagr.api.testing.TestCycle;
 import spoon.Launcher;
@@ -12,7 +13,8 @@ import java.util.Map;
 
 public final class SpoonUtils {
 
-  private final static Map<String, QueueProcessingManager> CACHE_PROCESSING_MANAGER = new HashMap<>();
+  private static final Map<String, QueueProcessingManager> CACHE_PROCESSING_MANAGER =
+    new HashMap<>();
 
   private SpoonUtils() {
   }
@@ -20,8 +22,7 @@ public final class SpoonUtils {
   public static VirtualFile getSourceCode(final TestCycle testCycle, final String path) {
     final var source = testCycle.getSubmission().getSourceFile(path);
     if (source==null) {
-      return Assertions.fail(String.format("The specified source code %s could not be accessed.",
-        path));
+      return Assertions.fail(TutorMessage.SOURCE_CODE_NO_ACCESS.format(path));
     }
     return new VirtualFile(source.getContent());
   }
