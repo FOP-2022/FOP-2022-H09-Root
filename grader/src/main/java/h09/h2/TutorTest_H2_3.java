@@ -113,14 +113,14 @@ public final class TutorTest_H2_3 {
     @Test
     @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirements - At least 3 possible animals")
-    void testRequirements3(final TestCycle testCycle) {
+    public void testRequirements3(final TestCycle testCycle) {
       assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_1, 3, expectedAnimals);
     }
 
     @Test
     @ExtendWith(TestCycleResolver.class)
     @DisplayName("Criterion: Requirements - At least 7 possible animals")
-    void testRequirements7(final TestCycle testCycle) {
+    public void testRequirements7(final TestCycle testCycle) {
       assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_1, 7, expectedAnimals);
     }
   }
