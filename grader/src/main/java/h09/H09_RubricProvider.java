@@ -15,6 +15,7 @@ import org.sourcegrade.jagr.api.rubric.JUnitTestRef;
 import org.sourcegrade.jagr.api.rubric.Rubric;
 import org.sourcegrade.jagr.api.rubric.RubricForSubmission;
 import org.sourcegrade.jagr.api.rubric.RubricProvider;
+import org.sourcegrade.jagr.api.testing.TestCycle;
 
 /**
  * Specifies the criteria of the rubric.
@@ -326,7 +327,7 @@ public final class H09_RubricProvider implements RubricProvider {
               () -> TutorTest_H1_3.TestMethod.class.getMethod("testReturnValue")
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_3.TestMethod.class.getMethod("testRequirementArrays")
+              () -> TutorTest_H1_3.TestMethod.class.getMethod("testRequirementArrays", TestCycle.class)
             )
           )
         )
@@ -343,7 +344,7 @@ public final class H09_RubricProvider implements RubricProvider {
       Grader.testAwareBuilder()
         .requirePass(
           JUnitTestRef.ofMethod(
-            () -> TutorTest_H1_3.TestClassHeader.class.getMethod("testImports")
+            () -> TutorTest_H1_3.TestClassHeader.class.getMethod("testImports", TestCycle.class)
           )
         )
         .pointsPassedMax()
@@ -441,10 +442,10 @@ public final class H09_RubricProvider implements RubricProvider {
               () -> TutorTest_H1_4.TestMethod.class.getMethod("testReturnValue")
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_4.TestMethod.class.getMethod("testRequirementArrays")
+              () -> TutorTest_H1_4.TestMethod.class.getMethod("testRequirementArrays", TestCycle.class)
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_4.TestMethod.class.getMethod("testRequirementForeachLoop")
+              () -> TutorTest_H1_4.TestMethod.class.getMethod("testRequirementForeachLoop", TestCycle.class)
             )
           )
         )
@@ -462,7 +463,7 @@ public final class H09_RubricProvider implements RubricProvider {
       Grader.testAwareBuilder()
         .requirePass(
           JUnitTestRef.ofMethod(
-            () -> TutorTest_H1_4.TestClassHeader.class.getMethod("testImports")
+            () -> TutorTest_H1_4.TestClassHeader.class.getMethod("testImports", TestCycle.class)
           )
         )
         .pointsPassedMax()
@@ -472,8 +473,8 @@ public final class H09_RubricProvider implements RubricProvider {
 
   public static final Criterion H1_4_6 = Criterion.builder()
     .shortDescription("Das Attribut combine ist vollständig und korrekt.")
-    .maxPoints(0)
-    .minPoints(-1)
+    .maxPoints(1)
+    .minPoints(0)
     .grader(
       Grader.testAwareBuilder()
         .requirePass(
@@ -703,7 +704,7 @@ public final class H09_RubricProvider implements RubricProvider {
         .requirePass(
           JUnitTestRef.and(
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_6.TestMethod1.class.getMethod("testRequirement")
+              () -> TutorTest_H1_6.TestMethod1.class.getMethod("testRequirement", TestCycle.class)
             )
           )
         )
@@ -722,7 +723,7 @@ public final class H09_RubricProvider implements RubricProvider {
         .requirePass(
           JUnitTestRef.and(
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_6.TestMethod2.class.getMethod("testRequirement")
+              () -> TutorTest_H1_6.TestMethod2.class.getMethod("testRequirement", TestCycle.class)
             )
           )
         )
@@ -741,7 +742,7 @@ public final class H09_RubricProvider implements RubricProvider {
         .requirePass(
           JUnitTestRef.and(
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_6.TestMethod3.class.getMethod("testRequirement")
+              () -> TutorTest_H1_6.TestMethod3.class.getMethod("testRequirement", TestCycle.class)
             ),
             JUnitTestRef.ofMethod(
               () -> TutorTest_H1_6.TestMethod3.TestPerson.TestClassHeader.class.getMethod(
@@ -1199,10 +1200,10 @@ public final class H09_RubricProvider implements RubricProvider {
           JUnitTestRef.and(
             // TODO CHECK RESULT
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_3.TestMethod1.class.getMethod("testRequirements3")
+              () -> TutorTest_H2_3.TestMethod1.class.getMethod("testRequirements3", TestCycle.class)
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_3.TestMethod1.class.getMethod("testRequirements7")
+              () -> TutorTest_H2_3.TestMethod1.class.getMethod("testRequirements7", TestCycle.class)
             )
           )
         )
@@ -1221,10 +1222,10 @@ public final class H09_RubricProvider implements RubricProvider {
           JUnitTestRef.and(
             // TODO CHECK RESULT
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_3.TestMethod2.class.getMethod("testRequirements4")
+              () -> TutorTest_H2_3.TestMethod2.class.getMethod("testRequirements4", TestCycle.class)
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_3.TestMethod2.class.getMethod("testRequirements9")
+              () -> TutorTest_H2_3.TestMethod2.class.getMethod("testRequirements9", TestCycle.class)
             )
           )
         )
@@ -1243,10 +1244,10 @@ public final class H09_RubricProvider implements RubricProvider {
           JUnitTestRef.and(
             // TODO CHECK RESULT
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_3.TestMethod3.class.getMethod("testRequirements3")
+              () -> TutorTest_H2_3.TestMethod3.class.getMethod("testRequirements3", TestCycle.class)
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_3.TestMethod3.class.getMethod("testRequirements6")
+              () -> TutorTest_H2_3.TestMethod3.class.getMethod("testRequirements6", TestCycle.class)
             )
           )
         )
