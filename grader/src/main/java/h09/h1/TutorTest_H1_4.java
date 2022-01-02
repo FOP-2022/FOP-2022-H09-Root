@@ -186,53 +186,53 @@ public final class TutorTest_H1_4 {
       final var result = TutorUtils.invokeMethod(method, instance, new Object[]{elements});
       Assertions.assertEquals(TutorConstants.H1_1_FIELD_EXAMPLE_3_RESULT, result);
     }
-  }
 
-  @Test
-  @ExtendWith(TestCycleResolver.class)
-  @DisplayName("Criterion: Requirement - No arrays")
-  public void testRequirementArrays(final TestCycle testCycle) {
-    final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
-      new ArraysInstantiationMethodBodyProcessor(TutorConstants.H1_2_METHOD_NAME));
+    @Test
+    @ExtendWith(TestCycleResolver.class)
+    @DisplayName("Criterion: Requirement - No arrays")
+    public void testRequirementArrays(final TestCycle testCycle) {
+      final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
+        new ArraysInstantiationMethodBodyProcessor(TutorConstants.H1_2_METHOD_NAME));
 
-    final var expected = 0;
-    final var actual = processor.getArrays().size();
-    Assertions.assertEquals(
-      expected, actual,
-      TutorMessage.REQUIREMENT_NO_ARRAY.format(expected, actual)
-    );
-  }
+      final var expected = 0;
+      final var actual = processor.getArrays().size();
+      Assertions.assertEquals(
+        expected, actual,
+        TutorMessage.REQUIREMENT_NO_ARRAY.format(expected, actual)
+      );
+    }
 
-  @Test
-  @ExtendWith(TestCycleResolver.class)
-  @DisplayName("Criterion: Requirement - Only one foreach")
-  public void testRequirementForeachLoop(final TestCycle testCycle) {
-    final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
-      new LoopsMethodBodyProcessor(TutorConstants.H1_2_METHOD_NAME));
+    @Test
+    @ExtendWith(TestCycleResolver.class)
+    @DisplayName("Criterion: Requirement - Only one foreach")
+    public void testRequirementForeachLoop(final TestCycle testCycle) {
+      final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
+        new LoopsMethodBodyProcessor(TutorConstants.H1_2_METHOD_NAME));
 
-    final var expectedForEach = 1;
-    final var actualForEach = processor.getForeachLoops().size();
-    Assertions.assertEquals(expectedForEach, actualForEach,
-      TutorMessage.REQUIREMENT_FOREACH_LOOP.format(expectedForEach, actualForEach)
-    );
+      final var expectedForEach = 1;
+      final var actualForEach = processor.getForeachLoops().size();
+      Assertions.assertEquals(expectedForEach, actualForEach,
+        TutorMessage.REQUIREMENT_FOREACH_LOOP.format(expectedForEach, actualForEach)
+      );
 
-    final var actualFor = processor.getForLoops().size();
-    Assertions.assertTrue(processor.getForLoops().isEmpty(),
-      TutorMessage.REQUIREMENT_FOREACH_LOOP.format(
-        expectedForEach, String.format("%d for loop(s)", actualFor))
-    );
+      final var actualFor = processor.getForLoops().size();
+      Assertions.assertTrue(processor.getForLoops().isEmpty(),
+        TutorMessage.REQUIREMENT_FOREACH_LOOP.format(
+          expectedForEach, String.format("%d for loop(s)", actualFor))
+      );
 
-    final var actualWhile = processor.getWhileLoops().size();
-    Assertions.assertTrue(processor.getWhileLoops().isEmpty(),
-      TutorMessage.REQUIREMENT_FOREACH_LOOP.format(
-        expectedForEach, String.format("%d while loop(s)", actualWhile))
-    );
+      final var actualWhile = processor.getWhileLoops().size();
+      Assertions.assertTrue(processor.getWhileLoops().isEmpty(),
+        TutorMessage.REQUIREMENT_FOREACH_LOOP.format(
+          expectedForEach, String.format("%d while loop(s)", actualWhile))
+      );
 
-    final var actualDoWhile = processor.getDoWhileLoops().size();
-    Assertions.assertTrue(processor.getDoWhileLoops().isEmpty(),
-      TutorMessage.REQUIREMENT_FOREACH_LOOP.format(
-        expectedForEach, String.format("%d do-while loop(s)", actualDoWhile))
-    );
+      final var actualDoWhile = processor.getDoWhileLoops().size();
+      Assertions.assertTrue(processor.getDoWhileLoops().isEmpty(),
+        TutorMessage.REQUIREMENT_FOREACH_LOOP.format(
+          expectedForEach, String.format("%d do-while loop(s)", actualDoWhile))
+      );
+    }
   }
 
   /* *********************************************************************
