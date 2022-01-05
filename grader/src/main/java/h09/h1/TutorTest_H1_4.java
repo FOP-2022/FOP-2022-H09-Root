@@ -303,8 +303,8 @@ public final class TutorTest_H1_4 {
     public final class TestConstructor {
 
       @Nested
-      @DisplayName("Criterion: 3 arguments Constructor")
-      public final class Test3Args {
+      @DisplayName("Criterion: 4 arguments Constructor")
+      public final class Test4Args {
 
         private Constructor<?> getTestConstructor() {
           final var clazz = getTestFieldClass();
@@ -339,8 +339,8 @@ public final class TutorTest_H1_4 {
       }
 
       @Nested
-      @DisplayName("Criterion: 4 arguments Constructor")
-      public final class Test4Args {
+      @DisplayName("Criterion: 5 arguments Constructor")
+      public final class Test5Args {
 
         private Constructor<?> getTestConstructor() {
           final var clazz = getTestFieldClass();
