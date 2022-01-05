@@ -300,7 +300,7 @@ public final class TutorTest_H2_1 {
       }
 
       @Test
-      @DisplayName("Criterion: Method nameOfIndividual return value")
+      @DisplayName("Criterion: Method getNameOfIndividualeOfVertebrate return value")
       public void testMethodNameOfIndividual() {
         resetCounter(() -> {
           final var constructor = getTestConstructor();
@@ -340,28 +340,28 @@ public final class TutorTest_H2_1 {
       }
 
       @Test
-      @DisplayName("Criterion: Method typeOfAnimal return value")
+      @DisplayName("Criterion: Method getTypeOfAnimal return value")
       public void testTypeOfAnimal() {
         assertTypeOfXReturnValue(TutorConstants.H2_1_CLASS_NAME_1,
           TutorConstants.H2_1_CLASS_NAME_2);
       }
 
       @Test
-      @DisplayName("Criterion: Method typeOfVertebrate return value")
-      public void testTypeOfVertebrate() {
+      @DisplayName("Criterion: Method getTypeOfVertebrate return value")
+      public void testGetTypeOfVertebrate() {
         assertTypeOfXReturnValue(TutorConstants.H2_1_CLASS_NAME_2,
           TutorConstants.H2_1_CLASS_NAME_3);
       }
 
       @Test
-      @DisplayName("Criterion: Method typeOfMammal return value")
+      @DisplayName("Criterion: Method getTypeOfMammal return value")
       public void testTypeOfMammal() {
         assertTypeOfXReturnValue(TutorConstants.H2_1_CLASS_NAME_3,
           TutorConstants.H2_1_CLASS_NAME_5);
       }
 
       @Test
-      @DisplayName("Criterion: Method typeOfPlacental return value")
+      @DisplayName("Criterion: Method getTypeOfPlacental return value")
       public void testTypeOfPlacental() {
         assertTypeOfXReturnValue(TutorConstants.H2_1_CLASS_NAME_5,
           TutorConstants.H2_1_CLASS_NAME_7);
@@ -369,7 +369,7 @@ public final class TutorTest_H2_1 {
 
 
       @Test
-      @DisplayName("Criterion: Method typeOfLagomorpha return value")
+      @DisplayName("Criterion: Method getTypeOfLagomorpha return value")
       public void testTypeOfLagomorpha() {
         assertTypeOfXReturnValue(TutorConstants.H2_1_CLASS_NAME_7,
           TutorConstants.H2_1_CLASS_NAME_9);

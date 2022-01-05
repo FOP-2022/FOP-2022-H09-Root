@@ -100,7 +100,7 @@ public final class TutorTest_H2_3 {
    **********************************************************************/
 
   @Nested
-  @DisplayName("Criterion: Method testTypeOfVertebrate")
+  @DisplayName("Criterion: Method testGetTypeOfVertebrate")
   public final class TestMethod1 {
 
     private final String[] expectedAnimals = {
@@ -130,7 +130,7 @@ public final class TutorTest_H2_3 {
    **********************************************************************/
 
   @Nested
-  @DisplayName("Criterion: Method testReturnAsLagomorphs")
+  @DisplayName("Criterion: Method testFilterLagomorphs")
   public final class TestMethod2 {
 
     private final String[] expectedAnimals = {
@@ -161,7 +161,7 @@ public final class TutorTest_H2_3 {
    **********************************************************************/
 
   @Nested
-  @DisplayName("Criterion: Method testTypeOfMammals")
+  @DisplayName("Criterion: Method testGetTypesOfMammals")
   public final class TestMethod3 {
 
     private final String[] expectedAnimals = {

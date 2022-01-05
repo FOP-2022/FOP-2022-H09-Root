@@ -19,26 +19,26 @@ class TestBiologyHierarchy {
   private final BiologyHierarchy hierarchy = new BiologyHierarchy();
 
   /**
-   * Tests whether the method {@link BiologyHierarchy#typeOfVertebrate(Vertebrate)} returns
+   * Tests whether the method {@link BiologyHierarchy#getTypeOfVertebrate(Vertebrate)} returns
    * the correct string.
    */
   @Test
-  void testTypeOfVertebrate() {
-    Assertions.assertNull(hierarchy.typeOfVertebrate(new TestVertebrate()));
-    Assertions.assertEquals("Mammal", hierarchy.typeOfVertebrate(new TestMammal()));
-    Assertions.assertEquals("Bird", hierarchy.typeOfVertebrate(new TestBird()));
-    Assertions.assertEquals("Mammal", hierarchy.typeOfVertebrate(new TestPlacental()));
-    Assertions.assertEquals("Mammal", hierarchy.typeOfVertebrate(new TestMonotreme()));
-    Assertions.assertEquals("Mammal", hierarchy.typeOfVertebrate(new TestRodent()));
-    Assertions.assertEquals("Mammal", hierarchy.typeOfVertebrate(new TestLagomorpha()));
+  void testGetTypeOfVertebrate() {
+    Assertions.assertNull(hierarchy.getTypeOfVertebrate(new TestVertebrate()));
+    Assertions.assertEquals("Mammal", hierarchy.getTypeOfVertebrate(new TestMammal()));
+    Assertions.assertEquals("Bird", hierarchy.getTypeOfVertebrate(new TestBird()));
+    Assertions.assertEquals("Mammal", hierarchy.getTypeOfVertebrate(new TestPlacental()));
+    Assertions.assertEquals("Mammal", hierarchy.getTypeOfVertebrate(new TestMonotreme()));
+    Assertions.assertEquals("Mammal", hierarchy.getTypeOfVertebrate(new TestRodent()));
+    Assertions.assertEquals("Mammal", hierarchy.getTypeOfVertebrate(new TestLagomorpha()));
   }
 
   /**
-   * Tests whether the method {@link BiologyHierarchy#returnAsLagomorphs(List)} returns
+   * Tests whether the method {@link BiologyHierarchy#filterLagomorphs(List)} returns
    * the correct animals.
    */
   @Test
-  void testReturnAsLagomorphs() {
+  void testFilterLagomorphs() {
     final var animal = new TestAnimal();
     final var vertebrate = new TestVertebrate();
     final var mammal = new TestMammal();
@@ -104,20 +104,20 @@ class TestBiologyHierarchy {
       leporidae
     );
 
-    Assertions.assertEquals(expected, hierarchy.returnAsLagomorphs(lp));
-    Assertions.assertEquals(expected, hierarchy.returnAsLagomorphs(lm));
-    Assertions.assertEquals(expected, hierarchy.returnAsLagomorphs(lv));
-    Assertions.assertEquals(expected, hierarchy.returnAsLagomorphs(la));
-    Assertions.assertEquals(expected, hierarchy.returnAsLagomorphs(lo));
+    Assertions.assertEquals(expected, hierarchy.filterLagomorphs(lp));
+    Assertions.assertEquals(expected, hierarchy.filterLagomorphs(lm));
+    Assertions.assertEquals(expected, hierarchy.filterLagomorphs(lv));
+    Assertions.assertEquals(expected, hierarchy.filterLagomorphs(la));
+    Assertions.assertEquals(expected, hierarchy.filterLagomorphs(lo));
   }
 
 
   /**
-   * Tests whether the method {@link BiologyHierarchy#typeOfMammals(List)} returns
-   * the correct outputs of the method calls {@link Mammal#typeOfMammal()}
+   * Tests whether the method {@link BiologyHierarchy#getTypesOfMammals(List)} returns
+   * the correct outputs of the method calls {@link Mammal#getTypeOfMammal()}
    */
   @Test
-  void testTypeOfMammals() {
+  void testGetTypesOfMammals() {
     final var mammal = new TestMammal();
     final var placental = new TestPlacental();
     final var monotreme = new TestMonotreme();
@@ -155,35 +155,35 @@ class TestBiologyHierarchy {
 
     final var em = new ArrayList<String>();
     for (final var m : lm) {
-      em.add(m.typeOfMammal());
+      em.add(m.getTypeOfMammal());
     }
     final var ep = new ArrayList<String>();
     for (final var m : lp) {
-      ep.add(m.typeOfMammal());
+      ep.add(m.getTypeOfMammal());
     }
     final var emo = new ArrayList<String>();
     for (final var m : lmo) {
-      emo.add(m.typeOfMammal());
+      emo.add(m.getTypeOfMammal());
     }
     final var el = new ArrayList<String>();
     for (final var m : ll) {
-      el.add(m.typeOfMammal());
+      el.add(m.getTypeOfMammal());
     }
     final var er = new ArrayList<String>();
     for (final var m : lr) {
-      er.add(m.typeOfMammal());
+      er.add(m.getTypeOfMammal());
     }
     final var ele = new ArrayList<String>();
     for (final var m : lle) {
-      ele.add(m.typeOfMammal());
+      ele.add(m.getTypeOfMammal());
     }
 
-    Assertions.assertEquals(em, hierarchy.typeOfMammals(lm));
-    Assertions.assertEquals(ep, hierarchy.typeOfMammals(lp));
-    Assertions.assertEquals(emo, hierarchy.typeOfMammals(lmo));
-    Assertions.assertEquals(el, hierarchy.typeOfMammals(ll));
-    Assertions.assertEquals(er, hierarchy.typeOfMammals(lr));
-    Assertions.assertEquals(ele, hierarchy.typeOfMammals(lle));
+    Assertions.assertEquals(em, hierarchy.getTypesOfMammals(lm));
+    Assertions.assertEquals(ep, hierarchy.getTypesOfMammals(lp));
+    Assertions.assertEquals(emo, hierarchy.getTypesOfMammals(lmo));
+    Assertions.assertEquals(el, hierarchy.getTypesOfMammals(ll));
+    Assertions.assertEquals(er, hierarchy.getTypesOfMammals(lr));
+    Assertions.assertEquals(ele, hierarchy.getTypesOfMammals(lle));
   }
 
   /**
@@ -192,7 +192,7 @@ class TestBiologyHierarchy {
   private static class TestAnimal implements Animal {
 
     @Override
-    public String typeOfAnimal() {
+    public String getTypeOfAnimal() {
       return "Animal";
     }
   }
@@ -203,12 +203,12 @@ class TestBiologyHierarchy {
   private static class TestVertebrate implements Vertebrate {
 
     @Override
-    public String typeOfAnimal() {
+    public String getTypeOfAnimal() {
       return "Vertebrate";
     }
 
     @Override
-    public String typeOfVertebrate() {
+    public String getTypeOfVertebrate() {
       return null;
     }
   }
@@ -219,17 +219,17 @@ class TestBiologyHierarchy {
   private static class TestMammal implements Mammal {
 
     @Override
-    public String typeOfAnimal() {
+    public String getTypeOfAnimal() {
       return "Vertebrate";
     }
 
     @Override
-    public String typeOfMammal() {
+    public String getTypeOfMammal() {
       return null;
     }
 
     @Override
-    public String typeOfVertebrate() {
+    public String getTypeOfVertebrate() {
       return "Mammal";
     }
   }
@@ -240,17 +240,17 @@ class TestBiologyHierarchy {
   private static class TestBird implements Bird {
 
     @Override
-    public String typeOfAnimal() {
+    public String getTypeOfAnimal() {
       return "Vertebrate";
     }
 
     @Override
-    public String typeOfBird() {
+    public String getTypeOfBird() {
       return null;
     }
 
     @Override
-    public String typeOfVertebrate() {
+    public String getTypeOfVertebrate() {
       return "Bird";
     }
   }
@@ -261,22 +261,22 @@ class TestBiologyHierarchy {
   private static class TestPlacental implements Placental {
 
     @Override
-    public String typeOfAnimal() {
+    public String getTypeOfAnimal() {
       return "Vertebrate";
     }
 
     @Override
-    public String typeOfMammal() {
+    public String getTypeOfMammal() {
       return "Placental";
     }
 
     @Override
-    public String typeOfPlacental() {
+    public String getTypeOfPlacental() {
       return null;
     }
 
     @Override
-    public String typeOfVertebrate() {
+    public String getTypeOfVertebrate() {
       return "Mammal";
     }
   }
@@ -287,22 +287,22 @@ class TestBiologyHierarchy {
   private static class TestMonotreme implements Monotreme {
 
     @Override
-    public String typeOfAnimal() {
+    public String getTypeOfAnimal() {
       return "Vertebrate";
     }
 
     @Override
-    public String typeOfMammal() {
+    public String getTypeOfMammal() {
       return "Monotreme";
     }
 
     @Override
-    public String typeOfMonotreme() {
+    public String getTypeOfMonotreme() {
       return null;
     }
 
     @Override
-    public String typeOfVertebrate() {
+    public String getTypeOfVertebrate() {
       return "Mammal";
     }
   }
@@ -313,27 +313,27 @@ class TestBiologyHierarchy {
   private static class TestRodent implements Rodent {
 
     @Override
-    public String typeOfAnimal() {
+    public String getTypeOfAnimal() {
       return "Vertebrate";
     }
 
     @Override
-    public String typeOfMammal() {
+    public String getTypeOfMammal() {
       return "Placental";
     }
 
     @Override
-    public String typeOfPlacental() {
+    public String getTypeOfPlacental() {
       return "Rodent";
     }
 
     @Override
-    public String typeOfRodent() {
+    public String getTypeOfRodent() {
       return null;
     }
 
     @Override
-    public String typeOfVertebrate() {
+    public String getTypeOfVertebrate() {
       return "Mammal";
     }
   }
@@ -344,27 +344,27 @@ class TestBiologyHierarchy {
   private static class TestLagomorpha implements Lagomorpha {
 
     @Override
-    public String typeOfAnimal() {
+    public String getTypeOfAnimal() {
       return "Vertebrate";
     }
 
     @Override
-    public String typeOfLagomorpha() {
+    public String getTypeOfLagomorpha() {
       return null;
     }
 
     @Override
-    public String typeOfMammal() {
+    public String getTypeOfMammal() {
       return "Placental";
     }
 
     @Override
-    public String typeOfPlacental() {
+    public String getTypeOfPlacental() {
       return "Lagomorpha";
     }
 
     @Override
-    public String typeOfVertebrate() {
+    public String getTypeOfVertebrate() {
       return "Mammal";
     }
   }

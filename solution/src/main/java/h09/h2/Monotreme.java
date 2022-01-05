@@ -12,5 +12,5 @@ public interface Monotreme extends Mammal {
    *
    * @return the type of this monotreme
    */
-  String typeOfMonotreme();
+  String getTypeOfMonotreme();
 }

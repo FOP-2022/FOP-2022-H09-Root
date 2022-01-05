@@ -12,5 +12,5 @@ public interface Lagomorpha extends Placental {
    *
    * @return the type of this lagomorpha
    */
-  String typeOfLagomorpha();
+  String getTypeOfLagomorpha();
 }

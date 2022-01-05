@@ -105,7 +105,7 @@ public final class TutorConstants {
    * @return the name of an animal typeOfX method
    */
   private static String getTypeOfXMethodName(final String className) {
-    return String.format("typeOf%s", className);
+    return String.format("getTypeOf%s", className);
   }
 
   /**
@@ -702,19 +702,19 @@ public final class TutorConstants {
   /**
    * The method name of the class {@value H2_1_CLASS_NAME_9}.
    */
-  public static final String H2_1_METHOD_NAME_9 = "nameOfIndividual";
+  public static final String H2_1_METHOD_NAME_9 = "getNameOfIndividualeOfVertebrate";
   /**
    * The method name 1 of the task 2.2.
    */
-  public static final String H2_2_METHOD_NAME_1 = "typeOfVertebrate";
+  public static final String H2_2_METHOD_NAME_1 = "getTypeOfVertebrate";
   /**
    * The method name 2 of the task 2.2.
    */
-  public static final String H2_2_METHOD_NAME_2 = "returnAsLagomorphs";
+  public static final String H2_2_METHOD_NAME_2 = "filterLagomorphs";
   /**
    * The method name 3 of the task 2.2.
    */
-  public static final String H2_2_METHOD_NAME_3 = "typeOfMammals";
+  public static final String H2_2_METHOD_NAME_3 = "getTypesOfMammals";
   /**
    * The test method name of {@value H2_2_METHOD_NAME_1}.
    */

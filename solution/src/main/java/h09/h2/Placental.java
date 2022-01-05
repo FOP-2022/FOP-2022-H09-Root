@@ -12,5 +12,5 @@ public interface Placental extends Mammal {
    *
    * @return the type of this placental
    */
-  String typeOfPlacental();
+  String getTypeOfPlacental();
 }

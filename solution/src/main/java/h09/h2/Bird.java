@@ -12,5 +12,5 @@ public interface Bird extends Vertebrate {
    *
    * @return the type of this bird
    */
-  String typeOfBird();
+  String getTypeOfBird();
 }

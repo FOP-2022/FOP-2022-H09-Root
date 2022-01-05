@@ -8,27 +8,27 @@ package h09.h2;
 public final class TutorTestLagomorpha implements Lagomorpha {
 
   @Override
-  public String typeOfAnimal() {
+  public String getTypeOfAnimal() {
     return "Vertebrate";
   }
 
   @Override
-  public String typeOfLagomorpha() {
+  public String getTypeOfLagomorpha() {
     return null;
   }
 
   @Override
-  public String typeOfMammal() {
+  public String getTypeOfMammal() {
     return "Placental";
   }
 
   @Override
-  public String typeOfPlacental() {
+  public String getTypeOfPlacental() {
     return "Lagomorph";
   }
 
   @Override
-  public String typeOfVertebrate() {
+  public String getTypeOfVertebrate() {
     return "Mammal";
   }
 }

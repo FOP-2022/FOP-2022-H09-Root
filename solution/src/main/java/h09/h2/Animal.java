@@ -12,5 +12,5 @@ public interface Animal {
    *
    * @return the type of this animal
    */
-  String typeOfAnimal();
+  String getTypeOfAnimal();
 }

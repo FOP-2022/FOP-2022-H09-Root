@@ -8,17 +8,17 @@ package h09.h2;
 public final class TutorTestMammal implements Mammal {
 
   @Override
-  public String typeOfAnimal() {
+  public String getTypeOfAnimal() {
     return "Vertebrate";
   }
 
   @Override
-  public String typeOfMammal() {
+  public String getTypeOfMammal() {
     return null;
   }
 
   @Override
-  public String typeOfVertebrate() {
+  public String getTypeOfVertebrate() {
     return "Mammal";
   }
 }

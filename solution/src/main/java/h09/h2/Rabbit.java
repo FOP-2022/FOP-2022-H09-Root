@@ -25,32 +25,32 @@ public class Rabbit implements Leporidae {
   }
 
   @Override
-  public String typeOfAnimal() {
+  public String getTypeOfAnimal() {
     return "Vertebrate";
   }
 
   @Override
-  public String typeOfVertebrate() {
+  public String getTypeOfVertebrate() {
     return "Mammal";
   }
 
   @Override
-  public String typeOfMammal() {
+  public String getTypeOfMammal() {
     return "Placental";
   }
 
   @Override
-  public String typeOfPlacental() {
+  public String getTypeOfPlacental() {
     return "Lagomorpha";
   }
 
   @Override
-  public String typeOfLagomorpha() {
+  public String getTypeOfLagomorpha() {
     return "Leporidae";
   }
 
   @Override
-  public String nameOfIndividual() {
+  public String getNameOfIndividualeOfVertebrate() {
     return String.valueOf(id);
   }
 }

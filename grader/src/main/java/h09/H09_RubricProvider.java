@@ -955,7 +955,7 @@ public final class H09_RubricProvider implements RubricProvider {
               () -> TutorTest_H2_1.TestRabbit.TestMethodsTypeOfX.class.getMethod("testTypeOfAnimal")
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H2_1.TestRabbit.TestMethodsTypeOfX.class.getMethod("testTypeOfVertebrate")
+              () -> TutorTest_H2_1.TestRabbit.TestMethodsTypeOfX.class.getMethod("testGetTypeOfVertebrate")
             ),
             JUnitTestRef.ofMethod(
               () -> TutorTest_H2_1.TestRabbit.TestMethodsTypeOfX.class.getMethod("testTypeOfMammal")
@@ -1005,7 +1005,7 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H2_2_2 = Criterion.builder()
-    .shortDescription("Die Methodensignatur von typeOfVertebrate ist vollständig und korrekt.")
+    .shortDescription("Die Methodensignatur von getTypeOfVertebrate ist vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
@@ -1029,7 +1029,7 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H2_2_3 = Criterion.builder()
-    .shortDescription("Die Methode typeOfVertebrate ist vollständig und korrekt.")
+    .shortDescription("Die Methode getTypeOfVertebrate ist vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
@@ -1045,7 +1045,7 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H2_2_4 = Criterion.builder()
-    .shortDescription("Die Methodensignatur von returnAsLagomorphs ist vollständig und korrekt.")
+    .shortDescription("Die Methodensignatur von filterLagomorphs ist vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
@@ -1066,7 +1066,7 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H2_2_5 = Criterion.builder()
-    .shortDescription("Die Methode returnAsLagomorphs ist vollständig und korrekt.")
+    .shortDescription("Die Methode filterLagomorphs ist vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
@@ -1096,7 +1096,7 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H2_2_6 = Criterion.builder()
-    .shortDescription("Die Methodensignatur von testTypeOfMammals ist vollständig und korrekt.")
+    .shortDescription("Die Methodensignatur von testGetTypesOfMammals ist vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
@@ -1117,7 +1117,7 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H2_2_7 = Criterion.builder()
-    .shortDescription("Die Methode testTypeOfMammals ist vollständig und korrekt.")
+    .shortDescription("Die Methode testGetTypesOfMammals ist vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
@@ -1180,7 +1180,7 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H2_3_2 = Criterion.builder()
-    .shortDescription("Die Methode testTypeOfVertebrate ist vollständig und korrekt.")
+    .shortDescription("Die Methode testGetTypeOfVertebrate ist vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
@@ -1202,7 +1202,7 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H2_3_3 = Criterion.builder()
-    .shortDescription("Die Methode testReturnAsLagomorphs ist vollständig und korrekt.")
+    .shortDescription("Die Methode testFilterLagomorphs ist vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
@@ -1224,7 +1224,7 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H2_3_4 = Criterion.builder()
-    .shortDescription("Die Methode testTypeOfMammals ist vollständig und korrekt.")
+    .shortDescription("Die Methode testGetTypesOfMammals ist vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(

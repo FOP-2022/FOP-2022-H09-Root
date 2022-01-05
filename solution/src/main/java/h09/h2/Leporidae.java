@@ -12,5 +12,5 @@ public interface Leporidae extends Lagomorpha {
    *
    * @return the name of this individual
    */
-  String nameOfIndividual();
+  String getNameOfIndividualeOfVertebrate();
 }

@@ -12,5 +12,5 @@ public interface Rodent extends Placental {
    *
    * @return the type of this rodent
    */
-  String typeOfRodent();
+  String getTypeOfRodent();
 }

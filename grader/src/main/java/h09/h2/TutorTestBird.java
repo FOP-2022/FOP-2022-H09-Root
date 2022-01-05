@@ -8,17 +8,17 @@ package h09.h2;
 public final class TutorTestBird implements Bird {
 
   @Override
-  public String typeOfAnimal() {
+  public String getTypeOfAnimal() {
     return "Vertebrate";
   }
 
   @Override
-  public String typeOfBird() {
+  public String getTypeOfBird() {
     return null;
   }
 
   @Override
-  public String typeOfVertebrate() {
+  public String getTypeOfVertebrate() {
     return "Bird";
   }
 }

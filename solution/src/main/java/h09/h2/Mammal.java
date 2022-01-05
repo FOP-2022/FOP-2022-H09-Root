@@ -12,5 +12,5 @@ public interface Mammal extends Vertebrate {
    *
    * @return the type of this mammal
    */
-  String typeOfMammal();
+  String getTypeOfMammal();
 }

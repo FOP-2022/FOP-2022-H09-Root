@@ -12,5 +12,5 @@ public interface Vertebrate extends Animal {
    *
    * @return the type of this vertebrate
    */
-  String typeOfVertebrate();
+  String getTypeOfVertebrate();
 }

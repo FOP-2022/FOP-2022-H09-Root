@@ -78,7 +78,7 @@ public final class TutorTest_H2_2 {
    **********************************************************************/
 
   @Nested
-  @DisplayName("Criterion: Method typeOfVertebrate")
+  @DisplayName("Criterion: Method getTypeOfVertebrate")
   public final class TestMethod1 {
 
     private Method getTestMethod() {
@@ -180,7 +180,7 @@ public final class TutorTest_H2_2 {
    **********************************************************************/
 
   @Nested
-  @DisplayName("Criterion: Method returnAsLagomorphs")
+  @DisplayName("Criterion: Method filterLagomorphs")
   public final class TestMethod2 {
 
     private Method getTestMethod() {
@@ -393,7 +393,7 @@ public final class TutorTest_H2_2 {
    **********************************************************************/
 
   @Nested
-  @DisplayName("Criterion: Method testTypeOfMammals:")
+  @DisplayName("Criterion: Method testGetTypesOfMammals:")
   public final class TestMethod3 {
 
     private Method getTestMethod() {
