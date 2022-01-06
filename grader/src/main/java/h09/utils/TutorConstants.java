@@ -310,6 +310,28 @@ public final class TutorConstants {
   public static final Object H1_1_FIELD_EXAMPLE_1_4 = 1;
 
   /**
+   * The default example field value of {@value H1_1_FIELD_NAME_1}.
+   */
+  public static final Object H1_1_FIELD_EXAMPLE_DEFAULT_1 = (Predicate<Integer>) x -> true;
+  /**
+   * The default example field value of {@value H1_1_FIELD_NAME_2}.
+   */
+  public static final Object H1_1_FIELD_EXAMPLE_DEFAULT_2 = (Function<Integer, Integer>) x -> x;
+  /**
+   * The example field value of {@value H1_1_FIELD_NAME_3}.
+   */
+  public static final Object H1_1_FIELD_EXAMPLE_DEFAULT_3 = (BiFunction<Integer, Integer, Integer>)
+    Integer::sum;
+  /**
+   * The example field value of {@value H1_1_FIELD_NAME_4}.
+   */
+  public static final Object H1_1_FIELD_EXAMPLE_DEFAULT_4 = 0;
+  /**
+   * The default result of the method {@value H1_2_METHOD_NAME}.
+   */
+  public static final Object H1_1_FIELD_EXAMPLE_DEFAULT_RESULT = 500500;
+
+  /**
    * The example field value of {@value H1_1_FIELD_NAME_1}.
    */
   public static final Object H1_1_FIELD_EXAMPLE_2_1 = (Predicate<Integer>) x -> x % 2==0;
@@ -331,6 +353,7 @@ public final class TutorConstants {
    * {@value H1_2_METHOD_NAME}.
    */
   public static final int H1_1_FIELD_EXAMPLE_2_ARRAY_SIZE = 1000;
+
   /**
    * The operation to fill the example array used for the method {@value H1_2_METHOD_NAME}.
    */

@@ -154,6 +154,42 @@ public final class TutorTest_H1_3 {
     }
 
     @Test
+    @DisplayName("Criterion: Return value only operation 3")
+    public void testReturnValueOperation3() {
+// Traits object
+      final var expectedField1 = TutorConstants.H1_1_FIELD_EXAMPLE_DEFAULT_1;
+      final var expectedField2 = TutorConstants.H1_1_FIELD_EXAMPLE_DEFAULT_2;
+      final var expectedField3 = TutorConstants.H1_1_FIELD_EXAMPLE_DEFAULT_3;
+      final var expectedField4 = TutorConstants.H1_1_FIELD_EXAMPLE_DEFAULT_4;
+
+      final var fieldClass = getTestFieldClass();
+      final var fieldConstructor = TutorUtils.assertConstructor(
+        fieldClass,
+        TutorConstants.H1_1_FIELD_TYPE_1, TutorConstants.H1_1_FIELD_TYPE_2,
+        TutorConstants.H1_1_FIELD_TYPE_3, TutorConstants.H1_1_FIELD_TYPE_4
+      );
+
+      final var fieldObject = TutorUtils.invokeConstructor(
+        fieldConstructor, expectedField1, expectedField2, expectedField3, expectedField4
+      );
+
+      // Main object
+      final var clazz = getTestClass();
+      final var constructor = TutorUtils.assertConstructor(clazz, fieldClass);
+      final var instance = TutorUtils.invokeConstructor(constructor, fieldObject);
+
+      // Method call
+      final var elements = new Integer[TutorConstants.H1_1_FIELD_EXAMPLE_2_ARRAY_SIZE];
+      IntStream.range(0, TutorConstants.H1_1_FIELD_EXAMPLE_2_ARRAY_SIZE)
+        .forEach(i -> TutorConstants.H1_1_FIELD_EXAMPLE_2_ARRAY_FILL.accept(i, elements));
+
+      final var method = getTestMethod();
+      final var result = TutorUtils.invokeMethod(method, instance, new Object[]{elements});
+      Assertions.assertEquals(TutorConstants.H1_1_FIELD_EXAMPLE_DEFAULT_RESULT, result);
+
+    }
+
+    @Test
     @DisplayName("Criterion: Return value")
     public void testReturnValue() {
       // Traits object

@@ -32,6 +32,30 @@ public final class H09_RubricProvider implements RubricProvider {
    **********************************************************************/
 
   public static final Criterion H1_1_1 = Criterion.builder()
+    .shortDescription("Die Klassensignatur ist vollständig und korrekt.")
+    .maxPoints(1)
+    .minPoints(0)
+    .grader(
+      Grader.testAwareBuilder()
+        .requirePass(
+          JUnitTestRef.and(
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_1.TestClassHeader.class.getMethod("testModifiers")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_1.TestClassHeader.class.getMethod("testExtension")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_1.TestClassHeader.class.getMethod("testTypeParameters")
+            )
+          )
+        )
+        .pointsPassedMax()
+        .pointsFailedMin()
+        .build())
+    .build();
+
+  public static final Criterion H1_1_2 = Criterion.builder()
     .shortDescription("Die Objektattribute existieren und haben die korrekten Modifiers.")
     .maxPoints(1)
     .minPoints(0)
@@ -50,33 +74,6 @@ public final class H09_RubricProvider implements RubricProvider {
             ),
             JUnitTestRef.ofMethod(
               () -> TutorTest_H1_1.TestField4.class.getMethod("testModifiers")
-            )
-          )
-        )
-        .pointsPassedMax()
-        .pointsFailedMin()
-        .build())
-    .build();
-
-  public static final Criterion H1_1_2 = Criterion.builder()
-    .shortDescription("Die Getter-Methoden für die Objektattribute sind vollständig und korrekt.")
-    .maxPoints(0)
-    .minPoints(-1)
-    .grader(
-      Grader.testAwareBuilder()
-        .requirePass(
-          JUnitTestRef.and(
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_1.TestField1.class.getMethod("testGetter")
-            ),
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_1.TestField2.class.getMethod("testGetter")
-            ),
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_1.TestField3.class.getMethod("testGetter")
-            ),
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_1.TestField4.class.getMethod("testGetter")
             )
           )
         )
@@ -113,30 +110,6 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H1_1_4 = Criterion.builder()
-    .shortDescription("Die Klassensignatur ist vollständig und korrekt.")
-    .maxPoints(1)
-    .minPoints(0)
-    .grader(
-      Grader.testAwareBuilder()
-        .requirePass(
-          JUnitTestRef.and(
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_1.TestClassHeader.class.getMethod("testModifiers")
-            ),
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_1.TestClassHeader.class.getMethod("testExtension")
-            ),
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_1.TestClassHeader.class.getMethod("testTypeParameters")
-            )
-          )
-        )
-        .pointsPassedMax()
-        .pointsFailedMin()
-        .build())
-    .build();
-
-  public static final Criterion H1_1_5 = Criterion.builder()
     .shortDescription("Der Konstruktor ist vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
@@ -160,10 +133,39 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
+  public static final Criterion H1_1_5 = Criterion.builder()
+    .shortDescription("Die Getter-Methoden für die Objektattribute sind vollständig und korrekt.")
+    .maxPoints(0)
+    .minPoints(-1)
+    .grader(
+      Grader.testAwareBuilder()
+        .requirePass(
+          JUnitTestRef.and(
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_1.TestField1.class.getMethod("testGetter")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_1.TestField2.class.getMethod("testGetter")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_1.TestField3.class.getMethod("testGetter")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_1.TestField4.class.getMethod("testGetter")
+            )
+          )
+        )
+        .pointsPassedMax()
+        .pointsFailedMin()
+        .build())
+    .build();
+
+
   public static final Criterion H1_1 = Criterion.builder()
     .shortDescription("H1.1: Klasse Traits")
     .addChildCriteria(H1_1_1, H1_1_2, H1_1_3, H1_1_4, H1_1_5)
     .build();
+
 
   /* *********************************************************************
    *                                H1.2                                 *
@@ -193,7 +195,6 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
-
   public static final Criterion H1_2_2 = Criterion.builder()
     .shortDescription("Das Attribut traits und der Konstruktor sind vollständig und korrekt.")
     .maxPoints(1)
@@ -214,7 +215,6 @@ public final class H09_RubricProvider implements RubricProvider {
         .pointsFailedMin()
         .build())
     .build();
-
 
   public static final Criterion H1_2_3 = Criterion.builder()
     .shortDescription("Die Methode apply sind vollständig und korrekt.")
@@ -251,7 +251,7 @@ public final class H09_RubricProvider implements RubricProvider {
    **********************************************************************/
 
   public static final Criterion H1_3_1 = Criterion.builder()
-    .shortDescription("Die Klassen- und Klassensignatur ist vollständig und korrekt.")
+    .shortDescription("Die Klassen- und Konstruktorsignatur sind vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
@@ -281,6 +281,50 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H1_3_2 = Criterion.builder()
+    .shortDescription("Mind. fold Operation funktioniert.")
+    .maxPoints(1)
+    .minPoints(0)
+    .grader(
+      Grader.testAwareBuilder()
+        .requirePass(
+          JUnitTestRef.and(
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_3.TestMethod.class.getMethod("testReturnValueOperation3")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_3.TestMethod.class.getMethod("testRequirementArrays", TestCycle.class)
+            )
+          )
+        )
+        .pointsPassedMax()
+        .pointsFailedMin()
+        .build())
+    .build();
+
+  public static final Criterion H1_3_3 = Criterion.builder()
+    .shortDescription("Alle Operationen funktioneren.")
+    .maxPoints(1)
+    .minPoints(0)
+    .grader(
+      Grader.testAwareBuilder()
+        .requirePass(
+          JUnitTestRef.and(
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_3.TestMethod.class.getMethod("testReturnValue")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_3.TestMethod.class.getMethod("testRequirementArrays", TestCycle.class)
+            )
+          )
+        )
+        .pointsPassedMax()
+        .pointsFailedMin()
+        .build())
+      .
+
+    build();
+
+  public static final Criterion H1_3_4 = Criterion.builder()
     .shortDescription("Die Methodensignatur ist vollständig und korrekt.")
     .maxPoints(0)
     .minPoints(-1)
@@ -304,31 +348,10 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
-  public static final Criterion H1_3_3 = Criterion.builder()
-    .shortDescription("Der Rückgabewert ist vollständig und korrekt.")
-    .maxPoints(2)
-    .minPoints(0)
-    .grader(
-      Grader.testAwareBuilder()
-        .requirePass(
-          JUnitTestRef.and(
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_3.TestMethod.class.getMethod("testReturnValue")
-            ),
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_3.TestMethod.class.getMethod("testRequirementArrays", TestCycle.class)
-            )
-          )
-        )
-        .pointsPassedMax()
-        .pointsFailedMin()
-        .build())
-    .build();
-
-  public static final Criterion H1_3_4 = Criterion.builder()
+  public static final Criterion H1_3_5 = Criterion.builder()
     .shortDescription("Es wurden keine Importe verwendet, die nicht explizit erlaubt waren.")
     .maxPoints(0)
-    .minPoints(-(H1_3_1.getMaxPoints() + H1_3_2.getMaxPoints()))
+    .minPoints(-(H1_3_1.getMaxPoints() + H1_3_2.getMaxPoints() + H1_3_3.getMaxPoints()))
     .grader(
       Grader.testAwareBuilder()
         .requirePass(
@@ -341,9 +364,10 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
+
   public static final Criterion H1_3 = Criterion.builder()
     .shortDescription("H1.3: Klasse MyFunctionWithFilterMapAndFold")
-    .addChildCriteria(H1_3_1, H1_3_2, H1_3_3, H1_3_4)
+    .addChildCriteria(H1_3_1, H1_3_2, H1_3_3, H1_3_4, H1_3_5)
     .build();
 
   /* *********************************************************************
@@ -351,7 +375,7 @@ public final class H09_RubricProvider implements RubricProvider {
    **********************************************************************/
 
   public static final Criterion H1_4_1 = Criterion.builder()
-    .shortDescription("Die Klassensignatur ist vollständig und korrekt.")
+    .shortDescription("Die Klassen- und Konstruktorsignatur sind vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
@@ -366,6 +390,12 @@ public final class H09_RubricProvider implements RubricProvider {
             ),
             JUnitTestRef.ofMethod(
               () -> TutorTest_H1_4.TestClassHeader.class.getMethod("testTypeParameters")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_4.TestConstructor.class.getMethod("testModifiers")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_4.TestConstructor.class.getMethod("testParameter")
             )
           )
         )
@@ -375,18 +405,21 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H1_4_2 = Criterion.builder()
-    .shortDescription("Die Signatur des Konstruktors ist vollständig und korrekt.")
-    .maxPoints(1)
+    .shortDescription("Der Rückgabewert ist vollständig und korrekt.")
+    .maxPoints(2)
     .minPoints(0)
     .grader(
       Grader.testAwareBuilder()
         .requirePass(
           JUnitTestRef.and(
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_4.TestConstructor.class.getMethod("testModifiers")
+              () -> TutorTest_H1_4.TestMethod.class.getMethod("testReturnValue")
             ),
             JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_4.TestConstructor.class.getMethod("testParameter")
+              () -> TutorTest_H1_4.TestMethod.class.getMethod("testRequirementArrays", TestCycle.class)
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_4.TestMethod.class.getMethod("testRequirementForeachLoop", TestCycle.class)
             )
           )
         )
@@ -420,34 +453,9 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H1_4_4 = Criterion.builder()
-    .shortDescription("Der Rückgabewert ist vollständig und korrekt.")
-    .maxPoints(1)
-    .minPoints(0)
-    .grader(
-      Grader.testAwareBuilder()
-        .requirePass(
-          JUnitTestRef.and(
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_4.TestMethod.class.getMethod("testReturnValue")
-            ),
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_4.TestMethod.class.getMethod("testRequirementArrays", TestCycle.class)
-            ),
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_4.TestMethod.class.getMethod("testRequirementForeachLoop", TestCycle.class)
-            )
-          )
-        )
-        .pointsPassedMax()
-        .pointsFailedMin()
-        .build())
-    .build();
-
-  public static final Criterion H1_4_5 = Criterion.builder()
     .shortDescription("Es wurden keine Importe verwendet, die nicht explizit erlaubt waren.")
     .maxPoints(0)
-    .minPoints(-(H1_4_1.getMaxPoints() + H1_4_2.getMaxPoints() + H1_4_3.getMaxPoints()
-      + H1_4_4.getMaxPoints()))
+    .minPoints(-(H1_4_1.getMaxPoints() + H1_4_2.getMaxPoints()))
     .grader(
       Grader.testAwareBuilder()
         .requirePass(
@@ -458,6 +466,11 @@ public final class H09_RubricProvider implements RubricProvider {
         .pointsPassedMax()
         .pointsFailedMin()
         .build())
+    .build();
+
+  public static final Criterion H1_4_5 = Criterion.builder()
+    .shortDescription("Klasse: MyFunctionWithAdjacent")
+    .addChildCriteria(H1_4_1, H1_4_2, H1_4_3, H1_4_4)
     .build();
 
   public static final Criterion H1_4_6 = Criterion.builder()
@@ -520,16 +533,13 @@ public final class H09_RubricProvider implements RubricProvider {
         .requirePass(
           JUnitTestRef.and(
             JUnitTestRef.ofMethod(
-              () -> Test5Args.class
-                .getMethod("testModifiers")
+              () -> Test5Args.class.getMethod("testModifiers")
             ),
             JUnitTestRef.ofMethod(
-              () -> Test5Args.class
-                .getMethod("testParameterTypes")
+              () -> Test5Args.class.getMethod("testParameterTypes")
             ),
             JUnitTestRef.ofMethod(
-              () -> Test5Args.class
-                .getMethod("testFields")
+              () -> Test5Args.class.getMethod("testFields")
             )
           )
         )
@@ -538,9 +548,14 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
+  public static final Criterion H1_4_9 = Criterion.builder()
+    .shortDescription("Klasse: Traits")
+    .addChildCriteria(H1_4_6, H1_4_7, H1_4_8)
+    .build();
+
   public static final Criterion H1_4 = Criterion.builder()
     .shortDescription("H1.4: Klasse MyFunctionWithAdjacent")
-    .addChildCriteria(H1_4_1, H1_4_2, H1_4_3, H1_4_4, H1_4_5, H1_4_6, H1_4_7, H1_4_8)
+    .addChildCriteria(H1_4_5, H1_4_9)
     .build();
 
   /* *********************************************************************
@@ -548,7 +563,7 @@ public final class H09_RubricProvider implements RubricProvider {
    **********************************************************************/
 
   public static final Criterion H1_5_1 = Criterion.builder()
-    .shortDescription("Die Klassensignatur ist vollständig und korrekt.")
+    .shortDescription("Die Klassen- und Konstruktorsignatur sind vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
@@ -560,6 +575,9 @@ public final class H09_RubricProvider implements RubricProvider {
             ),
             JUnitTestRef.ofMethod(
               () -> TutorTest_H1_5.TestClassHeader.class.getMethod("testTypeParameter")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_5.TestConstructor.class.getMethod("testModifiers")
             )
           )
         )
@@ -569,23 +587,7 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H1_5_2 = Criterion.builder()
-    .shortDescription("Die Signatur des Konstruktors ist vollständig und korrekt.")
-    .maxPoints(0)
-    .minPoints(-1)
-    .grader(
-      Grader.testAwareBuilder()
-        .requirePass(
-          JUnitTestRef.ofMethod(
-            () -> TutorTest_H1_5.TestConstructor.class.getMethod("testModifiers")
-          )
-        )
-        .pointsPassedMax()
-        .pointsFailedMin()
-        .build())
-    .build();
-
-  public static final Criterion H1_5_3 = Criterion.builder()
-    .shortDescription("Die Methodensignatur von createFunctionWithFilterMapFold und" +
+    .shortDescription("Die Methodensignatur von createFunctionWithFilterMapFold und " +
       "createFunctionWithFilterMapFoldAndCombine sind vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
@@ -618,7 +620,7 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
-  public static final Criterion H1_5_4 = Criterion.builder()
+  public static final Criterion H1_5_3 = Criterion.builder()
     .shortDescription("Der Rückgabewert von der Methode createFunctionWithFilterMapAndFold ist " +
       "vollständig und korrekt.")
     .maxPoints(1)
@@ -635,8 +637,7 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
-
-  public static final Criterion H1_5_5 = Criterion.builder()
+  public static final Criterion H1_5_4 = Criterion.builder()
     .shortDescription("Die Rückgabewert von der Methode createFunctionWithFilterMapFoldAndCombine" +
       " ist vollständig und korrekt.")
     .maxPoints(1)
@@ -653,9 +654,10 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
+
   public static final Criterion H1_5 = Criterion.builder()
     .shortDescription("H1.5: Klasse FunctionFactory")
-    .addChildCriteria(H1_5_1, H1_5_2, H1_5_3, H1_5_4, H1_5_5)
+    .addChildCriteria(H1_5_1, H1_5_2, H1_5_3, H1_5_4)
     .build();
 
   /* *********************************************************************
@@ -663,27 +665,6 @@ public final class H09_RubricProvider implements RubricProvider {
    **********************************************************************/
 
   public static final Criterion H1_6_1 = Criterion.builder()
-    .shortDescription("Die Klassensignatur ist vollständig und korrekt.")
-    .maxPoints(0)
-    .minPoints(-1)
-    .grader(
-      Grader.testAwareBuilder()
-        .requirePass(
-          JUnitTestRef.and(
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_6.TestClassHeader.class.getMethod("testModifiers")
-            ),
-            JUnitTestRef.ofMethod(
-              () -> TutorTest_H1_6.TestClassHeader.class.getMethod("testExtension")
-            )
-          )
-        )
-        .pointsPassedMax()
-        .pointsFailedMin()
-        .build())
-    .build();
-
-  public static final Criterion H1_6_2 = Criterion.builder()
     .shortDescription("Die Testmethode testCreateFunctionWithFilterMapAndFold1 ist vollständig " +
       "und korrekt.")
     .maxPoints(1)
@@ -702,7 +683,7 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
-  public static final Criterion H1_6_3 = Criterion.builder()
+  public static final Criterion H1_6_2 = Criterion.builder()
     .shortDescription("Die Testmethode testCreateFunctionWithFilterMapAndFold2 ist vollständig " +
       "und korrekt.")
     .maxPoints(1)
@@ -721,7 +702,7 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
-  public static final Criterion H1_6_4 = Criterion.builder()
+  public static final Criterion H1_6_3 = Criterion.builder()
     .shortDescription("Die Testmethode testCreateFunctionWithFilterMapFoldAndCombine ist " +
       "vollständig und korrekt.")
     .maxPoints(1)
@@ -836,6 +817,28 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
+  public static final Criterion H1_6_4 = Criterion.builder()
+    .shortDescription("Die Klassensignatur ist vollständig und korrekt.")
+    .maxPoints(0)
+    .minPoints(-1)
+    .grader(
+      Grader.testAwareBuilder()
+        .requirePass(
+          JUnitTestRef.and(
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_6.TestClassHeader.class.getMethod("testModifiers")
+            ),
+            JUnitTestRef.ofMethod(
+              () -> TutorTest_H1_6.TestClassHeader.class.getMethod("testExtension")
+            )
+          )
+        )
+        .pointsPassedMax()
+        .pointsFailedMin()
+        .build())
+    .build();
+
+
   public static final Criterion H1_6 = Criterion.builder()
     .shortDescription("H1.6: JUnit-Tests")
     .addChildCriteria(H1_6_1, H1_6_2, H1_6_3, H1_6_4)
@@ -887,9 +890,10 @@ public final class H09_RubricProvider implements RubricProvider {
     .build();
 
   public static final Criterion H2_1_3 = Criterion.builder()
-    .shortDescription("Die Klassensignatur von Rabbit ist vollständig und korrekt.")
-    .maxPoints(0)
-    .minPoints(-1)
+    .shortDescription("Die Klassensignatur, Konstruktor und die Attribute von Rabbit sind " +
+      "vollständig und korrekt.")
+    .maxPoints(1)
+    .minPoints(0)
     .grader(
       Grader.testAwareBuilder()
         .requirePass(
@@ -899,22 +903,7 @@ public final class H09_RubricProvider implements RubricProvider {
             ),
             JUnitTestRef.ofMethod(
               () -> TutorTest_H2_1.TestRabbit.TestClassHeader.class.getMethod("testSuperClass")
-            )
-          )
-        )
-        .pointsPassedMax()
-        .pointsFailedMin()
-        .build())
-    .build();
-
-  public static final Criterion H2_1_4 = Criterion.builder()
-    .shortDescription("Der Konstruktor und die Attribute von Rabbit sind vollständig und korrekt.")
-    .maxPoints(1)
-    .minPoints(0)
-    .grader(
-      Grader.testAwareBuilder()
-        .requirePass(
-          JUnitTestRef.and(
+            ),
             JUnitTestRef.ofMethod(
               () -> TutorTest_H2_1.TestRabbit.TestConstructor.class.getMethod("testModifiers")
             ),
@@ -943,8 +932,8 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
-  public static final Criterion H2_1_5 = Criterion.builder()
-    .shortDescription("Die typeOfX Methoden von Rabbit sind vollständig und korrekt.")
+  public static final Criterion H2_1_4 = Criterion.builder()
+    .shortDescription("Die getTypeOfX Methoden von Rabbit sind vollständig und korrekt.")
     .maxPoints(1)
     .minPoints(0)
     .grader(
@@ -974,9 +963,10 @@ public final class H09_RubricProvider implements RubricProvider {
         .build())
     .build();
 
+
   public static final Criterion H2_1 = Criterion.builder()
     .shortDescription("H2.1: Beispielmaterial")
-    .addChildCriteria(H2_1_1, H2_1_2, H2_1_3, H2_1_4, H2_1_5)
+    .addChildCriteria(H2_1_1, H2_1_2, H2_1_3, H2_1_4)
     .build();
 
   /* *********************************************************************
