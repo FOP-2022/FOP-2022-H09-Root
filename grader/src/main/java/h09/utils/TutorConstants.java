@@ -602,7 +602,7 @@ public final class TutorConstants {
   /**
    * The animal test class name of the task H2.3 for {@value H2_2_CLASS_NAME}.
    */
-  public static final String H2_3_CLASS_NAME = getTestClassName(H2_2_CLASS_NAME);
+  public static final String H2_3_CLASS_NAME = "TestBiologicalHierachy";
   /**
    * The animal test class name of the task H2.3 for {@value H2_1_CLASS_NAME_2}.
    */

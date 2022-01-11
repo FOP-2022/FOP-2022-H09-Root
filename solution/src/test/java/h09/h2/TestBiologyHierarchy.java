@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Nhan Huynh, Darya Nikitina
  */
-class TestBiologyHierarchy {
+class TestBiologicalHierachy {
 
   /**
    * The instance of a biology hierarchy used to test the methods.

@@ -28,7 +28,7 @@ import java.util.stream.Stream;
  * @author Nhan Huynh, Darya Nikitina
  */
 @TestForSubmission("h09")
-@DisplayName("Criterion: Class TestBiologyHierarchy")
+@DisplayName("Criterion: Class TestBiologicalHierachy")
 public final class TutorTest_H2_3 {
 
   /* *********************************************************************
