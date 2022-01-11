@@ -7,10 +7,10 @@ package h09.h2;
  */
 public interface Leporidae extends Lagomorpha {
 
-  /**
-   * Returns the name of this individual.
-   *
-   * @return the name of this individual
-   */
-  String getNameOfIndividualeOfVertebrate();
+    /**
+     * Returns the name of this individual.
+     *
+     * @return the name of this individual
+     */
+    String getNameOfIndividualeOfVertebrate();
 }

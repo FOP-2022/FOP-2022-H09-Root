@@ -7,18 +7,18 @@ package h09.h2;
  */
 public final class TutorTestMammal implements Mammal {
 
-  @Override
-  public String getTypeOfAnimal() {
-    return "Vertebrate";
-  }
+    @Override
+    public String getTypeOfAnimal() {
+        return "Vertebrate";
+    }
 
-  @Override
-  public String getTypeOfMammal() {
-    return null;
-  }
+    @Override
+    public String getTypeOfMammal() {
+        return null;
+    }
 
-  @Override
-  public String getTypeOfVertebrate() {
-    return "Mammal";
-  }
+    @Override
+    public String getTypeOfVertebrate() {
+        return "Mammal";
+    }
 }

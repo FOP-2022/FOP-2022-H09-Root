@@ -7,10 +7,10 @@ package h09.h2;
  */
 public interface Animal {
 
-  /**
-   * Returns the type of this animal.
-   *
-   * @return the type of this animal
-   */
-  String getTypeOfAnimal();
+    /**
+     * Returns the type of this animal.
+     *
+     * @return the type of this animal
+     */
+    String getTypeOfAnimal();
 }

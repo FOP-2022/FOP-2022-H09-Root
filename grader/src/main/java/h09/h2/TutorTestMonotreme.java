@@ -7,23 +7,23 @@ package h09.h2;
  */
 public final class TutorTestMonotreme implements Monotreme {
 
-  @Override
-  public String getTypeOfAnimal() {
-    return "Vertebrate";
-  }
+    @Override
+    public String getTypeOfAnimal() {
+        return "Vertebrate";
+    }
 
-  @Override
-  public String getTypeOfMammal() {
-    return "Monotreme";
-  }
+    @Override
+    public String getTypeOfMammal() {
+        return "Monotreme";
+    }
 
-  @Override
-  public String getTypeOfMonotreme() {
-    return null;
-  }
+    @Override
+    public String getTypeOfMonotreme() {
+        return null;
+    }
 
-  @Override
-  public String getTypeOfVertebrate() {
-    return "Mammal";
-  }
+    @Override
+    public String getTypeOfVertebrate() {
+        return "Mammal";
+    }
 }

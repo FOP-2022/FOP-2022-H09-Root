@@ -7,10 +7,10 @@ package h09.h2;
  */
 public interface Rodent extends Placental {
 
-  /**
-   * Returns the type of this rodent.
-   *
-   * @return the type of this rodent
-   */
-  String getTypeOfRodent();
+    /**
+     * Returns the type of this rodent.
+     *
+     * @return the type of this rodent
+     */
+    String getTypeOfRodent();
 }

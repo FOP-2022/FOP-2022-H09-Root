@@ -7,10 +7,10 @@ package h09.h2;
  */
 public interface Placental extends Mammal {
 
-  /**
-   * Returns the type of this placental.
-   *
-   * @return the type of this placental
-   */
-  String getTypeOfPlacental();
+    /**
+     * Returns the type of this placental.
+     *
+     * @return the type of this placental
+     */
+    String getTypeOfPlacental();
 }

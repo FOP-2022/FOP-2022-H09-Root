@@ -7,10 +7,10 @@ package h09.h2;
  */
 public interface Monotreme extends Mammal {
 
-  /**
-   * Returns the type of this monotreme.
-   *
-   * @return the type of this monotreme
-   */
-  String getTypeOfMonotreme();
+    /**
+     * Returns the type of this monotreme.
+     *
+     * @return the type of this monotreme
+     */
+    String getTypeOfMonotreme();
 }

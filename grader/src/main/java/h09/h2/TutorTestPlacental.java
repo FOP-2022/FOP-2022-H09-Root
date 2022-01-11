@@ -7,23 +7,23 @@ package h09.h2;
  */
 public final class TutorTestPlacental implements Placental {
 
-  @Override
-  public String getTypeOfAnimal() {
-    return "Vertebrate";
-  }
+    @Override
+    public String getTypeOfAnimal() {
+        return "Vertebrate";
+    }
 
-  @Override
-  public String getTypeOfMammal() {
-    return "Placental";
-  }
+    @Override
+    public String getTypeOfMammal() {
+        return "Placental";
+    }
 
-  @Override
-  public String getTypeOfPlacental() {
-    return null;
-  }
+    @Override
+    public String getTypeOfPlacental() {
+        return null;
+    }
 
-  @Override
-  public String getTypeOfVertebrate() {
-    return "Mammal";
-  }
+    @Override
+    public String getTypeOfVertebrate() {
+        return "Mammal";
+    }
 }

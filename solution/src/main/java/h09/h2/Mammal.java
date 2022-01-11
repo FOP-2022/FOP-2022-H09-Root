@@ -7,10 +7,10 @@ package h09.h2;
  */
 public interface Mammal extends Vertebrate {
 
-  /**
-   * Returns the type of this mammal.
-   *
-   * @return the type of this mammal
-   */
-  String getTypeOfMammal();
+    /**
+     * Returns the type of this mammal.
+     *
+     * @return the type of this mammal
+     */
+    String getTypeOfMammal();
 }

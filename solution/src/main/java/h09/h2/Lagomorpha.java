@@ -7,10 +7,10 @@ package h09.h2;
  */
 public interface Lagomorpha extends Placental {
 
-  /**
-   * Returns the type of this lagomorpha.
-   *
-   * @return the type of this lagomorpha
-   */
-  String getTypeOfLagomorpha();
+    /**
+     * Returns the type of this lagomorpha.
+     *
+     * @return the type of this lagomorpha
+     */
+    String getTypeOfLagomorpha();
 }

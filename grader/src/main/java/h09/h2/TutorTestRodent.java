@@ -7,28 +7,28 @@ package h09.h2;
  */
 public final class TutorTestRodent implements Rodent {
 
-  @Override
-  public String getTypeOfAnimal() {
-    return "Vertebrate";
-  }
+    @Override
+    public String getTypeOfAnimal() {
+        return "Vertebrate";
+    }
 
-  @Override
-  public String getTypeOfMammal() {
-    return "Placental";
-  }
+    @Override
+    public String getTypeOfMammal() {
+        return "Placental";
+    }
 
-  @Override
-  public String getTypeOfPlacental() {
-    return "Rodent";
-  }
+    @Override
+    public String getTypeOfPlacental() {
+        return "Rodent";
+    }
 
-  @Override
-  public String getTypeOfRodent() {
-    return null;
-  }
+    @Override
+    public String getTypeOfRodent() {
+        return null;
+    }
 
-  @Override
-  public String getTypeOfVertebrate() {
-    return "Mammal";
-  }
+    @Override
+    public String getTypeOfVertebrate() {
+        return "Mammal";
+    }
 }

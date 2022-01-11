@@ -7,33 +7,33 @@ package h09.h2;
  */
 public final class TutorTestLeporidae implements Leporidae {
 
-  @Override
-  public String getTypeOfAnimal() {
-    return "Vertebrate";
-  }
+    @Override
+    public String getTypeOfAnimal() {
+        return "Vertebrate";
+    }
 
-  @Override
-  public String getTypeOfVertebrate() {
-    return "Mammal";
-  }
+    @Override
+    public String getTypeOfVertebrate() {
+        return "Mammal";
+    }
 
-  @Override
-  public String getTypeOfMammal() {
-    return "Placental";
-  }
+    @Override
+    public String getTypeOfMammal() {
+        return "Placental";
+    }
 
-  @Override
-  public String getTypeOfPlacental() {
-    return "Lagomorph";
-  }
+    @Override
+    public String getTypeOfPlacental() {
+        return "Lagomorph";
+    }
 
-  @Override
-  public String getTypeOfLagomorpha() {
-    return "Leporid";
-  }
+    @Override
+    public String getTypeOfLagomorpha() {
+        return "Leporid";
+    }
 
-  @Override
-  public String getNameOfIndividualeOfVertebrate() {
-    return "Tutor Test Leporid";
-  }
+    @Override
+    public String getNameOfIndividualeOfVertebrate() {
+        return "Tutor Test Leporid";
+    }
 }
