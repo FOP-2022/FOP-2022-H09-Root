@@ -504,7 +504,7 @@ public final class TutorTest_H2_2 {
 
         @Test
         @DisplayName("Criterion: Result List<Lagomorpha>")
-        public void testResultListOfLagomorph() {
+        public void testResultListOfLagomorpha() {
             final var constructor = getTestConstructor();
             final var instance = TutorUtils.invokeConstructor(constructor);
             final var method = getTestMethod();
