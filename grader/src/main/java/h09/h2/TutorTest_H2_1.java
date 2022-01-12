@@ -300,7 +300,7 @@ public final class TutorTest_H2_1 {
             }
 
             @Test
-            @DisplayName("Criterion: Method getNameOfIndividualeOfVertebrate return value")
+            @DisplayName("Criterion: Method getNameOfIndividual return value")
             public void testMethodNameOfIndividual() {
                 resetCounter(() -> {
                     final var constructor = getTestConstructor();

@@ -50,7 +50,7 @@ public class Rabbit implements Leporidae {
     }
 
     @Override
-    public String getNameOfIndividualeOfVertebrate() {
+    public String getNameOfIndividual() {
         return String.valueOf(id);
     }
 }

@@ -33,7 +33,7 @@ public final class TutorTestLeporidae implements Leporidae {
     }
 
     @Override
-    public String getNameOfIndividualeOfVertebrate() {
+    public String getNameOfIndividual() {
         return "Tutor Test Leporid";
     }
 }

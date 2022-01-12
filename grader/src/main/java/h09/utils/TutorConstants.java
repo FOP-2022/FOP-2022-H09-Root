@@ -718,7 +718,7 @@ public final class TutorConstants {
     /**
      * The method name of the class {@value H2_1_CLASS_NAME_9}.
      */
-    public static final String H2_1_METHOD_NAME_9 = "getNameOfIndividualeOfVertebrate";
+    public static final String H2_1_METHOD_NAME_9 = "getNameOfIndividual";
     /**
      * The method name 1 of the task 2.2.
      */
