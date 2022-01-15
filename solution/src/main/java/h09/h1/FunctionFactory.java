@@ -36,8 +36,8 @@ public final class FunctionFactory {
      * @param <Z>    the type of the result
      * @return a function which allows using filter, map, fold and combine operation on the elements
      */
-    public static <X, Y, Z> FunctionWithFilterMapAndFold<X, Y, Z>
-    createFunctionWithFilterMapFoldAndCombine(final Traits<X, Y, Z> traits) {
+    public static <X, Y, Z> FunctionWithFilterMapAndFold<X, Y, Z> createFunctionWithFilterMapFoldAndCombine(
+        final Traits<X, Y, Z> traits) {
         return new MyFunctionWithAdjacent<>(traits);
     }
 }

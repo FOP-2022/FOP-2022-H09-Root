@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class TestFunctionFactory {
 
     /**
-     * Tests the method {@link FunctionFactory#createFunctionWithFilterMapAndFold(Traits)} using
+     * Tests the method {@link FunctionFactory#createFunctionWithFilterMapAndFold(Traits)}. This test is using
      * the following operations:
      *
      * <ul>
@@ -41,7 +41,7 @@ class TestFunctionFactory {
     }
 
     /**
-     * Tests the method {@link FunctionFactory#createFunctionWithFilterMapAndFold(Traits)} using
+     * Tests the method {@link FunctionFactory#createFunctionWithFilterMapAndFold(Traits)}. This test is using
      * the following operations:
      *
      * <ul>
@@ -110,13 +110,13 @@ class TestFunctionFactory {
     }
 
     /**
-     * Tests the method {@link FunctionFactory#createFunctionWithFilterMapFoldAndCombine(Traits)}
-     * using the following operations:
+     * Tests the method {@link FunctionFactory#createFunctionWithFilterMapFoldAndCombine(Traits)}. This test is using
+     * the following operations:
      *
      * <ul>
      * <li>filter: Persons that do not live in Darmstadt
      * <li>map: Postal code of the person
-     * <lu>combine: The absolute value of the difference between two postal code
+     * <li>combine: The absolute value of the difference between two postal code
      * <li>fold: The sum of the differences
      * </ul>
      */
@@ -250,7 +250,7 @@ class TestFunctionFactory {
         }
 
         /**
-         * Returns the house number of a street where this person lives
+         * Returns the house number of a street where this person lives.
          *
          * @return the house number of a street where this person lives
          */

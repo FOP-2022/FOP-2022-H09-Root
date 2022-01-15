@@ -113,7 +113,7 @@ class TestBiologicalHierachy {
 
     /**
      * Tests whether the method {@link BiologyHierarchy#getTypesOfMammals(List)} returns
-     * the correct outputs of the method calls {@link Mammal#getTypeOfMammal()}
+     * the correct outputs of the method calls {@link Mammal#getTypeOfMammal()}.
      */
     @Test
     void testGetTypesOfMammals() {

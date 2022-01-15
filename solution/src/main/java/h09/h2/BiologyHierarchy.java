@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A biological animal hierarchy which allows interacting with the animals
+ * A biological animal hierarchy which allows interacting with the animals.
  */
 public class BiologyHierarchy {
 
     /**
-     * Returns the type of the specified vertebrate
+     * Returns the type of the specified vertebrate.
      *
      * @param vertebrate the vertebrate to return its type
      * @param <T>        the type of the vertebrate

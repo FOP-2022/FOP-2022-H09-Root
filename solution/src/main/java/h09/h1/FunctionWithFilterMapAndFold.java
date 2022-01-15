@@ -12,7 +12,7 @@ package h09.h1;
 public abstract class FunctionWithFilterMapAndFold<X, Y, Z> {
 
     /**
-     * Provides filter, map, fold and optionally combine operation
+     * Provides filter, map, fold and optionally combine operation.
      */
     protected final Traits<X, Y, Z> traits;
 
