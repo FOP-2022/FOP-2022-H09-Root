@@ -24,10 +24,19 @@ import java.util.stream.Collectors;
  */
 final class TutorUtils_H1 {
 
+    /**
+     * Don't let anyone instantiate this class.
+     */
     private TutorUtils_H1() {
-
     }
 
+    /**
+     * Tests whether the class header type parameter matches the specified criterion.
+     *
+     * <p>Type parameter: {@value  TutorConstants#H1_TYPE_PARAMETERS}
+     *
+     * @param clazz the class to check
+     */
     public static void assertClassTypeParameters(Class<?> clazz) {
         final var typeVariables = clazz.getTypeParameters();
 
@@ -54,6 +63,12 @@ final class TutorUtils_H1 {
         }
     }
 
+    /**
+     * Tests whether the specified constructor contains the specified parameters.
+     *
+     * @param constructor    the constructor to check
+     * @param parameterClass the expected parameter classes
+     */
     public static void assertConstructorParameterH1(final Constructor<?> constructor,
                                                     final Class<?> parameterClass) {
         final var parameters = constructor.getGenericParameterTypes();
@@ -69,6 +84,13 @@ final class TutorUtils_H1 {
         TutorUtils.assertGenericType(parameterClass, expectedType, actualType);
     }
 
+    /**
+     * Tests if the specified source code does not contain the specified imports.
+     *
+     * @param testCycle the test cycle to retrieve the source code
+     * @param source    the source code file name to check
+     * @param blacklist the imports which the source code should not contain
+     */
     public static void assertImports(final TestCycle testCycle, final String source,
                                      final Class<?>... blacklist) {
         final var processor = SpoonUtils.process(testCycle, source, new ImportsClassProcessor());
@@ -85,6 +107,11 @@ final class TutorUtils_H1 {
         }
     }
 
+    /**
+     * Tests whether the parameters ({@value TutorConstants#H1_2_METHOD_CLASS_RETURN}) of the specified method are correct.
+     *
+     * @param method the method to check
+     */
     public static void assertParametersH1_2(final Method method) {
         final var types = method.getParameterTypes();
 
@@ -106,6 +133,11 @@ final class TutorUtils_H1 {
         );
     }
 
+    /**
+     * Tests whether the return type ({@value TutorConstants#H1_2_METHOD_CLASS_RETURN}) of the specified method is correct.
+     *
+     * @param method the method to check
+     */
     public static void assertReturnTypeH1_2(final Method method) {
         final var actualType = method.getReturnType();
 
@@ -123,6 +155,12 @@ final class TutorUtils_H1 {
         );
     }
 
+    /**
+     * Tests whether the constructor parameters are correct.
+     *
+     * @param constructor the constructor to check
+     * @param combine     if {@code true} the field {@value  TutorConstants#H1_4_FIELD_NAME} will also be checked
+     */
     public static void assertConstructorParameterTypesH1_1(final Constructor<?> constructor,
                                                            final boolean combine) {
         final List<Entry<Class<?>, String>> parameters = new ArrayList<>(
@@ -151,6 +189,12 @@ final class TutorUtils_H1 {
         TutorUtils.assertConstructorParameters(constructor, parameters);
     }
 
+    /**
+     * Tests whether the constructor fields are correct.
+     *
+     * @param constructor the constructor to check
+     * @param combine     if {@code true} the field {@value  TutorConstants#H1_4_FIELD_NAME} will also be checked
+     */
     public static void assertConstructorFieldsH1_1(final Constructor<?> constructor,
                                                    final boolean combine) {
         final var expectedField1 = TutorConstants.H1_1_FIELD_EXAMPLE_3_1;
@@ -159,14 +203,15 @@ final class TutorUtils_H1 {
         final var expectedField4 = TutorConstants.H1_1_FIELD_EXAMPLE_3_4;
         final var expectedField5 = !combine ? null : TutorConstants.H1_1_FIELD_EXAMPLE_3_5;
 
-        final var instance = combine ?
+        final var instance = combine
+            ?
             TutorUtils.invokeConstructor(
                 constructor, expectedField1, expectedField2, expectedField3, expectedField4, expectedField5
             )
             :
-                TutorUtils.invokeConstructor(
-                    constructor, expectedField1, expectedField2, expectedField3, expectedField4
-                );
+            TutorUtils.invokeConstructor(
+                constructor, expectedField1, expectedField2, expectedField3, expectedField4
+            );
 
         // Check if fields are initialized
         final var actualField1 = TutorUtils.assertField(instance, TutorConstants.H1_1_FIELD_NAME_1);

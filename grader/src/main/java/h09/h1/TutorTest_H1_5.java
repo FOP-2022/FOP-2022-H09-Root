@@ -25,14 +25,30 @@ public final class TutorTest_H1_5 {
      *                            Utilities                                *
      **********************************************************************/
 
+    /**
+     * Returns the class instance of the class that should be tested.
+     *
+     * @return the class instance of the test class
+     */
     private static Class<?> getTestClass() {
         return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_5_CLASS_NAME);
     }
 
+    /**
+     * Returns the class instance of the parameter that should be tested.
+     *
+     * @return the class instance of the parameter
+     */
     private static Class<?> getTestClassParameter() {
         return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_1_CLASS_NAME);
     }
 
+    /**
+     * Checks if the method contains the specified parameter type.
+     *
+     * @param classParameter the class type of the parameter
+     * @param method         the method to test
+     */
     private static void assertParameters(final Class<?> classParameter, final Method method) {
         final var types = method.getParameterTypes();
 
@@ -54,13 +70,17 @@ public final class TutorTest_H1_5 {
         TutorUtils.assertGenericType(classParameter, TutorConstants.H1_TYPE_PARAMETERS, parametrized);
     }
 
+    /**
+     * Tests if the method contains the specified return type.
+     *
+     * @param method the method to test
+     */
     private static void assertReturnType(final Method method) {
         final var expected = TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME,
             TutorConstants.H1_2_CLASS_NAME);
 
         final var actual = method.getReturnType();
-        Assertions.assertEquals(expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected
-            , actual));
+        Assertions.assertEquals(expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual));
         TutorUtils.assertGenericType(expected, TutorConstants.H1_TYPE_PARAMETERS, method.getGenericReturnType());
     }
 
@@ -68,6 +88,9 @@ public final class TutorTest_H1_5 {
      *                            Class Header                             *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the class header.
+     */
     @Nested
     @DisplayName("Criterion: Class Header")
     public final class TestClassHeader {
@@ -99,6 +122,9 @@ public final class TutorTest_H1_5 {
      *                            Constructor                              *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the constructor.
+     */
     @Nested
     @DisplayName("Criterion: Constructor")
     public final class TestConstructor {
@@ -117,10 +143,18 @@ public final class TutorTest_H1_5 {
      *                            Method 1                                 *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the method {@value TutorConstants#H1_5_METHOD_NAME_1}.
+     */
     @Nested
     @DisplayName("Criterion: Method createFunctionWithFilterMapAndFold")
     public final class TestMethod1 {
 
+        /**
+         * Returns the method that should be tested.
+         *
+         * @return the method that should be tested
+         */
         private Method getTestMethod() {
             final var clazz = getTestClass();
             final var parameters = getTestClassParameter();
@@ -181,10 +215,18 @@ public final class TutorTest_H1_5 {
      *                            Method 2                                 *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the method {@value  TutorConstants#H1_5_METHOD_NAME_2}.
+     */
     @Nested
     @DisplayName("Criterion: Method createFunctionWithFilterMapFoldAndCombine")
     public final class TestMethod2 {
 
+        /**
+         * Returns the method that should be tested.
+         *
+         * @return the method that should be tested
+         */
         private Method getTestMethod() {
             final var clazz = getTestClass();
             final var parameters = getTestClassParameter();

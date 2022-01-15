@@ -12,8 +12,7 @@ public enum TutorMessage {
      **********************************************************************/
 
     CONSTRUCTOR_NOT_FOUND("The constructor of the class %s with parameters %s could not be found."),
-    CONSTRUCTOR_NO_INVOKE("The constructor of the class %s with the parameters %s could not be " +
-        "invoked."),
+    CONSTRUCTOR_NO_INVOKE("The constructor of the class %s with the parameters %s could not be invoked."),
     CONSTRUCTOR_PARAMETER_MISMATCH_SIZE("The constructor %s must have %s parameters, given %s."),
 
     /* *********************************************************************
@@ -89,8 +88,8 @@ public enum TutorMessage {
      *                             Requirement                             *
      **********************************************************************/
     REQUIREMENT_FOREACH_LOOP("Only %s for each loop(s) allowed, given %s"),
-    REQUIREMENT_INTERMEDIATE_ARRAY_MISMATCH("An intermediate storage should be required for the " +
-        "each operation. Expected %s, given %s."),
+    REQUIREMENT_INTERMEDIATE_ARRAY_MISMATCH("An intermediate storage should be required for the each operation. Expected %s, "
+        + "given %s."),
     REQUIREMENT_NO_ARRAY("Expected %s arrays, given %s."),
 
     /* *********************************************************************
@@ -134,6 +133,7 @@ public enum TutorMessage {
      * Formats this message using the specified arguments.
      *
      * @param args the arguments used for the message format
+     *
      * @return the formatted message
      */
     public String format(final Object... args) {

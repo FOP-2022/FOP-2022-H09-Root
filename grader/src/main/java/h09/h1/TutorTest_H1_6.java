@@ -31,10 +31,22 @@ import java.util.List;
 @DisplayName("Criterion: Class TestFunctionFactory")
 public final class TutorTest_H1_6 {
 
+    /**
+     * Returns the method that should be tested.
+     *
+     * @return the method that should be tested
+     */
     private static Class<?> getTestClass() {
         return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_6_CLASS_NAME);
     }
 
+    /**
+     * Tests if the expected lambdas matches the actual lambdas.
+     *
+     * @param expectedTypes the expected class name of the lambdas
+     * @param actualTypes   the actual lambdas types
+     * @param message       the message format to print if the assertions fails
+     */
     private static void assertNumberOfLambdas(final String[] expectedTypes,
                                               final List<CtTypeReference<?>> actualTypes,
                                               final TutorMessage message) {
@@ -53,6 +65,9 @@ public final class TutorTest_H1_6 {
         }
     }
 
+    /**
+     * Defines the JUnit test cases related to the class header.
+     */
     @Nested
     @DisplayName("Criterion: Class header")
     public final class TestClassHeader {
@@ -75,6 +90,9 @@ public final class TutorTest_H1_6 {
         }
     }
 
+    /**
+     * Defines the JUnit test cases related to the method {@link  TutorConstants#H1_6_METHOD_NAME_1}.
+     */
     @Nested
     @DisplayName("Criterion: Method testCreateFunctionWithFilterMapAndFold1")
     public final class TestMethod1 {
@@ -92,6 +110,9 @@ public final class TutorTest_H1_6 {
         }
     }
 
+    /**
+     * Defines the JUnit test cases related to the method {@link  TutorConstants#H1_6_METHOD_NAME_2}.
+     */
     @Nested
     @DisplayName("Criterion: Method testCreateFunctionWithFilterMapAndFold2")
     public final class TestMethod2 {
@@ -109,6 +130,9 @@ public final class TutorTest_H1_6 {
         }
     }
 
+    /**
+     * Defines the JUnit test cases related to the method {@link  TutorConstants#H1_6_METHOD_NAME_3}.
+     */
     @Nested
     @DisplayName("Criterion: Method testCreateFunctionWithFilterMapFoldAndCombine")
     public final class TestMethod3 {
@@ -125,15 +149,26 @@ public final class TutorTest_H1_6 {
             assertNumberOfLambdas(expectedTypes, actualTypes, TutorMessage.LAMBDA_METHOD_REFERENCE_MISMATCH);
         }
 
+        /**
+         * Defines the JUnit test cases related to the class {@value  TutorConstants#H1_6_CLASS_NAME_1}.
+         */
         @Nested
         @DisplayName("Criterion: Test class - Person")
         public final class TestPerson {
 
+            /**
+             * Returns the class that should be tested.
+             *
+             * @return the class that should be tested
+             */
             private Class<?> getTestClassPerson() {
                 return TutorUtils.assertNestedClass(TutorConstants.H1_PACKAGE_NAME,
                     TutorConstants.H1_6_CLASS_NAME, TutorConstants.H1_6_CLASS_NAME_1);
             }
 
+            /**
+             * Defines the JUnit test cases related to the class header.
+             */
             @Nested
             @DisplayName("Criterion: Class header")
             public final class TestClassHeader {
@@ -156,15 +191,28 @@ public final class TutorTest_H1_6 {
                 }
             }
 
+            /**
+             * Defines the JUnit test cases related to the field {@value  TutorConstants#H1_6_FIELD_NAME_1}.
+             */
             @Nested
             @DisplayName("Criterion: Field lastName")
             public final class TestField1 {
 
+                /**
+                 * Returns the field that should be tested.
+                 *
+                 * @return the field that should be tested
+                 */
                 private Field getTestField() {
                     final var clazz = getTestClassPerson();
                     return TutorUtils.assertField(clazz, TutorConstants.H1_6_FIELD_NAME_1);
                 }
 
+                /**
+                 * Returns the method that should be tested.
+                 *
+                 * @return the method that should be tested
+                 */
                 private Method getTestMethod(final String methodName, final Class<?>... parameters) {
                     final var clazz = getTestClassPerson();
                     return TutorUtils.assertMethod(clazz, methodName, parameters);
@@ -212,15 +260,28 @@ public final class TutorTest_H1_6 {
                 }
             }
 
+            /**
+             * Defines the JUnit test cases related to the field {@value  TutorConstants#H1_6_FIELD_NAME_2}.
+             */
             @Nested
             @DisplayName("Criterion: Field firstName")
             public final class TestField2 {
 
+                /**
+                 * Returns the field that should be tested.
+                 *
+                 * @return the field that should be tested
+                 */
                 private Field getTestField() {
                     final var clazz = getTestClassPerson();
                     return TutorUtils.assertField(clazz, TutorConstants.H1_6_FIELD_NAME_2);
                 }
 
+                /**
+                 * Returns the method that should be tested.
+                 *
+                 * @return the method that should be tested
+                 */
                 private Method getTestMethod(final String methodName, final Class<?>... parameters) {
                     final var clazz = getTestClassPerson();
                     return TutorUtils.assertMethod(clazz, methodName, parameters);
@@ -268,15 +329,28 @@ public final class TutorTest_H1_6 {
                 }
             }
 
+            /**
+             * Defines the JUnit test cases related to the field {@value  TutorConstants#H1_6_FIELD_NAME_3}.
+             */
             @Nested
             @DisplayName("Criterion: Field street")
             public final class TestField3 {
 
+                /**
+                 * Returns the field that should be tested.
+                 *
+                 * @return the field that should be tested
+                 */
                 private Field getTestField() {
                     final var clazz = getTestClassPerson();
                     return TutorUtils.assertField(clazz, TutorConstants.H1_6_FIELD_NAME_3);
                 }
 
+                /**
+                 * Returns the method that should be tested.
+                 *
+                 * @return the method that should be tested
+                 */
                 private Method getTestMethod(final String methodName, final Class<?>... parameters) {
                     final var clazz = getTestClassPerson();
                     return TutorUtils.assertMethod(clazz, methodName, parameters);
@@ -324,15 +398,28 @@ public final class TutorTest_H1_6 {
                 }
             }
 
+            /**
+             * Defines the JUnit test cases related to the field {@value  TutorConstants#H1_6_FIELD_NAME_4}.
+             */
             @Nested
             @DisplayName("Criterion: Field houseNumber")
             public final class TestField4 {
 
+                /**
+                 * Returns the field that should be tested.
+                 *
+                 * @return the field that should be tested
+                 */
                 private Field getTestField() {
                     final var clazz = getTestClassPerson();
                     return TutorUtils.assertField(clazz, TutorConstants.H1_6_FIELD_NAME_4);
                 }
 
+                /**
+                 * Returns the method that should be tested.
+                 *
+                 * @return the method that should be tested
+                 */
                 private Method getTestMethod(final String methodName, final Class<?>... parameters) {
                     final var clazz = getTestClassPerson();
                     return TutorUtils.assertMethod(clazz, methodName, parameters);
@@ -380,15 +467,28 @@ public final class TutorTest_H1_6 {
                 }
             }
 
+            /**
+             * Defines the JUnit test cases related to the field {@value  TutorConstants#H1_6_FIELD_NAME_5}.
+             */
             @Nested
             @DisplayName("Criterion: Field postalCode")
             public final class TestField5 {
 
+                /**
+                 * Returns the field that should be tested.
+                 *
+                 * @return the field that should be tested
+                 */
                 private Field getTestField() {
                     final var clazz = getTestClassPerson();
                     return TutorUtils.assertField(clazz, TutorConstants.H1_6_FIELD_NAME_5);
                 }
 
+                /**
+                 * Returns the method that should be tested.
+                 *
+                 * @return the method that should be tested
+                 */
                 private Method getTestMethod(final String methodName, final Class<?>... parameters) {
                     final var clazz = getTestClassPerson();
                     return TutorUtils.assertMethod(clazz, methodName, parameters);
@@ -436,10 +536,18 @@ public final class TutorTest_H1_6 {
                 }
             }
 
+            /**
+             * Defines the JUnit test cases related to the constructor.
+             */
             @Nested
             @DisplayName("Criterion: Constructor")
             public final class TestConstructor {
 
+                /**
+                 * Returns the constructor that should be tested.
+                 *
+                 * @return the constructor that should be tested
+                 */
                 private Constructor<?> getTestConstructor() {
                     final var clazz = getTestClassPerson();
                     return TutorUtils.assertConstructor(

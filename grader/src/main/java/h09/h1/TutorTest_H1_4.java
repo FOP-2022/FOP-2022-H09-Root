@@ -34,10 +34,20 @@ public final class TutorTest_H1_4 {
      *                            Utilities                                *
      **********************************************************************/
 
+    /**
+     * Returns the class instance of the class that should be tested.
+     *
+     * @return the class instance of the test class
+     */
     private static Class<?> getTestClass() {
         return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_4_CLASS_NAME);
     }
 
+    /**
+     * Returns the field class instance that should be tested.
+     *
+     * @return the field class instance that should be tested
+     */
     private static Class<?> getTestFieldClass() {
         return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_1_CLASS_NAME);
     }
@@ -46,6 +56,9 @@ public final class TutorTest_H1_4 {
      *                            Class Header                             *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the class header.
+     */
     @Nested
     @DisplayName("Criterion: Class Header")
     public final class TestClassHeader {
@@ -90,10 +103,18 @@ public final class TutorTest_H1_4 {
      *                            Constructor                              *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the constructor.
+     */
     @Nested
     @DisplayName("Criterion: Constructor")
     public final class TestConstructor {
 
+        /**
+         * Returns the constructor that should be tested.
+         *
+         * @return the constructor that should be tested
+         */
         public Constructor<?> getTestConstructor() {
             final var clazz = getTestClass();
             final var parameter = getTestFieldClass();
@@ -121,10 +142,18 @@ public final class TutorTest_H1_4 {
      *                               Method                                *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the method {@value  TutorConstants#H1_2_METHOD_NAME}.
+     */
     @Nested
     @DisplayName("Criterion: Method apply")
     public final class TestMethod {
 
+        /**
+         * Returns the method that should be tested.
+         *
+         * @return the method that should be tested
+         */
         private Method getTestMethod() {
             final var clazz = getTestClass();
             return TutorUtils.assertMethod(clazz, TutorConstants.H1_2_METHOD_NAME,
@@ -239,14 +268,25 @@ public final class TutorTest_H1_4 {
      *                               Field                                 *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the field {@value TutorConstants#H1_4_FIELD_NAME}.
+     */
     @Nested
     @DisplayName("Criterion: Traits - Field combine")
     public final class TestH1ExtraField {
 
+        /**
+         * Defines the JUnit test cases related to the field {@value TutorConstants#H1_4_FIELD_NAME}.
+         */
         @Nested
         @DisplayName("Criterion: Field for combining")
         public final class TestField {
 
+            /**
+             * Returns the field that should be tested.
+             *
+             * @return the field that should be tested
+             */
             private Field getTestField() {
                 final var clazz = getTestFieldClass();
                 return TutorUtils.assertField(clazz, TutorConstants.H1_4_FIELD_NAME);
@@ -298,14 +338,25 @@ public final class TutorTest_H1_4 {
          *                            Constructor                              *
          **********************************************************************/
 
+        /**
+         * Defines the JUnit test cases related to the constructor.
+         */
         @Nested
         @DisplayName("Criterion: Constructor")
         public final class TestConstructor {
 
+            /**
+             * Defines the JUnit test cases related to the constructor with 4 arguments.
+             */
             @Nested
             @DisplayName("Criterion: 4 arguments Constructor")
             public final class Test4Args {
 
+                /**
+                 * Returns the constructor that should be tested.
+                 *
+                 * @return the constructor that should be tested
+                 */
                 private Constructor<?> getTestConstructor() {
                     final var clazz = getTestFieldClass();
                     final Class<?>[] parameters = {TutorConstants.H1_1_FIELD_TYPE_1,
@@ -323,8 +374,8 @@ public final class TutorTest_H1_4 {
                 }
 
                 @Test
-                @DisplayName("Criterion: Parameter Predicate<? super X>, Function<? super X, ? extends " +
-                    "Y>, BiFunction<Y, Z, Z>, Z")
+                @DisplayName("Criterion: Parameter Predicate<? super X>, Function<? super X, ? extends "
+                    + "Y>, BiFunction<Y, Z, Z>, Z")
                 public void testParameterTypes() {
                     final var constructor = getTestConstructor();
                     TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, false);
@@ -338,10 +389,18 @@ public final class TutorTest_H1_4 {
                 }
             }
 
+            /**
+             * Defines the JUnit test cases related to the constructor with 5 arguments.
+             */
             @Nested
             @DisplayName("Criterion: 5 arguments Constructor")
             public final class Test5Args {
 
+                /**
+                 * Returns the constructor that should be tested.
+                 *
+                 * @return the constructor that should be tested
+                 */
                 private Constructor<?> getTestConstructor() {
                     final var clazz = getTestFieldClass();
                     final Class<?>[] parameters = {TutorConstants.H1_1_FIELD_TYPE_1,
@@ -359,8 +418,8 @@ public final class TutorTest_H1_4 {
                 }
 
                 @Test
-                @DisplayName("Criterion: Parameter Predicate<? super X>, Function<? super X, ? extends " +
-                    "Y>, BiFunction<Y, Z, Z>, Z, BiFunction<Y, ? super Y, Y>")
+                @DisplayName("Criterion: Parameter Predicate<? super X>, Function<? super X, ? extends "
+                    + "Y>, BiFunction<Y, Z, Z>, Z, BiFunction<Y, ? super Y, Y>")
                 public void testParameterTypes() {
                     final var constructor = getTestConstructor();
                     TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, true);

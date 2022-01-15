@@ -19,7 +19,7 @@ import java.util.Map;
 public final class ImportsClassProcessor extends AbstractProcessor<CtClass<?>> {
 
     /**
-     * The scanner used to scan the imports of a {@link CtElement},
+     * The scanner used to scan the imports of a {@link CtElement}.
      */
     private final ImportScanner scanner;
 

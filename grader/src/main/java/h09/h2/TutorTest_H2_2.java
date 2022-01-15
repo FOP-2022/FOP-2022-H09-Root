@@ -28,15 +28,32 @@ public final class TutorTest_H2_2 {
      *                            Utilities                                *
      **********************************************************************/
 
+    /**
+     * Returns the class instance of the class that should be tested.
+     *
+     * @return the class instance of the test class
+     */
     private static Class<?> getTestClass() {
         return TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME, TutorConstants.H2_2_CLASS_NAME);
     }
 
+    /**
+     * Returns the constructor of the class that should be tested.
+     *
+     * @return the constructor of the test class
+     */
     private static Constructor<?> getTestConstructor() {
         final var clazz = getTestClass();
         return TutorUtils.assertConstructor(clazz);
     }
 
+    /**
+     * Returns the test animal to test the methods.
+     *
+     * @param animal the animal name
+     *
+     * @return the animal instance
+     */
     private static Object getTestAnimal(final String animal) {
         final var clazz = TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME, animal);
         final var constructor = TutorUtils.assertConstructor(clazz);
@@ -47,6 +64,9 @@ public final class TutorTest_H2_2 {
      *                            Class Header                             *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the class header.
+     */
     @Nested
     @DisplayName("Criterion: Class Header")
     public final class TestClassHeader {
@@ -77,16 +97,29 @@ public final class TutorTest_H2_2 {
      *                              Method 1                               *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the method {@value TutorConstants#H2_2_METHOD_NAME_1}.
+     */
     @Nested
     @DisplayName("Criterion: Method getTypeOfVertebrate")
     public final class TestMethod1 {
 
+        /**
+         * Returns the method that should be tested.
+         *
+         * @return the method that should be tested
+         */
         private Method getTestMethod() {
             final var clazz = getTestClass();
             final var parameter = getParameterClass();
             return TutorUtils.assertMethod(clazz, TutorConstants.H2_2_METHOD_NAME_1, parameter);
         }
 
+        /**
+         * Returns the class instance of the parameter should be tested.
+         *
+         * @return the class instance of the parameter that should be tested
+         */
         private Class<?> getParameterClass() {
             return TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME,
                 TutorConstants.H2_2_METHOD_TYPE_PARAMETER_1);
@@ -179,10 +212,18 @@ public final class TutorTest_H2_2 {
      *                              Method 2                               *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the method {@value TutorConstants#H2_2_METHOD_NAME_1}.
+     */
     @Nested
     @DisplayName("Criterion: Method filterLagomorphs")
     public final class TestMethod2 {
 
+        /**
+         * Returns the method that should be tested.
+         *
+         * @return the method that should be tested
+         */
         private Method getTestMethod() {
             final var clazz = getTestClass();
             return TutorUtils.assertMethod(clazz, TutorConstants.H2_2_METHOD_NAME_2,
@@ -392,10 +433,18 @@ public final class TutorTest_H2_2 {
      *                              Method 3                               *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the method {@value TutorConstants#H2_2_METHOD_NAME_3}.
+     */
     @Nested
     @DisplayName("Criterion: Method testGetTypesOfMammals:")
     public final class TestMethod3 {
 
+        /**
+         * Returns the method that should be tested.
+         *
+         * @return the method that should be tested
+         */
         private Method getTestMethod() {
             final var clazz = getTestClass();
             return TutorUtils.assertMethod(clazz, TutorConstants.H2_2_METHOD_NAME_3,

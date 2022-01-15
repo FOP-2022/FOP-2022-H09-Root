@@ -27,10 +27,20 @@ public final class TutorTest_H1_2 {
      *                            Utilities                                *
      **********************************************************************/
 
+    /**
+     * Returns the class instance of the class that should be tested.
+     *
+     * @return the class instance of the test class
+     */
     private static Class<?> getTestClass() {
         return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_2_CLASS_NAME);
     }
 
+    /**
+     * Returns the field class instance that should be tested.
+     *
+     * @return the field class instance that should be tested
+     */
     private static Class<?> getTestFieldClass() {
         return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_1_CLASS_NAME);
     }
@@ -39,6 +49,9 @@ public final class TutorTest_H1_2 {
      *                            Class Header                             *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the class header.
+     */
     @Nested
     @DisplayName("Criterion: Class Header")
     public final class TestClassHeader {
@@ -73,10 +86,18 @@ public final class TutorTest_H1_2 {
      *                               Field                                 *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the field used to access filter, map and fold operation.
+     */
     @Nested
     @DisplayName("Criterion: Field traits")
     public final class TestField {
 
+        /**
+         * Returns the field that should be tested.
+         *
+         * @return the field that should be tested
+         */
         private Field getTestField() {
             return TutorUtils.assertField(getTestClass(), TutorConstants.H1_2_FIELD_NAME);
         }
@@ -104,10 +125,18 @@ public final class TutorTest_H1_2 {
      *                            Constructor                              *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the constructor.
+     */
     @Nested
     @DisplayName("Criterion: Constructor")
     public final class TestConstructor {
 
+        /**
+         * Returns the constructor that should be tested.
+         *
+         * @return the constructor that should be tested
+         */
         private Constructor<?> getTestConstructor() {
             final var clazz = getTestClass();
             final var parameter = getTestFieldClass();
@@ -135,10 +164,18 @@ public final class TutorTest_H1_2 {
      *                               Method                                *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the method {@value  TutorConstants#H1_2_METHOD_NAME}.
+     */
     @Nested
     @DisplayName("Criterion: Method apply")
     public final class TestMethod {
 
+        /**
+         * Returns the method that should be tested.
+         *
+         * @return the method that should be tested
+         */
         private Method getTestMethod() {
             final var clazz = getTestClass();
             return TutorUtils.assertMethod(clazz, TutorConstants.H1_2_METHOD_NAME,

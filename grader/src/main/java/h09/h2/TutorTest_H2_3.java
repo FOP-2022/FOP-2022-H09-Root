@@ -35,10 +35,23 @@ public final class TutorTest_H2_3 {
      *                            Utilities                                *
      **********************************************************************/
 
+    /**
+     * Returns the class instance of the class that should be tested.
+     *
+     * @return the class instance of the test class
+     */
     private static Class<?> getTestClass() {
         return TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME, TutorConstants.H2_3_CLASS_NAME);
     }
 
+    /**
+     * Tests whether the specified animals are used in the specified test method.
+     *
+     * @param testCycle       the test cycle to retrieve the method source code
+     * @param methodName      the name of the method to check
+     * @param expectedSize    the expected number of animals
+     * @param expectedAnimals the expected animals
+     */
     private static void assertRequirements(final TestCycle testCycle, final String methodName,
                                            final int expectedSize, final String... expectedAnimals) {
         final var processor = new ConstructorsCallMethodBodyProcessor(methodName);
@@ -73,6 +86,9 @@ public final class TutorTest_H2_3 {
             TutorMessage.H2_3_TEST_ANIMAL_MISMATCH.format(testAnimals, found));
     }
 
+    /**
+     * Defines the JUnit test cases related to the class header.
+     */
     @Nested
     @DisplayName("Criterion: Class header")
     public final class TestClassHeader {
@@ -99,10 +115,16 @@ public final class TutorTest_H2_3 {
      *                              Method 1                               *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the method {@link TutorConstants#H2_3_CLASS_NAME_1}.
+     */
     @Nested
     @DisplayName("Criterion: Method testGetTypeOfVertebrate")
     public final class TestMethod1 {
 
+        /**
+         * The expected animals used to check the test method.
+         */
         private final String[] expectedAnimals = {
             TutorConstants.H2_1_CLASS_NAME_2, TutorConstants.H2_1_CLASS_NAME_3,
             TutorConstants.H2_1_CLASS_NAME_4, TutorConstants.H2_1_CLASS_NAME_5,
@@ -129,10 +151,16 @@ public final class TutorTest_H2_3 {
      *                              Method 2                               *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the method {@link TutorConstants#H2_3_CLASS_NAME_2}.
+     */
     @Nested
     @DisplayName("Criterion: Method testFilterLagomorphs")
     public final class TestMethod2 {
 
+        /**
+         * The expected animals used to check the test method.
+         */
         private final String[] expectedAnimals = {
             TutorConstants.H2_1_CLASS_NAME_1, TutorConstants.H2_1_CLASS_NAME_2,
             TutorConstants.H2_1_CLASS_NAME_3, TutorConstants.H2_1_CLASS_NAME_4,
@@ -160,10 +188,16 @@ public final class TutorTest_H2_3 {
      *                              Method 3                               *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the method {@link TutorConstants#H2_3_CLASS_NAME_3}.
+     */
     @Nested
     @DisplayName("Criterion: Method testGetTypesOfMammals")
     public final class TestMethod3 {
 
+        /**
+         * The expected animals used to check the test method.
+         */
         private final String[] expectedAnimals = {
             TutorConstants.H2_1_CLASS_NAME_3, TutorConstants.H2_1_CLASS_NAME_5,
             TutorConstants.H2_1_CLASS_NAME_6, TutorConstants.H2_1_CLASS_NAME_7,

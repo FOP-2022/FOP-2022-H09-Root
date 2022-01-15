@@ -31,16 +31,32 @@ public final class TutorTest_H2_1 {
      *                            Utilities                                *
      **********************************************************************/
 
+    /**
+     * Returns the class instance of the class that should be tested.
+     *
+     * @return the class instance of the test class
+     */
     private static Class<?> getTestClass(final String animal) {
         return TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME, animal);
     }
 
+    /**
+     * Returns the method of the class that should be tested.
+     *
+     * @return the method of the test class
+     */
     private static Method getMethod(final String animal) {
         final var clazz = getTestClass(animal);
         final var methodName = TutorConstants.H2_1_ANIMAL_CLASS_AND_METHOD.get(animal);
         return TutorUtils.assertMethod(clazz, methodName);
     }
 
+    /**
+     * Tests whether the interface extension is correct.
+     *
+     * @param animal     the animal class to check
+     * @param extensions the extension of the interface
+     */
     private static void assertInterfaceExtensions(final String animal, final String... extensions) {
         final var clazz = getTestClass(animal);
         final var interfaces = clazz.getInterfaces();
@@ -61,10 +77,18 @@ public final class TutorTest_H2_1 {
      *                            Interfaces                               *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the animal interfaces.
+     */
     @Nested
     @DisplayName("Criterion: Interfaces")
     public final class TestInterfaces {
 
+        /**
+         * Tests whether the specified number of interfaces are at least correct.
+         *
+         * @param expected the expected number of correct interfaces
+         */
         private void assertInterfaces(int expected) {
             int passed = 0;
             final List<String> passedAnimals = new ArrayList<>(expected);
@@ -86,18 +110,33 @@ public final class TutorTest_H2_1 {
                 TutorMessage.H2_1_INTERFACES_MISMATCH.format(expected, passed, String.join(", ", passedAnimals)));
         }
 
+        /**
+         * Tests whether the class modifiers of the specified animal is correct.
+         *
+         * @param animal the animal to check
+         */
         private void assertModifier(final String animal) {
             final var actual = getTestClass(animal);
             final var expected = Modifier.PUBLIC.and(Modifier.INTERFACE);
             TutorUtils.assertModifiers(expected, actual);
         }
 
+        /**
+         * Tests whether the method modifiers of the specified animal is correct.
+         *
+         * @param name the animal to check
+         */
         public void assertMethodModifiers(final String name) {
             final var actual = getMethod(name);
             final var expected = Modifier.DEFAULT.nand(Modifier.STATIC);
             TutorUtils.assertModifiers(expected, actual);
         }
 
+        /**
+         * Tests whether the return value of the method of the interface is correct.
+         *
+         * @param name the animal to check
+         */
         private void assertMethodReturnType(final String name) {
             final var method = getMethod(name);
             final var expected = String.class;
@@ -124,6 +163,9 @@ public final class TutorTest_H2_1 {
      *                          Class Rabbit                               *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the animal {@value  TutorConstants#H2_1_CLASS_NAME_10}.
+     */
     @Nested
     @DisplayName("Criterion: Class Rabbit")
     public final class TestRabbit {
@@ -132,15 +174,33 @@ public final class TutorTest_H2_1 {
          *                            Utilities                                *
          **********************************************************************/
 
+        /**
+         * Returns the class instance of the class that should be tested.
+         *
+         * @return the class instance of the test class
+         */
         private Class<?> getTestClass() {
             return TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME, TutorConstants.H2_1_CLASS_NAME_10);
         }
 
+        /**
+         * Returns the constructor of the class that should be tested.
+         *
+         * @return the constructo of the test class
+         */
         private Constructor<?> getTestConstructor() {
             final var clazz = getTestClass();
             return TutorUtils.assertConstructor(clazz);
         }
 
+        /**
+         * Returns the field of the class that should be tested.
+         *
+         * @param criterion the criterion that the seeked field should match
+         * @param message   the message if the field could not be found
+         *
+         * @return the field of the test class
+         */
         private Field getTestField(final Predicate<Field> criterion, final String message) {
             final var clazz = getTestClass();
             for (final var field : clazz.getDeclaredFields()) {
@@ -151,26 +211,42 @@ public final class TutorTest_H2_1 {
             return Assertions.fail(message);
         }
 
+        /**
+         * Returns the static field of the class.
+         *
+         * @return the static field of the class
+         */
         private Field getStaticField() {
             return getTestField(f -> {
                     final var modifiers = f.getModifiers();
-                    return java.lang.reflect.Modifier.isPrivate(modifiers) &&
-                        java.lang.reflect.Modifier.isStatic(modifiers) && f.getType().equals(Integer.TYPE);
+                    return java.lang.reflect.Modifier.isPrivate(modifiers)
+                        && java.lang.reflect.Modifier.isStatic(modifiers) && f.getType().equals(Integer.TYPE);
                 }, "The private static int field used to determine the next available name of the "
                     + "a rabbit could not be found."
             );
         }
 
+        /**
+         * Returns the non-static field of the class.
+         *
+         * @return the non-static field of the class
+         */
         private Field getNonStaticField() {
-            return getTestField(f -> {
+            return getTestField(
+                f -> {
                     final var modifiers = f.getModifiers();
-                    return java.lang.reflect.Modifier.isPrivate(modifiers) &&
-                        !java.lang.reflect.Modifier.isStatic(modifiers) && f.getType().equals(Integer.TYPE);
+                    return java.lang.reflect.Modifier.isPrivate(modifiers)
+                        && !java.lang.reflect.Modifier.isStatic(modifiers) && f.getType().equals(Integer.TYPE);
                 },
-                "The private int field used to determine the name of the rabbit "
-                    + "could not be found.");
+                "The private int field used to determine the name of the rabbit could not be found."
+            );
         }
 
+        /**
+         * Resets the static field after executing the specified statements.
+         *
+         * @param statements the statements to execute
+         */
         private void resetCounter(final Runnable statements) {
             // Reset counter at the end
             final var counter = getStaticField();
@@ -186,6 +262,9 @@ public final class TutorTest_H2_1 {
          *                            Class Header                             *
          **********************************************************************/
 
+        /**
+         * Defines the JUnit test cases related to the class header.
+         */
         @Nested
         @DisplayName("Criterion: Class header")
         public final class TestClassHeader {
@@ -210,6 +289,9 @@ public final class TutorTest_H2_1 {
          *                           Static Field                              *
          **********************************************************************/
 
+        /**
+         * Defines the JUnit test cases related to the static field (counter).
+         */
         @Nested
         @DisplayName("Criterion: Static field int - Name counter")
         public final class TestFieldStatic {
@@ -234,6 +316,9 @@ public final class TutorTest_H2_1 {
          *                              Field                                  *
          **********************************************************************/
 
+        /**
+         * Defines the JUnit test cases related to the field related to {@value TutorConstants#H2_1_METHOD_NAME_9}.
+         */
         @Nested
         @DisplayName("Criterion: Field int - Name of the individual")
         public final class TestField {
@@ -251,6 +336,9 @@ public final class TutorTest_H2_1 {
          *                            Constructor                              *
          **********************************************************************/
 
+        /**
+         * Defines the JUnit test cases related to the constructor.
+         */
         @Nested
         @DisplayName("Criterion: Constructor")
         public final class TestConstructor {
@@ -323,10 +411,19 @@ public final class TutorTest_H2_1 {
          *                              Methods                                *
          **********************************************************************/
 
+        /**
+         * Defines the JUnit test cases related to the typeOf* methods.
+         */
         @Nested
         @DisplayName("Criterion: Method typeofX")
         public class TestMethodsTypeOfX {
 
+            /**
+             * Tests whether the return type of the method is correct.
+             *
+             * @param name     the name of the animal to check
+             * @param expected the expected return type
+             */
             private void assertTypeOfXReturnValue(final String name, final String expected) {
                 resetCounter(() -> {
                     final var constructor = getTestConstructor();

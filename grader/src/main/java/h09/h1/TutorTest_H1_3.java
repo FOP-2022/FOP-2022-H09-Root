@@ -32,10 +32,20 @@ public final class TutorTest_H1_3 {
      *                            Utilities                                *
      **********************************************************************/
 
+    /**
+     * Returns the class instance of the class that should be tested.
+     *
+     * @return the class instance of the test class
+     */
     private static Class<?> getTestClass() {
         return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_3_CLASS_NAME);
     }
 
+    /**
+     * Returns the field class instance that should be tested.
+     *
+     * @return the field class instance that should be tested
+     */
     private static Class<?> getTestFieldClass() {
         return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_1_CLASS_NAME);
     }
@@ -44,6 +54,9 @@ public final class TutorTest_H1_3 {
      *                            Class Header                             *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the class header.
+     */
     @Nested
     @DisplayName("Criterion: Class Header")
     public final class TestClassHeader {
@@ -89,10 +102,18 @@ public final class TutorTest_H1_3 {
      *                            Constructor                              *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the constructor.
+     */
     @Nested
     @DisplayName("Criterion: Constructor")
     public final class TestConstructor {
 
+        /**
+         * Returns the constructor that should be tested.
+         *
+         * @return the constructor that should be tested
+         */
         private Constructor<?> getTestConstructor() {
             final var clazz = getTestClass();
             final var parameter = getTestFieldClass();
@@ -120,10 +141,18 @@ public final class TutorTest_H1_3 {
      *                               Method                                *
      **********************************************************************/
 
+    /**
+     * Defines the JUnit test cases related to the method {@value  TutorConstants#H1_2_METHOD_NAME}.
+     */
     @Nested
     @DisplayName("Criterion: Method apply")
     public final class TestMethod {
 
+        /**
+         * Returns the method that should be tested.
+         *
+         * @return the method that should be tested
+         */
         private Method getTestMethod() {
             final var clazz = getTestClass();
             return TutorUtils.assertMethod(
@@ -156,7 +185,7 @@ public final class TutorTest_H1_3 {
         @Test
         @DisplayName("Criterion: Return value only operation 3")
         public void testReturnValueOperation3() {
-// Traits object
+            // Traits object
             final var expectedField1 = TutorConstants.H1_1_FIELD_EXAMPLE_DEFAULT_1;
             final var expectedField2 = TutorConstants.H1_1_FIELD_EXAMPLE_DEFAULT_2;
             final var expectedField3 = TutorConstants.H1_1_FIELD_EXAMPLE_DEFAULT_3;
