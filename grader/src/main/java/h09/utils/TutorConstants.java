@@ -1,11 +1,7 @@
 package h09.utils;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -34,7 +30,6 @@ public final class TutorConstants {
      *
      * @param packageName the package name where the class can be found
      * @param className   the class name of the source code
-     *
      * @return the  path to the source code
      */
     private static String getPathToSource(final String packageName, final String className) {
@@ -45,7 +40,6 @@ public final class TutorConstants {
      * Returns the name of a test class.
      *
      * @param className the name of the class from which a test class is formed
-     *
      * @return the name of a test class
      */
     private static String getTestClassName(final String className) {
@@ -56,7 +50,6 @@ public final class TutorConstants {
      * Returns the name of a tutor test class.
      *
      * @param className the name of the class from which a tutor test class is formed
-     *
      * @return the name of a tutor test class
      */
     private static String getTutorTestClassName(final String className) {
@@ -67,7 +60,6 @@ public final class TutorConstants {
      * Returns the name of a getter method.
      *
      * @param fieldName The name of the field which contains a getter method
-     *
      * @return the name of a getter method.
      */
     private static String getGetterMethodName(final String fieldName) {
@@ -78,7 +70,6 @@ public final class TutorConstants {
      * Returns the name of a setter method.
      *
      * @param fieldName The name of the field which contains a setter method
-     *
      * @return the name of a setter method.
      */
     private static String getSetterMethodName(final String fieldName) {
@@ -90,7 +81,6 @@ public final class TutorConstants {
      * Returns the name of a test method.
      *
      * @param methodName the name of the method from which a test method is formed
-     *
      * @return the name of a test method.
      */
     private static String getTestMethodName(final String methodName) {
@@ -101,7 +91,6 @@ public final class TutorConstants {
      * Returns the name of an animal typeOfX method.
      *
      * @param className the class name which is used to farm a typeOfX method
-     *
      * @return the name of an animal typeOfX method
      */
     private static String getTypeOfXMethodName(final String className) {
@@ -597,11 +586,11 @@ public final class TutorConstants {
     /**
      * The animal class name of the task H2.2.
      */
-    public static final String H2_2_CLASS_NAME = "BiologyHierarchy";
+    public static final String[] H2_2_CLASS_NAME = {"BiologyHierarchy", "BiologyHierachy"};
     /**
-     * The animal test class name of the task H2.3 for {@value H2_2_CLASS_NAME}.
+     * The animal test class name of the task H2.3 for {@link #H2_2_CLASS_NAME}.
      */
-    public static final String H2_3_CLASS_NAME = "TestBiologicalHierachy";
+    public static final String H2_3_CLASS_NAME = "TestBiologicalHierarchy";
     /**
      * The animal test class name of the task H2.3 for {@value H2_1_CLASS_NAME_2}.
      */
