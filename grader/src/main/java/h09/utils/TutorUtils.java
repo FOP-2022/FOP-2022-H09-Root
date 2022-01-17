@@ -56,6 +56,7 @@ public final class TutorUtils {
                 CACHE_CLASSES.put(name, clazz);
                 return clazz;
             } catch (ClassNotFoundException e) {
+                continue;
             }
         }
         return Assertions.fail(TutorMessage.CLASS_NOT_FOUND.format(String.join("/", classNames)));
