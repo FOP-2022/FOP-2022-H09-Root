@@ -133,7 +133,6 @@ public enum TutorMessage {
      * Formats this message using the specified arguments.
      *
      * @param args the arguments used for the message format
-     *
      * @return the formatted message
      */
     public String format(final Object... args) {

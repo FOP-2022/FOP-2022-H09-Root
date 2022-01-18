@@ -81,7 +81,7 @@ final class TutorUtils_H1 {
 
         final var expectedType = TutorConstants.H1_TYPE_PARAMETERS;
         final var actualType = parameters[0];
-        TutorUtils.assertGenericType(parameterClass, expectedType, actualType);
+        TutorUtils.assertGenericType(actualType, parameterClass, expectedType);
     }
 
     /**
@@ -163,19 +163,19 @@ final class TutorUtils_H1 {
      */
     public static void assertConstructorParameterTypesH1_1(final Constructor<?> constructor,
                                                            final boolean combine) {
-        final List<Entry<Class<?>, String>> parameters = new ArrayList<>(
+        final List<Entry<Class<?>, String[]>> parameters = new ArrayList<>(
             List.of(
                 new SimpleEntry<>(
-                    TutorConstants.H1_1_FIELD_TYPE_1, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_1
+                    TutorConstants.H1_1_FIELD_TYPE_1, new String[]{TutorConstants.H1_1_FIELD_TYPE_PARAMETER_1}
                 ),
                 new SimpleEntry<>(
-                    TutorConstants.H1_1_FIELD_TYPE_2, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_2
+                    TutorConstants.H1_1_FIELD_TYPE_2, new String[]{TutorConstants.H1_1_FIELD_TYPE_PARAMETER_2}
                 ),
                 new SimpleEntry<>(
                     TutorConstants.H1_1_FIELD_TYPE_3, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_3
                 ),
                 new SimpleEntry<>(
-                    TutorConstants.H1_1_FIELD_TYPE_4, TutorConstants.H1_1_FIELD_TYPE_PARAMETER_4
+                    TutorConstants.H1_1_FIELD_TYPE_4, new String[]{TutorConstants.H1_1_FIELD_TYPE_PARAMETER_4}
                 )
             )
         );

@@ -177,7 +177,6 @@ public final class Modifier {
      * determine the presence of modifier(s).
      *
      * @param predicate the predicate which will be wrapped for a {@link Class} instance
-     *
      * @return a predicate for a {@link Class} instance
      */
     private static Predicate<Object> getPredicateClass(final IntPredicate predicate) {
@@ -189,7 +188,6 @@ public final class Modifier {
      * determine the presence of modifier(s).
      *
      * @param predicate the predicate which will be wrapped for a {@link Member} instance
-     *
      * @return a predicate for a {@link Member} instance
      */
     private static Predicate<Object> getPredicateMember(final IntPredicate predicate) {
@@ -203,7 +201,6 @@ public final class Modifier {
      *
      * @param predicate the predicate which will be wrapped for a {@link Class} or {@link Member}
      *                  instance
-     *
      * @return a predicate for a {@link Class} or {@link Member} instance
      */
     private static Predicate<Object> getPredicateClassAndMember(final IntPredicate predicate) {
@@ -226,7 +223,6 @@ public final class Modifier {
      * @param op        the binary operation which will be used to combine the modifiers
      * @param format    the naming format of the resulting modifier
      * @param modifiers the modifiers which should be combined with this modifier
-     *
      * @return the combined modifiers with this modifier using the specified binary operation
      */
     private Modifier op(final BiFunction<Predicate<Object>, Predicate<Object>, Predicate<Object>> op,
@@ -253,7 +249,6 @@ public final class Modifier {
      * {@link Predicate#and(Predicate)}.
      *
      * @param modifiers the modifiers which should be combined with this modifier
-     *
      * @return the combined modifiers using the logical AND operation
      */
     public Modifier and(final Modifier... modifiers) {
@@ -265,7 +260,6 @@ public final class Modifier {
      * {@link Predicate#and(Predicate)} and negates the result of it.
      *
      * @param modifiers the modifiers which should be combined with this modifier
-     *
      * @return the combined modifiers using the logical AND operation and negation afterwards
      */
     public Modifier nand(final Modifier... modifiers) {
@@ -277,7 +271,6 @@ public final class Modifier {
      * {@link Predicate#or(Predicate)}
      *
      * @param modifiers the modifiers which should be combined with this modifier
-     *
      * @return the combined modifiers using the logical OR operation
      */
     public Modifier or(final Modifier... modifiers) {
@@ -289,7 +282,6 @@ public final class Modifier {
      * {@link Predicate#or(Predicate)} and negates the result of it.
      *
      * @param modifiers the modifiers which should be combined with this modifier
-     *
      * @return the combined modifiers using the logical OR operation and negation afterwards
      */
     public Modifier nor(final Modifier... modifiers) {
@@ -300,7 +292,6 @@ public final class Modifier {
      * Tests the presence of the object modifiers.
      *
      * @param object the object for whose presence modifiers are to be tested
-     *
      * @return {@code true} if the specified object contains these  modifiers
      */
     public boolean test(final Object object) {

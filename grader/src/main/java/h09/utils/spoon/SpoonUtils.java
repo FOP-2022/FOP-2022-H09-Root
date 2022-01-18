@@ -35,7 +35,6 @@ public final class SpoonUtils {
      *
      * @param testCycle the test cycle to retrieve the java source code
      * @param path      the path of the source code
-     *
      * @return the retrieved source code
      */
     public static VirtualFile getSourceCode(final TestCycle testCycle, final String path) {
@@ -53,7 +52,6 @@ public final class SpoonUtils {
      * @param path      the path to the source code
      * @param processor the processor which will process the source code
      * @param <P>       the type of the processor
-     *
      * @return the processor which processed the source code
      */
     public static <P extends Processor<?>> P process(final TestCycle testCycle, final String path, final P processor) {

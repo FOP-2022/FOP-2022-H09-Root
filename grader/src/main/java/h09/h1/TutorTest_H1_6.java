@@ -174,7 +174,7 @@ public final class TutorTest_H1_6 {
             public final class TestClassHeader {
 
                 @Test
-                @DisplayName("Criterion: Only modifiers package-private")
+                @DisplayName("Criterion: Only modifiers non-public")
                 public void testModifiers() {
                     final var actual = getTestClassPerson();
                     final var expected = Modifier.PUBLIC.nand(Modifier.FINAL);
@@ -429,7 +429,7 @@ public final class TutorTest_H1_6 {
                 @DisplayName("Criterion: Only modifiers public")
                 public void testModifiers() {
                     final var actual = getTestField();
-                    final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PRIVATE);
+                    final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC);
                     TutorUtils.assertModifiers(expected, actual);
                 }
 

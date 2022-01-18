@@ -67,7 +67,7 @@ public final class TutorTest_H1_5 {
 
         // Check generic types
         final var parametrized = method.getParameters()[0].getParameterizedType();
-        TutorUtils.assertGenericType(classParameter, TutorConstants.H1_TYPE_PARAMETERS, parametrized);
+        TutorUtils.assertGenericType(parametrized, classParameter, TutorConstants.H1_TYPE_PARAMETERS);
     }
 
     /**
@@ -81,7 +81,7 @@ public final class TutorTest_H1_5 {
 
         final var actual = method.getReturnType();
         Assertions.assertEquals(expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual));
-        TutorUtils.assertGenericType(expected, TutorConstants.H1_TYPE_PARAMETERS, method.getGenericReturnType());
+        TutorUtils.assertGenericType(method.getGenericReturnType(), expected, TutorConstants.H1_TYPE_PARAMETERS);
     }
 
     /* *********************************************************************

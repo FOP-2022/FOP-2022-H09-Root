@@ -51,7 +51,6 @@ public final class TutorTest_H2_2 {
      * Returns the test animal to test the methods.
      *
      * @param animal the animal name
-     *
      * @return the animal instance
      */
     private static Object getTestAnimal(final String animal) {
@@ -255,7 +254,7 @@ public final class TutorTest_H2_2 {
             // Check type
             final var expectedType = TutorConstants.H2_2_METHOD_BOUND_2;
             final var actualType = parameters[0];
-            TutorUtils.assertGenericType(TutorConstants.H2_2_METHOD_CLASS_PARAMETER_2, expectedType, actualType);
+            TutorUtils.assertGenericType(actualType, TutorConstants.H2_2_METHOD_CLASS_PARAMETER_2, expectedType);
         }
 
         @Test
@@ -476,8 +475,7 @@ public final class TutorTest_H2_2 {
             // Check type
             final var expectedType = TutorConstants.H2_2_METHOD_BOUND_3;
             final var actualType = parameters[0];
-            TutorUtils.assertGenericType(TutorConstants.H2_2_METHOD_CLASS_PARAMETER_3, expectedType,
-                actualType);
+            TutorUtils.assertGenericType(actualType, TutorConstants.H2_2_METHOD_CLASS_PARAMETER_3, expectedType);
         }
 
         @Test

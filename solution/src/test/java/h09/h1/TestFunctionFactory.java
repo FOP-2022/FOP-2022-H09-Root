@@ -155,27 +155,27 @@ class TestFunctionFactory {
         /**
          * The last name of this person.
          */
-        private String lastName;
+        public String lastName;
 
         /**
          * The first name of this person.
          */
-        private String firstName;
+        public String firstName;
 
         /**
          * The street where this person lives.
          */
-        private String street;
+        public String street;
 
         /**
          * The house number of a street where this person lives.
          */
-        private int houseNumber;
+        public int houseNumber;
 
         /**
          * The postal code where the person lives and the street is located.
          */
-        private int postalCode;
+        public int postalCode;
 
         /**
          * Constructs and initialized a person with its name and location where the person lives.

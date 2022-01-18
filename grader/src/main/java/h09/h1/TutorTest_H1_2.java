@@ -116,7 +116,7 @@ public final class TutorTest_H1_2 {
             final var field = getTestField();
             final var clazz = getTestFieldClass();
             TutorUtils.assertGenericType(
-                clazz, TutorConstants.H1_TYPE_PARAMETERS, field.getGenericType()
+                field.getGenericType(), clazz, TutorConstants.H1_TYPE_PARAMETERS
             );
         }
     }

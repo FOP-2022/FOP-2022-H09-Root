@@ -306,7 +306,7 @@ public final class TutorTest_H1_4 {
                 final var actual = getTestField();
                 final var type = actual.getGenericType();
                 TutorUtils.assertGenericType(
-                    TutorConstants.H1_4_FIELD_TYPE, TutorConstants.H1_4_FIELD_TYPE_PARAMETER, type
+                    type, TutorConstants.H1_4_FIELD_TYPE, TutorConstants.H1_4_FIELD_TYPE_PARAMETER
                 );
             }
 
@@ -326,11 +326,19 @@ public final class TutorTest_H1_4 {
                 );
 
                 final var name = method.getGenericReturnType().getTypeName();
-                Assertions.assertEquals(
-                    String.format(
-                        "%s<%s>", expected.getCanonicalName(), TutorConstants.H1_4_FIELD_TYPE_PARAMETER
-                    ), name, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
-                );
+                for (final var acceptedTypes : TutorConstants.H1_4_FIELD_TYPE_PARAMETER) {
+                    final var expectedName = String.format("%s<%s>", expected.getCanonicalName(), acceptedTypes);
+                    try {
+                        Assertions.assertEquals(expectedName, name);
+                        return;
+                    } catch (AssertionError e) {
+                        continue;
+                    }
+                }
+                Assertions.fail(TutorMessage.RETURN_TYPE_MISMATCH.format(
+                    String.format("%s<%s>", expected, String.join("/", TutorConstants.H1_4_FIELD_TYPE_PARAMETER)),
+                    name
+                ));
             }
         }
 

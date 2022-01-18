@@ -1,6 +1,7 @@
 package h09.utils;
 
 import org.junit.jupiter.api.Assertions;
+import org.opentest4j.AssertionFailedError;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -239,7 +240,7 @@ public final class TutorUtils {
      * @param expected the expected constructor parameters
      */
     public static void assertConstructorParameters(final Constructor<?> actual,
-                                                   final List<Entry<Class<?>, String>> expected) {
+                                                   final List<Entry<Class<?>, String[]>> expected) {
         // Check number of parameters
         final var types = actual.getGenericParameterTypes();
         final var expectedLength = expected.size();
@@ -250,7 +251,7 @@ public final class TutorUtils {
             )
         );
 
-        final Map<Integer, String> typesObject = new HashMap<>();
+        final Map<Integer, String[]> typesObject = new HashMap<>();
 
         // Wildcards and restricted type parameters
         for (int i = 0; i < expected.size(); i++) {
@@ -260,17 +261,29 @@ public final class TutorUtils {
             if (key == Object.class) {
                 typesObject.put(i, value);
             } else {
-                TutorUtils.assertGenericType(key, value, types[i]);
+                TutorUtils.assertGenericType(types[i], key, value);
             }
         }
 
         // Type parameters
-        for (final Entry<Integer, String> entry : typesObject.entrySet()) {
+        for (final Entry<Integer, String[]> entry : typesObject.entrySet()) {
+            boolean done = false;
             final var actualType = types[entry.getKey()].getTypeName();
-            final var expectedType = entry.getValue();
-            Assertions.assertEquals(expectedType, actualType,
-                TutorMessage.TYPE_PARAMETER_MISMATCH.format(expectedType, actualType)
-            );
+            final var expectedTypes = entry.getValue();
+            for (final var expectedType : expectedTypes) {
+                try {
+                    Assertions.assertEquals(expectedType, actualType,
+                        TutorMessage.TYPE_PARAMETER_MISMATCH.format(expectedType, actualType)
+                    );
+                    done = true;
+                    break;
+                } catch (AssertionFailedError e) {
+                    continue;
+                }
+            }
+            if (!done) {
+                Assertions.fail(TutorMessage.TYPE_PARAMETER_MISMATCH.format(String.join("/", expectedTypes), actualType));
+            }
         }
     }
 
@@ -393,16 +406,26 @@ public final class TutorUtils {
     /**
      * Checks if the expected generic type is equal the actual one.
      *
-     * @param expectedClass       the expected class type
-     * @param expectedGenericType the expected generic type
-     * @param actual              the type to check
+     * @param actual               the type to check
+     * @param expectedClass        the expected class type
+     * @param expectedGenericTypes the expected generic types
      */
-    public static void assertGenericType(final Class<?> expectedClass,
-                                         final String expectedGenericType,
-                                         final Type actual) {
-        final var ex = String.format("%s<%s>", expectedClass.getCanonicalName(), expectedGenericType);
-        final var ac = actual.getTypeName();
-        Assertions.assertEquals(ex, ac,
-            TutorMessage.TYPE_PARAMETER_MISMATCH.format(ex, ac));
+    public static void assertGenericType(
+        final Type actual,
+        final Class<?> expectedClass,
+        final String... expectedGenericTypes
+    ) {
+        for (final var expectedGenericType : expectedGenericTypes) {
+            final var ex = String.format("%s<%s>", expectedClass.getCanonicalName(), expectedGenericType);
+            final var ac = actual.getTypeName();
+            try {
+                Assertions.assertEquals(ex, ac);
+                return;
+            } catch (AssertionFailedError e) {
+                continue;
+            }
+        }
+        Assertions.fail(
+            TutorMessage.TYPE_PARAMETER_MISMATCH.format(String.join("/", expectedGenericTypes), actual.getTypeName()));
     }
 }
