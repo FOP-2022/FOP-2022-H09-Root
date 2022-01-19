@@ -274,7 +274,8 @@ public final class TutorConstants {
     /**
      * The generic boundary of the field {@value H1_1_FIELD_NAME_3}.
      */
-    public static final String[] H1_1_FIELD_TYPE_PARAMETER_3 = {"Z, ? super Y, Z", "? super Z, ? super Y, Z"};
+    public static final String[] H1_1_FIELD_TYPE_PARAMETER_3 = {"Z, ? super Y, Z", "? super Z, ? super Y, Z",
+        "? super Z, ? super Y, ? extends Z"};
     /**
      * The generic boundary of the field {@value H1_1_FIELD_NAME_4}.
      */
@@ -282,7 +283,8 @@ public final class TutorConstants {
     /**
      * The generic boundary of the field {@value H1_4_FIELD_NAME}.
      */
-    public static final String[] H1_4_FIELD_TYPE_PARAMETER = {"Y, ? super Y, Y", "? super Y, ? super Y, Y"};
+    public static final String[] H1_4_FIELD_TYPE_PARAMETER = {"Y, ? super Y, Y", "? super Y, ? super Y, Y",
+        "? super Y, ? super Y, ? extends Y"};
 
     /**
      * The example field value of {@value H1_1_FIELD_NAME_1}.
