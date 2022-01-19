@@ -45,6 +45,7 @@ public final class LoopsMethodBodyProcessor extends AbstractProcessor<CtMethod<?
 
     /**
      * Constructs and initializes a processor which scans all loops in the specified method.
+     * If the method name is {@code null}, the whole source code will be scanned.
      *
      * @param methodName the name of the method that should be processed
      */
@@ -60,7 +61,7 @@ public final class LoopsMethodBodyProcessor extends AbstractProcessor<CtMethod<?
     public void process(final CtMethod<?> method) {
         // Retrieve all loops
         final var loops = method.getElements(
-            (CtLoop statement) -> method.getSimpleName().equals(methodName)
+            (CtLoop statement) -> methodName == null || method.getSimpleName().equals(methodName)
         );
 
         // Store the loops in their respective collection

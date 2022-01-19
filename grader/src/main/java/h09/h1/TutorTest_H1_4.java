@@ -236,7 +236,7 @@ public final class TutorTest_H1_4 {
         @DisplayName("Criterion: Requirement - Only one foreach")
         public void testRequirementForeachLoop(final TestCycle testCycle) {
             final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
-                new LoopsMethodBodyProcessor(TutorConstants.H1_2_METHOD_NAME));
+                new LoopsMethodBodyProcessor(null));
 
             final var expectedForEach = 1;
             final var actualForEach = processor.getForeachLoops().size();
