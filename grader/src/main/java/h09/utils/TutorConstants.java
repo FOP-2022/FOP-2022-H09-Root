@@ -527,17 +527,17 @@ public final class TutorConstants {
      * The lambda expression types of the test method 2 specified in H1.6.
      */
     public static final String[] H1_6_METHOD_2_LAMBDAS = {
-        "java.util.function.Predicate<? super java.lang.String>",
-        "java.util.function.Function<? super java.lang.String, ? extends java.lang.Integer>",
-        "java.util.function.BiFunction<java.lang.Boolean, ? super java.lang.Integer, java.lang.Boolean>"
+        "java\\.util\\.function\\.Predicate<? super java\\.lang\\.String>",
+        "java\\.util\\.function\\.Function<? super java\\.lang\\.String, ? extends java\\.lang\\.Integer>",
+        "java\\.util\\.function\\.BiFunction<.*java\\.lang\\.Boolean, ? super java\\.lang\\.Integer, .*java\\.lang\\.Boolean>"
     };
     /**
      * The lambda expression types of the test method 3 specified in H1.6.
      */
     public static final String[] H1_6_METHOD_3_LAMBDAS = {
-        "java.util.function.Predicate<? super java.lang.String>",
-        "java.util.function.Function<? super java.lang.String, ? extends java.lang.Integer>",
-        "java.util.function.BiFunction<java.lang.Boolean, ? super java.lang.Integer, java.lang.Boolean>"
+        "java\\.util\\.function\\.Predicate<? super java\\.lang\\.String>",
+        "java\\.util\\.function\\.Function<? super java\\.lang\\.String, ? extends java\\.lang\\.Integer>",
+        "java\\.util\\.function\\.BiFunction<.*java\\.lang\\.Boolean, ? super java\\.lang.Integer, .*java\\.lang\\.Boolean>"
     };
 
     /* *********************************************************************

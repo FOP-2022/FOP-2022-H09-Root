@@ -66,7 +66,7 @@ public final class TutorTest_H1_6 {
         for (int i = 0; i < expected.length; i++) {
             final var a = actual.get(i).toString();
             final var e = expected[i];
-            Assertions.assertEquals(e, a, message.format(e, a));
+            Assertions.assertTrue(e.matches(a), message.format(e, a));
         }
     }
 
