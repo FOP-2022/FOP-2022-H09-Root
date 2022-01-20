@@ -15,12 +15,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.sourcegrade.jagr.api.testing.TestCycle;
 import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
-import spoon.reflect.reference.CtTypeReference;
+import spoon.reflect.code.CtExpression;
+import spoon.reflect.declaration.CtTypedElement;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Defines the JUnit test cases related to the class defined in the task H1.6.
@@ -41,28 +43,45 @@ public final class TutorTest_H1_6 {
     }
 
     /**
+     * Tests if the size of the list is correct.
+     *
+     * @param expected the expected types
+     * @param actual   the actual types
+     * @param message  the message format to print if the assertions fails
+     */
+    private static void assertSize(final int expected, final List<?> actual, final TutorMessage message) {
+        // Check number of lambdas
+        final var size = actual.size();
+        Assertions.assertEquals(expected, size, message.format(expected, size));
+    }
+
+    /**
+     * Tests if the list contains the specified types.
+     *
+     * @param expected the expected types
+     * @param actual   the actual types
+     * @param message  the message format to print if the assertions fails
+     */
+    private static void assertTypes(final String[] expected, final List<?> actual, final TutorMessage message) {
+        for (int i = 0; i < expected.length; i++) {
+            final var a = actual.get(i).toString();
+            final var e = expected[i];
+            Assertions.assertEquals(e, a, message.format(e, a));
+        }
+    }
+
+    /**
      * Tests if the expected lambdas matches the actual lambdas.
      *
-     * @param expectedTypes the expected class name of the lambdas
-     * @param actualTypes   the actual lambdas types
-     * @param message       the message format to print if the assertions fails
+     * @param expected the expected class name of the lambdas
+     * @param actual   the actual lambdas
+     * @param message  the message format to print if the assertions fails
      */
-    private static void assertNumberOfLambdas(final String[] expectedTypes,
-                                              final List<CtTypeReference<?>> actualTypes,
-                                              final TutorMessage message) {
-        // Check number of lambdas
-        final var actualSize = actualTypes.size();
-        final var expectedSize = expectedTypes.length;
-        Assertions.assertEquals(expectedSize, actualSize,
-            TutorMessage.LAMBDAS_MISMATCH_SIZE.format(expectedSize, actualSize));
-
-        // Check types
-        for (int i = 0; i < expectedSize; i++) {
-            final var actual = actualTypes.get(i).toString();
-            final var expected = expectedTypes[i];
-            Assertions.assertEquals(expected, actual,
-                message.format(expected, actual));
-        }
+    private static void assertLambdas(final String[] expected,
+                                      final List<? extends CtExpression<?>> actual,
+                                      final TutorMessage message) {
+        assertSize(expected.length, actual, message);
+        assertTypes(expected, actual.stream().map(CtTypedElement::getType).collect(Collectors.toList()), message);
     }
 
     /**
@@ -103,10 +122,10 @@ public final class TutorTest_H1_6 {
         public void testRequirement(final TestCycle testCycle) {
             final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
                 new LambdaExpressionsMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_1));
-            final var actualTypes = processor.getTypes();
+            final var actualTypes = processor.getLambdas();
             final var expectedTypes = TutorConstants.H1_6_METHOD_1_LAMBDAS;
 
-            assertNumberOfLambdas(expectedTypes, actualTypes, TutorMessage.LAMBDA_MISMATCH);
+            assertLambdas(expectedTypes, actualTypes, TutorMessage.LAMBDA_MISMATCH);
         }
     }
 
@@ -123,10 +142,10 @@ public final class TutorTest_H1_6 {
         public void testRequirement(final TestCycle testCycle) {
             final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
                 new LambdaExpressionsMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_2));
-            final var actualTypes = processor.getTypes();
+            final var actualTypes = processor.getLambdas();
             final var expectedTypes = TutorConstants.H1_6_METHOD_2_LAMBDAS;
 
-            assertNumberOfLambdas(expectedTypes, actualTypes, TutorMessage.LAMBDA_MISMATCH);
+            assertLambdas(expectedTypes, actualTypes, TutorMessage.LAMBDA_MISMATCH);
         }
     }
 
@@ -143,10 +162,10 @@ public final class TutorTest_H1_6 {
         public void testRequirement(final TestCycle testCycle) {
             final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
                 new MethodReferencesMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_2));
-            final var actualTypes = processor.getTypes();
+            final var actualTypes = processor.getMethodReferences();
             final var expectedTypes = TutorConstants.H1_6_METHOD_3_LAMBDAS;
 
-            assertNumberOfLambdas(expectedTypes, actualTypes, TutorMessage.LAMBDA_METHOD_REFERENCE_MISMATCH);
+            assertLambdas(expectedTypes, actualTypes, TutorMessage.LAMBDA_METHOD_REFERENCE_MISMATCH);
         }
 
         /**

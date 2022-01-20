@@ -3,7 +3,6 @@ package h09.utils.spoon;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtLambda;
 import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.reference.CtTypeReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +22,6 @@ public class LambdaExpressionsMethodBodyProcessor extends AbstractProcessor<CtMe
      * Contains all lambda expressions.
      */
     private final List<CtLambda<?>> lambdas;
-    /**
-     * Contains the type of the method references.
-     */
-    private final List<CtTypeReference<?>> types;
 
     /**
      * Constructs and initializes a processor which scans all meth lambda expressions in the
@@ -37,18 +32,15 @@ public class LambdaExpressionsMethodBodyProcessor extends AbstractProcessor<CtMe
     public LambdaExpressionsMethodBodyProcessor(final String methodName) {
         this.methodName = methodName;
         this.lambdas = new ArrayList<>();
-        this.types = new ArrayList<>();
     }
 
     @Override
     public void process(final CtMethod<?> method) {
-        final var found = method.getElements(
-            (CtLambda<?> lambda) -> method.getSimpleName().equals(methodName)
+        lambdas.addAll(
+            method.getElements(
+                (CtLambda<?> lambda) -> method.getSimpleName().equals(methodName)
+            )
         );
-        for (final var lambda : found) {
-            lambdas.add(lambda);
-            types.add(lambda.getType());
-        }
     }
 
     /**
@@ -59,14 +51,5 @@ public class LambdaExpressionsMethodBodyProcessor extends AbstractProcessor<CtMe
      */
     public List<CtLambda<?>> getLambdas() {
         return lambdas;
-    }
-
-    /**
-     * Returns the type of the scanned lambda expressions.
-     *
-     * @return the types of the scanned lambda expressions
-     */
-    public List<CtTypeReference<?>> getTypes() {
-        return types;
     }
 }

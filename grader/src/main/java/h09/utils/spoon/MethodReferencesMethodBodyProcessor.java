@@ -3,7 +3,6 @@ package h09.utils.spoon;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtExecutableReferenceExpression;
 import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.reference.CtTypeReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +23,6 @@ public class MethodReferencesMethodBodyProcessor extends AbstractProcessor<CtMet
      * Contains all method references.
      */
     private final List<CtExecutableReferenceExpression<?, ?>> methodReferences;
-    /**
-     * Contains the type of the method references.
-     */
-    private final List<CtTypeReference<?>> types;
 
     /**
      * Constructs and initializes a processor which scans all method references in the specified
@@ -38,19 +33,15 @@ public class MethodReferencesMethodBodyProcessor extends AbstractProcessor<CtMet
     public MethodReferencesMethodBodyProcessor(final String methodName) {
         this.methodName = methodName;
         this.methodReferences = new ArrayList<>();
-        this.types = new ArrayList<>();
     }
 
     @Override
     public void process(final CtMethod<?> method) {
-        final var found = method.getElements(
-            (CtExecutableReferenceExpression<?, ?> lambda) -> method.getSimpleName().equals(methodName)
+        methodReferences.addAll(
+            method.getElements(
+                (CtExecutableReferenceExpression<?, ?> lambda) -> method.getSimpleName().equals(methodName)
+            )
         );
-
-        for (final var reference : found) {
-            methodReferences.add(reference);
-            types.add(reference.getType());
-        }
     }
 
     /**
@@ -63,12 +54,4 @@ public class MethodReferencesMethodBodyProcessor extends AbstractProcessor<CtMet
         return methodReferences;
     }
 
-    /**
-     * Returns the type of the scanned method references.
-     *
-     * @return the types of the scanned method references
-     */
-    public List<CtTypeReference<?>> getTypes() {
-        return types;
-    }
 }
