@@ -812,12 +812,22 @@ public final class H09_RubricProvider implements RubricProvider {
         .build();
 
     /* *********************************************************************
+     *                              JavaDoc                                 *
+     **********************************************************************/
+
+    public static final Criterion JAVADOC = Criterion.builder()
+        .shortDescription("Alle selbstgeschriebenen Methoden wurden korrekt mit JavaDoc dokumentiert")
+        .maxPoints(0)
+        .minPoints(-3)
+        .build();
+
+    /* *********************************************************************
      *                              Rubric                                 *
      **********************************************************************/
 
     public static final Rubric RUBRIC = Rubric.builder()
         .title("h09")
-        .addChildCriteria(H1, H2)
+        .addChildCriteria(H1, H2, JAVADOC)
         .build();
 
     @Override

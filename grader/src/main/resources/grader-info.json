@@ -36,6 +36,7 @@
         "h09/utils/spoon/ImportsClassProcessor.java",
         "h09/utils/spoon/LambdaExpressionsMethodBodyProcessor.java",
         "h09/utils/spoon/LoopsMethodBodyProcessor.java",
+        "h09/utils/spoon/MethodCallsProcessor.java",
         "h09/utils/spoon/MethodReferencesMethodBodyProcessor.java",
         "h09/utils/spoon/SpoonUtils.java"
       ]

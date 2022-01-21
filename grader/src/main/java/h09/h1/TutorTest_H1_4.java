@@ -6,6 +6,7 @@ import h09.utils.TutorMessage;
 import h09.utils.TutorUtils;
 import h09.utils.spoon.ArraysInstantiationMethodBodyProcessor;
 import h09.utils.spoon.LoopsMethodBodyProcessor;
+import h09.utils.spoon.MethodCallsProcessor;
 import h09.utils.spoon.SpoonUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -220,15 +221,25 @@ public final class TutorTest_H1_4 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Requirement - No arrays")
         public void testRequirementArrays(final TestCycle testCycle) {
-            final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
+            final var arrayProcessor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
                 new ArraysInstantiationMethodBodyProcessor(TutorConstants.H1_2_METHOD_NAME));
 
             final var expected = 0;
-            final var actual = processor.getArrays().size();
+            final var actual = arrayProcessor.getArrays().size();
             Assertions.assertEquals(
                 expected, actual,
                 TutorMessage.REQUIREMENT_NO_ARRAY.format(expected, actual)
             );
+
+            final var calleeProcessor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
+                new MethodCallsProcessor(TutorConstants.H1_2_METHOD_NAME));
+
+            for (final var callee : calleeProcessor.getCallees()) {
+                final var name = callee.getExecutable().getSimpleName();
+                Assertions.assertTrue(TutorConstants.H1_4_REQUIREMENTS_CALLEES.contains(name),
+                    TutorMessage.REQUIREMENT_FOREACH_NO_CALLEE.format(1, name)
+                );
+            }
         }
 
         @Test

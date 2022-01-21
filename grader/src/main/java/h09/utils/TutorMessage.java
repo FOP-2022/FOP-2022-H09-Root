@@ -87,7 +87,8 @@ public enum TutorMessage {
     /* *********************************************************************
      *                             Requirement                             *
      **********************************************************************/
-    REQUIREMENT_FOREACH_LOOP("Only %s for each loop(s) allowed, given %s"),
+    REQUIREMENT_FOREACH_LOOP("Only %s for each loop(s) allowed, given %s."),
+    REQUIREMENT_FOREACH_NO_CALLEE("Only %s for each loop(s) allowed, unkown callee %s processed."),
     REQUIREMENT_INTERMEDIATE_ARRAY_MISMATCH("An intermediate storage should be required for the each operation. Expected %s, "
         + "given %s."),
     REQUIREMENT_NO_ARRAY("Expected %s arrays, given %s."),
