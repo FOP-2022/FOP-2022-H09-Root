@@ -60,7 +60,7 @@ class TestFunctionFactory {
                 if (length > 0 && Character.isUpperCase(chars[0])) {
                     // Letters after the first one must be in lower case
                     for (int i = 1; i < length; i++) {
-                        if (!Character.isLetter(chars[i])) {
+                        if (!Character.isLetter(chars[i]) || Character.isWhitespace(chars[i])) {
                             continue;
                         }
                         if (!Character.isLowerCase(chars[i])) {
@@ -81,7 +81,7 @@ class TestFunctionFactory {
             "java", "racket", "No  ", "yes"
         };
 
-        final String[] stringsFalse = {"Fop", "Junit", "Test", "I love racket", "E g g", "Cow",
+        final String[] stringsFalse = {"Fop", "Junit", "Test", "I love racket", "e g g", "Cow",
             "Java", "Racket", "No  ", "Yes"
         };
         Assertions.assertTrue(fct.apply(stringsTrue));
