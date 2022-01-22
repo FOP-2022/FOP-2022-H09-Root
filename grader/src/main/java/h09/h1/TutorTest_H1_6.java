@@ -12,17 +12,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.opentest4j.AssertionFailedError;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.sourcegrade.jagr.api.testing.TestCycle;
 import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
 import spoon.reflect.code.CtExpression;
-import spoon.reflect.declaration.CtTypedElement;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Defines the JUnit test cases related to the class defined in the task H1.6.
@@ -52,7 +51,7 @@ public final class TutorTest_H1_6 {
     private static void assertSize(final int expected, final List<?> actual, final TutorMessage message) {
         // Check number of lambdas
         final var size = actual.size();
-        Assertions.assertEquals(expected, size, message.format(expected, size));
+        Assertions.assertTrue(expected <= size, message.format(expected, size));
     }
 
     /**
@@ -63,10 +62,20 @@ public final class TutorTest_H1_6 {
      * @param message  the message format to print if the assertions fails
      */
     private static void assertTypes(final String[] expected, final List<?> actual, final TutorMessage message) {
-        for (int i = 0; i < expected.length; i++) {
+        AssertionFailedError found = null;
+        var counter = 0;
+        for (var i = 0; i < expected.length; i++) {
             final var a = actual.get(i).toString();
             final var e = expected[i];
-            Assertions.assertTrue(e.matches(a), message.format(e, a));
+            try {
+                Assertions.assertTrue(e.matches(a), message.format(e, a));
+                counter++;
+            } catch (AssertionFailedError ex) {
+                found = ex;
+            }
+        }
+        if (counter <= expected.length && found != null) {
+            throw found;
         }
     }
 
@@ -81,7 +90,9 @@ public final class TutorTest_H1_6 {
                                       final List<? extends CtExpression<?>> actual,
                                       final TutorMessage message) {
         assertSize(expected.length, actual, message);
-        assertTypes(expected, actual.stream().map(CtTypedElement::getType).collect(Collectors.toList()), message);
+
+        // TODO Not working on Jagr
+        //assertTypes(expected, actual.stream().map(CtTypedElement::getType).collect(Collectors.toList()), message);
     }
 
     /**
@@ -161,7 +172,7 @@ public final class TutorTest_H1_6 {
         @DisplayName("Criterion: Requirement - Only method references")
         public void testRequirement(final TestCycle testCycle) {
             final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
-                new MethodReferencesMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_2));
+                new MethodReferencesMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_3));
             final var actualTypes = processor.getMethodReferences();
             final var expectedTypes = TutorConstants.H1_6_METHOD_3_LAMBDAS;
 

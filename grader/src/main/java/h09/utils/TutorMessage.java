@@ -49,7 +49,7 @@ public enum TutorMessage {
      **********************************************************************/
 
     LAMBDA_MISMATCH("Expected lambda %s, given %s."),
-    LAMBDAS_MISMATCH_SIZE("Expected %s lambdas, given %s."),
+    LAMBDAS_MISMATCH_SIZE("Expected at least %s lambdas, given %s."),
     LAMBDA_METHOD_REFERENCE_MISMATCH("Expected method reference %s, given %s."),
 
     /* *********************************************************************
@@ -134,6 +134,7 @@ public enum TutorMessage {
      * Formats this message using the specified arguments.
      *
      * @param args the arguments used for the message format
+     *
      * @return the formatted message
      */
     public String format(final Object... args) {
