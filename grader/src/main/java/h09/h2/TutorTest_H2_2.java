@@ -51,6 +51,7 @@ public final class TutorTest_H2_2 {
      * Returns the test animal to test the methods.
      *
      * @param animal the animal name
+     *
      * @return the animal instance
      */
     private static Object getTestAnimal(final String animal) {

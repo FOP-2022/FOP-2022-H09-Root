@@ -44,6 +44,7 @@ public final class TutorUtils {
      *
      * @param packageName the name of the package where the class belong
      * @param classNames  the names of the class to seek
+     *
      * @return the specified class instance
      */
     public static Class<?> assertClass(final String packageName, final String... classNames) {
@@ -69,6 +70,7 @@ public final class TutorUtils {
      * @param packageName     the name of the package where the class belong
      * @param className       the name of the class
      * @param nestedClassName the name of the nested class
+     *
      * @return the specified nested class instance
      */
     public static Class<?> assertNestedClass(final String packageName, final String className,
@@ -93,6 +95,7 @@ public final class TutorUtils {
      *
      * @param clazz     the class instance to retrieve the field
      * @param fieldName the name of the field to retrieve
+     *
      * @return the specified class instance
      */
     public static Field assertField(final Class<?> clazz, final String fieldName) {
@@ -110,6 +113,7 @@ public final class TutorUtils {
      *
      * @param instance  the object instance to retrieve the field
      * @param fieldName the name of the field to retrieve
+     *
      * @return the specified class instance
      */
     public static Field assertField(final Object instance, final String fieldName) {
@@ -121,6 +125,7 @@ public final class TutorUtils {
      *
      * @param field    the field to access
      * @param instance the instance to retrieve its field
+     *
      * @return the accessed field object
      */
     public static Object getFieldContent(final Field field, final Object instance) {
@@ -141,6 +146,7 @@ public final class TutorUtils {
      * Returns the accessed static field content.
      *
      * @param field the field to access
+     *
      * @return the accessed field object
      */
     public static Object getFieldContent(final Field field) {
@@ -189,6 +195,7 @@ public final class TutorUtils {
      *
      * @param clazz      the class where the constructor belong
      * @param parameters the parameters of the constructor
+     *
      * @return the specified constructor instance
      */
     public static Constructor<?> assertConstructor(final Class<?> clazz,
@@ -210,6 +217,7 @@ public final class TutorUtils {
      *
      * @param constructor the constructor that should be invoked
      * @param parameters  the parameters of the constructor
+     *
      * @return an instance of the object that is constructed by invoking the specified constructor
      */
     public static Object invokeConstructor(final Constructor<?> constructor,
@@ -297,6 +305,7 @@ public final class TutorUtils {
      * @param clazz      the class instance to retrieve its method
      * @param name       the name of the method
      * @param parameters the parameters class type of the class
+     *
      * @return the specified method
      */
     public static Method assertMethod(final Class<?> clazz, final String name,
@@ -324,6 +333,7 @@ public final class TutorUtils {
      * @param instance   the object instance to retrieve its method
      * @param name       the name of the method
      * @param parameters the parameters class type of the class
+     *
      * @return the specified method
      */
     public static Method assertMethod(final Object instance, final String name,
@@ -337,6 +347,7 @@ public final class TutorUtils {
      * @param method     the method to invoke
      * @param caller     the caller that invokes the method
      * @param parameters the parameters of the method to invoke.
+     *
      * @return the return value of the invoked method
      */
     public static Object invokeMethod(final Method method, final Object caller,

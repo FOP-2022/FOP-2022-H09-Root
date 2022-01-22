@@ -198,6 +198,7 @@ public final class TutorTest_H2_1 {
          *
          * @param criterion the criterion that the seeked field should match
          * @param message   the message if the field could not be found
+         *
          * @return the field of the test class
          */
         private Field getTestField(final Predicate<Field> criterion, final String message) {
