@@ -230,7 +230,7 @@ public final class TutorTest_H1_1 {
         }
 
         @Test
-        @DisplayName("Criterion: Type BiFunction<Z, ? super Y, Z")
+        @DisplayName("Criterion: Type BiFunction<Z/? super Z, ? super Y, Z/? extends Z>")
         public void testType() {
             final var actual = getTestField();
             final var type = actual.getGenericType();
