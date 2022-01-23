@@ -852,7 +852,7 @@ public final class H09_RubricProvider implements RubricProvider {
             new String[]{TutorConstants.H2_3_CLASS_NAME_FULL},
             TutorConstants.H2_2_CLASS_NAME_FULL,
             TutorConstants.H2_2_CLASS_NAME_TRANSFORMER,
-            "<init>"
+            TutorConstants.BYTE_CODE_FLAG_CONSTRUCTOR_CALL
         ));
     }
 }

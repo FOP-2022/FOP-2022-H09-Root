@@ -13,11 +13,9 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.opentest4j.AssertionFailedError;
-import org.slf4j.Logger;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.sourcegrade.jagr.api.testing.TestCycle;
 import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
-import org.sourcegrade.jagr.launcher.env.Jagr;
 import spoon.reflect.code.CtExpression;
 
 import java.lang.reflect.Constructor;
@@ -117,9 +115,6 @@ public final class TutorTest_H1_6 {
             final var instance = TutorUtils.invokeConstructor(constructor);
             method.invoke(instance);
         } catch (Exception e) {
-            e.printStackTrace();
-            Jagr.Default.getInjector().getInstance(Logger.class).info(e.getCause().getMessage());
-            Jagr.Default.getInjector().getInstance(Logger.class).info(e.getClass() +" "+ e.getMessage());
             Assertions.fail(TutorConstants.ASSERTION_FAILED, e);
         }
     }

@@ -847,4 +847,9 @@ public final class TutorConstants {
      * Assertion message if a JUnit test fail.
      */
     public static final String ASSERTION_FAILED = "JUnit Assertion failed!";
+
+    /**
+     * Byte code flag for constructor calls.
+     */
+    public static final String BYTE_CODE_FLAG_CONSTRUCTOR_CALL = "<init>";
 }

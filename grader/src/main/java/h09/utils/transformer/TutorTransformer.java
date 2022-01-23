@@ -95,7 +95,8 @@ public class TutorTransformer implements ClassTransformer {
         }
 
         @Override
-        public MethodVisitor visitMethod(final int access, final String name, final String descriptor, final String signature, final String[] exceptions) {
+        public MethodVisitor visitMethod(final int access, final String name, final String descriptor, final String signature,
+                                         final String[] exceptions) {
             if (location == null || name.equals(location)) {
                 return new TutorMethodVisitor(super.visitMethod(access, name, descriptor, signature, exceptions));
             }
@@ -127,7 +128,8 @@ public class TutorTransformer implements ClassTransformer {
         }
 
         @Override
-        public void visitMethodInsn(final int opcode, final String owner, final String name, final String descriptor, final boolean isInterface) {
+        public void visitMethodInsn(final int opcode, final String owner, final String name, final String descriptor,
+                                    final boolean isInterface) {
             if (owner.equals(original)) {
                 super.visitMethodInsn(opcode, replacement, name, descriptor, isInterface);
             } else {
