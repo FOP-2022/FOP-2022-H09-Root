@@ -63,7 +63,8 @@ public final class SpoonUtils {
             final var launcher = new Launcher();
 
             launcher.addInputResource(source);
-            launcher.run();
+            launcher.buildModel();
+            launcher.process();
 
             final var factory = launcher.getFactory();
             manager = new QueueProcessingManager(factory);
