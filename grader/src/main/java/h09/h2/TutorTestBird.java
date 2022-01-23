@@ -14,7 +14,7 @@ public final class TutorTestBird implements Bird {
 
     @Override
     public String getTypeOfBird() {
-        return null;
+        return "Beee";
     }
 
     @Override

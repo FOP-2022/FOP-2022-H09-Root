@@ -11,12 +11,15 @@ import h09.h1.TutorTest_H1_6;
 import h09.h2.TutorTest_H2_1;
 import h09.h2.TutorTest_H2_2;
 import h09.h2.TutorTest_H2_3;
+import h09.utils.TutorConstants;
+import h09.utils.transformer.TutorTransformer;
 import org.sourcegrade.jagr.api.rubric.Criterion;
 import org.sourcegrade.jagr.api.rubric.Grader;
 import org.sourcegrade.jagr.api.rubric.JUnitTestRef;
 import org.sourcegrade.jagr.api.rubric.Rubric;
 import org.sourcegrade.jagr.api.rubric.RubricForSubmission;
 import org.sourcegrade.jagr.api.rubric.RubricProvider;
+import org.sourcegrade.jagr.api.testing.RubricConfiguration;
 import org.sourcegrade.jagr.api.testing.TestCycle;
 
 /**
@@ -439,9 +442,9 @@ public final class H09_RubricProvider implements RubricProvider {
         .minPoints(0)
         .grader(
             Grader.testAwareBuilder()
-                // TODO CHECK RESULT
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_6.TestMethod1.class.getMethod("testRequirement",
                     TestCycle.class)))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_6.TestMethod1.class.getMethod("testMethod")))
                 .pointsPassedMax()
                 .pointsFailedMin()
                 .build())
@@ -454,9 +457,9 @@ public final class H09_RubricProvider implements RubricProvider {
         .minPoints(0)
         .grader(
             Grader.testAwareBuilder()
-                // TODO CHECK RESULT
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_6.TestMethod2.class.getMethod("testRequirement",
                     TestCycle.class)))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_6.TestMethod2.class.getMethod("testMethod")))
                 .pointsPassedMax()
                 .pointsFailedMin()
                 .build())
@@ -469,7 +472,6 @@ public final class H09_RubricProvider implements RubricProvider {
         .minPoints(0)
         .grader(
             Grader.testAwareBuilder()
-                // TODO CHECK RESULT
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_6.TestMethod3.class.getMethod("testRequirement",
                     TestCycle.class)))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_6.TestMethod3.TestPerson.TestClassHeader.class.getMethod(
@@ -510,6 +512,7 @@ public final class H09_RubricProvider implements RubricProvider {
                     "testModifiers")))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_6.TestMethod3.TestPerson.TestConstructor.class.getMethod(
                     "testFields")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_6.TestMethod3.class.getMethod("testMethod")))
                 .pointsPassedMax()
                 .pointsFailedMin()
                 .build())
@@ -755,11 +758,11 @@ public final class H09_RubricProvider implements RubricProvider {
         .minPoints(0)
         .grader(
             Grader.testAwareBuilder()
-                // TODO CHECK RESULT
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod1.class.getMethod("testRequirements3",
                     TestCycle.class)))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod1.class.getMethod("testRequirements7",
                     TestCycle.class)))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod1.class.getMethod("testMethod")))
                 .pointsPassedMax()
                 .pointsFailedMin()
                 .build())
@@ -771,11 +774,11 @@ public final class H09_RubricProvider implements RubricProvider {
         .minPoints(0)
         .grader(
             Grader.testAwareBuilder()
-                // TODO CHECK RESULT
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod2.class.getMethod("testRequirements4",
                     TestCycle.class)))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod2.class.getMethod("testRequirements9",
                     TestCycle.class)))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod2.class.getMethod("testMethod")))
                 .pointsPassedMax()
                 .pointsFailedMin()
                 .build())
@@ -787,11 +790,11 @@ public final class H09_RubricProvider implements RubricProvider {
         .minPoints(0)
         .grader(
             Grader.testAwareBuilder()
-                // TODO CHECK RESULT
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod3.class.getMethod("testRequirements3",
                     TestCycle.class)))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod3.class.getMethod("testRequirements6",
                     TestCycle.class)))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod3.class.getMethod("testMethod")))
                 .pointsPassedMax()
                 .pointsFailedMin()
                 .build())
@@ -835,4 +838,21 @@ public final class H09_RubricProvider implements RubricProvider {
         return RUBRIC;
     }
 
+    @Override
+    public void configure(final RubricConfiguration configuration) {
+        // H1.6
+        configuration.addTransformer(new TutorTransformer(
+            new String[]{TutorConstants.H1_6_CLASS_NAME_FULL},
+            new String[]{TutorConstants.H1_5_CLASS_NAME_FULL},
+            TutorConstants.H1_5_CLASS_NAME_TRANSFORMER,
+            null
+        ));
+        // H2.3
+        configuration.addTransformer(new TutorTransformer(
+            new String[]{TutorConstants.H2_3_CLASS_NAME_FULL},
+            TutorConstants.H2_2_CLASS_NAME_FULL,
+            TutorConstants.H2_2_CLASS_NAME_TRANSFORMER,
+            "<init>"
+        ));
+    }
 }

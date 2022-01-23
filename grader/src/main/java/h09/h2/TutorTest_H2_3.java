@@ -87,6 +87,30 @@ public final class TutorTest_H2_3 {
     }
 
     /**
+     * Tests whether the JUnit test method is correctly defined.
+     *
+     * @param methodName the name of the JUnit test method to check
+     */
+    private static void assertJunitMethod(final String methodName) {
+        final var clazz = getTestClass();
+        final var method = TutorUtils.assertMethod(clazz, methodName);
+
+        // Modifier
+        final var expected = Modifier.PRIVATE.negate();
+        TutorUtils.assertModifiers(expected, method);
+        Assertions.assertNotNull(method.getAnnotation(Test.class));
+
+        // Invoke method
+        try {
+            final var constructor = TutorUtils.assertConstructor(clazz);
+            final var instance = TutorUtils.invokeConstructor(constructor);
+            method.invoke(instance);
+        } catch (Exception e) {
+            Assertions.fail(TutorConstants.ASSERTION_FAILED, e);
+        }
+    }
+
+    /**
      * Defines the JUnit test cases related to the class header.
      */
     @Nested
@@ -145,6 +169,12 @@ public final class TutorTest_H2_3 {
         public void testRequirements7(final TestCycle testCycle) {
             assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_1, 7, expectedAnimals);
         }
+
+        @Test
+        @DisplayName("Criterion: JUnit method")
+        public void testMethod() {
+            assertJunitMethod(TutorConstants.H2_3_METHOD_NAME_1);
+        }
     }
 
     /* *********************************************************************
@@ -182,6 +212,12 @@ public final class TutorTest_H2_3 {
         public void testRequirements9(final TestCycle testCycle) {
             assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_2, 9, expectedAnimals);
         }
+
+        @Test
+        @DisplayName("Criterion: JUnit method")
+        public void testMethod() {
+            assertJunitMethod(TutorConstants.H2_3_METHOD_NAME_2);
+        }
     }
 
     /* *********************************************************************
@@ -216,6 +252,12 @@ public final class TutorTest_H2_3 {
         @DisplayName("Criterion: Requirements - At least 6 possible animals")
         public void testRequirements6(final TestCycle testCycle) {
             assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_3, 6, expectedAnimals);
+        }
+
+        @Test
+        @DisplayName("Criterion: JUnit method")
+        public void testMethod() {
+            assertJunitMethod(TutorConstants.H2_3_METHOD_NAME_3);
         }
     }
 }

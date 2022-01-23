@@ -362,7 +362,7 @@ public final class TutorUtils {
                         .map(Object::getClass)
                         .map(Class::getSimpleName)
                         .collect(Collectors.joining(", ")),
-                    method.toGenericString()
+                    String.valueOf(caller)
                 ), e
             );
         }

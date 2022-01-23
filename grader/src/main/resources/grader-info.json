@@ -14,6 +14,7 @@
         "h09/h1/TutorTest_H1_4.java",
         "h09/h1/TutorTest_H1_5.java",
         "h09/h1/TutorTest_H1_6.java",
+        "h09/h1/TutorFunctionFactory.java",
         "h09/h1/TutorUtils_H1.java",
         "h09/h2/TutorTest_H2_1.java",
         "h09/h2/TutorTest_H2_2.java",
@@ -27,6 +28,7 @@
         "h09/h2/TutorTestPlacental.java",
         "h09/h2/TutorTestRodent.java",
         "h09/h2/TutorTestVertebrate.java",
+        "h09/h2/TutorBiologyHierarchy.java",
         "h09/utils/Modifier.java",
         "h09/utils/TutorConstants.java",
         "h09/utils/TutorMessage.java",
@@ -38,7 +40,8 @@
         "h09/utils/spoon/LoopsMethodBodyProcessor.java",
         "h09/utils/spoon/MethodCallsProcessor.java",
         "h09/utils/spoon/MethodReferencesMethodBodyProcessor.java",
-        "h09/utils/spoon/SpoonUtils.java"
+        "h09/utils/spoon/SpoonUtils.java",
+        "h09/utils/transformer/TutorTransformer.java"
       ]
     },
     {

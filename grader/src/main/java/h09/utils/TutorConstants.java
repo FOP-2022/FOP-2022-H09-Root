@@ -155,9 +155,22 @@ public final class TutorConstants {
      */
     public static final String H1_5_CLASS_NAME = "FunctionFactory";
     /**
+     * The full class name of the task H1.5.
+     */
+    public static final String H1_5_CLASS_NAME_FULL = String.format("%s.FunctionFactory", H1_PACKAGE_NAME);
+    /**
+     * The tutor class transformer for the class in task H1.5.
+     */
+    public static final String H1_5_CLASS_NAME_TRANSFORMER = String.format("%s.%s", H1_PACKAGE_NAME,
+        getTutorTestClassName(H1_5_CLASS_NAME)).replaceAll("\\.", "/");
+    /**
      * The test class name of the task H1.6 using the name of task H1.5 {@value H1_5_CLASS_NAME}.
      */
     public static final String H1_6_CLASS_NAME = String.format("Test%s", H1_5_CLASS_NAME);
+    /**
+     * The test class full name of the task H1.6 using the name of task H1.5 {@value H1_5_CLASS_NAME}.
+     */
+    public static final String H1_6_CLASS_NAME_FULL = String.format("%s.%s", H1_PACKAGE_NAME, getTestClassName(H1_5_CLASS_NAME));
     /**
      * The test class used for testing purposes in task H1.6
      */
@@ -603,13 +616,29 @@ public final class TutorConstants {
      */
     public static final String H2_1_CLASS_NAME_10 = "Rabbit";
     /**
-     * The animal class name of the task H2.2.
+     * The class names of the task H2.2.
      */
     public static final String[] H2_2_CLASS_NAME = {"BiologyHierarchy", "BiologyHierachy"};
     /**
-     * The animal test class name of the task H2.3 for {@link #H2_2_CLASS_NAME}.
+     * The class names full of the task H2.2.
+     */
+    public static final String[] H2_2_CLASS_NAME_FULL = {String.format("%s.BiologyHierarchy", H2_PACKAGE_NAME),
+        String.format("%s.BiologyHierachy", H2_PACKAGE_NAME)};
+
+    /**
+     * The tutor class transformer for the class in task H2.2.
+     */
+    public static final String H2_2_CLASS_NAME_TRANSFORMER = String.format("%s.%s", H2_PACKAGE_NAME,
+        getTutorTestClassName("BiologyHierarchy")).replaceAll("\\.", "/");
+    /**
+     * The test class name of the task H2.3 for {@link #H2_2_CLASS_NAME}.
      */
     public static final String H2_3_CLASS_NAME = "TestBiologicalHierarchy";
+    /**
+     * The full class names of the task H2.3.
+     */
+    public static final String H2_3_CLASS_NAME_FULL = String.format("h09.h2.%s", H2_3_CLASS_NAME);
+
     /**
      * The animal test class name of the task H2.3 for {@value H2_1_CLASS_NAME_2}.
      */
@@ -694,8 +723,7 @@ public final class TutorConstants {
     /**
      * The path to the source code of the task H2.3.
      */
-    public static final String H2_3_PATH_TO_SOURCE = getPathToSource(H2_PACKAGE_NAME,
-        H2_3_CLASS_NAME);
+    public static final String H2_3_PATH_TO_SOURCE = getPathToSource(H2_PACKAGE_NAME, H2_3_CLASS_NAME);
 
     /**
      * The method name of the class {@value H2_1_CLASS_NAME_1}.
@@ -801,7 +829,7 @@ public final class TutorConstants {
     );
 
     /**
-     * The inheritance of the aniamls in task H2.1.
+     * The inheritance of the animals in task H2.1.
      */
     public static final Map<String, String[]> H2_1_ANIMAL_CLASS_AND_INHERITANCE = Map.of(
         TutorConstants.H2_1_CLASS_NAME_1, new String[]{},
@@ -814,4 +842,9 @@ public final class TutorConstants {
         TutorConstants.H2_1_CLASS_NAME_8, new String[]{TutorConstants.H2_1_CLASS_NAME_7},
         TutorConstants.H2_1_CLASS_NAME_9, new String[]{TutorConstants.H2_1_CLASS_NAME_8}
     );
+
+    /**
+     * Assertion message if a JUnit test fail.
+     */
+    public static final String ASSERTION_FAILED = "JUnit Assertion failed!";
 }

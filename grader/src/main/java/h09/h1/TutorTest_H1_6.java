@@ -13,9 +13,11 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.opentest4j.AssertionFailedError;
+import org.slf4j.Logger;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.sourcegrade.jagr.api.testing.TestCycle;
 import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
+import org.sourcegrade.jagr.launcher.env.Jagr;
 import spoon.reflect.code.CtExpression;
 
 import java.lang.reflect.Constructor;
@@ -96,6 +98,33 @@ public final class TutorTest_H1_6 {
     }
 
     /**
+     * Tests whether the JUnit test method is correctly defined.
+     *
+     * @param methodName the name of the JUnit test method to check
+     */
+    private static void assertJunitMethod(final String methodName) {
+        final var clazz = getTestClass();
+        final var method = TutorUtils.assertMethod(clazz, methodName);
+
+        // Modifier
+        final var expected = Modifier.PRIVATE.negate();
+        TutorUtils.assertModifiers(expected, method);
+        Assertions.assertNotNull(method.getAnnotation(Test.class));
+
+        // Invoke method
+        try {
+            final var constructor = TutorUtils.assertConstructor(clazz);
+            final var instance = TutorUtils.invokeConstructor(constructor);
+            method.invoke(instance);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Jagr.Default.getInjector().getInstance(Logger.class).info(e.getCause().getMessage());
+            Jagr.Default.getInjector().getInstance(Logger.class).info(e.getClass() +" "+ e.getMessage());
+            Assertions.fail(TutorConstants.ASSERTION_FAILED, e);
+        }
+    }
+
+    /**
      * Defines the JUnit test cases related to the class header.
      */
     @Nested
@@ -138,6 +167,12 @@ public final class TutorTest_H1_6 {
 
             assertLambdas(expectedTypes, actualTypes, TutorMessage.LAMBDA_MISMATCH);
         }
+
+        @Test
+        @DisplayName("Criterion: JUnit method")
+        public void testMethod() {
+            assertJunitMethod(TutorConstants.H1_6_METHOD_NAME_1);
+        }
     }
 
     /**
@@ -158,6 +193,12 @@ public final class TutorTest_H1_6 {
 
             assertLambdas(expectedTypes, actualTypes, TutorMessage.LAMBDA_MISMATCH);
         }
+
+        @Test
+        @DisplayName("Criterion: JUnit method")
+        public void testMethod() {
+            assertJunitMethod(TutorConstants.H1_6_METHOD_NAME_2);
+        }
     }
 
     /**
@@ -177,6 +218,12 @@ public final class TutorTest_H1_6 {
             final var expectedTypes = TutorConstants.H1_6_METHOD_3_LAMBDAS;
 
             assertLambdas(expectedTypes, actualTypes, TutorMessage.LAMBDA_METHOD_REFERENCE_MISMATCH);
+        }
+
+        @Test
+        @DisplayName("Criterion: JUnit method")
+        public void testMethod() {
+            assertJunitMethod(TutorConstants.H1_6_METHOD_NAME_3);
         }
 
         /**
