@@ -26,6 +26,9 @@ allprojects {
         withSourcesJar()
     }
     tasks {
+        withType<JavaCompile> {
+            options.encoding = "UTF-8"
+        }
         jar {
             archiveFileName.set("${rootProject.name}-${project.name}.jar")
         }
