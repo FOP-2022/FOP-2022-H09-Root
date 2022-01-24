@@ -69,6 +69,12 @@ public enum TutorMessage {
     MODIFIERS_MEMBER_MISMATCH("The member %s should contain the following modifier %s."),
 
     /* *********************************************************************
+     *                              Package                                *
+     **********************************************************************/
+
+    PACKAGE_NAME_ALTERNATIVE("The package name %s could not be found for the class %s. Using the alternative package name."),
+
+    /* *********************************************************************
      *                            Type parameter                           *
      **********************************************************************/
 

@@ -74,6 +74,21 @@ public final class TutorTest_H2_1 {
     }
 
     /* *********************************************************************
+     *                              General                                *
+     **********************************************************************/
+
+    @Test
+    @DisplayName("Criterion: Original package name found")
+    public void testPackage() {
+        for (final var className : TutorConstants.H2_1_ANIMAL_CLASS_AND_INHERITANCE.keySet()) {
+            final var alternative = TutorUtils.assertPackage(TutorConstants.H2_PACKAGE_NAME, className);
+            Assertions.assertTrue(alternative, TutorMessage.PACKAGE_NAME_ALTERNATIVE.format(TutorConstants.H2_PACKAGE_NAME,
+                className)
+            );
+        }
+    }
+
+    /* *********************************************************************
      *                            Interfaces                               *
      **********************************************************************/
 

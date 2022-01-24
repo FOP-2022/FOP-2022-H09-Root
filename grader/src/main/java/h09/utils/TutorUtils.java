@@ -36,6 +36,40 @@ public final class TutorUtils {
     private static final Map<String, Class<?>> CACHE_CLASSES = new HashMap<>();
 
     /* *********************************************************************
+     *                              Package                                *
+     **********************************************************************/
+
+    /**
+     * Returns {@code  true} if the original class name was found or {@code false} if the alternative class name was found.
+     *
+     * @param packageName the name of the package where the class belong
+     * @param classNames  the names of the class to seek
+     *
+     * @return {@code  true} if the original class name was found or {@code false} if the alternative class name was found
+     */
+    public static boolean assertPackage(final String packageName, final String... classNames) {
+        for (final var className : classNames) {
+            final var name = String.format("%s.%s", packageName, className);
+            // Wrong package name
+            final var alternativeName = name.replaceAll("\\.h\\d", "");
+            try {
+                Assertions.assertDoesNotThrow(() -> Class.forName(name),
+                    TutorMessage.CLASS_NOT_FOUND.format(String.join("/", name)));
+                return true;
+            } catch (AssertionFailedError e) {
+                try {
+                    Assertions.assertDoesNotThrow(() -> Class.forName(alternativeName),
+                        TutorMessage.CLASS_NOT_FOUND.format(String.join("/", classNames)));
+                    return false;
+                } catch (AssertionFailedError ex) {
+                    continue;
+                }
+            }
+        }
+        return Assertions.fail(TutorMessage.PACKAGE_NAME_ALTERNATIVE.format(String.join("/", classNames)));
+    }
+
+    /* *********************************************************************
      *                               Class                                 *
      **********************************************************************/
 
@@ -50,15 +84,25 @@ public final class TutorUtils {
     public static Class<?> assertClass(final String packageName, final String... classNames) {
         for (final var className : classNames) {
             final var name = packageName == null ? className : String.format("%s.%s", packageName, className);
+            // Wrong package name
+            final var alternativeName = name.replaceAll("\\.h\\d", "");
             if (CACHE_CLASSES.containsKey(name)) {
                 return CACHE_CLASSES.get(name);
+            } else if (CACHE_CLASSES.containsKey(alternativeName)) {
+                return CACHE_CLASSES.get(alternativeName);
             }
             try {
                 final var clazz = Class.forName(name);
                 CACHE_CLASSES.put(name, clazz);
                 return clazz;
             } catch (ClassNotFoundException e) {
-                continue;
+                try {
+                    final var clazz = Class.forName(alternativeName);
+                    CACHE_CLASSES.put(alternativeName, clazz);
+                    return clazz;
+                } catch (ClassNotFoundException ex) {
+                    continue;
+                }
             }
         }
         return Assertions.fail(TutorMessage.CLASS_NOT_FOUND.format(String.join("/", classNames)));

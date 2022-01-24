@@ -110,6 +110,24 @@ public final class TutorTest_H2_3 {
         }
     }
 
+
+    /* *********************************************************************
+     *                              General                                *
+     **********************************************************************/
+
+    @Test
+    @DisplayName("Criterion: Original package name found")
+    public void testPackage() {
+        final var alternative = TutorUtils.assertPackage(TutorConstants.H2_PACKAGE_NAME, TutorConstants.H2_3_CLASS_NAME);
+        Assertions.assertTrue(alternative, TutorMessage.PACKAGE_NAME_ALTERNATIVE.format(TutorConstants.H2_PACKAGE_NAME,
+            TutorConstants.H2_3_CLASS_NAME)
+        );
+    }
+
+    /* *********************************************************************
+     *                            Class Header                             *
+     **********************************************************************/
+
     /**
      * Defines the JUnit test cases related to the class header.
      */

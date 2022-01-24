@@ -496,8 +496,27 @@ public final class H09_RubricProvider implements RubricProvider {
 
     public static final Criterion H1_6 = Criterion.builder()
         .shortDescription("H1.6: JUnit-Tests")
+        .minPoints(0)
         .addChildCriteria(H1_6_1, H1_6_2, H1_6_3, H1_6_4)
         .build();
+
+    public static final Criterion H1_PACKAGE_NAME =
+        Criterion.builder()
+            .shortDescription("H1: Package name is correct")
+            .maxPoints(0)
+            .minPoints(-2)
+            .grader(
+                Grader.testAwareBuilder()
+                    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.class.getMethod("testPackage")))
+                //    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_2.class.getMethod("testPackage")))
+               //     .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_3.class.getMethod("testPackage")))
+               //     .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_4.class.getMethod("testPackage")))
+               //     .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_5.class.getMethod("testPackage")))
+                //    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_6.class.getMethod("testPackage")))
+                    .pointsPassedMax()
+                    .pointsFailedMin()
+                    .build())
+            .build();
 
     /* *********************************************************************
      *                                 H1                                  *
@@ -506,7 +525,7 @@ public final class H09_RubricProvider implements RubricProvider {
     public static final Criterion H1 = Criterion.builder()
         .shortDescription("H1: Generische Operationen - Filter, Map und Fold")
         .minPoints(0)
-        .addChildCriteria(H1_1, H1_2, H1_3, H1_4, H1_5, H1_6)
+        .addChildCriteria(H1_1, H1_2, H1_3, H1_4, H1_5, H1_6, H1_PACKAGE_NAME)
         .build();
 
     /* *********************************************************************
@@ -746,13 +765,29 @@ public final class H09_RubricProvider implements RubricProvider {
         .addChildCriteria(H2_3_1, H2_3_2, H2_3_3, H2_3_4)
         .build();
 
+    public static final Criterion H2_PACKAGE_NAME =
+        Criterion.builder()
+            .shortDescription("H2: Package name is correct")
+            .maxPoints(0)
+            .minPoints(-2)
+            .grader(
+                Grader.testAwareBuilder()
+                    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_1.class.getMethod("testPackage")))
+                    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.class.getMethod("testPackage")))
+                    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.class.getMethod("testPackage")))
+                    .pointsPassedMax()
+                    .pointsFailedMin()
+                    .build())
+            .build();
+
     /* *********************************************************************
      *                                 H2                                  *
      **********************************************************************/
 
     public static final Criterion H2 = Criterion.builder()
         .shortDescription("H2: Restricted Genericity und Wildcards")
-        .addChildCriteria(H2_1, H2_2, H2_3)
+        .minPoints(0)
+        .addChildCriteria(H2_1, H2_2, H2_3, H2_PACKAGE_NAME)
         .build();
 
     /* *********************************************************************
