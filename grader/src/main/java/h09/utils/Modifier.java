@@ -281,7 +281,7 @@ public final class Modifier {
      * @return the combined modifiers using the logical OR operation
      */
     public Modifier or(final Modifier... modifiers) {
-        return op(Predicate::and, "or(%s, %s)", modifiers);
+        return op(Predicate::or, "or(%s, %s)", modifiers);
     }
 
     /**
