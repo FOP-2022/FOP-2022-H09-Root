@@ -311,7 +311,7 @@ public final class TutorTest_H1_6 {
                 @DisplayName("Criterion: Only modifiers public")
                 public void testModifiers() {
                     final var actual = getTestField();
-                    final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC);
+                    final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC.or(Modifier.PRIVATE));
                     TutorUtils.assertModifiers(expected, actual);
                 }
 
@@ -380,7 +380,7 @@ public final class TutorTest_H1_6 {
                 @DisplayName("Criterion: Only modifiers public")
                 public void testModifiers() {
                     final var actual = getTestField();
-                    final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC);
+                    final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC.or(Modifier.PRIVATE));
                     TutorUtils.assertModifiers(expected, actual);
                 }
 
@@ -449,7 +449,7 @@ public final class TutorTest_H1_6 {
                 @DisplayName("Criterion: Only modifiers public")
                 public void testModifiers() {
                     final var actual = getTestField();
-                    final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC);
+                    final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC.or(Modifier.PRIVATE));
                     TutorUtils.assertModifiers(expected, actual);
                 }
 
@@ -518,7 +518,7 @@ public final class TutorTest_H1_6 {
                 @DisplayName("Criterion: Only modifiers public")
                 public void testModifiers() {
                     final var actual = getTestField();
-                    final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC);
+                    final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC.or(Modifier.PRIVATE));
                     TutorUtils.assertModifiers(expected, actual);
                 }
 
@@ -587,7 +587,7 @@ public final class TutorTest_H1_6 {
                 @DisplayName("Criterion: Only modifiers public")
                 public void testModifiers() {
                     final var actual = getTestField();
-                    final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC);
+                    final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PUBLIC.or(Modifier.PRIVATE));
                     TutorUtils.assertModifiers(expected, actual);
                 }
 
