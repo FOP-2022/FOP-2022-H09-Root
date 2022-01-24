@@ -257,7 +257,7 @@ public final class TutorTest_H1_3 {
         @DisplayName("Criterion: Requirement - Arrays as intermediate storage")
         public void testRequirementArrays(final TestCycle testCycle) {
             final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_3_PATH_TO_SOURCE,
-                new ArraysInstantiationMethodBodyProcessor(TutorConstants.H1_2_METHOD_NAME));
+                new ArraysInstantiationMethodBodyProcessor(TutorConstants.H1_3_CLASS_NAME));
 
             final var expected = 2;
             final var actual = processor.getArrays().size();

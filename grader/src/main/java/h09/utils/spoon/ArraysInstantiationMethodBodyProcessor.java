@@ -2,22 +2,22 @@ package h09.utils.spoon;
 
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtNewArray;
-import spoon.reflect.declaration.CtMethod;
+import spoon.reflect.declaration.CtClass;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines a processor that scans the arrays' instantiation in a method.
+ * Defines a processor that scans the arrays' instantiation in a class.
  *
  * @author Nhan Huynh, Darya Nikitina
  */
-public final class ArraysInstantiationMethodBodyProcessor extends AbstractProcessor<CtMethod<?>> {
+public final class ArraysInstantiationMethodBodyProcessor extends AbstractProcessor<CtClass<?>> {
 
     /**
-     * The method name to look for arrays instantiation.
+     * The class name to look for arrays instantiation.
      */
-    private final String methodName;
+    private final String className;
 
     /**
      * Contains the arrays' instantiation of the specified method.
@@ -26,18 +26,21 @@ public final class ArraysInstantiationMethodBodyProcessor extends AbstractProces
 
     /**
      * Constructs and initializes a processor which scans all array instantiation in the specified
-     * method.
+     * class.
      *
-     * @param methodName the name of the method that should be processed
+     * @param className the name of the method that should be processed
      */
-    public ArraysInstantiationMethodBodyProcessor(final String methodName) {
-        this.methodName = methodName;
+    public ArraysInstantiationMethodBodyProcessor(final String className) {
+        this.className = className;
         this.arrays = new ArrayList<>();
     }
 
     @Override
-    public void process(final CtMethod<?> method) {
-        arrays.addAll(method.getElements(array -> method.getSimpleName().equals(methodName)));
+    public void process(final CtClass<?> clazz) {
+        if (!clazz.getSimpleName().equals(className)) {
+            return;
+        }
+        arrays.addAll(clazz.getElements((CtNewArray<?> array) -> true));
     }
 
     /**

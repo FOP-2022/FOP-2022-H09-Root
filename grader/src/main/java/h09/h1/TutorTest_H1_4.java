@@ -222,7 +222,7 @@ public final class TutorTest_H1_4 {
         @DisplayName("Criterion: Requirement - No arrays")
         public void testRequirementArrays(final TestCycle testCycle) {
             final var arrayProcessor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
-                new ArraysInstantiationMethodBodyProcessor(TutorConstants.H1_2_METHOD_NAME));
+                new ArraysInstantiationMethodBodyProcessor(TutorConstants.H1_4_CLASS_NAME));
 
             final var expected = 0;
             final var actual = arrayProcessor.getArrays().size();
