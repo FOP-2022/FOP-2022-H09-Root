@@ -15,7 +15,7 @@ public class Rabbit implements Leporidae {
     /**
      * The ID of the rabbit which also acts as its name.
      */
-    private final int id;
+    private int id;
 
     /**
      * Constructs and initialized rabbit with its ID.

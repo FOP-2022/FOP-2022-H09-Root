@@ -327,7 +327,7 @@ public final class TutorTest_H2_1 {
             @DisplayName("Criterion: Only modifiers private final")
             public void testModifiers() {
                 final var actual = getNonStaticField();
-                final var expected = Modifier.STATIC.negate().and(Modifier.PRIVATE, Modifier.FINAL);
+                final var expected = Modifier.STATIC.nand(Modifier.FINAL).and(Modifier.PRIVATE);
                 TutorUtils.assertModifiers(expected, actual);
             }
         }

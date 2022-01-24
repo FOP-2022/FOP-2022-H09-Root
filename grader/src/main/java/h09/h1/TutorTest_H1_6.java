@@ -234,8 +234,12 @@ public final class TutorTest_H1_6 {
              * @return the class that should be tested
              */
             private Class<?> getTestClassPerson() {
-                return TutorUtils.assertNestedClass(TutorConstants.H1_PACKAGE_NAME,
-                    TutorConstants.H1_6_CLASS_NAME, TutorConstants.H1_6_CLASS_NAME_1);
+                try {
+                    return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_6_CLASS_NAME_1);
+                } catch (AssertionFailedError e) {
+                    return TutorUtils.assertNestedClass(TutorConstants.H1_PACKAGE_NAME,
+                        TutorConstants.H1_6_CLASS_NAME, TutorConstants.H1_6_CLASS_NAME_1);
+                }
             }
 
             /**
