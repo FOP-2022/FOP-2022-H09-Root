@@ -101,6 +101,7 @@ public final class H09_RubricProvider implements RubricProvider {
 
     public static final Criterion H1_1 = Criterion.builder()
         .shortDescription("H1.1: Klasse Traits")
+        .minPoints(0)
         .addChildCriteria(H1_1_1, H1_1_2, H1_1_3, H1_1_4, H1_1_5)
         .build();
 
@@ -146,6 +147,7 @@ public final class H09_RubricProvider implements RubricProvider {
 
     public static final Criterion H1_2 = Criterion.builder()
         .shortDescription("H1.2: Klasse FunctionWithFilterMapAndFold")
+        .minPoints(0)
         .addChildCriteria(H1_2_1, H1_2_2, H1_2_3)
         .build();
 
@@ -180,7 +182,7 @@ public final class H09_RubricProvider implements RubricProvider {
         .build();
 
     public static final Criterion H1_3_3 = Criterion.builder()
-        .shortDescription("Alle Operationen funktioneren.")
+        .shortDescription("Alle Operationen funktionieren.")
         .grader(
             Grader.testAwareBuilder()
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_3.TestMethod.class.getMethod("testReturnValue")))
@@ -220,6 +222,7 @@ public final class H09_RubricProvider implements RubricProvider {
 
     public static final Criterion H1_3 = Criterion.builder()
         .shortDescription("H1.3: Klasse MyFunctionWithFilterMapAndFold")
+        .minPoints(0)
         .addChildCriteria(H1_3_1, H1_3_2, H1_3_3, H1_3_4, H1_3_5)
         .build();
 
@@ -333,6 +336,7 @@ public final class H09_RubricProvider implements RubricProvider {
 
     public static final Criterion H1_4 = Criterion.builder()
         .shortDescription("H1.4: Klasse MyFunctionWithAdjacent")
+        .minPoints(0)
         .addChildCriteria(H1_4_5, H1_4_9)
         .build();
 
@@ -392,6 +396,7 @@ public final class H09_RubricProvider implements RubricProvider {
 
     public static final Criterion H1_5 = Criterion.builder()
         .shortDescription("H1.5: Klasse FunctionFactory")
+        .minPoints(0)
         .addChildCriteria(H1_5_1, H1_5_2, H1_5_3, H1_5_4)
         .build();
 
@@ -500,6 +505,7 @@ public final class H09_RubricProvider implements RubricProvider {
 
     public static final Criterion H1 = Criterion.builder()
         .shortDescription("H1: Generische Operationen - Filter, Map und Fold")
+        .minPoints(0)
         .addChildCriteria(H1_1, H1_2, H1_3, H1_4, H1_5, H1_6)
         .build();
 
@@ -573,6 +579,7 @@ public final class H09_RubricProvider implements RubricProvider {
 
     public static final Criterion H2_1 = Criterion.builder()
         .shortDescription("H2.1: Beispielmaterial")
+        .minPoints(0)
         .addChildCriteria(H2_1_1, H2_1_2, H2_1_3, H2_1_4)
         .build();
 
@@ -670,6 +677,7 @@ public final class H09_RubricProvider implements RubricProvider {
 
     public static final Criterion H2_2 = Criterion.builder()
         .shortDescription("H2.2: Testmethoden für Restricted Genericity und Wildcards")
+        .minPoints(0)
         .addChildCriteria(H2_2_1, H2_2_2, H2_2_3, H2_2_4, H2_2_5, H2_2_6, H2_2_7)
         .build();
 
@@ -734,6 +742,7 @@ public final class H09_RubricProvider implements RubricProvider {
 
     public static final Criterion H2_3 = Criterion.builder()
         .shortDescription("H2.3: JUnit-Tests")
+        .minPoints(0)
         .addChildCriteria(H2_3_1, H2_3_2, H2_3_3, H2_3_4)
         .build();
 
