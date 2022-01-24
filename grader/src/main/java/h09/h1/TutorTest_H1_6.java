@@ -684,25 +684,30 @@ public final class TutorTest_H1_6 {
                     final var actualField5 = TutorUtils.assertField(instance,
                         TutorConstants.H1_6_FIELD_NAME_5);
 
+                    final var actualContent1 = TutorUtils.getFieldContent(actualField1, instance);
                     Assertions.assertEquals(
-                        expectedField1, TutorUtils.getFieldContent(actualField1, instance),
-                        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField1, actualField1)
+                        expectedField1, actualContent1,
+                        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField1, actualContent1)
                     );
+                    final var actualContent2 = TutorUtils.getFieldContent(actualField2, instance);
                     Assertions.assertEquals(
-                        expectedField2, TutorUtils.getFieldContent(actualField2, instance),
-                        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField2, actualField2)
+                        expectedField2, actualContent2,
+                        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField2, actualContent2)
                     );
+                    final var actualContent3 = TutorUtils.getFieldContent(actualField3, instance);
                     Assertions.assertEquals(
-                        expectedField3, TutorUtils.getFieldContent(actualField3, instance),
-                        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField3, actualField3)
+                        expectedField3, actualContent3,
+                        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField3, actualContent3)
                     );
+                    final var actualContent4 = TutorUtils.getFieldContent(actualField4, instance);
                     Assertions.assertEquals(
-                        expectedField4, TutorUtils.getFieldContent(actualField4, instance),
-                        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField4, actualField4)
+                        expectedField4, actualContent4,
+                        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField4, actualContent4)
                     );
+                    final var actualContent5 = TutorUtils.getFieldContent(actualField5, instance);
                     Assertions.assertEquals(
-                        expectedField5, TutorUtils.getFieldContent(actualField5, instance),
-                        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField5, actualField5)
+                        expectedField5, actualContent5,
+                        TutorMessage.FIELD_CONTENT_MISMATCH.format(expectedField5, actualContent5)
                     );
                 }
             }
