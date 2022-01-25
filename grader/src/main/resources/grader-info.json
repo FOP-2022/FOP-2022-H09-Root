@@ -34,12 +34,12 @@
         "h09/utils/TutorMessage.java",
         "h09/utils/TutorUtils.java",
         "h09/utils/spoon/ArraysInstantiationMethodBodyProcessor.java",
-        "h09/utils/spoon/ConstructorsCallMethodBodyProcessor.java",
         "h09/utils/spoon/ImportsClassProcessor.java",
         "h09/utils/spoon/LambdaExpressionsMethodBodyProcessor.java",
         "h09/utils/spoon/LoopsMethodBodyProcessor.java",
         "h09/utils/spoon/MethodCallsProcessor.java",
         "h09/utils/spoon/MethodReferencesMethodBodyProcessor.java",
+        "h09/utils/spoon/ObjectsUsageMethodProcessor.java",
         "h09/utils/spoon/SpoonUtils.java",
         "h09/utils/transformer/TutorTransformer.java"
       ]

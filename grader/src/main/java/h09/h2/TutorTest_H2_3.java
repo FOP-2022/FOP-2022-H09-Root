@@ -4,21 +4,19 @@ import h09.utils.Modifier;
 import h09.utils.TutorConstants;
 import h09.utils.TutorMessage;
 import h09.utils.TutorUtils;
-import h09.utils.spoon.ConstructorsCallMethodBodyProcessor;
+import h09.utils.spoon.ObjectsUsageMethodProcessor;
 import h09.utils.spoon.SpoonUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.slf4j.Logger;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.sourcegrade.jagr.api.testing.TestCycle;
 import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
-import spoon.reflect.code.CtConstructorCall;
-import spoon.reflect.reference.CtTypeReference;
+import org.sourcegrade.jagr.launcher.env.Jagr;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -54,36 +52,30 @@ public final class TutorTest_H2_3 {
      */
     private static void assertRequirements(final TestCycle testCycle, final String methodName,
                                            final int expectedSize, final String... expectedAnimals) {
-        final var processor = new ConstructorsCallMethodBodyProcessor(methodName);
+        final var processor = new ObjectsUsageMethodProcessor(methodName);
         SpoonUtils.process(testCycle, TutorConstants.H2_3_PATH_TO_SOURCE, processor);
 
         final var testAnimals = Stream.of(expectedAnimals)
-            .map(animal -> animal.equals("Rabbit") ? animal : String.format("Test%s", animal))
-            .collect(Collectors.toList());
+            .map(animal -> animal.startsWith("Rabbit") ? animal : String.format("Test%s", animal))
+            .collect(Collectors.toSet());
 
-        final var actual = processor.getConstructors().stream()
-            .map(CtConstructorCall::getType)
-            .map(CtTypeReference::getSimpleName)
-            .distinct()
-            .filter(name -> name.startsWith("Test") || name.equals("Rabbit"))
-            .collect(Collectors.toList());
 
-        // Check number of animals
-        final var actualSize = actual.size();
-        Assertions.assertTrue(expectedSize <= actualSize,
-            TutorMessage.H2_3_TEST_ANIMAL_SIZE_MISMATCH.format(expectedSize, actualSize));
+        final var actualAnimals = processor.getTypes().stream()
+            .map(Object::toString).map(clazz -> clazz.replaceAll(".*\\.", ""))
+            .collect(Collectors.toSet());
 
-        // Check correct animals
-        final Set<String> found = new LinkedHashSet<>();
-        for (final var animal : testAnimals) {
-            if (actual.contains(animal)) {
-                found.add(animal);
+        int actualSize = 0;
+
+        // Check found animals
+        for (final var expected : actualAnimals) {
+            if (testAnimals.remove(expected)) {
+                actualSize++;
             }
         }
 
-        final var foundSize = found.size();
-        Assertions.assertEquals(actualSize, foundSize,
-            TutorMessage.H2_3_TEST_ANIMAL_MISMATCH.format(testAnimals, found));
+        // Check number of animals
+        Assertions.assertTrue(expectedSize <= actualSize,
+            TutorMessage.H2_3_TEST_ANIMAL_SIZE_MISMATCH.format(expectedSize, actualSize));
     }
 
     /**
