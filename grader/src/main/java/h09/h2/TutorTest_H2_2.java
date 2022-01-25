@@ -69,7 +69,7 @@ public final class TutorTest_H2_2 {
     public void testPackage() {
         final var alternative = TutorUtils.assertPackage(TutorConstants.H2_PACKAGE_NAME, TutorConstants.H2_2_CLASS_NAME);
         Assertions.assertTrue(alternative, TutorMessage.PACKAGE_NAME_ALTERNATIVE.format(TutorConstants.H2_PACKAGE_NAME,
-           String.join("/", TutorConstants.H2_2_CLASS_NAME))
+            String.join("/", TutorConstants.H2_2_CLASS_NAME))
         );
     }
 
@@ -196,6 +196,19 @@ public final class TutorTest_H2_2 {
         }
 
         @Test
+        @DisplayName("Criterion: Return type T")
+        public void testReturnType() {
+            final var method = getTestMethod();
+            final var actualType = method.getReturnType();
+
+            // Check type parameter
+            final var expectedType = TutorConstants.H2_2_METHOD_RETURN_TYPE_1;
+            Assertions.assertEquals(
+                expectedType, actualType, TutorMessage.RETURN_TYPE_MISMATCH.format(expectedType, actualType)
+            );
+        }
+
+        @Test
         @DisplayName("Criterion: Result")
         public void testResult() {
             final var constructor = getTestConstructor();
@@ -269,6 +282,19 @@ public final class TutorTest_H2_2 {
             final var expectedType = TutorConstants.H2_2_METHOD_BOUND_2;
             final var actualType = parameters[0];
             TutorUtils.assertGenericType(actualType, TutorConstants.H2_2_METHOD_CLASS_PARAMETER_2, expectedType);
+        }
+
+        @Test
+        @DisplayName("Criterion: Return type List<String>")
+        public void testReturnType() {
+            final var method = getTestMethod();
+            final var actualType = method.getReturnType();
+
+            // Check type parameter
+            final var expectedType = TutorConstants.H2_2_METHOD_RETURN_TYPE_2;
+            Assertions.assertEquals(
+                expectedType, actualType, TutorMessage.RETURN_TYPE_MISMATCH.format(expectedType, actualType)
+            );
         }
 
         @Test
@@ -490,6 +516,19 @@ public final class TutorTest_H2_2 {
             final var expectedType = TutorConstants.H2_2_METHOD_BOUND_3;
             final var actualType = parameters[0];
             TutorUtils.assertGenericType(actualType, TutorConstants.H2_2_METHOD_CLASS_PARAMETER_3, expectedType);
+        }
+
+        @Test
+        @DisplayName("Criterion: Return type List<Lagomorpha>")
+        public void testReturnType() {
+            final var method = getTestMethod();
+            final var actualType = method.getReturnType();
+
+            // Check type parameter
+            final var expectedType = TutorConstants.H2_2_METHOD_RETURN_TYPE_3;
+            Assertions.assertEquals(
+                expectedType, actualType, TutorMessage.RETURN_TYPE_MISMATCH.format(expectedType, actualType)
+            );
         }
 
         @Test

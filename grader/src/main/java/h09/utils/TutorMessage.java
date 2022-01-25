@@ -75,6 +75,12 @@ public enum TutorMessage {
     PACKAGE_NAME_ALTERNATIVE("The package name %s could not be found for the class %s. Using the alternative package name."),
 
     /* *********************************************************************
+     *                                Type                                 *
+     **********************************************************************/
+
+    TYPE_MISMATCH("Expected the type %s, given %s."),
+
+    /* *********************************************************************
      *                            Type parameter                           *
      **********************************************************************/
 

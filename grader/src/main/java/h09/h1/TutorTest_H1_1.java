@@ -117,6 +117,15 @@ public final class TutorTest_H1_1 {
         }
 
         @Test
+        @DisplayName("Criterion: Type Predicate")
+        public void testDefaultType() {
+            final var actual = getTestField();
+            final var actualType = actual.getType();
+            final var expectedType = TutorConstants.H1_1_FIELD_TYPE_1;
+            Assertions.assertEquals(expectedType, actualType, TutorMessage.TYPE_MISMATCH.format(expectedType, actualType));
+        }
+
+        @Test
         @DisplayName("Criterion: Type Predicate<? super X>")
         public void testType() {
             final var actual = getTestField();
@@ -180,6 +189,15 @@ public final class TutorTest_H1_1 {
         }
 
         @Test
+        @DisplayName("Criterion: Type Function")
+        public void testDefaultType() {
+            final var actual = getTestField();
+            final var actualType = actual.getType();
+            final var expectedType = TutorConstants.H1_1_FIELD_TYPE_2;
+            Assertions.assertEquals(expectedType, actualType, TutorMessage.TYPE_MISMATCH.format(expectedType, actualType));
+        }
+
+        @Test
         @DisplayName("Criterion: Type Function<? super X, ? extends Y>")
         public void testType() {
             final var actual = getTestField();
@@ -240,6 +258,15 @@ public final class TutorTest_H1_1 {
             final var actual = getTestField();
             final var expected = Modifier.STATIC.negate().and(Modifier.PRIVATE, Modifier.FINAL);
             TutorUtils.assertModifiers(expected, actual);
+        }
+
+        @Test
+        @DisplayName("Criterion: Type BiFunction")
+        public void testDefaultType() {
+            final var actual = getTestField();
+            final var actualType = actual.getType();
+            final var expectedType = TutorConstants.H1_1_FIELD_TYPE_3;
+            Assertions.assertEquals(expectedType, actualType, TutorMessage.TYPE_MISMATCH.format(expectedType, actualType));
         }
 
         @Test
@@ -311,6 +338,15 @@ public final class TutorTest_H1_1 {
             final var actual = getTestField();
             final var expected = Modifier.STATIC.negate().and(Modifier.PRIVATE, Modifier.FINAL);
             TutorUtils.assertModifiers(expected, actual);
+        }
+
+        @Test
+        @DisplayName("Criterion: Type Z")
+        public void testDefaultType() {
+            final var actual = getTestField();
+            final var actualType = actual.getType();
+            final var expectedType = TutorConstants.H1_1_FIELD_TYPE_4;
+            Assertions.assertEquals(expectedType, actualType, TutorMessage.TYPE_MISMATCH.format(expectedType, actualType));
         }
 
         @Test

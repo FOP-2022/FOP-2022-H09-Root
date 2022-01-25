@@ -60,22 +60,26 @@ public final class H09_RubricProvider implements RubricProvider {
         .build();
 
     public static final Criterion H1_1_3 = Criterion.builder()
-        .shortDescription("Die Typparameter der Objektattribute sind vollständig und korrekt.")
+        .shortDescription("Die Typparameter der Objektattribute sind teilweise korrekt.")
         .grader(
             Grader.testAwareBuilder()
-                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestField1.class.getMethod("testType")))
-                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestField2.class.getMethod("testType")))
-                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestField3.class.getMethod("testType")))
-                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestField4.class.getMethod("testType")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestField1.class.getMethod("testDefaultType")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestField2.class.getMethod("testDefaultType")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestField3.class.getMethod("testDefaultType")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestField4.class.getMethod("testDefaultType")))
                 .pointsPassedMax()
                 .pointsFailedMin()
                 .build())
         .build();
 
     public static final Criterion H1_1_4 = Criterion.builder()
-        .shortDescription("Der Konstruktor ist vollständig und korrekt.")
+        .shortDescription("Der Konstruktor und die Typparameter der Objektattribute sind vollständig und korrekt.")
         .grader(
             Grader.testAwareBuilder()
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestField1.class.getMethod("testType")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestField2.class.getMethod("testType")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestField3.class.getMethod("testType")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestField4.class.getMethod("testType")))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestConstructor.class.getMethod("testModifiers")))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestConstructor.class.getMethod("testParameterTypes")))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.TestConstructor.class.getMethod("testFields")))
@@ -500,6 +504,10 @@ public final class H09_RubricProvider implements RubricProvider {
         .addChildCriteria(H1_6_1, H1_6_2, H1_6_3, H1_6_4)
         .build();
 
+    /* *********************************************************************
+     *                                 H1                                  *
+     **********************************************************************/
+
     public static final Criterion H1_PACKAGE_NAME =
         Criterion.builder()
             .shortDescription("H1: Package name is correct")
@@ -517,10 +525,6 @@ public final class H09_RubricProvider implements RubricProvider {
                     .pointsFailedMin()
                     .build())
             .build();
-
-    /* *********************************************************************
-     *                                 H1                                  *
-     **********************************************************************/
 
     public static final Criterion H1 = Criterion.builder()
         .shortDescription("H1: Generische Operationen - Filter, Map und Fold")
@@ -620,12 +624,10 @@ public final class H09_RubricProvider implements RubricProvider {
         .build();
 
     public static final Criterion H2_2_2 = Criterion.builder()
-        .shortDescription("Die Methodensignatur von getTypeOfVertebrate ist vollständig und korrekt.")
+        .shortDescription("Die Methode getTypeOfVertebrate ist teilweise korrekt.")
         .grader(
             Grader.testAwareBuilder()
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod1.class.getMethod("testModifiers")))
-                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod1.class.getMethod("testGeneric")))
-                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod1.class.getMethod("testParameters")))
                 .pointsPassedMax()
                 .pointsFailedMin()
                 .build())
@@ -635,6 +637,9 @@ public final class H09_RubricProvider implements RubricProvider {
         .shortDescription("Die Methode getTypeOfVertebrate ist vollständig und korrekt.")
         .grader(
             Grader.testAwareBuilder()
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod1.class.getMethod("testGeneric")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod1.class.getMethod("testParameters")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod1.class.getMethod("testReturnType")))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod1.class.getMethod("testResult")))
                 .pointsPassedMax()
                 .pointsFailedMin()
@@ -642,11 +647,11 @@ public final class H09_RubricProvider implements RubricProvider {
         .build();
 
     public static final Criterion H2_2_4 = Criterion.builder()
-        .shortDescription("Die Methodensignatur von filterLagomorphs ist vollständig und korrekt.")
+        .shortDescription("Die Methode filterLagomorphs ist teilweise korrekt.")
         .grader(
             Grader.testAwareBuilder()
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod2.class.getMethod("testModifiers")))
-                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod2.class.getMethod("testParameters")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod2.class.getMethod("testReturnType")))
                 .pointsPassedMax()
                 .pointsFailedMin()
                 .build())
@@ -656,6 +661,7 @@ public final class H09_RubricProvider implements RubricProvider {
         .shortDescription("Die Methode filterLagomorphs ist vollständig und korrekt.")
         .grader(
             Grader.testAwareBuilder()
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod2.class.getMethod("testParameters")))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod2.class.getMethod("testResultListOfPlacental")))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod2.class.getMethod("testResultListOfMammal")))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod2.class.getMethod(
@@ -668,11 +674,12 @@ public final class H09_RubricProvider implements RubricProvider {
         .build();
 
     public static final Criterion H2_2_6 = Criterion.builder()
-        .shortDescription("Die Methodensignatur von testGetTypesOfMammals ist vollständig und korrekt.")
+        .shortDescription("Die Methode filterLagomorphs ist teilweise korrekt.")
         .grader(
             Grader.testAwareBuilder()
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod3.class.getMethod("testModifiers")))
-                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod3.class.getMethod("testParameters")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod3.class.getMethod("testReturnType")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod3.class.getMethod("testResultListOfMammal")))
                 .pointsPassedMax()
                 .pointsFailedMin()
                 .build())
@@ -682,7 +689,7 @@ public final class H09_RubricProvider implements RubricProvider {
         .shortDescription("Die Methode testGetTypesOfMammals ist vollständig und korrekt.")
         .grader(
             Grader.testAwareBuilder()
-                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod3.class.getMethod("testResultListOfMammal")))
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod3.class.getMethod("testParameters")))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod3.class.getMethod("testResultListOfPlacental")))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod3.class.getMethod("testResultListOfMonotreme")))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.TestMethod3.class.getMethod(
@@ -765,6 +772,10 @@ public final class H09_RubricProvider implements RubricProvider {
         .addChildCriteria(H2_3_1, H2_3_2, H2_3_3, H2_3_4)
         .build();
 
+    /* *********************************************************************
+     *                                 H2                                  *
+     **********************************************************************/
+
     public static final Criterion H2_PACKAGE_NAME =
         Criterion.builder()
             .shortDescription("H2: Package name is correct")
@@ -779,10 +790,6 @@ public final class H09_RubricProvider implements RubricProvider {
                     .pointsFailedMin()
                     .build())
             .build();
-
-    /* *********************************************************************
-     *                                 H2                                  *
-     **********************************************************************/
 
     public static final Criterion H2 = Criterion.builder()
         .shortDescription("H2: Restricted Genericity und Wildcards")
