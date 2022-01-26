@@ -814,6 +814,12 @@ public final class H09_RubricProvider implements RubricProvider {
         }
         JAVADOC = DocumentationCriterion.forGrader(
             DocumentationGrader.builder()
+                .addJavaDoc(H09_Class_Testers.H1_1::getConstructorDocumentation, H1_1)
+                .addJavaDoc(H09_Class_Testers.H1_2::getConstructorDocumentation, H1_2)
+                .addJavaDoc(H09_Class_Testers.H1_3::getConstructorDocumentation, H1_3)
+                .addJavaDoc(H09_Class_Testers.H1_4::getConstructorDocumentation, H1_4)
+                .addJavaDoc(H09_Class_Testers.H1_5::getConstructorDocumentation, H1_5)
+                .addJavaDoc(H09_Class_Testers.H2_1_10::getConstructorDocumentation, H2_1)
                 .addJavaDoc(
                     new MethodTester(H09_Class_Testers.H1_1, TutorConstants.H1_1_METHOD_NAME_1)::getMethodDocumentation, H1_1
                 )

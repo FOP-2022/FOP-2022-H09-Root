@@ -4,6 +4,7 @@ import h09.utils.TutorConstants;
 import h09.utils.rd.ClassTester;
 
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 
 /**
  * Contains all class testers for the exercises.
@@ -35,6 +36,7 @@ public final class H09_Class_Testers {
         Modifier.PUBLIC
     );
 
+
     /**
      * The class tester for {@value  TutorConstants#H1_3_CLASS_NAME}.
      */
@@ -50,7 +52,9 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H1_3 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
         TutorConstants.H1_3_CLASS_NAME, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC
+        Modifier.PUBLIC,
+        H1_2.getTheClass(),
+        new ArrayList<>()
     );
 
     /**
@@ -59,7 +63,9 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H1_4 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
         TutorConstants.H1_4_CLASS_NAME, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC
+        Modifier.PUBLIC,
+        H1_2.getTheClass(),
+        new ArrayList<>()
     );
 
     /**
