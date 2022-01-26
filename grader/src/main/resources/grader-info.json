@@ -8,6 +8,8 @@
       "name": "grader",
       "files": [
         "h09/H09_RubricProvider.java",
+        "h09/H09_Class_Testers.java",
+
         "h09/h1/TutorTest_H1_1.java",
         "h09/h1/TutorTest_H1_2.java",
         "h09/h1/TutorTest_H1_3.java",
@@ -16,6 +18,7 @@
         "h09/h1/TutorTest_H1_6.java",
         "h09/h1/TutorFunctionFactory.java",
         "h09/h1/TutorUtils_H1.java",
+
         "h09/h2/TutorTest_H2_1.java",
         "h09/h2/TutorTest_H2_2.java",
         "h09/h2/TutorTest_H2_3.java",
@@ -29,10 +32,19 @@
         "h09/h2/TutorTestRodent.java",
         "h09/h2/TutorTestVertebrate.java",
         "h09/h2/TutorBiologyHierarchy.java",
+
         "h09/utils/Modifier.java",
         "h09/utils/TutorConstants.java",
         "h09/utils/TutorMessage.java",
         "h09/utils/TutorUtils.java",
+
+        "h09/utils/rd/AttributeMatcher.java",
+        "h09/utils/rd/ClassTester.java",
+        "h09/utils/rd/IdentifierMatcher.java",
+        "h09/utils/rd/MethodTester.java",
+        "h09/utils/rd/ParameterMatcher.java",
+        "h09/utils/rd/TestUtils.java",
+
         "h09/utils/spoon/ArraysInstantiationMethodBodyProcessor.java",
         "h09/utils/spoon/ImportsClassProcessor.java",
         "h09/utils/spoon/LambdaExpressionsMethodBodyProcessor.java",
@@ -41,6 +53,7 @@
         "h09/utils/spoon/MethodReferencesMethodBodyProcessor.java",
         "h09/utils/spoon/ObjectsUsageMethodProcessor.java",
         "h09/utils/spoon/SpoonUtils.java",
+
         "h09/utils/transformer/TutorTransformer.java"
       ]
     },
@@ -52,6 +65,7 @@
         "h09/h1/MyFunctionWithAdjacent.java",
         "h09/h1/MyFunctionWithFilterMapAndFold.java",
         "h09/h1/Traits.java",
+
         "h09/h2/Animal.java",
         "h09/h2/BiologyHierarchy.java",
         "h09/h2/Bird.java",
@@ -63,7 +77,9 @@
         "h09/h2/Rabbit.java",
         "h09/h2/Rodent.java",
         "h09/h2/Vertebrate.java",
+
         "h09/h1/TestFunctionFactory.java",
+
         "h09/h2/TestBiologicalHierarchy.java"
       ]
     }

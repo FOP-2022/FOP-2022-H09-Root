@@ -12,7 +12,10 @@ import h09.h2.TutorTest_H2_1;
 import h09.h2.TutorTest_H2_2;
 import h09.h2.TutorTest_H2_3;
 import h09.utils.TutorConstants;
+import h09.utils.rd.MethodTester;
 import h09.utils.transformer.TutorTransformer;
+import org.sourcegrade.docwatcher.api.grading.DocumentationCriterion;
+import org.sourcegrade.docwatcher.api.grading.DocumentationGrader;
 import org.sourcegrade.jagr.api.rubric.Criterion;
 import org.sourcegrade.jagr.api.rubric.Grader;
 import org.sourcegrade.jagr.api.rubric.JUnitTestRef;
@@ -801,11 +804,123 @@ public final class H09_RubricProvider implements RubricProvider {
      *                              JavaDoc                                 *
      **********************************************************************/
 
-    public static final Criterion JAVADOC = Criterion.builder()
-        .shortDescription("Alle selbstgeschriebenen Methoden wurden korrekt mit JavaDoc dokumentiert.")
-        .maxPoints(0)
-        .minPoints(-3)
-        .build();
+    public static Criterion JAVADOC;
+
+    static {
+        try {
+            Class.forName("org.sourcegrade.docwatcher.DocWatcherModule");
+        } catch (ClassNotFoundException e) {
+            // ignore
+        }
+        JAVADOC = DocumentationCriterion.forGrader(
+            DocumentationGrader.builder()
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_1, TutorConstants.H1_1_METHOD_NAME_1)::getMethodDocumentation, H1_1
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_1, TutorConstants.H1_1_METHOD_NAME_2)::getMethodDocumentation, H1_1
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_1, TutorConstants.H1_1_METHOD_NAME_3)::getMethodDocumentation, H1_1
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_1, TutorConstants.H1_1_METHOD_NAME_4)::getMethodDocumentation, H1_1
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_2, TutorConstants.H1_2_METHOD_NAME)::getMethodDocumentation, H1_2
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_5, TutorConstants.H1_5_METHOD_NAME_1)::getMethodDocumentation, H1_5
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_5, TutorConstants.H1_5_METHOD_NAME_2)::getMethodDocumentation, H1_5
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_1)::getMethodDocumentation, H1_6
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_2)::getMethodDocumentation, H1_6
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_3)::getMethodDocumentation, H1_6
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_4)::getMethodDocumentation, H1_6
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_5)::getMethodDocumentation, H1_6
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_6)::getMethodDocumentation, H1_6
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_7)::getMethodDocumentation, H1_6
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_8)::getMethodDocumentation, H1_6
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_9)::getMethodDocumentation, H1_6
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_10)::getMethodDocumentation, H1_6
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_11)::getMethodDocumentation, H1_6
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_12)::getMethodDocumentation, H1_6
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_13)::getMethodDocumentation, H1_6
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_1_1, TutorConstants.H2_1_METHOD_NAME_1)::getMethodDocumentation, H2_1
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_1_2, TutorConstants.H2_1_METHOD_NAME_2)::getMethodDocumentation, H2_1
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_1_3, TutorConstants.H2_1_METHOD_NAME_3)::getMethodDocumentation, H2_1
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_1_4, TutorConstants.H2_1_METHOD_NAME_4)::getMethodDocumentation, H2_1
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_1_5, TutorConstants.H2_1_METHOD_NAME_5)::getMethodDocumentation, H2_1
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_1_6, TutorConstants.H2_1_METHOD_NAME_6)::getMethodDocumentation, H2_1
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_1_7, TutorConstants.H2_1_METHOD_NAME_7)::getMethodDocumentation, H2_1
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_1_8, TutorConstants.H2_1_METHOD_NAME_8)::getMethodDocumentation, H2_1
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_1_9, TutorConstants.H2_1_METHOD_NAME_9)::getMethodDocumentation, H2_1
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_2, TutorConstants.H2_2_METHOD_NAME_1)::getMethodDocumentation, H2_2
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_2, TutorConstants.H2_2_METHOD_NAME_2)::getMethodDocumentation, H2_2
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_2, TutorConstants.H2_2_METHOD_NAME_3)::getMethodDocumentation, H2_2
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_3, TutorConstants.H2_3_METHOD_NAME_1)::getMethodDocumentation, H2_3
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_3, TutorConstants.H2_3_METHOD_NAME_2)::getMethodDocumentation, H2_3
+                )
+                .addJavaDoc(
+                    new MethodTester(H09_Class_Testers.H2_3, TutorConstants.H2_3_METHOD_NAME_3)::getMethodDocumentation, H2_3
+                )
+                .build());
+    }
 
     /* *********************************************************************
      *                              Rubric                                 *
