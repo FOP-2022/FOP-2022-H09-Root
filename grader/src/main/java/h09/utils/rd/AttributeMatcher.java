@@ -40,10 +40,10 @@ public class AttributeMatcher extends IdentifierMatcher {
     /**
      * Constructs and initializes an attribute matcher to match the specified attribute with no super implementation match.
      *
-     * @param name            the attribute name to match
-     * @param similarity      the minimum required similarity
-     * @param modifier        the expected access modifier
-     * @param type            the  expected attribute type
+     * @param name       the attribute name to match
+     * @param similarity the minimum required similarity
+     * @param modifier   the expected access modifier
+     * @param type       the  expected attribute type
      */
     public AttributeMatcher(String name, double similarity, int modifier, Class<?> type) {
         this(name, similarity, modifier, type, false);
@@ -64,9 +64,9 @@ public class AttributeMatcher extends IdentifierMatcher {
     /**
      * Constructs and initializes an attribute matcher to match the specified attribute with no super implementation match.
      *
-     * @param name            the attribute name to match
-     * @param similarity      the minimum required similarity
-     * @param type            the  expected attribute type
+     * @param name       the attribute name to match
+     * @param similarity the minimum required similarity
+     * @param type       the  expected attribute type
      */
     public AttributeMatcher(String name, double similarity, Class<?> type) {
         this(name, similarity, -1, type);

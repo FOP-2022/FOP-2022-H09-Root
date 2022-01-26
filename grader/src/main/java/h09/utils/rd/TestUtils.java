@@ -101,7 +101,8 @@ public class TestUtils {
      * @return the similarity
      */
     public static double similarity(String s1, String s2) {
-        String longer = s1, shorter = s2;
+        String longer = s1;
+        String shorter = s2;
         if (s1.length() < s2.length()) {
             longer = s2;
             shorter = s1;
@@ -126,8 +127,7 @@ public class TestUtils {
      * @param s1 the first string used for the calculation of the similarity
      * @param s2 the second string used for the calculation  of the similarity
      *
-     * @return the calculated similarity (a number within 0 and 1) between two
-     * strings.
+     * @return the calculated similarity (a number within 0 and 1) between two strings.
      *
      * @see <a href="http://rosettacode.org/wiki/Levenshtein_distance#Java">Levenshtein distance - Java</a>
      */
@@ -139,20 +139,22 @@ public class TestUtils {
         for (int i = 0; i <= s1.length(); i++) {
             int lastValue = i;
             for (int j = 0; j <= s2.length(); j++) {
-                if (i == 0)
+                if (i == 0) {
                     costs[j] = j;
-                else {
+                } else {
                     if (j > 0) {
                         int newValue = costs[j - 1];
-                        if (s1.charAt(i - 1) != s2.charAt(j - 1))
+                        if (s1.charAt(i - 1) != s2.charAt(j - 1)) {
                             newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
+                        }
                         costs[j - 1] = lastValue;
                         lastValue = newValue;
                     }
                 }
             }
-            if (i > 0)
+            if (i > 0) {
                 costs[s2.length()] = lastValue;
+            }
         }
         return costs[s2.length()];
     }
