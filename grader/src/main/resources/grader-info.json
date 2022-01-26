@@ -1,0 +1,87 @@
+{
+  "name": "FOP-2022-H09",
+  "assignmentIds": [
+    "h09"
+  ],
+  "sourceSets": [
+    {
+      "name": "grader",
+      "files": [
+        "h09/H09_RubricProvider.java",
+        "h09/H09_Class_Testers.java",
+
+        "h09/h1/TutorTest_H1_1.java",
+        "h09/h1/TutorTest_H1_2.java",
+        "h09/h1/TutorTest_H1_3.java",
+        "h09/h1/TutorTest_H1_4.java",
+        "h09/h1/TutorTest_H1_5.java",
+        "h09/h1/TutorTest_H1_6.java",
+        "h09/h1/TutorFunctionFactory.java",
+        "h09/h1/TutorUtils_H1.java",
+
+        "h09/h2/TutorTest_H2_1.java",
+        "h09/h2/TutorTest_H2_2.java",
+        "h09/h2/TutorTest_H2_3.java",
+        "h09/h2/TutorTestAnimal.java",
+        "h09/h2/TutorTestBird.java",
+        "h09/h2/TutorTestLagomorpha.java",
+        "h09/h2/TutorTestLeporidae.java",
+        "h09/h2/TutorTestMammal.java",
+        "h09/h2/TutorTestMonotreme.java",
+        "h09/h2/TutorTestPlacental.java",
+        "h09/h2/TutorTestRodent.java",
+        "h09/h2/TutorTestVertebrate.java",
+        "h09/h2/TutorBiologyHierarchy.java",
+
+        "h09/utils/Modifier.java",
+        "h09/utils/TutorConstants.java",
+        "h09/utils/TutorMessage.java",
+        "h09/utils/TutorUtils.java",
+
+        "h09/utils/rd/AttributeMatcher.java",
+        "h09/utils/rd/ClassTester.java",
+        "h09/utils/rd/IdentifierMatcher.java",
+        "h09/utils/rd/MethodTester.java",
+        "h09/utils/rd/ParameterMatcher.java",
+        "h09/utils/rd/TestUtils.java",
+
+        "h09/utils/spoon/ArraysInstantiationMethodBodyProcessor.java",
+        "h09/utils/spoon/ImportsClassProcessor.java",
+        "h09/utils/spoon/LambdaExpressionsMethodBodyProcessor.java",
+        "h09/utils/spoon/LoopsMethodBodyProcessor.java",
+        "h09/utils/spoon/MethodCallsProcessor.java",
+        "h09/utils/spoon/MethodReferencesMethodBodyProcessor.java",
+        "h09/utils/spoon/ObjectsUsageMethodProcessor.java",
+        "h09/utils/spoon/SpoonUtils.java",
+
+        "h09/utils/transformer/TutorTransformer.java"
+      ]
+    },
+    {
+      "name": "solution",
+      "files": [
+        "h09/h1/FunctionFactory.java",
+        "h09/h1/FunctionWithFilterMapAndFold.java",
+        "h09/h1/MyFunctionWithAdjacent.java",
+        "h09/h1/MyFunctionWithFilterMapAndFold.java",
+        "h09/h1/Traits.java",
+
+        "h09/h2/Animal.java",
+        "h09/h2/BiologyHierarchy.java",
+        "h09/h2/Bird.java",
+        "h09/h2/Lagomorpha.java",
+        "h09/h2/Leporidae.java",
+        "h09/h2/Mammal.java",
+        "h09/h2/Monotreme.java",
+        "h09/h2/Placental.java",
+        "h09/h2/Rabbit.java",
+        "h09/h2/Rodent.java",
+        "h09/h2/Vertebrate.java",
+
+        "h09/h1/TestFunctionFactory.java",
+
+        "h09/h2/TestBiologicalHierarchy.java"
+      ]
+    }
+  ]
+}
