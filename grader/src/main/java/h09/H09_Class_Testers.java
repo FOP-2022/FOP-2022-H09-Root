@@ -3,7 +3,6 @@ package h09;
 import h09.utils.TutorConstants;
 import h09.utils.rd.ClassTester;
 
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 /**
@@ -33,7 +32,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H1_1 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
         TutorConstants.H1_1_CLASS_NAME, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC
+        -1
     );
 
 
@@ -43,7 +42,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H1_2 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
         TutorConstants.H1_2_CLASS_NAME, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.ABSTRACT
+        -1
     );
 
     /**
@@ -52,7 +51,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H1_3 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
         TutorConstants.H1_3_CLASS_NAME, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC,
+        -1,
         H1_2.getTheClass(),
         new ArrayList<>()
     );
@@ -63,7 +62,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H1_4 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
         TutorConstants.H1_4_CLASS_NAME, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC,
+        -1,
         H1_2.getTheClass(),
         new ArrayList<>()
     );
@@ -74,7 +73,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H1_5 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
         TutorConstants.H1_5_CLASS_NAME, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.FINAL
+        -1
     );
 
     /**
@@ -90,7 +89,8 @@ public final class H09_Class_Testers {
      */
     public static final ClassTester<?> H1_6_1 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
-        TutorConstants.H1_6_CLASS_NAME_1, MINIMUM_SIMILARITY
+        TutorConstants.H1_6_CLASS_NAME_1, MINIMUM_SIMILARITY,
+        -1
     );
 
     /* *********************************************************************
@@ -103,7 +103,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H2_1_1 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
         TutorConstants.H2_1_CLASS_NAME_1, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.INTERFACE
+        -1
     );
 
     /**
@@ -112,7 +112,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H2_1_2 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
         TutorConstants.H2_1_CLASS_NAME_2, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.INTERFACE
+        -1
     );
 
     /**
@@ -121,7 +121,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H2_1_3 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
         TutorConstants.H2_1_CLASS_NAME_3, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.INTERFACE
+        -1
     );
 
     /**
@@ -130,7 +130,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H2_1_4 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
         TutorConstants.H2_1_CLASS_NAME_4, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.INTERFACE
+        -1
     );
 
     /**
@@ -139,7 +139,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H2_1_5 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
         TutorConstants.H2_1_CLASS_NAME_5, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.INTERFACE
+        -1
     );
 
     /**
@@ -148,7 +148,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H2_1_6 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
         TutorConstants.H2_1_CLASS_NAME_6, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.INTERFACE
+        -1
     );
 
     /**
@@ -157,7 +157,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H2_1_7 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
         TutorConstants.H2_1_CLASS_NAME_7, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.INTERFACE
+        -1
     );
 
     /**
@@ -166,7 +166,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H2_1_8 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
         TutorConstants.H2_1_CLASS_NAME_7, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.INTERFACE
+        -1
     );
 
     /**
@@ -175,7 +175,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H2_1_9 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
         TutorConstants.H2_1_CLASS_NAME_9, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.INTERFACE
+        -1
     );
 
     /**
@@ -184,7 +184,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H2_1_10 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
         TutorConstants.H2_1_CLASS_NAME_10, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.INTERFACE
+        -1
     );
 
     /**
@@ -193,7 +193,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H2_2 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
         TutorConstants.H2_2_CLASS_NAME[0], MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.INTERFACE
+        -1
     );
 
     /**
@@ -202,7 +202,7 @@ public final class H09_Class_Testers {
     public static final ClassTester<?> H2_3 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
         TutorConstants.H2_3_CLASS_NAME, MINIMUM_SIMILARITY,
-        Modifier.PUBLIC | Modifier.INTERFACE
+        -1
     );
 
     /**
@@ -210,7 +210,8 @@ public final class H09_Class_Testers {
      */
     public static final ClassTester<?> H2_3_1 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
-        TutorConstants.H2_3_CLASS_NAME_1, MINIMUM_SIMILARITY
+        TutorConstants.H2_3_CLASS_NAME_1, MINIMUM_SIMILARITY,
+        -1
     );
 
     /**
@@ -218,7 +219,8 @@ public final class H09_Class_Testers {
      */
     public static final ClassTester<?> H2_3_2 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
-        TutorConstants.H2_3_CLASS_NAME_2, MINIMUM_SIMILARITY
+        TutorConstants.H2_3_CLASS_NAME_2, MINIMUM_SIMILARITY,
+        -1
     );
 
     /**
@@ -226,7 +228,8 @@ public final class H09_Class_Testers {
      */
     public static final ClassTester<?> H2_3_3 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
-        TutorConstants.H2_3_CLASS_NAME_3, MINIMUM_SIMILARITY
+        TutorConstants.H2_3_CLASS_NAME_3, MINIMUM_SIMILARITY,
+        -1
     );
 
     /**
@@ -234,7 +237,8 @@ public final class H09_Class_Testers {
      */
     public static final ClassTester<?> H2_3_4 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
-        TutorConstants.H2_3_CLASS_NAME_4, MINIMUM_SIMILARITY
+        TutorConstants.H2_3_CLASS_NAME_4, MINIMUM_SIMILARITY,
+        -1
     );
 
     /**
@@ -242,7 +246,8 @@ public final class H09_Class_Testers {
      */
     public static final ClassTester<?> H2_3_5 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
-        TutorConstants.H2_3_CLASS_NAME_5, MINIMUM_SIMILARITY
+        TutorConstants.H2_3_CLASS_NAME_5, MINIMUM_SIMILARITY,
+        -1
     );
 
     /**
@@ -250,7 +255,8 @@ public final class H09_Class_Testers {
      */
     public static final ClassTester<?> H2_3_6 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
-        TutorConstants.H2_3_CLASS_NAME_6, MINIMUM_SIMILARITY
+        TutorConstants.H2_3_CLASS_NAME_6, MINIMUM_SIMILARITY,
+        -1
     );
 
     /**
@@ -258,7 +264,8 @@ public final class H09_Class_Testers {
      */
     public static final ClassTester<?> H2_3_7 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
-        TutorConstants.H2_3_CLASS_NAME_7, MINIMUM_SIMILARITY
+        TutorConstants.H2_3_CLASS_NAME_7, MINIMUM_SIMILARITY,
+        -1
     );
 
     /**
@@ -266,7 +273,8 @@ public final class H09_Class_Testers {
      */
     public static final ClassTester<?> H2_3_8 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
-        TutorConstants.H2_3_CLASS_NAME_8, MINIMUM_SIMILARITY
+        TutorConstants.H2_3_CLASS_NAME_8, MINIMUM_SIMILARITY,
+        -1
     );
 
     /**
@@ -274,6 +282,7 @@ public final class H09_Class_Testers {
      */
     public static final ClassTester<?> H2_3_9 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
-        TutorConstants.H2_3_CLASS_NAME_9, MINIMUM_SIMILARITY
+        TutorConstants.H2_3_CLASS_NAME_9, MINIMUM_SIMILARITY,
+        -1
     );
 }
