@@ -12,8 +12,7 @@ import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 
 /**
- * Represents Java modifiers that can be checked on objects to see if they have the specified
- * modifiers.
+ * Represents Java modifiers that can be checked on objects to see if they have the specified modifiers.
  *
  * @author Nhan Huynh, Darya Nikitina
  */
@@ -32,8 +31,7 @@ public final class Modifier {
         Class.class, Member.class, Method.class
     );
     /**
-     * The modifier {@code protected} which can be applied on classes, fields, constructors and
-     * methods.
+     * The modifier {@code protected} which can be applied on classes, fields, constructors and methods.
      *
      * @see Class
      * @see Member
@@ -57,8 +55,7 @@ public final class Modifier {
         Class.class, Member.class, Method.class
     );
     /**
-     * The modifier {@code package-private} which can be applied on classes, fields, constructors and
-     * methods.
+     * The modifier {@code package-private} which can be applied on classes, fields, constructors and methods.
      *
      * @see Class
      * @see Member
@@ -145,8 +142,8 @@ public final class Modifier {
     private final Predicate<Object> predicate;
 
     /**
-     * Constructs and initialized a modifier with the specified name and predicate, which is used
-     * to determine if an object contains the specified modifiers.
+     * Constructs and initialized a modifier with the specified name and predicate, which is used to determine if an object
+     * contains the specified modifiers.
      *
      * @param name      the name of the modifier(s)
      * @param predicate the predicate which is used to check of the presence of the modifier(s)
@@ -159,8 +156,8 @@ public final class Modifier {
     }
 
     /**
-     * Constructs and initialized a modifier with the specified name and predicate, which is used
-     * to determine if an object contains the specified modifiers.
+     * Constructs and initialized a modifier with the specified name and predicate, which is used to determine if an object
+     * contains the specified modifiers.
      *
      * @param name      the name of the modifier(s)
      * @param predicate the predicate which is used to check of the presence of the modifier(s)
@@ -173,8 +170,8 @@ public final class Modifier {
     }
 
     /**
-     * Returns a predicate for a {@link Class} instance which used the specified predicate to
-     * determine the presence of modifier(s).
+     * Returns a predicate for a {@link Class} instance which used the specified predicate to determine the presence of
+     * modifier(s).
      *
      * @param predicate the predicate which will be wrapped for a {@link Class} instance
      *
@@ -185,8 +182,8 @@ public final class Modifier {
     }
 
     /**
-     * Returns a predicate for a {@link Member} instance which used the specified predicate to
-     * determine the presence of modifier(s).
+     * Returns a predicate for a {@link Member} instance which used the specified predicate to determine the presence of
+     * modifier(s).
      *
      * @param predicate the predicate which will be wrapped for a {@link Member} instance
      *
@@ -197,12 +194,10 @@ public final class Modifier {
     }
 
     /**
-     * Returns a predicate for a {@link Class} or {@link Member} instance which used the specified
-     * predicate to
-     * determine the presence of modifier(s).
+     * Returns a predicate for a {@link Class} or {@link Member} instance which used the specified predicate to determine the
+     * presence of modifier(s).
      *
-     * @param predicate the predicate which will be wrapped for a {@link Class} or {@link Member}
-     *                  instance
+     * @param predicate the predicate which will be wrapped for a {@link Class} or {@link Member} instance
      *
      * @return a predicate for a {@link Class} or {@link Member} instance
      */
@@ -220,8 +215,7 @@ public final class Modifier {
     }
 
     /**
-     * Uses the specified binary operation on each modifier which will reduce the modifiers to a
-     * single modifier.
+     * Uses the specified binary operation on each modifier which will reduce the modifiers to a single modifier.
      *
      * @param op        the binary operation which will be used to combine the modifiers
      * @param format    the naming format of the resulting modifier
@@ -249,8 +243,7 @@ public final class Modifier {
     }
 
     /**
-     * Combines the modifiers where the predicate will be combined using the binary operation
-     * {@link Predicate#and(Predicate)}.
+     * Combines the modifiers where the predicate will be combined using the binary operation {@link Predicate#and(Predicate)}.
      *
      * @param modifiers the modifiers which should be combined with this modifier
      *
@@ -261,8 +254,8 @@ public final class Modifier {
     }
 
     /**
-     * Combines the modifiers where the predicate will be combined using the binary operation
-     * {@link Predicate#and(Predicate)} and negates the result of it.
+     * Combines the modifiers where the predicate will be combined using the binary operation {@link Predicate#and(Predicate)} and
+     * negates the result of it.
      *
      * @param modifiers the modifiers which should be combined with this modifier
      *
@@ -273,8 +266,7 @@ public final class Modifier {
     }
 
     /**
-     * Combines the modifiers where the predicate will be combined using the binary operation.
-     * {@link Predicate#or(Predicate)}
+     * Combines the modifiers where the predicate will be combined using the binary operation. {@link Predicate#or(Predicate)}
      *
      * @param modifiers the modifiers which should be combined with this modifier
      *
@@ -285,8 +277,8 @@ public final class Modifier {
     }
 
     /**
-     * Combines the modifiers where the predicate will be combined using the binary operation
-     * {@link Predicate#or(Predicate)} and negates the result of it.
+     * Combines the modifiers where the predicate will be combined using the binary operation {@link Predicate#or(Predicate)} and
+     * negates the result of it.
      *
      * @param modifiers the modifiers which should be combined with this modifier
      *

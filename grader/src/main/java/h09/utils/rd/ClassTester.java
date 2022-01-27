@@ -416,14 +416,12 @@ public class ClassTester<T> {
      * @param obj   the object instance containing the field
      * @param value the new value of the field
      *
-     * @throws IllegalAccessException   if this {@code Field} object
-     *                                  is enforcing Java language access control and the underlying
-     *                                  field is either inaccessible or final;
-     *                                  or if this {@code Field} object has no write access.
-     * @throws IllegalArgumentException if the specified object is not an
-     *                                  instance of the class or interface declaring the underlying
-     *                                  field (or a subclass or implementor thereof),
-     *                                  or if an unwrapping conversion fails.
+     * @throws IllegalAccessException   if this {@code Field} object is enforcing Java language access control and the underlying
+     *                                  field is either inaccessible or final; or if this {@code Field} object has no write
+     *                                  access.
+     * @throws IllegalArgumentException if the specified object is not an instance of the class or interface declaring the
+     *                                  underlying field (or a subclass or implementor thereof), or if an unwrapping conversion
+     *                                  fails.
      */
     public static void setFieldTyped(Field field, Object obj, Object value)
         throws IllegalArgumentException, IllegalAccessException {

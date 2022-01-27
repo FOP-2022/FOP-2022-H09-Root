@@ -24,8 +24,7 @@ public class LambdaExpressionsMethodBodyProcessor extends AbstractProcessor<CtMe
     private final List<CtLambda<?>> lambdas;
 
     /**
-     * Constructs and initializes a processor which scans all meth lambda expressions in the
-     * specified method.
+     * Constructs and initializes a processor which scans all meth lambda expressions in the specified method.
      *
      * @param methodName the name of the method that should be processed
      */
@@ -44,8 +43,8 @@ public class LambdaExpressionsMethodBodyProcessor extends AbstractProcessor<CtMe
     }
 
     /**
-     * Returns the scanned lambda expressionss so far. If this processor does not process any method
-     * yet, the content will be empty.
+     * Returns the scanned lambda expressionss so far. If this processor does not process any method yet, the content will be
+     * empty.
      *
      * @return the scanned constructor calls  so far
      */

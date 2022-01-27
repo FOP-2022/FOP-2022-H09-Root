@@ -1,6 +1,7 @@
 package h09.h1;
 
 import h09.utils.Modifier;
+import h09.utils.TutorClassTesters;
 import h09.utils.TutorConstants;
 import h09.utils.TutorMessage;
 import h09.utils.TutorUtils;
@@ -32,7 +33,7 @@ public final class TutorTest_H1_1 {
      * @return the class instance of the test class
      */
     private static Class<?> getTestClass() {
-        return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_1_CLASS_NAME);
+        return TutorClassTesters.H1_1.assureClassResolved().getTheClass();
     }
 
     /* *********************************************************************

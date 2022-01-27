@@ -29,8 +29,7 @@ public class ObjectsUsageMethodProcessor extends AbstractProcessor<CtClass<?>> {
     private final List<CtTypeReference<?>> types;
 
     /**
-     * Constructs and initializes a processor which scans all constructor calls and variable access in the specified
-     * method.
+     * Constructs and initializes a processor which scans all constructor calls and variable access in the specified method.
      *
      * @param methodName the name of the method that should be processed
      */
@@ -67,8 +66,8 @@ public class ObjectsUsageMethodProcessor extends AbstractProcessor<CtClass<?>> {
     }
 
     /**
-     * Returns the scanned types of the constructor calls or variable access so far. If this processor does not process
-     * any method yet, the content will be empty.
+     * Returns the scanned types of the constructor calls or variable access so far. If this processor does not process any method
+     * yet, the content will be empty.
      *
      * @return the scanned constructor calls  so far
      */

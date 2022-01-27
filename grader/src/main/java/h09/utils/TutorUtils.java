@@ -252,18 +252,13 @@ public final class TutorUtils {
         try {
             return clazz.getDeclaredConstructor(parameters);
         } catch (NoSuchMethodException e) {
-            try {
-                final var alternative = Arrays.copyOfRange(parameters, 1, parameters.length);
-                return clazz.getDeclaredConstructor(alternative);
-            } catch (NoSuchMethodException | ArrayIndexOutOfBoundsException ex) {
-                return Assertions.fail(
-                    TutorMessage.CONSTRUCTOR_NOT_FOUND.format(
-                        clazz.getSimpleName(),
-                        Arrays.stream(parameters).map(Class::getSimpleName).collect(Collectors.joining(", ")),
-                        e.getMessage()
-                    ), e
-                );
-            }
+            return Assertions.fail(
+                TutorMessage.CONSTRUCTOR_NOT_FOUND.format(
+                    clazz.getSimpleName(),
+                    Arrays.stream(parameters).map(Class::getSimpleName).collect(Collectors.joining(", ")),
+                    e.getMessage()
+                ), e
+            );
         }
     }
 
@@ -283,7 +278,7 @@ public final class TutorUtils {
             final var instance = constructor.newInstance(parameters);
             constructor.setAccessible(tmp);
             return instance;
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+        } catch (InstantiationException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
             Throwable ex = e;
             if (e instanceof InvocationTargetException) {
                 ex = e.getCause();

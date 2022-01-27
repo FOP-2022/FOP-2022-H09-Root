@@ -25,8 +25,7 @@ public final class ArraysInstantiationMethodBodyProcessor extends AbstractProces
     private final List<CtNewArray<?>> arrays;
 
     /**
-     * Constructs and initializes a processor which scans all array instantiation in the specified
-     * class.
+     * Constructs and initializes a processor which scans all array instantiation in the specified class.
      *
      * @param className the name of the method that should be processed
      */
@@ -44,8 +43,8 @@ public final class ArraysInstantiationMethodBodyProcessor extends AbstractProces
     }
 
     /**
-     * Returns the scanned array instantiation so far. If this processor does not process any method
-     * yet, the content will be empty.
+     * Returns the scanned array instantiation so far. If this processor does not process any method yet, the content will be
+     * empty.
      *
      * @return the scanned array instantiation so far
      */

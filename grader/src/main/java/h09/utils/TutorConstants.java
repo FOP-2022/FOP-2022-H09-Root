@@ -218,8 +218,7 @@ public final class TutorConstants {
      */
     public static final String H1_2_FIELD_NAME = "traits";
     /**
-     * The field name for the combine operation in task H1.4. The field should be added in
-     * {@value H1_1_CLASS_NAME}.
+     * The field name for the combine operation in task H1.4. The field should be added in {@value H1_1_CLASS_NAME}.
      */
     public static final String H1_4_FIELD_NAME = "combine";
     /**
@@ -365,8 +364,7 @@ public final class TutorConstants {
      */
     public static final Object H1_1_FIELD_EXAMPLE_2_4 = 1;
     /**
-     * The example size of the array used for the functional operation used for the method
-     * {@value H1_2_METHOD_NAME}.
+     * The example size of the array used for the functional operation used for the method {@value H1_2_METHOD_NAME}.
      */
     public static final int H1_1_FIELD_EXAMPLE_2_ARRAY_SIZE = 1000;
 
@@ -403,8 +401,7 @@ public final class TutorConstants {
     public static final Object H1_1_FIELD_EXAMPLE_3_5 = (BiFunction<String, String, String>)
         String::concat;
     /**
-     * The example size of the array used for the functional operation used for the method
-     * {@value H1_2_METHOD_NAME}.
+     * The example size of the array used for the functional operation used for the method {@value H1_2_METHOD_NAME}.
      */
     public static final int H1_1_FIELD_EXAMPLE_3_ARRAY_SIZE = 1000;
     /**

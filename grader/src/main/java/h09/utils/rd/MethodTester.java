@@ -18,7 +18,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.management.RuntimeErrorException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * A method tester which tests properties of a class.
@@ -178,6 +184,7 @@ public class MethodTester {
      * Generates a predefined message for an invalid return type.
      *
      * @param methodName the method name used in the message
+     *
      * @return a predefined message for an invalid return type.
      */
     public static String getInvalidReturnTypeMessage(String methodName) {
@@ -188,6 +195,7 @@ public class MethodTester {
      * Generates a predefined should not have parameter message.
      *
      * @param methodName the method name used in the message
+     *
      * @return a predefined should not have parameter message
      */
     public static String getShouldNotHaveParameterMessage(String methodName) {
@@ -200,6 +208,7 @@ public class MethodTester {
      * @param expectedParameters the expected parameters
      * @param actualParameters   the actual Parameters
      * @param ignoreNames        the indicator  whether to ignore parameter names
+     *
      * @return the number of matched parameters
      */
     public static int countMatchingParameters(
@@ -230,6 +239,7 @@ public class MethodTester {
      * @param methodName  the name of the method
      * @param parameters  the expected parameters
      * @param ignoreNames the indicator  whether to ignore parameter names
+     *
      * @return the number of matched parameters
      */
     public static int countMatchingParameters(Method m, String methodName, List<ParameterMatcher> parameters,
@@ -313,6 +323,7 @@ public class MethodTester {
      * Generates a predefined class tester {@code null} message.
      *
      * @param methodName the expected method name
+     *
      * @return a predefined class tester {@code null} message
      */
     public static String getClassTesterNullMessage(String methodName) {
@@ -323,6 +334,7 @@ public class MethodTester {
      * Represents a safe string as an array.
      *
      * @param array the array to convert
+     *
      * @return the string representation of the array
      */
     public static String safeArrayToString(Object... array) {
@@ -344,6 +356,7 @@ public class MethodTester {
      *
      * @param methods the found fields so far (initial value is an empty list)
      * @param clazz   the class to search
+     *
      * @return all fields from a class and its super classes
      */
     private static List<Method> getAllMethods(List<Method> methods, Class<?> clazz) {
@@ -360,6 +373,7 @@ public class MethodTester {
      * Returns all fields from a class and its super classes recursively.
      *
      * @param clazz the class to search
+     *
      * @return all fields from a class and its super classes
      */
     public static List<Method> getAllMethods(Class<?> clazz) {
@@ -545,6 +559,7 @@ public class MethodTester {
      * Generates a predefined method not found message.
      *
      * @param methodName the name of the method used for the message
+     *
      * @return a predefined method not found message
      */
     public static String getMethodNotFoundMessage(String methodName) {
@@ -601,8 +616,8 @@ public class MethodTester {
     }
 
     /**
-     * Returns {@code true} if the method can be invoked, more formally returns {@code true} if the class tester used to
-     * invoke the method, the method itself can be resolved.
+     * Returns {@code true} if the method can be invoked, more formally returns {@code true} if the class tester used to invoke
+     * the method, the method itself can be resolved.
      *
      * @return {@code true} if the method can be invoked.
      */
@@ -626,6 +641,7 @@ public class MethodTester {
      * Invokes test method using the class tester.
      *
      * @param params the parameters of the method that should be invoked
+     *
      * @return the return value of the method after its invocation
      */
     public Object invoke(Object... params) {
@@ -757,16 +773,18 @@ public class MethodTester {
     }
 
     /**
-     * Resolves the method with the tolerances, more formally the method is searched first using its name. If multiple
-     * overloads are found then the method with the most matching parameters according to
-     * {@link  #countMatchingParameters(Method, String, List, boolean)} is chosen.
+     * Resolves the method with the tolerances, more formally the method is searched first using its name. If multiple overloads
+     * are found then the method with the most matching parameters according to {@link  #countMatchingParameters(Method, String,
+     * List, boolean)} is chosen.
      *
      * @param theClass        the class to search
      * @param methodName      the expected method name
      * @param similarity      the minimum required similarity
      * @param parameters      the expected parameters
      * @param allowSuperClass the indicator whether to search in super classes as well
+     *
      * @return the resolved method
+     *
      * @see TestUtils#similarity(String, String)
      * @see #countMatchingParameters(Method, String, List, boolean)
      */
@@ -797,15 +815,17 @@ public class MethodTester {
     }
 
     /**
-     * Resolves the method with the tolerances, more formally the method is searched first using its name. If multiple
-     * overloads are found then the method with the most matching parameters according to
-     * {@link  #countMatchingParameters(Method, String, List, boolean)} is chosen.
+     * Resolves the method with the tolerances, more formally the method is searched first using its name. If multiple overloads
+     * are found then the method with the most matching parameters according to {@link  #countMatchingParameters(Method, String,
+     * List, boolean)} is chosen.
      *
      * @param theClass   the class to search
      * @param methodName the expected method name
      * @param similarity the minimum required similarity
      * @param parameters the expected parameters
+     *
      * @return the resolved method
+     *
      * @see TestUtils#similarity(String, String)
      * @see #countMatchingParameters(Method, String, List, boolean)
      */
@@ -815,12 +835,14 @@ public class MethodTester {
     }
 
     /**
-     * Resolves the method with the tolerances, more formally the method is searched first using its name. If multiple
-     * overloads are found then the method with the most matching parameters according to
-     * {@link  #countMatchingParameters(Method, String, List, boolean)} is chosen.
+     * Resolves the method with the tolerances, more formally the method is searched first using its name. If multiple overloads
+     * are found then the method with the most matching parameters according to {@link  #countMatchingParameters(Method, String,
+     * List, boolean)} is chosen.
      *
      * @param similarity the minimum required similarity
+     *
      * @return the resolved method
+     *
      * @see TestUtils#similarity(String, String)
      * @see #countMatchingParameters(Method, String, List, boolean)
      */
@@ -829,11 +851,12 @@ public class MethodTester {
     }
 
     /**
-     * Resolves the method with the tolerances, more formally the method is searched first using its name. If multiple
-     * overloads are found then the method with the most matching parameters according to
-     * {@link  #countMatchingParameters(Method, String, List, boolean)} is chosen.
+     * Resolves the method with the tolerances, more formally the method is searched first using its name. If multiple overloads
+     * are found then the method with the most matching parameters according to {@link  #countMatchingParameters(Method, String,
+     * List, boolean)} is chosen.
      *
      * @return the resolved method
+     *
      * @see TestUtils#similarity(String, String)
      * @see #countMatchingParameters(Method, String, List, boolean)
      */
@@ -862,6 +885,7 @@ public class MethodTester {
      * Gets method documentation for JavaDoc.
      *
      * @param d the source documentation
+     *
      * @return the method documentation
      */
     public MethodDocumentation getMethodDocumentation(SourceDocumentation d) {

@@ -1,6 +1,5 @@
-package h09;
+package h09.utils;
 
-import h09.utils.TutorConstants;
 import h09.utils.rd.ClassTester;
 
 import java.util.ArrayList;
@@ -8,13 +7,13 @@ import java.util.ArrayList;
 /**
  * Contains all class testers for the exercises.
  */
-public final class H09_Class_Testers {
+public final class TutorClassTesters {
 
 
     /**
      * Don't let anyone instantiate this class.
      */
-    private H09_Class_Testers() {
+    private TutorClassTesters() {
     }
 
     /**
@@ -34,7 +33,6 @@ public final class H09_Class_Testers {
         TutorConstants.H1_1_CLASS_NAME, MINIMUM_SIMILARITY,
         -1
     );
-
 
     /**
      * The class tester for {@value  TutorConstants#H1_3_CLASS_NAME}.
