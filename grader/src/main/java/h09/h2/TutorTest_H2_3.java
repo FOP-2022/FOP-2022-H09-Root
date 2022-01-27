@@ -1,6 +1,7 @@
 package h09.h2;
 
 import h09.utils.Modifier;
+import h09.utils.TutorClassTesters;
 import h09.utils.TutorConstants;
 import h09.utils.TutorMessage;
 import h09.utils.TutorUtils;
@@ -37,7 +38,7 @@ public final class TutorTest_H2_3 {
      * @return the class instance of the test class
      */
     private static Class<?> getTestClass() {
-        return TutorUtils.assertClass(TutorConstants.H2_PACKAGE_NAME, TutorConstants.H2_3_CLASS_NAME);
+        return TutorClassTesters.H2_3.assureClassResolved().getTheClass();
     }
 
     /**
@@ -51,7 +52,8 @@ public final class TutorTest_H2_3 {
     private static void assertRequirements(final TestCycle testCycle, final String methodName,
                                            final int expectedSize, final String... expectedAnimals) {
         final var processor = new ObjectsUsageMethodProcessor(methodName);
-        SpoonUtils.process(testCycle, TutorConstants.H2_3_PATH_TO_SOURCE, processor);
+        final var path = TutorUtils.getPathToSource(getTestClass());
+        SpoonUtils.process(testCycle, path, processor);
 
         final var testAnimals = Stream.of(expectedAnimals)
             .map(animal -> animal.startsWith("Rabbit") ? animal : String.format("Test%s", animal))

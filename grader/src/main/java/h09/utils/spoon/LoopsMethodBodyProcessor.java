@@ -44,8 +44,8 @@ public final class LoopsMethodBodyProcessor extends AbstractProcessor<CtMethod<?
     private final List<CtDo> doWhileLoops;
 
     /**
-     * Constructs and initializes a processor which scans all loops in the specified method.
-     * If the method name is {@code null}, the whole source code will be scanned.
+     * Constructs and initializes a processor which scans all loops in the specified method. If the method name is {@code null},
+     * the whole source code will be scanned.
      *
      * @param methodName the name of the method that should be processed
      */
@@ -79,8 +79,7 @@ public final class LoopsMethodBodyProcessor extends AbstractProcessor<CtMethod<?
     }
 
     /**
-     * Returns the scanned {@code for} loop so far. If this processor does not process any method
-     * yet, the content will be empty.
+     * Returns the scanned {@code for} loop so far. If this processor does not process any method yet, the content will be empty.
      *
      * @return the scanned {@code for} loop so far
      */
@@ -89,8 +88,8 @@ public final class LoopsMethodBodyProcessor extends AbstractProcessor<CtMethod<?
     }
 
     /**
-     * Returns the scanned {@code foreach} loop so far. If this processor does not process any method
-     * yet, the content will be empty.
+     * Returns the scanned {@code foreach} loop so far. If this processor does not process any method yet, the content will be
+     * empty.
      *
      * @return the scanned {@code foreach} loop so far
      */
@@ -99,8 +98,8 @@ public final class LoopsMethodBodyProcessor extends AbstractProcessor<CtMethod<?
     }
 
     /**
-     * Returns the scanned {@code while} loop so far. If this processor does not process any method
-     * yet, the content will be empty.
+     * Returns the scanned {@code while} loop so far. If this processor does not process any method yet, the content will be
+     * empty.
      *
      * @return the scanned {@code while} loop so far
      */
@@ -109,8 +108,8 @@ public final class LoopsMethodBodyProcessor extends AbstractProcessor<CtMethod<?
     }
 
     /**
-     * Returns the scanned {@code do-while} loop so far. If this processor does not process any method
-     * yet, the content will be empty.
+     * Returns the scanned {@code do-while} loop so far. If this processor does not process any method yet, the content will be
+     * empty.
      *
      * @return the scanned {@code do-while} loop so far
      */

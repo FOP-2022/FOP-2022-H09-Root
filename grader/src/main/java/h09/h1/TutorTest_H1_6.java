@@ -1,6 +1,7 @@
 package h09.h1;
 
 import h09.utils.Modifier;
+import h09.utils.TutorClassTesters;
 import h09.utils.TutorConstants;
 import h09.utils.TutorMessage;
 import h09.utils.TutorUtils;
@@ -20,8 +21,12 @@ import spoon.reflect.code.CtExpression;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Defines the JUnit test cases related to the class defined in the task H1.6.
@@ -38,7 +43,7 @@ public final class TutorTest_H1_6 {
      * @return the method that should be tested
      */
     private static Class<?> getTestClass() {
-        return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_6_CLASS_NAME);
+        return TutorClassTesters.H1_6.assureClassResolved().getTheClass();
     }
 
     /**
@@ -168,7 +173,8 @@ public final class TutorTest_H1_6 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Requirement - Only lambdas")
         public void testRequirement(final TestCycle testCycle) {
-            final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            final var processor = SpoonUtils.process(testCycle, path,
                 new LambdaExpressionsMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_1));
             final var actualTypes = processor.getLambdas();
             final var expectedTypes = TutorConstants.H1_6_METHOD_1_LAMBDAS;
@@ -194,7 +200,8 @@ public final class TutorTest_H1_6 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Requirement - Only lambdas")
         public void testRequirement(final TestCycle testCycle) {
-            final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            final var processor = SpoonUtils.process(testCycle, path,
                 new LambdaExpressionsMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_2));
             final var actualTypes = processor.getLambdas();
             final var expectedTypes = TutorConstants.H1_6_METHOD_2_LAMBDAS;
@@ -220,7 +227,8 @@ public final class TutorTest_H1_6 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Requirement - Only method references")
         public void testRequirement(final TestCycle testCycle) {
-            final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            final var processor = SpoonUtils.process(testCycle, path,
                 new MethodReferencesMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_3));
             final var actualTypes = processor.getMethodReferences();
             final var expectedTypes = TutorConstants.H1_6_METHOD_3_LAMBDAS;
@@ -639,14 +647,80 @@ public final class TutorTest_H1_6 {
                  */
                 private Constructor<?> getTestConstructor() {
                     final var clazz = getTestClassPerson();
-                    return TutorUtils.assertConstructor(
-                        clazz,
-                        TutorConstants.H1_6_FIELD_TYPE_1,
-                        TutorConstants.H1_6_FIELD_TYPE_2,
-                        TutorConstants.H1_6_FIELD_TYPE_3,
-                        TutorConstants.H1_6_FIELD_TYPE_4,
-                        TutorConstants.H1_6_FIELD_TYPE_5
-                    );
+                    try {
+                        return TutorUtils.assertConstructor(
+                            clazz,
+                            TutorConstants.H1_6_FIELD_TYPE_1,
+                            TutorConstants.H1_6_FIELD_TYPE_2,
+                            TutorConstants.H1_6_FIELD_TYPE_3,
+                            TutorConstants.H1_6_FIELD_TYPE_4,
+                            TutorConstants.H1_6_FIELD_TYPE_5
+                        );
+                    } catch (AssertionFailedError e) {
+                        return TutorUtils.assertConstructor(
+                            clazz,
+                            getTestClass(),
+                            TutorConstants.H1_6_FIELD_TYPE_1,
+                            TutorConstants.H1_6_FIELD_TYPE_2,
+                            TutorConstants.H1_6_FIELD_TYPE_3,
+                            TutorConstants.H1_6_FIELD_TYPE_4,
+                            TutorConstants.H1_6_FIELD_TYPE_5
+                        );
+                    }
+                }
+
+                /**
+                 * Returns an instance of the object that is constructed by invoking the specified constructor.
+                 *
+                 * @param parameters the parameters of the constructor
+                 *
+                 * @return an instance of the object that is constructed by invoking the specified constructor
+                 */
+                private Object checkInvokeConstructor(final Object... parameters) {
+                    final var constructor = getTestConstructor();
+                    try {
+                        final var tmp = constructor.canAccess(null);
+                        constructor.setAccessible(!tmp);
+                        final var instance = constructor.newInstance(parameters);
+                        constructor.setAccessible(tmp);
+                        return instance;
+                    } catch (InstantiationException | IllegalArgumentException | IllegalAccessException
+                        | InvocationTargetException e) {
+                        Throwable ex = e;
+                        if (e instanceof InvocationTargetException) {
+                            ex = e.getCause();
+                        }
+                        return Assertions.fail(
+                            TutorMessage.CONSTRUCTOR_NO_INVOKE.format(
+                                constructor.getName(),
+                                Arrays.stream(parameters)
+                                    .map(Object::getClass)
+                                    .map(Class::getSimpleName)
+                                    .collect(Collectors.joining(", ")),
+                                e.getMessage()
+                            ), e
+                        );
+                    }
+                }
+
+                /**
+                 * Returns an instance of the object that is constructed by invoking the specified constructor.
+                 *
+                 * @param parameters the parameters of the constructor
+                 *
+                 * @return an instance of the object that is constructed by invoking the specified constructor
+                 */
+                private Object invokeConstructor(final Object... parameters) {
+                    try {
+                        // Static context
+                        return checkInvokeConstructor(parameters);
+                    } catch (AssertionFailedError e) {
+                        // Non-static context
+                        final var constructor = TutorUtils.assertConstructor(getTestClass());
+                        final var enclosingInstance = TutorUtils.invokeConstructor(constructor);
+                        final var params = Stream.concat(Stream.of(enclosingInstance), Stream.of(parameters)).toArray();
+                        return checkInvokeConstructor(params);
+                    }
                 }
 
                 @Test
@@ -660,18 +734,14 @@ public final class TutorTest_H1_6 {
                 @Test
                 @DisplayName("Criterion: Initialization of fields")
                 public void testFields() {
-                    final var constructor = getTestConstructor();
-
                     final var expectedField1 = TutorConstants.H1_6_FIELD_EXAMPLE_1;
                     final var expectedField2 = TutorConstants.H1_6_FIELD_EXAMPLE_2;
                     final var expectedField3 = TutorConstants.H1_6_FIELD_EXAMPLE_3;
                     final var expectedField4 = TutorConstants.H1_6_FIELD_EXAMPLE_4;
                     final var expectedField5 = TutorConstants.H1_6_FIELD_EXAMPLE_5;
 
-                    final var instance = TutorUtils.invokeConstructor(
-                        constructor, expectedField1, expectedField2, expectedField3, expectedField4,
-                        expectedField5
-                    );
+                    final var instance = invokeConstructor(expectedField1, expectedField2, expectedField3, expectedField4,
+                        expectedField5);
 
                     // Check if fields are initialized
                     final var actualField1 = TutorUtils.assertField(instance, TutorConstants.H1_6_FIELD_NAME_1);

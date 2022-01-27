@@ -14,8 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * A utility class used for JUnit tests which provides reflective access to some properties and
- * assertions.
+ * A utility class used for JUnit tests which provides reflective access to some properties and assertions.
  *
  * @author Ruben Deisenroth
  */

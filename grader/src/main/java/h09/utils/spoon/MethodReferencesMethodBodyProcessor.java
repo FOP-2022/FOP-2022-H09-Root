@@ -25,8 +25,7 @@ public class MethodReferencesMethodBodyProcessor extends AbstractProcessor<CtMet
     private final List<CtExecutableReferenceExpression<?, ?>> methodReferences;
 
     /**
-     * Constructs and initializes a processor which scans all method references in the specified
-     * method.
+     * Constructs and initializes a processor which scans all method references in the specified method.
      *
      * @param methodName the name of the method that should be processed
      */
@@ -45,8 +44,8 @@ public class MethodReferencesMethodBodyProcessor extends AbstractProcessor<CtMet
     }
 
     /**
-     * Returns the scanned method references so far. If this processor does not process any method
-     * yet, the content will be empty.
+     * Returns the scanned method references so far. If this processor does not process any method yet, the content will be
+     * empty.
      *
      * @return the scanned constructor calls  so far
      */

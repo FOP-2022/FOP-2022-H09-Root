@@ -17,8 +17,7 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 /**
- * A utility class used for JUnit tests which provides reflective access to some properties and
- * assertions.
+ * A utility class used for JUnit tests which provides reflective access to some properties and assertions.
  *
  * @author Nhan Huynh, Darya Nikitina
  */
@@ -67,6 +66,17 @@ public final class TutorUtils {
             }
         }
         return Assertions.fail(TutorMessage.PACKAGE_NAME_ALTERNATIVE.format(String.join("/", classNames)));
+    }
+
+    /**
+     * Returns the path to the source code.
+     *
+     * @param clazz the class of the source code
+     *
+     * @return the  path to the source code
+     */
+    public static String getPathToSource(Class<?> clazz) {
+        return String.format("%s.java", clazz.getCanonicalName().replaceAll("\\.", "/"));
     }
 
     /* *********************************************************************
@@ -119,15 +129,18 @@ public final class TutorUtils {
      */
     public static Class<?> assertNestedClass(final String packageName, final String className,
                                              final String nestedClassName) {
-        final var clazz = assertClass(packageName, className);
-        final var classes = clazz.getDeclaredClasses();
-        for (final var c : classes) {
-            if (c.getSimpleName().equals(nestedClassName)) {
-                return c;
+        try {
+            return assertClass(packageName, nestedClassName);
+        } catch (AssertionFailedError e) {
+            final var clazz = assertClass(packageName, className);
+            for (final var c : clazz.getDeclaredClasses()) {
+                if (c.getSimpleName().equals(nestedClassName)) {
+                    return c;
+                }
             }
+            final var message = String.format("%s.%s", clazz.getCanonicalName(), nestedClassName);
+            return Assertions.fail(TutorMessage.CLASS_NOT_FOUND.format(message));
         }
-        final var message = String.format("%s.%s", clazz.getCanonicalName(), nestedClassName);
-        return Assertions.fail(TutorMessage.CLASS_NOT_FOUND.format(message));
     }
 
     /* *********************************************************************
@@ -147,7 +160,7 @@ public final class TutorUtils {
             return clazz.getDeclaredField(fieldName);
         } catch (NoSuchFieldException e) {
             return Assertions.fail(
-                TutorMessage.FIELD_NOT_FOUND.format(fieldName, clazz.getSimpleName()), e
+                TutorMessage.FIELD_NOT_FOUND.format(fieldName, clazz.getSimpleName(), e.getMessage()), e
             );
         }
     }
@@ -181,7 +194,7 @@ public final class TutorUtils {
             return object;
         } catch (IllegalAccessException e) {
             return Assertions.fail(
-                TutorMessage.FIELD_NO_ACCESS.format(field.getName(), field.getDeclaringClass()), e
+                TutorMessage.FIELD_NO_ACCESS.format(field.getName(), field.getDeclaringClass(), e.getMessage()), e
             );
         }
     }
@@ -198,8 +211,7 @@ public final class TutorUtils {
     }
 
     /**
-     * Sets the accessed field content to the specified one. If the field is static, the instance can
-     * be {@code null}.
+     * Sets the accessed field content to the specified one. If the field is static, the instance can be {@code null}.
      *
      * @param field    the field to access
      * @param instance the instance to retrieve its field
@@ -214,7 +226,8 @@ public final class TutorUtils {
         } catch (IllegalAccessException e) {
             Assertions.fail(
                 TutorMessage.FIELD_NO_ACCESS.format(
-                    field.getName(), field.getDeclaringClass()
+                    field.getName(), field.getDeclaringClass(),
+                    e.getMessage()
                 ), e
             );
         }
@@ -237,6 +250,9 @@ public final class TutorUtils {
     /**
      * Checks if the specified constructor exists.
      *
+     * <p>If this {@code Class} object represents an inner class declared in a non-static context, the formal parameter types
+     * include the explicit enclosing instance as the first parameter.
+     *
      * @param clazz      the class where the constructor belong
      * @param parameters the parameters of the constructor
      *
@@ -250,7 +266,8 @@ public final class TutorUtils {
             return Assertions.fail(
                 TutorMessage.CONSTRUCTOR_NOT_FOUND.format(
                     clazz.getSimpleName(),
-                    Arrays.stream(parameters).map(Class::getSimpleName).collect(Collectors.joining(", "))
+                    Arrays.stream(parameters).map(Class::getSimpleName).collect(Collectors.joining(", ")),
+                    e.getMessage()
                 ), e
             );
         }
@@ -272,14 +289,19 @@ public final class TutorUtils {
             final var instance = constructor.newInstance(parameters);
             constructor.setAccessible(tmp);
             return instance;
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+        } catch (InstantiationException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
+            Throwable ex = e;
+            if (e instanceof InvocationTargetException) {
+                ex = e.getCause();
+            }
             return Assertions.fail(
                 TutorMessage.CONSTRUCTOR_NO_INVOKE.format(
                     constructor.getName(),
                     Arrays.stream(parameters)
                         .map(Object::getClass)
                         .map(Class::getSimpleName)
-                        .collect(Collectors.joining(", "))
+                        .collect(Collectors.joining(", ")),
+                    e.getMessage()
                 ), e
             );
         }
@@ -292,11 +314,13 @@ public final class TutorUtils {
      * @param expected the expected constructor parameters
      */
     public static void assertConstructorParameters(final Constructor<?> actual,
-                                                   final List<Entry<Class<?>, String[]>> expected) {
+                                                   final List<Entry<Class<?>, String[]>> expected,
+                                                   final boolean onlyType) {
         // Check number of parameters
-        final var types = actual.getGenericParameterTypes();
+        final var types = actual.getParameterTypes();
+        final var genericTypes = actual.getGenericParameterTypes();
         final var expectedLength = expected.size();
-        final var actualLength = types.length;
+        final var actualLength = genericTypes.length;
         Assertions.assertEquals(expectedLength, actualLength,
             TutorMessage.CONSTRUCTOR_PARAMETER_MISMATCH_SIZE.format(
                 actual.getName(), expectedLength, actualLength
@@ -312,15 +336,17 @@ public final class TutorUtils {
             final var value = entry.getValue();
             if (key == Object.class) {
                 typesObject.put(i, value);
+            } else if (onlyType) {
+                Assertions.assertEquals(key, types[i], TutorMessage.TYPE_PARAMETER_MISMATCH.format(key, types[i]));
             } else {
-                TutorUtils.assertGenericType(types[i], key, value);
+                TutorUtils.assertGenericType(genericTypes[i], key, value);
             }
         }
 
         // Type parameters
         for (final Entry<Integer, String[]> entry : typesObject.entrySet()) {
             boolean done = false;
-            final var actualType = types[entry.getKey()].getTypeName();
+            final var actualType = genericTypes[entry.getKey()].getTypeName();
             final var expectedTypes = entry.getValue();
             for (final var expectedType : expectedTypes) {
                 try {
@@ -365,7 +391,8 @@ public final class TutorUtils {
                             .map(Object::getClass)
                             .map(Class::getSimpleName)
                             .collect(Collectors.joining(", ")),
-                    clazz.getSimpleName()
+                    clazz.getSimpleName(),
+                    e.getMessage()
                 ), e
             );
         }
@@ -399,6 +426,10 @@ public final class TutorUtils {
         try {
             return method.invoke(caller, parameters);
         } catch (IllegalAccessException | InvocationTargetException e) {
+            Throwable ex = e;
+            if (e instanceof InvocationTargetException) {
+                ex = e.getCause();
+            }
             return Assertions.fail(
                 TutorMessage.METHOD_NO_INVOKE.format(
                     method.getName(),
@@ -406,7 +437,8 @@ public final class TutorUtils {
                         .map(Object::getClass)
                         .map(Class::getSimpleName)
                         .collect(Collectors.joining(", ")),
-                    String.valueOf(caller)
+                    String.valueOf(caller),
+                    ex.getMessage()
                 ), e
             );
         }
@@ -432,8 +464,7 @@ public final class TutorUtils {
     }
 
     /**
-     * Tests if the specified modifiers of an object only contains the specified modifiers and do not
-     * contain no more.
+     * Tests if the specified modifiers of an object only contains the specified modifiers and do not contain no more.
      *
      * @param expected the expected modifiers of an object to check
      * @param actual   the actual object with its modifiers

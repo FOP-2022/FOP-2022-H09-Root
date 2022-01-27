@@ -1,6 +1,7 @@
 package h09.h1;
 
 import h09.utils.Modifier;
+import h09.utils.TutorClassTesters;
 import h09.utils.TutorConstants;
 import h09.utils.TutorMessage;
 import h09.utils.TutorUtils;
@@ -32,7 +33,7 @@ public final class TutorTest_H1_1 {
      * @return the class instance of the test class
      */
     private static Class<?> getTestClass() {
-        return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_1_CLASS_NAME);
+        return TutorClassTesters.H1_1.assureClassResolved().getTheClass();
     }
 
     /* *********************************************************************
@@ -149,13 +150,6 @@ public final class TutorTest_H1_1 {
             Assertions.assertEquals(
                 expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
             );
-
-            final var name = method.getGenericReturnType().getTypeName();
-            Assertions.assertEquals(
-                String.format(
-                    "%s<%s>", expected.getCanonicalName(), TutorConstants.H1_1_FIELD_TYPE_PARAMETER_1
-                ), name, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
-            );
         }
     }
 
@@ -220,13 +214,6 @@ public final class TutorTest_H1_1 {
             final var actual = method.getReturnType();
             Assertions.assertEquals(
                 expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
-            );
-
-            final var name = method.getGenericReturnType().getTypeName();
-            Assertions.assertEquals(
-                String.format(
-                    "%s<%s>", expected.getCanonicalName(), TutorConstants.H1_1_FIELD_TYPE_PARAMETER_2
-                ), name, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
             );
         }
     }
@@ -293,21 +280,6 @@ public final class TutorTest_H1_1 {
             Assertions.assertEquals(
                 expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
             );
-
-            final var name = method.getGenericReturnType().getTypeName();
-            for (final var acceptedTypes : TutorConstants.H1_1_FIELD_TYPE_PARAMETER_3) {
-                final var expectedName = String.format("%s<%s>", expected.getCanonicalName(), acceptedTypes);
-                try {
-                    Assertions.assertEquals(expectedName, name);
-                    return;
-                } catch (AssertionError e) {
-                    continue;
-                }
-            }
-            Assertions.fail(TutorMessage.RETURN_TYPE_MISMATCH.format(
-                String.format("%s<%s>", expected, String.join("/", TutorConstants.H1_1_FIELD_TYPE_PARAMETER_3)),
-                name
-            ));
         }
     }
 
@@ -375,12 +347,6 @@ public final class TutorTest_H1_1 {
             Assertions.assertEquals(
                 expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual)
             );
-
-            final var expectedName = TutorConstants.H1_1_FIELD_TYPE_PARAMETER_4;
-            final var actualName = method.getGenericReturnType().getTypeName();
-            Assertions.assertEquals(
-                expectedName, actualName, TutorMessage.RETURN_TYPE_MISMATCH.format(expectedName, actualName)
-            );
         }
     }
 
@@ -424,7 +390,7 @@ public final class TutorTest_H1_1 {
             + "BiFunction<Z, ? super Y, Z>, Z")
         public void testParameterTypes() {
             final var constructor = getTestConstructor();
-            TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, false);
+            TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, false, true);
         }
 
         @Test

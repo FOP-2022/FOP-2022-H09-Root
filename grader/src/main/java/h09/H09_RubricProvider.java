@@ -11,6 +11,7 @@ import h09.h1.TutorTest_H1_6;
 import h09.h2.TutorTest_H2_1;
 import h09.h2.TutorTest_H2_2;
 import h09.h2.TutorTest_H2_3;
+import h09.utils.TutorClassTesters;
 import h09.utils.TutorConstants;
 import h09.utils.rd.MethodTester;
 import h09.utils.transformer.TutorTransformer;
@@ -511,28 +512,10 @@ public final class H09_RubricProvider implements RubricProvider {
      *                                 H1                                  *
      **********************************************************************/
 
-    public static final Criterion H1_PACKAGE_NAME =
-        Criterion.builder()
-            .shortDescription("H1: Package name is correct")
-            .maxPoints(0)
-            .minPoints(-2)
-            .grader(
-                Grader.testAwareBuilder()
-                    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.class.getMethod("testPackage")))
-                    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_2.class.getMethod("testPackage")))
-                    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_3.class.getMethod("testPackage")))
-                    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_4.class.getMethod("testPackage")))
-                    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_5.class.getMethod("testPackage")))
-                    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_6.class.getMethod("testPackage")))
-                    .pointsPassedMax()
-                    .pointsFailedMin()
-                    .build())
-            .build();
-
     public static final Criterion H1 = Criterion.builder()
         .shortDescription("H1: Generische Operationen - Filter, Map und Fold")
         .minPoints(0)
-        .addChildCriteria(H1_1, H1_2, H1_3, H1_4, H1_5, H1_6, H1_PACKAGE_NAME)
+        .addChildCriteria(H1_1, H1_2, H1_3, H1_4, H1_5, H1_6)
         .build();
 
     /* *********************************************************************
@@ -779,25 +762,10 @@ public final class H09_RubricProvider implements RubricProvider {
      *                                 H2                                  *
      **********************************************************************/
 
-    public static final Criterion H2_PACKAGE_NAME =
-        Criterion.builder()
-            .shortDescription("H2: Package name is correct")
-            .maxPoints(0)
-            .minPoints(-2)
-            .grader(
-                Grader.testAwareBuilder()
-                    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_1.class.getMethod("testPackage")))
-                    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_2.class.getMethod("testPackage")))
-                    .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.class.getMethod("testPackage")))
-                    .pointsPassedMax()
-                    .pointsFailedMin()
-                    .build())
-            .build();
-
     public static final Criterion H2 = Criterion.builder()
         .shortDescription("H2: Restricted Genericity und Wildcards")
         .minPoints(0)
-        .addChildCriteria(H2_1, H2_2, H2_3, H2_PACKAGE_NAME)
+        .addChildCriteria(H2_1, H2_2, H2_3)
         .build();
 
     /* *********************************************************************
@@ -814,116 +782,116 @@ public final class H09_RubricProvider implements RubricProvider {
         }
         JAVADOC = DocumentationCriterion.forGrader(
             DocumentationGrader.builder()
-                .addJavaDoc(H09_Class_Testers.H1_1::getConstructorDocumentation, H1_1)
-                .addJavaDoc(H09_Class_Testers.H1_2::getConstructorDocumentation, H1_2)
-                .addJavaDoc(H09_Class_Testers.H1_3::getConstructorDocumentation, H1_3)
-                .addJavaDoc(H09_Class_Testers.H1_4::getConstructorDocumentation, H1_4)
-                .addJavaDoc(H09_Class_Testers.H1_5::getConstructorDocumentation, H1_5)
-                .addJavaDoc(H09_Class_Testers.H2_1_10::getConstructorDocumentation, H2_1)
+                .addJavaDoc(TutorClassTesters.H1_1::getConstructorDocumentation, H1_1)
+                .addJavaDoc(TutorClassTesters.H1_2::getConstructorDocumentation, H1_2)
+                .addJavaDoc(TutorClassTesters.H1_3::getConstructorDocumentation, H1_3)
+                .addJavaDoc(TutorClassTesters.H1_4::getConstructorDocumentation, H1_4)
+                .addJavaDoc(TutorClassTesters.H1_5::getConstructorDocumentation, H1_5)
+                .addJavaDoc(TutorClassTesters.H2_1_10::getConstructorDocumentation, H2_1)
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_1, TutorConstants.H1_1_METHOD_NAME_1)::getMethodDocumentation, H1_1
+                    new MethodTester(TutorClassTesters.H1_1, TutorConstants.H1_1_METHOD_NAME_1)::getMethodDocumentation, H1_1
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_1, TutorConstants.H1_1_METHOD_NAME_2)::getMethodDocumentation, H1_1
+                    new MethodTester(TutorClassTesters.H1_1, TutorConstants.H1_1_METHOD_NAME_2)::getMethodDocumentation, H1_1
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_1, TutorConstants.H1_1_METHOD_NAME_3)::getMethodDocumentation, H1_1
+                    new MethodTester(TutorClassTesters.H1_1, TutorConstants.H1_1_METHOD_NAME_3)::getMethodDocumentation, H1_1
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_1, TutorConstants.H1_1_METHOD_NAME_4)::getMethodDocumentation, H1_1
+                    new MethodTester(TutorClassTesters.H1_1, TutorConstants.H1_1_METHOD_NAME_4)::getMethodDocumentation, H1_1
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_2, TutorConstants.H1_2_METHOD_NAME)::getMethodDocumentation, H1_2
+                    new MethodTester(TutorClassTesters.H1_2, TutorConstants.H1_2_METHOD_NAME)::getMethodDocumentation, H1_2
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_5, TutorConstants.H1_5_METHOD_NAME_1)::getMethodDocumentation, H1_5
+                    new MethodTester(TutorClassTesters.H1_5, TutorConstants.H1_5_METHOD_NAME_1)::getMethodDocumentation, H1_5
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_5, TutorConstants.H1_5_METHOD_NAME_2)::getMethodDocumentation, H1_5
+                    new MethodTester(TutorClassTesters.H1_5, TutorConstants.H1_5_METHOD_NAME_2)::getMethodDocumentation, H1_5
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_1)::getMethodDocumentation, H1_6
+                    new MethodTester(TutorClassTesters.H1_6, TutorConstants.H1_6_METHOD_NAME_1)::getMethodDocumentation, H1_6
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_2)::getMethodDocumentation, H1_6
+                    new MethodTester(TutorClassTesters.H1_6, TutorConstants.H1_6_METHOD_NAME_2)::getMethodDocumentation, H1_6
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_3)::getMethodDocumentation, H1_6
+                    new MethodTester(TutorClassTesters.H1_6, TutorConstants.H1_6_METHOD_NAME_3)::getMethodDocumentation, H1_6
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_4)::getMethodDocumentation, H1_6
+                    new MethodTester(TutorClassTesters.H1_6, TutorConstants.H1_6_METHOD_NAME_4)::getMethodDocumentation, H1_6
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_5)::getMethodDocumentation, H1_6
+                    new MethodTester(TutorClassTesters.H1_6, TutorConstants.H1_6_METHOD_NAME_5)::getMethodDocumentation, H1_6
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_6)::getMethodDocumentation, H1_6
+                    new MethodTester(TutorClassTesters.H1_6, TutorConstants.H1_6_METHOD_NAME_6)::getMethodDocumentation, H1_6
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_7)::getMethodDocumentation, H1_6
+                    new MethodTester(TutorClassTesters.H1_6, TutorConstants.H1_6_METHOD_NAME_7)::getMethodDocumentation, H1_6
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_8)::getMethodDocumentation, H1_6
+                    new MethodTester(TutorClassTesters.H1_6, TutorConstants.H1_6_METHOD_NAME_8)::getMethodDocumentation, H1_6
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_9)::getMethodDocumentation, H1_6
+                    new MethodTester(TutorClassTesters.H1_6, TutorConstants.H1_6_METHOD_NAME_9)::getMethodDocumentation, H1_6
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_10)::getMethodDocumentation, H1_6
+                    new MethodTester(TutorClassTesters.H1_6, TutorConstants.H1_6_METHOD_NAME_10)::getMethodDocumentation, H1_6
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_11)::getMethodDocumentation, H1_6
+                    new MethodTester(TutorClassTesters.H1_6, TutorConstants.H1_6_METHOD_NAME_11)::getMethodDocumentation, H1_6
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_12)::getMethodDocumentation, H1_6
+                    new MethodTester(TutorClassTesters.H1_6, TutorConstants.H1_6_METHOD_NAME_12)::getMethodDocumentation, H1_6
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H1_6, TutorConstants.H1_6_METHOD_NAME_13)::getMethodDocumentation, H1_6
+                    new MethodTester(TutorClassTesters.H1_6, TutorConstants.H1_6_METHOD_NAME_13)::getMethodDocumentation, H1_6
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_1_1, TutorConstants.H2_1_METHOD_NAME_1)::getMethodDocumentation, H2_1
+                    new MethodTester(TutorClassTesters.H2_1_1, TutorConstants.H2_1_METHOD_NAME_1)::getMethodDocumentation, H2_1
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_1_2, TutorConstants.H2_1_METHOD_NAME_2)::getMethodDocumentation, H2_1
+                    new MethodTester(TutorClassTesters.H2_1_2, TutorConstants.H2_1_METHOD_NAME_2)::getMethodDocumentation, H2_1
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_1_3, TutorConstants.H2_1_METHOD_NAME_3)::getMethodDocumentation, H2_1
+                    new MethodTester(TutorClassTesters.H2_1_3, TutorConstants.H2_1_METHOD_NAME_3)::getMethodDocumentation, H2_1
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_1_4, TutorConstants.H2_1_METHOD_NAME_4)::getMethodDocumentation, H2_1
+                    new MethodTester(TutorClassTesters.H2_1_4, TutorConstants.H2_1_METHOD_NAME_4)::getMethodDocumentation, H2_1
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_1_5, TutorConstants.H2_1_METHOD_NAME_5)::getMethodDocumentation, H2_1
+                    new MethodTester(TutorClassTesters.H2_1_5, TutorConstants.H2_1_METHOD_NAME_5)::getMethodDocumentation, H2_1
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_1_6, TutorConstants.H2_1_METHOD_NAME_6)::getMethodDocumentation, H2_1
+                    new MethodTester(TutorClassTesters.H2_1_6, TutorConstants.H2_1_METHOD_NAME_6)::getMethodDocumentation, H2_1
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_1_7, TutorConstants.H2_1_METHOD_NAME_7)::getMethodDocumentation, H2_1
+                    new MethodTester(TutorClassTesters.H2_1_7, TutorConstants.H2_1_METHOD_NAME_7)::getMethodDocumentation, H2_1
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_1_8, TutorConstants.H2_1_METHOD_NAME_8)::getMethodDocumentation, H2_1
+                    new MethodTester(TutorClassTesters.H2_1_8, TutorConstants.H2_1_METHOD_NAME_8)::getMethodDocumentation, H2_1
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_1_9, TutorConstants.H2_1_METHOD_NAME_9)::getMethodDocumentation, H2_1
+                    new MethodTester(TutorClassTesters.H2_1_9, TutorConstants.H2_1_METHOD_NAME_9)::getMethodDocumentation, H2_1
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_2, TutorConstants.H2_2_METHOD_NAME_1)::getMethodDocumentation, H2_2
+                    new MethodTester(TutorClassTesters.H2_2, TutorConstants.H2_2_METHOD_NAME_1)::getMethodDocumentation, H2_2
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_2, TutorConstants.H2_2_METHOD_NAME_2)::getMethodDocumentation, H2_2
+                    new MethodTester(TutorClassTesters.H2_2, TutorConstants.H2_2_METHOD_NAME_2)::getMethodDocumentation, H2_2
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_2, TutorConstants.H2_2_METHOD_NAME_3)::getMethodDocumentation, H2_2
+                    new MethodTester(TutorClassTesters.H2_2, TutorConstants.H2_2_METHOD_NAME_3)::getMethodDocumentation, H2_2
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_3, TutorConstants.H2_3_METHOD_NAME_1)::getMethodDocumentation, H2_3
+                    new MethodTester(TutorClassTesters.H2_3, TutorConstants.H2_3_METHOD_NAME_1)::getMethodDocumentation, H2_3
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_3, TutorConstants.H2_3_METHOD_NAME_2)::getMethodDocumentation, H2_3
+                    new MethodTester(TutorClassTesters.H2_3, TutorConstants.H2_3_METHOD_NAME_2)::getMethodDocumentation, H2_3
                 )
                 .addJavaDoc(
-                    new MethodTester(H09_Class_Testers.H2_3, TutorConstants.H2_3_METHOD_NAME_3)::getMethodDocumentation, H2_3
+                    new MethodTester(TutorClassTesters.H2_3, TutorConstants.H2_3_METHOD_NAME_3)::getMethodDocumentation, H2_3
                 )
                 .build());
     }

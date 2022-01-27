@@ -1,6 +1,7 @@
 package h09.h1;
 
 import h09.utils.Modifier;
+import h09.utils.TutorClassTesters;
 import h09.utils.TutorConstants;
 import h09.utils.TutorMessage;
 import h09.utils.TutorUtils;
@@ -41,7 +42,7 @@ public final class TutorTest_H1_4 {
      * @return the class instance of the test class
      */
     private static Class<?> getTestClass() {
-        return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_4_CLASS_NAME);
+        return TutorClassTesters.H1_4.assureClassResolved().getTheClass();
     }
 
     /**
@@ -50,7 +51,7 @@ public final class TutorTest_H1_4 {
      * @return the field class instance that should be tested
      */
     private static Class<?> getTestFieldClass() {
-        return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_1_CLASS_NAME);
+        return TutorClassTesters.H1_1.assureClassResolved().getTheClass();
     }
 
     /* *********************************************************************
@@ -89,8 +90,7 @@ public final class TutorTest_H1_4 {
         @Test
         @DisplayName("Criterion: Extension of FunctionWithFilterMapAndFold")
         public void testExtension() {
-            final var expected = TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME,
-                TutorConstants.H1_2_CLASS_NAME);
+            final var expected = TutorClassTesters.H1_2.assureClassResolved().getTheClass();
             final var actual = getTestClass().getSuperclass();
             Assertions.assertEquals(
                 expected, actual, TutorMessage.CLASS_EXTENSION_MISMATCH.format(expected, actual)
@@ -108,7 +108,8 @@ public final class TutorTest_H1_4 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Check imports")
         public void testImports(final TestCycle testCycle) {
-            TutorUtils_H1.assertImports(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            TutorUtils_H1.assertImports(testCycle, path,
                 TutorConstants.H1_IMPORT_BLACK_LIST);
         }
     }
@@ -139,7 +140,7 @@ public final class TutorTest_H1_4 {
         @DisplayName("Criterion: Only modifier public")
         public void testModifiers() {
             final var actual = getTestConstructor();
-            final var expected = Modifier.PUBLIC;
+            final var expected = Modifier.PUBLIC.or(Modifier.PACKAGE_PRIVATE);
             TutorUtils.assertModifiers(expected, actual);
         }
 
@@ -234,7 +235,8 @@ public final class TutorTest_H1_4 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Requirement - No arrays")
         public void testRequirementArrays(final TestCycle testCycle) {
-            final var arrayProcessor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            final var arrayProcessor = SpoonUtils.process(testCycle, path,
                 new ArraysInstantiationMethodBodyProcessor(TutorConstants.H1_4_CLASS_NAME));
 
             final var expected = 0;
@@ -244,7 +246,7 @@ public final class TutorTest_H1_4 {
                 TutorMessage.REQUIREMENT_NO_ARRAY.format(expected, actual)
             );
 
-            final var calleeProcessor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
+            final var calleeProcessor = SpoonUtils.process(testCycle, path,
                 new MethodCallsProcessor(TutorConstants.H1_2_METHOD_NAME));
 
             for (final var callee : calleeProcessor.getCallees()) {
@@ -259,7 +261,8 @@ public final class TutorTest_H1_4 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Requirement - Only one foreach")
         public void testRequirementForeachLoop(final TestCycle testCycle) {
-            final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            final var processor = SpoonUtils.process(testCycle, path,
                 new LoopsMethodBodyProcessor(null));
 
             final var expectedForEach = 1;
@@ -410,7 +413,7 @@ public final class TutorTest_H1_4 {
                     + "Y>, BiFunction<Y, Z, Z>, Z")
                 public void testParameterTypes() {
                     final var constructor = getTestConstructor();
-                    TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, false);
+                    TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, false, true);
                 }
 
                 @Test
@@ -454,7 +457,7 @@ public final class TutorTest_H1_4 {
                     + "Y>, BiFunction<Y, Z, Z>, Z, BiFunction<Y, ? super Y, Y>")
                 public void testParameterTypes() {
                     final var constructor = getTestConstructor();
-                    TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, true);
+                    TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, true, true);
                 }
 
                 @Test

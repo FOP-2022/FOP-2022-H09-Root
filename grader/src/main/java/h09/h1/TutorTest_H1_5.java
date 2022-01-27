@@ -1,6 +1,7 @@
 package h09.h1;
 
 import h09.utils.Modifier;
+import h09.utils.TutorClassTesters;
 import h09.utils.TutorConstants;
 import h09.utils.TutorMessage;
 import h09.utils.TutorUtils;
@@ -31,7 +32,7 @@ public final class TutorTest_H1_5 {
      * @return the class instance of the test class
      */
     private static Class<?> getTestClass() {
-        return TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_5_CLASS_NAME);
+        return TutorClassTesters.H1_5.assureClassResolved().getTheClass();
     }
 
     /**
@@ -76,9 +77,7 @@ public final class TutorTest_H1_5 {
      * @param method the method to test
      */
     private static void assertReturnType(final Method method) {
-        final var expected = TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME,
-            TutorConstants.H1_2_CLASS_NAME);
-
+        final var expected = TutorClassTesters.H1_2.assureClassResolved().getTheClass();
         final var actual = method.getReturnType();
         Assertions.assertEquals(expected, actual, TutorMessage.RETURN_TYPE_MISMATCH.format(expected, actual));
         TutorUtils.assertGenericType(method.getGenericReturnType(), expected, TutorConstants.H1_TYPE_PARAMETERS);
@@ -216,8 +215,7 @@ public final class TutorTest_H1_5 {
             final var method = getTestMethod();
 
             final var actual = TutorUtils.invokeMethod(method, null, parameterInstance);
-            final var expected = TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME,
-                TutorConstants.H1_3_CLASS_NAME);
+            final var expected = TutorClassTesters.H1_3.assureClassResolved().getTheClass();
             final var actualClass = actual.getClass();
             Assertions.assertEquals(expected, actualClass,
                 TutorMessage.RETURN_VALUE_MISMATCH.format(method.getName(), expected, actualClass));
@@ -290,8 +288,7 @@ public final class TutorTest_H1_5 {
             final var method = getTestMethod();
 
             final var actual = TutorUtils.invokeMethod(method, null, parameterInstance);
-            final var expected = TutorUtils.assertClass(TutorConstants.H1_PACKAGE_NAME,
-                TutorConstants.H1_4_CLASS_NAME);
+            final var expected = TutorClassTesters.H1_4.assureClassResolved().getTheClass();
             final var actualClass = actual.getClass();
             Assertions.assertEquals(expected, actualClass,
                 TutorMessage.RETURN_VALUE_MISMATCH.format(method.getName(), expected, actualClass));

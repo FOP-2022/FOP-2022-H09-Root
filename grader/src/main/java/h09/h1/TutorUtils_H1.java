@@ -160,9 +160,10 @@ final class TutorUtils_H1 {
      *
      * @param constructor the constructor to check
      * @param combine     if {@code true} the field {@value  TutorConstants#H1_4_FIELD_NAME} will also be checked
+     * @param onlyType    {@code true} if only the types should be checked
      */
     public static void assertConstructorParameterTypesH1_1(final Constructor<?> constructor,
-                                                           final boolean combine) {
+                                                           final boolean combine, boolean onlyType) {
         final List<Entry<Class<?>, String[]>> parameters = new ArrayList<>(
             List.of(
                 new SimpleEntry<>(
@@ -186,7 +187,7 @@ final class TutorUtils_H1 {
                 )
             );
         }
-        TutorUtils.assertConstructorParameters(constructor, parameters);
+        TutorUtils.assertConstructorParameters(constructor, parameters, onlyType);
     }
 
     /**
