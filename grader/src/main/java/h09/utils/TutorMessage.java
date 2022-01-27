@@ -11,8 +11,8 @@ public enum TutorMessage {
      *                             Constructor                             *
      **********************************************************************/
 
-    CONSTRUCTOR_NOT_FOUND("The constructor of the class %s with parameters %s could not be found."),
-    CONSTRUCTOR_NO_INVOKE("The constructor of the class %s with the parameters %s could not be invoked."),
+    CONSTRUCTOR_NOT_FOUND("The constructor of the class %s with parameters %s could not be found. Message: %s."),
+    CONSTRUCTOR_NO_INVOKE("The constructor of the class %s with the parameters %s could not be invoked. Message: %s."),
     CONSTRUCTOR_PARAMETER_MISMATCH_SIZE("The constructor %s must have %s parameters, given %s."),
 
     /* *********************************************************************
@@ -28,8 +28,8 @@ public enum TutorMessage {
      **********************************************************************/
 
     FIELD_CONTENT_MISMATCH("Expected the field content %s, given %s."),
-    FIELD_NO_ACCESS("The field %s in the class %s could not be accessed."),
-    FIELD_NOT_FOUND("The field %s could not be found in the class %s."),
+    FIELD_NO_ACCESS("The field %s in the class %s could not be accessed. Message %s."),
+    FIELD_NOT_FOUND("The field %s could not be found in the class %s. Message %s."),
 
     /* *********************************************************************
      *                               Import                                *
@@ -56,8 +56,8 @@ public enum TutorMessage {
      *                               Method                                *
      **********************************************************************/
 
-    METHOD_NOT_FOUND("The method %s with the parameters %s could not be found in the class %s."),
-    METHOD_NO_INVOKE("The method %s with the parameters %s in the class %s could not be invoked."),
+    METHOD_NOT_FOUND("The method %s with the parameters %s could not be found in the class %s. Message: %s."),
+    METHOD_NO_INVOKE("The method %s with the parameters %s in the class %s could not be invoked. Message: %s."),
     METHOD_PARAMETER_MISMATCH("The method %s expected the parameter types %s, given %s."),
     METHOD_PARAMETER_MISMATCH_SIZE("The method %s must have  %s parameters, given: %s."),
 
@@ -101,8 +101,8 @@ public enum TutorMessage {
      **********************************************************************/
     REQUIREMENT_FOREACH_LOOP("Only %s for each loop(s) allowed, given %s."),
     REQUIREMENT_FOREACH_NO_CALLEE("Only %s for each loop(s) allowed, unkown callee %s processed."),
-    REQUIREMENT_INTERMEDIATE_ARRAY_MISMATCH("An intermediate storage should be required for the each operation. Expected %s, "
-        + "given %s."),
+    REQUIREMENT_INTERMEDIATE_ARRAY_MISMATCH("An intermediate storage should be required for the each operation. Expected "
+        + "at least %s, given %s."),
     REQUIREMENT_NO_ARRAY("Expected %s arrays, given %s."),
 
     /* *********************************************************************

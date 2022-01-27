@@ -641,6 +641,8 @@ public final class TutorTest_H1_6 {
                     final var clazz = getTestClassPerson();
                     return TutorUtils.assertConstructor(
                         clazz,
+                        // If non-static class
+                        getTestClass(),
                         TutorConstants.H1_6_FIELD_TYPE_1,
                         TutorConstants.H1_6_FIELD_TYPE_2,
                         TutorConstants.H1_6_FIELD_TYPE_3,
