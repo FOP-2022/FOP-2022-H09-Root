@@ -711,12 +711,13 @@ public final class H09_RubricProvider implements RubricProvider {
         .build();
 
     public static final Criterion H2_3_2 = Criterion.builder()
-        .shortDescription("Die Methode testGetTypeOfVertebrate ist vollständig und korrekt.")
+        .shortDescription("Die Methode testGetTypeOfVertebrate ist vollständig und korrekt. (ca. 80% der möglichen "
+            + "Tiere verwendet)")
         .grader(
             Grader.testAwareBuilder()
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod1.class.getMethod("testRequirements3",
                     TestCycle.class)))
-                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod1.class.getMethod("testRequirements7",
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod1.class.getMethod("testRequirements6",
                     TestCycle.class)))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod1.class.getMethod("testMethod")))
                 .pointsPassedMax()
@@ -725,12 +726,12 @@ public final class H09_RubricProvider implements RubricProvider {
         .build();
 
     public static final Criterion H2_3_3 = Criterion.builder()
-        .shortDescription("Die Methode testFilterLagomorphs ist vollständig und korrekt.")
+        .shortDescription("Die Methode testFilterLagomorphs ist vollständig und korrekt. (ca. 80% der möglichen Tiere verwendet)")
         .grader(
             Grader.testAwareBuilder()
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod2.class.getMethod("testRequirements4",
                     TestCycle.class)))
-                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod2.class.getMethod("testRequirements9",
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod2.class.getMethod("testRequirements7",
                     TestCycle.class)))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod2.class.getMethod("testMethod")))
                 .pointsPassedMax()
@@ -739,12 +740,13 @@ public final class H09_RubricProvider implements RubricProvider {
         .build();
 
     public static final Criterion H2_3_4 = Criterion.builder()
-        .shortDescription("Die Methode testGetTypesOfMammals ist vollständig und korrekt.")
+        .shortDescription("Die Methode testGetTypesOfMammals ist vollständig und korrekt. (ca. 80% der möglichen Tiere "
+            + "verwendet)")
         .grader(
             Grader.testAwareBuilder()
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod3.class.getMethod("testRequirements3",
                     TestCycle.class)))
-                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod3.class.getMethod("testRequirements6",
+                .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod3.class.getMethod("testRequirements5",
                     TestCycle.class)))
                 .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_3.TestMethod3.class.getMethod("testMethod")))
                 .pointsPassedMax()

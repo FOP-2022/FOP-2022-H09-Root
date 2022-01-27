@@ -175,9 +175,9 @@ public final class TutorTest_H2_3 {
 
         @Test
         @ExtendWith(TestCycleResolver.class)
-        @DisplayName("Criterion: Requirements - At least 7 possible animals")
-        public void testRequirements7(final TestCycle testCycle) {
-            assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_1, 7, expectedAnimals);
+        @DisplayName("Criterion: Requirements - At least 6 possible animals")
+        public void testRequirements6(final TestCycle testCycle) {
+            assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_1, 6, expectedAnimals);
         }
 
         @Test
@@ -218,9 +218,9 @@ public final class TutorTest_H2_3 {
 
         @Test
         @ExtendWith(TestCycleResolver.class)
-        @DisplayName("Criterion: Requirements - At least 9 possible animals")
-        public void testRequirements9(final TestCycle testCycle) {
-            assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_2, 9, expectedAnimals);
+        @DisplayName("Criterion: Requirements - At least 7 possible animals")
+        public void testRequirements7(final TestCycle testCycle) {
+            assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_2, 7, expectedAnimals);
         }
 
         @Test
@@ -259,9 +259,9 @@ public final class TutorTest_H2_3 {
 
         @Test
         @ExtendWith(TestCycleResolver.class)
-        @DisplayName("Criterion: Requirements - At least 6 possible animals")
-        public void testRequirements6(final TestCycle testCycle) {
-            assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_3, 6, expectedAnimals);
+        @DisplayName("Criterion: Requirements - At least 5 possible animals")
+        public void testRequirements5(final TestCycle testCycle) {
+            assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_3, 5, expectedAnimals);
         }
 
         @Test
