@@ -274,10 +274,13 @@ public final class TutorTest_H1_3 {
 
             final var expected = 2;
             final var actual = processor.getArrays().size();
-            Assertions.assertEquals(
-                expected, actual,
+
+            Assertions.assertTrue(
+                expected <= actual,
                 TutorMessage.REQUIREMENT_INTERMEDIATE_ARRAY_MISMATCH.format(expected, actual)
             );
+
+
         }
     }
 }
