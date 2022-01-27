@@ -515,7 +515,7 @@ public final class H09_RubricProvider implements RubricProvider {
         Criterion.builder()
             .shortDescription("H1: Package name is correct")
             .maxPoints(0)
-            .minPoints(-2)
+            .minPoints(-1)
             .grader(
                 Grader.testAwareBuilder()
                     .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H1_1.class.getMethod("testPackage")))
@@ -783,7 +783,7 @@ public final class H09_RubricProvider implements RubricProvider {
         Criterion.builder()
             .shortDescription("H2: Package name is correct")
             .maxPoints(0)
-            .minPoints(-2)
+            .minPoints(-1)
             .grader(
                 Grader.testAwareBuilder()
                     .requirePass(JUnitTestRef.ofMethod(() -> TutorTest_H2_1.class.getMethod("testPackage")))
