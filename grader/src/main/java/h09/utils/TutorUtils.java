@@ -68,6 +68,17 @@ public final class TutorUtils {
         return Assertions.fail(TutorMessage.PACKAGE_NAME_ALTERNATIVE.format(String.join("/", classNames)));
     }
 
+    /**
+     * Returns the path to the source code.
+     *
+     * @param clazz the class of the source code
+     *
+     * @return the  path to the source code
+     */
+    public static String getPathToSource(Class<?> clazz) {
+        return String.format("%s.java", clazz.getCanonicalName().replaceAll("\\.", "/"));
+    }
+
     /* *********************************************************************
      *                               Class                                 *
      **********************************************************************/

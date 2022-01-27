@@ -173,7 +173,8 @@ public final class TutorTest_H1_6 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Requirement - Only lambdas")
         public void testRequirement(final TestCycle testCycle) {
-            final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            final var processor = SpoonUtils.process(testCycle, path,
                 new LambdaExpressionsMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_1));
             final var actualTypes = processor.getLambdas();
             final var expectedTypes = TutorConstants.H1_6_METHOD_1_LAMBDAS;
@@ -199,7 +200,8 @@ public final class TutorTest_H1_6 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Requirement - Only lambdas")
         public void testRequirement(final TestCycle testCycle) {
-            final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            final var processor = SpoonUtils.process(testCycle, path,
                 new LambdaExpressionsMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_2));
             final var actualTypes = processor.getLambdas();
             final var expectedTypes = TutorConstants.H1_6_METHOD_2_LAMBDAS;
@@ -225,7 +227,8 @@ public final class TutorTest_H1_6 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Requirement - Only method references")
         public void testRequirement(final TestCycle testCycle) {
-            final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_6_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            final var processor = SpoonUtils.process(testCycle, path,
                 new MethodReferencesMethodBodyProcessor(TutorConstants.H1_6_METHOD_NAME_3));
             final var actualTypes = processor.getMethodReferences();
             final var expectedTypes = TutorConstants.H1_6_METHOD_3_LAMBDAS;

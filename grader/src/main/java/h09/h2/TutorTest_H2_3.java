@@ -52,7 +52,8 @@ public final class TutorTest_H2_3 {
     private static void assertRequirements(final TestCycle testCycle, final String methodName,
                                            final int expectedSize, final String... expectedAnimals) {
         final var processor = new ObjectsUsageMethodProcessor(methodName);
-        SpoonUtils.process(testCycle, TutorConstants.H2_3_PATH_TO_SOURCE, processor);
+        final var path = TutorUtils.getPathToSource(getTestClass());
+        SpoonUtils.process(testCycle, path, processor);
 
         final var testAnimals = Stream.of(expectedAnimals)
             .map(animal -> animal.startsWith("Rabbit") ? animal : String.format("Test%s", animal))

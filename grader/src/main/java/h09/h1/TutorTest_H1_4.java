@@ -108,7 +108,8 @@ public final class TutorTest_H1_4 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Check imports")
         public void testImports(final TestCycle testCycle) {
-            TutorUtils_H1.assertImports(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            TutorUtils_H1.assertImports(testCycle, path,
                 TutorConstants.H1_IMPORT_BLACK_LIST);
         }
     }
@@ -234,7 +235,8 @@ public final class TutorTest_H1_4 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Requirement - No arrays")
         public void testRequirementArrays(final TestCycle testCycle) {
-            final var arrayProcessor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            final var arrayProcessor = SpoonUtils.process(testCycle, path,
                 new ArraysInstantiationMethodBodyProcessor(TutorConstants.H1_4_CLASS_NAME));
 
             final var expected = 0;
@@ -244,7 +246,7 @@ public final class TutorTest_H1_4 {
                 TutorMessage.REQUIREMENT_NO_ARRAY.format(expected, actual)
             );
 
-            final var calleeProcessor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
+            final var calleeProcessor = SpoonUtils.process(testCycle, path,
                 new MethodCallsProcessor(TutorConstants.H1_2_METHOD_NAME));
 
             for (final var callee : calleeProcessor.getCallees()) {
@@ -259,7 +261,8 @@ public final class TutorTest_H1_4 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Requirement - Only one foreach")
         public void testRequirementForeachLoop(final TestCycle testCycle) {
-            final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_4_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            final var processor = SpoonUtils.process(testCycle, path,
                 new LoopsMethodBodyProcessor(null));
 
             final var expectedForEach = 1;

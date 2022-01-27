@@ -105,7 +105,8 @@ public final class TutorTest_H1_3 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Check imports")
         public void testImports(final TestCycle testCycle) {
-            TutorUtils_H1.assertImports(testCycle, TutorConstants.H1_3_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            TutorUtils_H1.assertImports(testCycle, path,
                 TutorConstants.H1_IMPORT_BLACK_LIST);
         }
     }
@@ -268,7 +269,8 @@ public final class TutorTest_H1_3 {
         @ExtendWith(TestCycleResolver.class)
         @DisplayName("Criterion: Requirement - Arrays as intermediate storage")
         public void testRequirementArrays(final TestCycle testCycle) {
-            final var processor = SpoonUtils.process(testCycle, TutorConstants.H1_3_PATH_TO_SOURCE,
+            final var path = TutorUtils.getPathToSource(getTestClass());
+            final var processor = SpoonUtils.process(testCycle, path,
                 new ArraysInstantiationMethodBodyProcessor(TutorConstants.H1_3_CLASS_NAME));
 
             final var expected = 2;
