@@ -410,7 +410,7 @@ public final class TutorTest_H1_4 {
                     + "Y>, BiFunction<Y, Z, Z>, Z")
                 public void testParameterTypes() {
                     final var constructor = getTestConstructor();
-                    TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, false);
+                    TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, false, true);
                 }
 
                 @Test
@@ -454,7 +454,7 @@ public final class TutorTest_H1_4 {
                     + "Y>, BiFunction<Y, Z, Z>, Z, BiFunction<Y, ? super Y, Y>")
                 public void testParameterTypes() {
                     final var constructor = getTestConstructor();
-                    TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, true);
+                    TutorUtils_H1.assertConstructorParameterTypesH1_1(constructor, true, true);
                 }
 
                 @Test
