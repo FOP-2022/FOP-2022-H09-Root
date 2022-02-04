@@ -7,6 +7,7 @@ package h09.h1;
  * @param <X> the type of the element to be filtered
  * @param <Y> the type of the element to be mapped and optionally combined
  * @param <Z> the type of the element to be reduced
+ *
  * @author Nhan Huynh, Darya Nikitina
  */
 public abstract class FunctionWithFilterMapAndFold<X, Y, Z> {
@@ -17,8 +18,8 @@ public abstract class FunctionWithFilterMapAndFold<X, Y, Z> {
     protected final Traits<X, Y, Z> traits;
 
     /**
-     * Constructs and initialized a function that enables filter, map, fold and optionally
-     * combine operation.
+     * Constructs and initialized a function that enables filter, map, fold and optionally combine
+     * operation.
      *
      * @param traits the traits used to access filter, map, fold and optionally combine operation
      */
@@ -27,10 +28,11 @@ public abstract class FunctionWithFilterMapAndFold<X, Y, Z> {
     }
 
     /**
-     * Transforms the specified elements using a filter which are then mapped. The mapped values
-     * can optionally be combined and then reduced to a single value using fold.
+     * Transforms the specified elements using a filter which are then mapped. The mapped values can
+     * optionally be combined and then reduced to a single value using fold.
      *
      * @param elements the elements to be transformed
+     *
      * @return the transformed value
      */
     public abstract Z apply(final X[] elements);

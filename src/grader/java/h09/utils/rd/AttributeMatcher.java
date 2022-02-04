@@ -38,7 +38,8 @@ public class AttributeMatcher extends IdentifierMatcher {
     }
 
     /**
-     * Constructs and initializes an attribute matcher to match the specified attribute with no super implementation match.
+     * Constructs and initializes an attribute matcher to match the specified attribute with no
+     * super implementation match.
      *
      * @param name       the attribute name to match
      * @param similarity the minimum required similarity
@@ -62,7 +63,8 @@ public class AttributeMatcher extends IdentifierMatcher {
     }
 
     /**
-     * Constructs and initializes an attribute matcher to match the specified attribute with no super implementation match.
+     * Constructs and initializes an attribute matcher to match the specified attribute with no
+     * super implementation match.
      *
      * @param name       the attribute name to match
      * @param similarity the minimum required similarity

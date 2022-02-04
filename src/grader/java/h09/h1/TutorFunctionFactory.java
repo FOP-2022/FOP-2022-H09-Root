@@ -29,7 +29,8 @@ public final class TutorFunctionFactory {
     }
 
     /**
-     * Creates a function which allows using filter, map, fold and combine operation on the elements.
+     * Creates a function which allows using filter, map, fold and combine operation on the
+     * elements.
      *
      * @param traits the traits which provides a filter, map, fold and combine operation.
      * @param <X>    the type of the element used in the filter operation

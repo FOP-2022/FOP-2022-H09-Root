@@ -38,7 +38,8 @@ import static org.mockito.Mockito.spy;
  */
 public class ClassTester<T> {
     /**
-     * The class identifier containing the name of the class and the similarity to accept alternative identifiers.
+     * The class identifier containing the name of the class and the similarity to accept
+     * alternative identifiers.
      */
     IdentifierMatcher classIdentifier;
     /**
@@ -74,7 +75,8 @@ public class ClassTester<T> {
      * @param similarity           the maximum allowed name similarity to match
      * @param accessModifier       the expected access modifier
      * @param superClass           the expected super class
-     * @param implementsInterfaces the matcher used for the interfaces that are expected to be implemented
+     * @param implementsInterfaces the matcher used for the interfaces that are expected to be
+     *                             implemented
      * @param classInstance        the class instance of the tested class
      */
     public ClassTester(String packageName, String className, double similarity, int accessModifier,
@@ -94,7 +96,8 @@ public class ClassTester<T> {
      * @param similarity           the maximum allowed name similarity to match
      * @param accessModifier       the expected access modifier
      * @param superClass           the expected super class
-     * @param implementsInterfaces the matcher used for the interfaces that are expected to be implemented
+     * @param implementsInterfaces the matcher used for the interfaces that are expected to be
+     *                             implemented
      */
     public ClassTester(String packageName, String className, double similarity, int accessModifier,
                        Class<? super T> superClass, ArrayList<IdentifierMatcher> implementsInterfaces) {
@@ -223,7 +226,8 @@ public class ClassTester<T> {
     }
 
     /**
-     * Tests whether the class instance is not {@code null} and fails with a proper message if it is {@code null}.
+     * Tests whether the class instance is not {@code null} and fails with a proper message if it is
+     * {@code null}.
      *
      * @param theClass  the {@link Class}
      * @param className the Class Name for the error Message
@@ -416,12 +420,13 @@ public class ClassTester<T> {
      * @param obj   the object instance containing the field
      * @param value the new value of the field
      *
-     * @throws IllegalAccessException   if this {@code Field} object is enforcing Java language access control and the underlying
-     *                                  field is either inaccessible or final; or if this {@code Field} object has no write
-     *                                  access.
-     * @throws IllegalArgumentException if the specified object is not an instance of the class or interface declaring the
-     *                                  underlying field (or a subclass or implementor thereof), or if an unwrapping conversion
-     *                                  fails.
+     * @throws IllegalAccessException   if this {@code Field} object is enforcing Java language
+     *                                  access control and the underlying field is either
+     *                                  inaccessible or final; or if this {@code Field} object has
+     *                                  no write access.
+     * @throws IllegalArgumentException if the specified object is not an instance of the class or
+     *                                  interface declaring the underlying field (or a subclass or
+     *                                  implementor thereof), or if an unwrapping conversion fails.
      */
     public static void setFieldTyped(Field field, Object obj, Object value)
         throws IllegalArgumentException, IllegalAccessException {
@@ -627,7 +632,8 @@ public class ClassTester<T> {
     }
 
     /**
-     * Sets the spoon launcher which allows source code analysis and transformation to the specified value.
+     * Sets the spoon launcher which allows source code analysis and transformation to the specified
+     * value.
      *
      * @param spoon the new spoon launcher
      */
@@ -852,7 +858,8 @@ public class ClassTester<T> {
     }
 
     /**
-     * Tests that {@link #theClass} is not {@code null} and fails with the predefined message if it cannot be resolved.
+     * Tests that {@link #theClass} is not {@code null} and fails with the predefined message if it
+     * cannot be resolved.
      */
     public void assertClassResolved() {
         assertClassNotNull(theClass, classIdentifier.identifierName);
@@ -956,7 +963,8 @@ public class ClassTester<T> {
     }
 
     /**
-     * Tests whether the access modifier count is correct and fails it with a predefined message if it fails.
+     * Tests whether the access modifier count is correct and fails it with a predefined message if
+     * it fails.
      */
     public void assertAccessModifier() {
         if (accessModifier >= 0) {

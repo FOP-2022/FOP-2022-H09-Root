@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.sourcegrade.jagr.api.testing.TestCycle;
+import org.sourcegrade.jagr.api.testing.extension.JagrExecutionCondition;
 import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
 
 import java.lang.reflect.Constructor;
@@ -52,19 +53,6 @@ public final class TutorTest_H1_4 {
      */
     private static Class<?> getTestFieldClass() {
         return TutorClassTesters.H1_1.assureClassResolved().getTheClass();
-    }
-
-    /* *********************************************************************
-     *                              General                                *
-     **********************************************************************/
-
-    @Test
-    @DisplayName("Criterion: Original package name found")
-    public void testPackage() {
-        final var alternative = TutorUtils.assertPackage(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_4_CLASS_NAME);
-        Assertions.assertTrue(alternative, TutorMessage.PACKAGE_NAME_ALTERNATIVE.format(TutorConstants.H1_PACKAGE_NAME,
-            TutorConstants.H1_4_CLASS_NAME)
-        );
     }
 
     /* *********************************************************************
@@ -105,7 +93,7 @@ public final class TutorTest_H1_4 {
         }
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Check imports")
         public void testImports(final TestCycle testCycle) {
             final var path = TutorUtils.getPathToSource(getTestClass());
@@ -232,7 +220,7 @@ public final class TutorTest_H1_4 {
         }
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Requirement - No arrays")
         public void testRequirementArrays(final TestCycle testCycle) {
             final var path = TutorUtils.getPathToSource(getTestClass());
@@ -258,7 +246,7 @@ public final class TutorTest_H1_4 {
         }
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Requirement - Only one foreach")
         public void testRequirementForeachLoop(final TestCycle testCycle) {
             final var path = TutorUtils.getPathToSource(getTestClass());

@@ -14,7 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * A utility class used for JUnit tests which provides reflective access to some properties and assertions.
+ * A utility class used for JUnit tests which provides reflective access to some properties and
+ * assertions.
  *
  * @author Ruben Deisenroth
  */
@@ -128,7 +129,8 @@ public class TestUtils {
      *
      * @return the calculated similarity (a number within 0 and 1) between two strings.
      *
-     * @see <a href="http://rosettacode.org/wiki/Levenshtein_distance#Java">Levenshtein distance - Java</a>
+     * @see <a href="http://rosettacode.org/wiki/Levenshtein_distance#Java">Levenshtein distance -
+     * Java</a>
      */
     public static int editDistance(String s1, String s2) {
         s1 = s1.toLowerCase();
@@ -159,7 +161,8 @@ public class TestUtils {
     }
 
     /**
-     * Scans all classes accessible from the context class loader which belong to the given package and subpackages.
+     * Scans all classes accessible from the context class loader which belong to the given package
+     * and subpackages.
      *
      * @param packageName The base package name
      *

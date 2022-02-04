@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.sourcegrade.jagr.api.testing.TestCycle;
+import org.sourcegrade.jagr.api.testing.extension.JagrExecutionCondition;
 import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
 
 import java.util.stream.Collectors;
@@ -102,20 +103,6 @@ public final class TutorTest_H2_3 {
         }
     }
 
-
-    /* *********************************************************************
-     *                              General                                *
-     **********************************************************************/
-
-    @Test
-    @DisplayName("Criterion: Original package name found")
-    public void testPackage() {
-        final var alternative = TutorUtils.assertPackage(TutorConstants.H2_PACKAGE_NAME, TutorConstants.H2_3_CLASS_NAME);
-        Assertions.assertTrue(alternative, TutorMessage.PACKAGE_NAME_ALTERNATIVE.format(TutorConstants.H2_PACKAGE_NAME,
-            TutorConstants.H2_3_CLASS_NAME)
-        );
-    }
-
     /* *********************************************************************
      *                            Class Header                             *
      **********************************************************************/
@@ -167,14 +154,15 @@ public final class TutorTest_H2_3 {
         };
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Requirements - At least 3 possible animals")
         public void testRequirements3(final TestCycle testCycle) {
             assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_1, 3, expectedAnimals);
         }
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Requirements - At least 6 possible animals")
         public void testRequirements6(final TestCycle testCycle) {
             assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_1, 6, expectedAnimals);
@@ -210,14 +198,14 @@ public final class TutorTest_H2_3 {
         };
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Requirements - At least 4 possible animals")
         public void testRequirements4(final TestCycle testCycle) {
             assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_2, 4, expectedAnimals);
         }
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Requirements - At least 7 possible animals")
         public void testRequirements7(final TestCycle testCycle) {
             assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_2, 7, expectedAnimals);
@@ -251,14 +239,14 @@ public final class TutorTest_H2_3 {
         };
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Requirements - At least 3 possible animals")
         public void testRequirements3(final TestCycle testCycle) {
             assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_3, 3, expectedAnimals);
         }
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Requirements - At least 5 possible animals")
         public void testRequirements5(final TestCycle testCycle) {
             assertRequirements(testCycle, TutorConstants.H2_3_METHOD_NAME_3, 5, expectedAnimals);

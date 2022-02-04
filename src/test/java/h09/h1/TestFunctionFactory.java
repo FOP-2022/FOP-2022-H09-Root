@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 class TestFunctionFactory {
 
     /**
-     * Tests the method {@link FunctionFactory#createFunctionWithFilterMapAndFold(Traits)}. This test is using
-     * the following operations:
+     * Tests the method {@link FunctionFactory#createFunctionWithFilterMapAndFold(Traits)}. This
+     * test is using the following operations:
      *
      * <ul>
      * <li>filter: integers greater than 10
@@ -41,8 +41,8 @@ class TestFunctionFactory {
     }
 
     /**
-     * Tests the method {@link FunctionFactory#createFunctionWithFilterMapAndFold(Traits)}. This test is using
-     * the following operations:
+     * Tests the method {@link FunctionFactory#createFunctionWithFilterMapAndFold(Traits)}. This
+     * test is using the following operations:
      *
      * <ul>
      * <li>filter: First letter must be capitalized followed by lowercase letters
@@ -92,6 +92,7 @@ class TestFunctionFactory {
      * Returns {@code true} if the specified person does not live in Darmstadt.
      *
      * @param person the person to check its postal code
+     *
      * @return @code true} if the specified person does not live in Darmstadt
      */
     private static boolean isNotFromDarmstadt(final Person person) {
@@ -103,6 +104,7 @@ class TestFunctionFactory {
      *
      * @param a the first number to calculate the distance
      * @param b the second number to calculate the distance
+     *
      * @return the absolute value of the difference between two numbers.
      */
     private static int distance(final int a, final int b) {
@@ -110,8 +112,8 @@ class TestFunctionFactory {
     }
 
     /**
-     * Tests the method {@link FunctionFactory#createFunctionWithFilterMapFoldAndCombine(Traits)}. This test is using
-     * the following operations:
+     * Tests the method {@link FunctionFactory#createFunctionWithFilterMapFoldAndCombine(Traits)}.
+     * This test is using the following operations:
      *
      * <ul>
      * <li>filter: Persons that do not live in Darmstadt

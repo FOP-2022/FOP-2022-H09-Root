@@ -7,6 +7,7 @@ package h09.h1;
  * @param <X> the type of the element to be filtered
  * @param <Y> the type of the element to be mapped
  * @param <Z> the type of the element to be reduced
+ *
  * @author Nhan Huynh, Darya Nikitina
  */
 public class MyFunctionWithFilterMapAndFold<X, Y, Z> extends FunctionWithFilterMapAndFold<X, Y, Z> {
@@ -25,6 +26,7 @@ public class MyFunctionWithFilterMapAndFold<X, Y, Z> extends FunctionWithFilterM
      * reduced to a single value using fold.
      *
      * @param elements the elements to be transformed
+     *
      * @return the transformed value
      */
     @Override

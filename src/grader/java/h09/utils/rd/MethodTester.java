@@ -37,7 +37,8 @@ public class MethodTester {
      */
     public boolean allowSuperClass;
     /**
-     * The method identifier containing the name of the method and the similarity to accept alternative identifiers.
+     * The method identifier containing the name of the method and the similarity to accept
+     * alternative identifiers.
      */
     IdentifierMatcher methodIdentifier;
     /**
@@ -74,7 +75,8 @@ public class MethodTester {
      * @param accessModifier  the expected access modifier count
      * @param returnType      the expected return type of the method
      * @param parameters      the expected parameters of the method
-     * @param allowSuperClass the indicator @param allowSuperClass the indicator if super class check are allowed
+     * @param allowSuperClass the indicator @param allowSuperClass the indicator if super class
+     *                        check are allowed
      */
     public MethodTester(ClassTester<?> classTester, String methodName, double similarity, int accessModifier,
                         Class<?> returnType, List<ParameterMatcher> parameters, boolean allowSuperClass) {
@@ -399,17 +401,19 @@ public class MethodTester {
     }
 
     /**
-     * Returns the method identifier containing the name of the method and the similarity to accept alternative identifiers.
+     * Returns the method identifier containing the name of the method and the similarity to accept
+     * alternative identifiers.
      *
-     * @return method identifier containing the name of the method and the similarity to accept alternative identifiers
+     * @return method identifier containing the name of the method and the similarity to accept
+     * alternative identifiers
      */
     public IdentifierMatcher getMethodIdentifier() {
         return methodIdentifier;
     }
 
     /**
-     * Set the method identifier containing the name of the method and the similarity to accept alternative identifiers to the
-     * specified value.
+     * Set the method identifier containing the name of the method and the similarity to accept
+     * alternative identifiers to the specified value.
      *
      * @param methodIdentifier the new method identifier
      */
@@ -599,9 +603,11 @@ public class MethodTester {
     }
 
     /**
-     * Returns {@code true} if the class tester used to invoke the method is not {@code null} and can be resolved.
+     * Returns {@code true} if the class tester used to invoke the method is not {@code null} and
+     * can be resolved.
      *
-     * @return {@code true} if the class tester used to invoke the method is not {@code null} and can be resolved
+     * @return {@code true} if the class tester used to invoke the method is not {@code null} and
+     * can be resolved
      */
     public boolean classResolved() {
         return classTester != null && classTester.class_resolved();
@@ -616,8 +622,8 @@ public class MethodTester {
     }
 
     /**
-     * Returns {@code true} if the method can be invoked, more formally returns {@code true} if the class tester used to invoke
-     * the method, the method itself can be resolved.
+     * Returns {@code true} if the method can be invoked, more formally returns {@code true} if the
+     * class tester used to invoke the method, the method itself can be resolved.
      *
      * @return {@code true} if the method can be invoked.
      */
@@ -724,7 +730,8 @@ public class MethodTester {
     }
 
     /**
-     * Tests whether the return value after the invocation with the specified parameters are correct.
+     * Tests whether the return value after the invocation with the specified parameters are
+     * correct.
      *
      * @param expected the expected return value
      * @param params   the parameters used for the invocation
@@ -734,7 +741,8 @@ public class MethodTester {
     }
 
     /**
-     * Tests whether the return value after the invocation with the specified parameters are correct.
+     * Tests whether the return value after the invocation with the specified parameters are
+     * correct.
      *
      * @param expected          the expected return value
      * @param additionalMessage the additional message if the test fails
@@ -773,9 +781,9 @@ public class MethodTester {
     }
 
     /**
-     * Resolves the method with the tolerances, more formally the method is searched first using its name. If multiple overloads
-     * are found then the method with the most matching parameters according to {@link  #countMatchingParameters(Method, String,
-     * List, boolean)} is chosen.
+     * Resolves the method with the tolerances, more formally the method is searched first using its
+     * name. If multiple overloads are found then the method with the most matching parameters
+     * according to {@link  #countMatchingParameters(Method, String, List, boolean)} is chosen.
      *
      * @param theClass        the class to search
      * @param methodName      the expected method name
@@ -815,9 +823,9 @@ public class MethodTester {
     }
 
     /**
-     * Resolves the method with the tolerances, more formally the method is searched first using its name. If multiple overloads
-     * are found then the method with the most matching parameters according to {@link  #countMatchingParameters(Method, String,
-     * List, boolean)} is chosen.
+     * Resolves the method with the tolerances, more formally the method is searched first using its
+     * name. If multiple overloads are found then the method with the most matching parameters
+     * according to {@link  #countMatchingParameters(Method, String, List, boolean)} is chosen.
      *
      * @param theClass   the class to search
      * @param methodName the expected method name
@@ -835,9 +843,9 @@ public class MethodTester {
     }
 
     /**
-     * Resolves the method with the tolerances, more formally the method is searched first using its name. If multiple overloads
-     * are found then the method with the most matching parameters according to {@link  #countMatchingParameters(Method, String,
-     * List, boolean)} is chosen.
+     * Resolves the method with the tolerances, more formally the method is searched first using its
+     * name. If multiple overloads are found then the method with the most matching parameters
+     * according to {@link  #countMatchingParameters(Method, String, List, boolean)} is chosen.
      *
      * @param similarity the minimum required similarity
      *
@@ -851,9 +859,9 @@ public class MethodTester {
     }
 
     /**
-     * Resolves the method with the tolerances, more formally the method is searched first using its name. If multiple overloads
-     * are found then the method with the most matching parameters according to {@link  #countMatchingParameters(Method, String,
-     * List, boolean)} is chosen.
+     * Resolves the method with the tolerances, more formally the method is searched first using its
+     * name. If multiple overloads are found then the method with the most matching parameters
+     * according to {@link  #countMatchingParameters(Method, String, List, boolean)} is chosen.
      *
      * @return the resolved method
      *

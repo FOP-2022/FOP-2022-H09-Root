@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.sourcegrade.jagr.api.testing.TestCycle;
+import org.sourcegrade.jagr.api.testing.extension.JagrExecutionCondition;
 import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
 
 import java.lang.reflect.Constructor;
@@ -49,19 +50,6 @@ public final class TutorTest_H1_3 {
      */
     private static Class<?> getTestFieldClass() {
         return TutorClassTesters.H1_1.assureClassResolved().getTheClass();
-    }
-
-    /* *********************************************************************
-     *                              General                                *
-     **********************************************************************/
-
-    @Test
-    @DisplayName("Criterion: Original package name found")
-    public void testPackage() {
-        final var alternative = TutorUtils.assertPackage(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_3_CLASS_NAME);
-        Assertions.assertTrue(alternative, TutorMessage.PACKAGE_NAME_ALTERNATIVE.format(TutorConstants.H1_PACKAGE_NAME,
-            TutorConstants.H1_3_CLASS_NAME)
-        );
     }
 
     /* *********************************************************************
@@ -102,7 +90,7 @@ public final class TutorTest_H1_3 {
         }
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Check imports")
         public void testImports(final TestCycle testCycle) {
             final var path = TutorUtils.getPathToSource(getTestClass());
@@ -266,7 +254,7 @@ public final class TutorTest_H1_3 {
         }
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Requirement - Arrays as intermediate storage")
         public void testRequirementArrays(final TestCycle testCycle) {
             final var path = TutorUtils.getPathToSource(getTestClass());

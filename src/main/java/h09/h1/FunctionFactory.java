@@ -20,6 +20,7 @@ public final class FunctionFactory {
      * @param <X>    the type of the element used in the filter operation
      * @param <Y>    the type of the element to be mapped
      * @param <Z>    the type of the result
+     *
      * @return a function which allows using filter, map and fold operation on the elements
      */
     public static <X, Y, Z> FunctionWithFilterMapAndFold<X, Y, Z> createFunctionWithFilterMapAndFold(
@@ -28,12 +29,14 @@ public final class FunctionFactory {
     }
 
     /**
-     * Creates a function which allows using filter, map, fold and combine operation on the elements.
+     * Creates a function which allows using filter, map, fold and combine operation on the
+     * elements.
      *
      * @param traits the traits which provides a filter, map, fold and combine operation.
      * @param <X>    the type of the element used in the filter operation
      * @param <Y>    the type of the element to be mapped and combined
      * @param <Z>    the type of the result
+     *
      * @return a function which allows using filter, map, fold and combine operation on the elements
      */
     public static <X, Y, Z> FunctionWithFilterMapAndFold<X, Y, Z> createFunctionWithFilterMapFoldAndCombine(

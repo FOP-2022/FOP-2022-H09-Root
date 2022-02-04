@@ -108,7 +108,8 @@ final class TutorUtils_H1 {
     }
 
     /**
-     * Tests whether the parameters ({@value TutorConstants#H1_2_METHOD_CLASS_RETURN}) of the specified method are correct.
+     * Tests whether the parameters ({@value TutorConstants#H1_2_METHOD_CLASS_RETURN}) of the
+     * specified method are correct.
      *
      * @param method the method to check
      */
@@ -134,7 +135,8 @@ final class TutorUtils_H1 {
     }
 
     /**
-     * Tests whether the return type ({@value TutorConstants#H1_2_METHOD_CLASS_RETURN}) of the specified method is correct.
+     * Tests whether the return type ({@value TutorConstants#H1_2_METHOD_CLASS_RETURN}) of the
+     * specified method is correct.
      *
      * @param method the method to check
      */
@@ -159,7 +161,8 @@ final class TutorUtils_H1 {
      * Tests whether the constructor parameters are correct.
      *
      * @param constructor the constructor to check
-     * @param combine     if {@code true} the field {@value  TutorConstants#H1_4_FIELD_NAME} will also be checked
+     * @param combine     if {@code true} the field {@value  TutorConstants#H1_4_FIELD_NAME} will
+     *                    also be checked
      * @param onlyType    {@code true} if only the types should be checked
      */
     public static void assertConstructorParameterTypesH1_1(final Constructor<?> constructor,
@@ -194,7 +197,8 @@ final class TutorUtils_H1 {
      * Tests whether the constructor fields are correct.
      *
      * @param constructor the constructor to check
-     * @param combine     if {@code true} the field {@value  TutorConstants#H1_4_FIELD_NAME} will also be checked
+     * @param combine     if {@code true} the field {@value  TutorConstants#H1_4_FIELD_NAME} will
+     *                    also be checked
      */
     public static void assertConstructorFieldsH1_1(final Constructor<?> constructor,
                                                    final boolean combine) {

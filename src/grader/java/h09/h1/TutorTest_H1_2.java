@@ -47,19 +47,6 @@ public final class TutorTest_H1_2 {
     }
 
     /* *********************************************************************
-     *                              General                                *
-     **********************************************************************/
-
-    @Test
-    @DisplayName("Criterion: Original package name found")
-    public void testPackage() {
-        final var alternative = TutorUtils.assertPackage(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_2_CLASS_NAME);
-        Assertions.assertTrue(alternative, TutorMessage.PACKAGE_NAME_ALTERNATIVE.format(TutorConstants.H1_PACKAGE_NAME,
-            TutorConstants.H1_2_CLASS_NAME)
-        );
-    }
-
-    /* *********************************************************************
      *                            Class Header                             *
      **********************************************************************/
 
@@ -101,7 +88,8 @@ public final class TutorTest_H1_2 {
      **********************************************************************/
 
     /**
-     * Defines the JUnit test cases related to the field used to access filter, map and fold operation.
+     * Defines the JUnit test cases related to the field used to access filter, map and fold
+     * operation.
      */
     @Nested
     @DisplayName("Criterion: Field traits")

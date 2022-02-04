@@ -16,6 +16,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.opentest4j.AssertionFailedError;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.sourcegrade.jagr.api.testing.TestCycle;
+import org.sourcegrade.jagr.api.testing.extension.JagrExecutionCondition;
 import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
 import spoon.reflect.code.CtExpression;
 
@@ -124,19 +125,6 @@ public final class TutorTest_H1_6 {
         }
     }
 
-    /* *********************************************************************
-     *                              General                                *
-     **********************************************************************/
-
-    @Test
-    @DisplayName("Criterion: Original package name found")
-    public void testPackage() {
-        final var alternative = TutorUtils.assertPackage(TutorConstants.H1_PACKAGE_NAME, TutorConstants.H1_6_CLASS_NAME);
-        Assertions.assertTrue(alternative, TutorMessage.PACKAGE_NAME_ALTERNATIVE.format(TutorConstants.H1_PACKAGE_NAME,
-            TutorConstants.H1_6_CLASS_NAME)
-        );
-    }
-
     /**
      * Defines the JUnit test cases related to the class header.
      */
@@ -170,7 +158,7 @@ public final class TutorTest_H1_6 {
     public final class TestMethod1 {
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Requirement - Only lambdas")
         public void testRequirement(final TestCycle testCycle) {
             final var path = TutorUtils.getPathToSource(getTestClass());
@@ -197,7 +185,7 @@ public final class TutorTest_H1_6 {
     public final class TestMethod2 {
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Requirement - Only lambdas")
         public void testRequirement(final TestCycle testCycle) {
             final var path = TutorUtils.getPathToSource(getTestClass());
@@ -224,7 +212,7 @@ public final class TutorTest_H1_6 {
     public final class TestMethod3 {
 
         @Test
-        @ExtendWith(TestCycleResolver.class)
+        @ExtendWith({TestCycleResolver.class, JagrExecutionCondition.class})
         @DisplayName("Criterion: Requirement - Only method references")
         public void testRequirement(final TestCycle testCycle) {
             final var path = TutorUtils.getPathToSource(getTestClass());
@@ -289,7 +277,8 @@ public final class TutorTest_H1_6 {
             }
 
             /**
-             * Defines the JUnit test cases related to the field {@value  TutorConstants#H1_6_FIELD_NAME_1}.
+             * Defines the JUnit test cases related to the field {@value
+             * TutorConstants#H1_6_FIELD_NAME_1}.
              */
             @Nested
             @DisplayName("Criterion: Field lastName")
@@ -358,7 +347,8 @@ public final class TutorTest_H1_6 {
             }
 
             /**
-             * Defines the JUnit test cases related to the field {@value  TutorConstants#H1_6_FIELD_NAME_2}.
+             * Defines the JUnit test cases related to the field {@value
+             * TutorConstants#H1_6_FIELD_NAME_2}.
              */
             @Nested
             @DisplayName("Criterion: Field firstName")
@@ -427,7 +417,8 @@ public final class TutorTest_H1_6 {
             }
 
             /**
-             * Defines the JUnit test cases related to the field {@value  TutorConstants#H1_6_FIELD_NAME_3}.
+             * Defines the JUnit test cases related to the field {@value
+             * TutorConstants#H1_6_FIELD_NAME_3}.
              */
             @Nested
             @DisplayName("Criterion: Field street")
@@ -496,7 +487,8 @@ public final class TutorTest_H1_6 {
             }
 
             /**
-             * Defines the JUnit test cases related to the field {@value  TutorConstants#H1_6_FIELD_NAME_4}.
+             * Defines the JUnit test cases related to the field {@value
+             * TutorConstants#H1_6_FIELD_NAME_4}.
              */
             @Nested
             @DisplayName("Criterion: Field houseNumber")
@@ -565,7 +557,8 @@ public final class TutorTest_H1_6 {
             }
 
             /**
-             * Defines the JUnit test cases related to the field {@value  TutorConstants#H1_6_FIELD_NAME_5}.
+             * Defines the JUnit test cases related to the field {@value
+             * TutorConstants#H1_6_FIELD_NAME_5}.
              */
             @Nested
             @DisplayName("Criterion: Field postalCode")
@@ -670,11 +663,13 @@ public final class TutorTest_H1_6 {
                 }
 
                 /**
-                 * Returns an instance of the object that is constructed by invoking the specified constructor.
+                 * Returns an instance of the object that is constructed by invoking the specified
+                 * constructor.
                  *
                  * @param parameters the parameters of the constructor
                  *
-                 * @return an instance of the object that is constructed by invoking the specified constructor
+                 * @return an instance of the object that is constructed by invoking the specified
+                 * constructor
                  */
                 private Object checkInvokeConstructor(final Object... parameters) {
                     final var constructor = getTestConstructor();
@@ -697,18 +692,20 @@ public final class TutorTest_H1_6 {
                                     .map(Object::getClass)
                                     .map(Class::getSimpleName)
                                     .collect(Collectors.joining(", ")),
-                                e.getMessage()
-                            ), e
+                                ex.getMessage()
+                            ), ex
                         );
                     }
                 }
 
                 /**
-                 * Returns an instance of the object that is constructed by invoking the specified constructor.
+                 * Returns an instance of the object that is constructed by invoking the specified
+                 * constructor.
                  *
                  * @param parameters the parameters of the constructor
                  *
-                 * @return an instance of the object that is constructed by invoking the specified constructor
+                 * @return an instance of the object that is constructed by invoking the specified
+                 * constructor
                  */
                 private Object invokeConstructor(final Object... parameters) {
                     try {

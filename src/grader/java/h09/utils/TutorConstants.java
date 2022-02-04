@@ -31,18 +31,6 @@ public final class TutorConstants {
      **********************************************************************/
 
     /**
-     * Returns the path to the source code which will start from the source set.
-     *
-     * @param packageName the package name where the class can be found
-     * @param className   the class name of the source code
-     *
-     * @return the  path to the source code
-     */
-    private static String getPathToSource(final String packageName, final String className) {
-        return String.format("%s/%s.java", packageName.replace(".", "/"), className);
-    }
-
-    /**
      * Returns the name of a test class.
      *
      * @param className the name of the class from which a test class is formed
@@ -109,15 +97,6 @@ public final class TutorConstants {
         return String.format("getTypeOf%s", className);
     }
 
-    /**
-     * The path to the main source set.
-     */
-    public static final String SOURCESET_MAIN = "src/main/java/";
-    /**
-     * The path to the test source set.
-     */
-    public static final String SOURCESET_TEST = "src/test/java/";
-
     /* *********************************************************************
      *                                  H1                                 *
      **********************************************************************/
@@ -175,22 +154,6 @@ public final class TutorConstants {
      * The test class used for testing purposes in task H1.6
      */
     public static final String H1_6_CLASS_NAME_1 = "Person";
-
-    /**
-     * The path to the source code of the task H1.3.
-     */
-    public static final String H1_3_PATH_TO_SOURCE = getPathToSource(H1_PACKAGE_NAME,
-        H1_3_CLASS_NAME);
-    /**
-     * The path to the source code of the task H1.4.
-     */
-    public static final String H1_4_PATH_TO_SOURCE = getPathToSource(H1_PACKAGE_NAME,
-        H1_4_CLASS_NAME);
-    /**
-     * The path to the source code of the task H1.6.
-     */
-    public static final String H1_6_PATH_TO_SOURCE = getPathToSource(H1_PACKAGE_NAME,
-        H1_6_CLASS_NAME);
 
     /**
      * The generic type parameters used in the tasks in H1.
@@ -307,24 +270,6 @@ public final class TutorConstants {
         "? super Y, ? super Y, ? extends Y"};
 
     /**
-     * The example field value of {@value H1_1_FIELD_NAME_1}.
-     */
-    public static final Object H1_1_FIELD_EXAMPLE_1_1 = (Predicate<Integer>) x -> x < 10;
-    /**
-     * The example field value of {@value H1_1_FIELD_NAME_2}.
-     */
-    public static final Object H1_1_FIELD_EXAMPLE_1_2 = (Function<Integer, Integer>) x -> x;
-    /**
-     * The example field value of {@value H1_1_FIELD_NAME_3}.
-     */
-    public static final Object H1_1_FIELD_EXAMPLE_1_3 = (BiFunction<Integer, Integer, Integer>)
-        (a, b) -> a * b;
-    /**
-     * The example field value of {@value H1_1_FIELD_NAME_4}.
-     */
-    public static final Object H1_1_FIELD_EXAMPLE_1_4 = 1;
-
-    /**
      * The default example field value of {@value H1_1_FIELD_NAME_1}.
      */
     public static final Object H1_1_FIELD_EXAMPLE_DEFAULT_1 = (Predicate<Integer>) x -> true;
@@ -400,15 +345,7 @@ public final class TutorConstants {
      */
     public static final Object H1_1_FIELD_EXAMPLE_3_5 = (BiFunction<String, String, String>)
         String::concat;
-    /**
-     * The example size of the array used for the functional operation used for the method {@value H1_2_METHOD_NAME}.
-     */
-    public static final int H1_1_FIELD_EXAMPLE_3_ARRAY_SIZE = 1000;
-    /**
-     * The operation to fill the example array used for the method {@value H1_2_METHOD_NAME}.
-     */
-    public static final BiConsumer<Integer, Integer[]> H1_1_FIELD_EXAMPLE_3_ARRAY_FILL =
-        (i, elements) -> elements[i] = i + 1;
+
     /**
      * The result of the method {@value H1_2_METHOD_NAME}.
      */
@@ -718,11 +655,6 @@ public final class TutorConstants {
     public static final String H2_3_CLASS_NAME_TUTOR_10 = getTutorTestClassName(H2_3_CLASS_NAME_10);
 
     /**
-     * The path to the source code of the task H2.3.
-     */
-    public static final String H2_3_PATH_TO_SOURCE = getPathToSource(H2_PACKAGE_NAME, H2_3_CLASS_NAME);
-
-    /**
      * The method name of the class {@value H2_1_CLASS_NAME_1}.
      */
     public static final String H2_1_METHOD_NAME_1 = getTypeOfXMethodName(H2_1_CLASS_NAME_1);
@@ -783,10 +715,6 @@ public final class TutorConstants {
      */
     public static final String H2_3_METHOD_NAME_3 = getTestMethodName(H2_2_METHOD_NAME_3);
 
-    /**
-     * The method type parameter of the method {@value H2_2_METHOD_NAME_1}.
-     */
-    public static final String H2_2_METHOD_TYPE_PARAMETER_1 = H2_1_CLASS_NAME_2;
     /**
      * The method parameter type of {@value H2_2_METHOD_NAME_2}.
      */

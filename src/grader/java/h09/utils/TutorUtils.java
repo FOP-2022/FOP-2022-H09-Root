@@ -17,7 +17,8 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 /**
- * A utility class used for JUnit tests which provides reflective access to some properties and assertions.
+ * A utility class used for JUnit tests which provides reflective access to some properties and
+ * assertions.
  *
  * @author Nhan Huynh, Darya Nikitina
  */
@@ -37,36 +38,6 @@ public final class TutorUtils {
     /* *********************************************************************
      *                              Package                                *
      **********************************************************************/
-
-    /**
-     * Returns {@code  true} if the original class name was found or {@code false} if the alternative class name was found.
-     *
-     * @param packageName the name of the package where the class belong
-     * @param classNames  the names of the class to seek
-     *
-     * @return {@code  true} if the original class name was found or {@code false} if the alternative class name was found
-     */
-    public static boolean assertPackage(final String packageName, final String... classNames) {
-        for (final var className : classNames) {
-            final var name = String.format("%s.%s", packageName, className);
-            // Wrong package name
-            final var alternativeName = name.replaceAll("\\.h\\d", "");
-            try {
-                Assertions.assertDoesNotThrow(() -> Class.forName(name),
-                    TutorMessage.CLASS_NOT_FOUND.format(String.join("/", name)));
-                return true;
-            } catch (AssertionFailedError e) {
-                try {
-                    Assertions.assertDoesNotThrow(() -> Class.forName(alternativeName),
-                        TutorMessage.CLASS_NOT_FOUND.format(String.join("/", classNames)));
-                    return false;
-                } catch (AssertionFailedError ex) {
-                    continue;
-                }
-            }
-        }
-        return Assertions.fail(TutorMessage.PACKAGE_NAME_ALTERNATIVE.format(String.join("/", classNames)));
-    }
 
     /**
      * Returns the path to the source code.
@@ -178,7 +149,8 @@ public final class TutorUtils {
     }
 
     /**
-     * Returns the accessed field content. If the field is static, the instance can be {@code null}.
+     * Returns the accessed field content. If the field is static, the instance can be {@code
+     * null}.
      *
      * @param field    the field to access
      * @param instance the instance to retrieve its field
@@ -211,7 +183,8 @@ public final class TutorUtils {
     }
 
     /**
-     * Sets the accessed field content to the specified one. If the field is static, the instance can be {@code null}.
+     * Sets the accessed field content to the specified one. If the field is static, the instance
+     * can be {@code null}.
      *
      * @param field    the field to access
      * @param instance the instance to retrieve its field
@@ -250,7 +223,8 @@ public final class TutorUtils {
     /**
      * Checks if the specified constructor exists.
      *
-     * <p>If this {@code Class} object represents an inner class declared in a non-static context, the formal parameter types
+     * <p>If this {@code Class} object represents an inner class declared in a non-static context,
+     * the formal parameter types
      * include the explicit enclosing instance as the first parameter.
      *
      * @param clazz      the class where the constructor belong
@@ -301,8 +275,8 @@ public final class TutorUtils {
                         .map(Object::getClass)
                         .map(Class::getSimpleName)
                         .collect(Collectors.joining(", ")),
-                    e.getMessage()
-                ), e
+                    ex.getMessage()
+                ), ex
             );
         }
     }
@@ -386,7 +360,7 @@ public final class TutorUtils {
             return Assertions.fail(
                 TutorMessage.METHOD_NOT_FOUND.format(
                     name,
-                    parameters == null ? "(no parameters)" :
+                    parameters == null || parameters.length == 0 ? "(no parameters)" :
                         Arrays.stream(parameters)
                             .map(Object::getClass)
                             .map(Class::getSimpleName)
@@ -449,7 +423,8 @@ public final class TutorUtils {
      **********************************************************************/
 
     /**
-     * Tests if the specified modifiers of an object only contains the specified modifiers and do no more.
+     * Tests if the specified modifiers of an object only contains the specified modifiers and do no
+     * more.
      *
      * @param expected      the expected modifiers of an object to check
      * @param actual        the actual object with its modifiers
@@ -464,7 +439,8 @@ public final class TutorUtils {
     }
 
     /**
-     * Tests if the specified modifiers of an object only contains the specified modifiers and do not contain no more.
+     * Tests if the specified modifiers of an object only contains the specified modifiers and no
+     * more.
      *
      * @param expected the expected modifiers of an object to check
      * @param actual   the actual object with its modifiers
@@ -475,7 +451,8 @@ public final class TutorUtils {
     }
 
     /**
-     * Tests if the specified modifiers of an object only contains the specified modifiers and no more.
+     * Tests if the specified modifiers of an object only contains the specified modifiers and no
+     * more.
      *
      * @param expected the expected modifiers of an object to check
      * @param actual   the actual object with its modifiers

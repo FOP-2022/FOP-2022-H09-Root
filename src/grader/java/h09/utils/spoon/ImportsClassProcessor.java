@@ -53,7 +53,8 @@ public final class ImportsClassProcessor extends AbstractProcessor<CtClass<?>> {
     }
 
     /**
-     * Returns the scanned imports so far. If this processor does not process any class yet, the content will be empty.
+     * Returns the scanned imports so far. If this processor does not process any class yet, the
+     * content will be empty.
      *
      * @return the scanned imports so far
      */

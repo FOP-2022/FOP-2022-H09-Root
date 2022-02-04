@@ -23,7 +23,8 @@ public class ParameterMatcher extends IdentifierMatcher {
      * @param identifierName the identifier name to match
      * @param similarity     the minimum required similarity
      * @param parameterType  the expected parameter type
-     * @param allowSubTypes  the indicator whether to also match subtypes derived from {@link #parameterType}
+     * @param allowSubTypes  the indicator whether to also match subtypes derived from {@link
+     *                       #parameterType}
      */
     public ParameterMatcher(String identifierName, double similarity, Class<?> parameterType, boolean allowSubTypes) {
         super(identifierName, similarity);
@@ -56,7 +57,8 @@ public class ParameterMatcher extends IdentifierMatcher {
      * Constructs and initializes an attribute matcher to match the specified attribute.
      *
      * @param parameterType the expected parameter type
-     * @param allowSubTypes the indicator whether to also match subtypes derived from {@link #parameterType}
+     * @param allowSubTypes the indicator whether to also match subtypes derived from {@link
+     *                      #parameterType}
      */
     public ParameterMatcher(Class<?> parameterType, boolean allowSubTypes) {
         this(null, 0, parameterType, allowSubTypes);

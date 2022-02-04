@@ -75,21 +75,6 @@ public final class TutorTest_H2_1 {
     }
 
     /* *********************************************************************
-     *                              General                                *
-     **********************************************************************/
-
-    @Test
-    @DisplayName("Criterion: Original package name found")
-    public void testPackage() {
-        for (final var className : TutorConstants.H2_1_ANIMAL_CLASS_AND_INHERITANCE.keySet()) {
-            final var alternative = TutorUtils.assertPackage(TutorConstants.H2_PACKAGE_NAME, className);
-            Assertions.assertTrue(alternative, TutorMessage.PACKAGE_NAME_ALTERNATIVE.format(TutorConstants.H2_PACKAGE_NAME,
-                className)
-            );
-        }
-    }
-
-    /* *********************************************************************
      *                            Interfaces                               *
      **********************************************************************/
 
@@ -333,7 +318,8 @@ public final class TutorTest_H2_1 {
          **********************************************************************/
 
         /**
-         * Defines the JUnit test cases related to the field related to {@value TutorConstants#H2_1_METHOD_NAME_9}.
+         * Defines the JUnit test cases related to the field related to {@value
+         * TutorConstants#H2_1_METHOD_NAME_9}.
          */
         @Nested
         @DisplayName("Criterion: Field int - Name of the individual")

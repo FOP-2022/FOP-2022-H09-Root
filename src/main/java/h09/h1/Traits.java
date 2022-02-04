@@ -8,8 +8,10 @@ import java.util.function.Predicate;
  * A traits which provides filter, map, fold combine operations.
  *
  * @param <X> the type of element that will be used for the filter operation
- * @param <Y> the type of element that will be used for the mapping operation and optionally combine
+ * @param <Y> the type of element that will be used for the mapping operation and optionally
+ *            combine
  * @param <Z> the type of element that will be used for the folding operation
+ *
  * @author Nhan Huynh, Darya Nikitina
  */
 public class Traits<X, Y, Z> {
@@ -27,8 +29,8 @@ public class Traits<X, Y, Z> {
     private final Function<? super X, ? extends Y> fct;
 
     /**
-     * The operator to use an operation on two given arguments and produce a result from it (folding).
-     * This is equivalent to H07 {@code IntBinaryOperator}.
+     * The operator to use an operation on two given arguments and produce a result from it
+     * (folding). This is equivalent to H07 {@code IntBinaryOperator}.
      */
     private final BiFunction<Z, ? super Y, Z> op;
 
@@ -44,7 +46,8 @@ public class Traits<X, Y, Z> {
     private final Z init;
 
     /**
-     * Constructs and initialized a traits which provides a filter, map, fold and combine operation.
+     * Constructs and initialized a traits which provides a filter, map, fold and combine
+     * operation.
      *
      * @param pred    the predicate to filter elements
      * @param fct     the function to map the elements

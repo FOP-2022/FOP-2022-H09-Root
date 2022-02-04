@@ -1,12 +1,13 @@
 package h09.h1;
 
 /**
- * A function that provides an operation that filter a set of elements, which will be then
- * mapped, combines the adjacent mapped elements and then reduced (folded) to a single value.
+ * A function that provides an operation that filter a set of elements, which will be then mapped,
+ * combines the adjacent mapped elements and then reduced (folded) to a single value.
  *
  * @param <X> the type of the element to be filtered
  * @param <Y> the type of the element to be mapped and optionally combined
  * @param <Z> the type of the element to be reduced
+ *
  * @author Nhan Huynh, Darya Nikitina
  */
 public class MyFunctionWithAdjacent<X, Y, Z> extends FunctionWithFilterMapAndFold<X, Y, Z> {
@@ -21,11 +22,12 @@ public class MyFunctionWithAdjacent<X, Y, Z> extends FunctionWithFilterMapAndFol
     }
 
     /**
-     * Transforms the specified elements using a filter which are then mapped. The mapped values
-     * are combined with their respective adjacent element and then reduced to a single value using
+     * Transforms the specified elements using a filter which are then mapped. The mapped values are
+     * combined with their respective adjacent element and then reduced to a single value using
      * fold.
      *
      * @param elements the elements to be transformed
+     *
      * @return the transformed value
      */
     @Override

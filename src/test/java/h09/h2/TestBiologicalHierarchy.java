@@ -19,8 +19,8 @@ class TestBiologicalHierarchy {
     private final BiologyHierarchy hierarchy = new BiologyHierarchy();
 
     /**
-     * Tests whether the method {@link BiologyHierarchy#getTypeOfVertebrate(Vertebrate)} returns
-     * the correct string.
+     * Tests whether the method {@link BiologyHierarchy#getTypeOfVertebrate(Vertebrate)} returns the
+     * correct string.
      */
     @Test
     void testGetTypeOfVertebrate() {
@@ -34,8 +34,8 @@ class TestBiologicalHierarchy {
     }
 
     /**
-     * Tests whether the method {@link BiologyHierarchy#filterLagomorphs(List)} returns
-     * the correct animals.
+     * Tests whether the method {@link BiologyHierarchy#filterLagomorphs(List)} returns the correct
+     * animals.
      */
     @Test
     void testFilterLagomorphs() {
@@ -112,8 +112,8 @@ class TestBiologicalHierarchy {
     }
 
     /**
-     * Tests whether the method {@link BiologyHierarchy#getTypesOfMammals(List)} returns
-     * the correct outputs of the method calls {@link Mammal#getTypeOfMammal()}.
+     * Tests whether the method {@link BiologyHierarchy#getTypesOfMammals(List)} returns the correct
+     * outputs of the method calls {@link Mammal#getTypeOfMammal()}.
      */
     @Test
     void testGetTypesOfMammals() {

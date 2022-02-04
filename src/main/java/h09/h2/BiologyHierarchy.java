@@ -13,6 +13,7 @@ public class BiologyHierarchy {
      *
      * @param vertebrate the vertebrate to return its type
      * @param <T>        the type of the vertebrate
+     *
      * @return the type of the specified vertebrate
      */
     public <T extends Vertebrate> String getTypeOfVertebrate(final T vertebrate) {
@@ -23,6 +24,7 @@ public class BiologyHierarchy {
      * Returns a list which contains only lagomorphs from the specified list.
      *
      * @param list the list to be filtered by lagomorphs
+     *
      * @return a list which contains only lagomorphs from the specified list
      */
     public List<Lagomorpha> filterLagomorphs(final List<? super Lagomorpha> list) {
@@ -39,6 +41,7 @@ public class BiologyHierarchy {
      * Returns a list which contains the types of the mammals.
      *
      * @param mammals the list in which the types of mammals should be extracted
+     *
      * @return a list which contains the types of the mammals
      */
     public List<String> getTypesOfMammals(final List<? extends Mammal> mammals) {

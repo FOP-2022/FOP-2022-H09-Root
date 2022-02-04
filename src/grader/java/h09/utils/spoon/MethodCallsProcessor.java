@@ -27,8 +27,8 @@ public class MethodCallsProcessor extends AbstractProcessor<CtClass<?>> {
     private final List<CtInvocation<?>> callees;
 
     /**
-     * Constructs and initializes a processor which scans all calees in the specified method. If the method name is {@code null},
-     * the whole source code will be scanned.
+     * Constructs and initializes a processor which scans all calees in the specified method. If the
+     * method name is {@code null}, the whole source code will be scanned.
      *
      * @param methodName the name of the method that should be processed
      */
@@ -61,7 +61,8 @@ public class MethodCallsProcessor extends AbstractProcessor<CtClass<?>> {
     }
 
     /**
-     * Returns the scanned callees so far. If this processor does not process any method yet, the content will be empty.
+     * Returns the scanned callees so far. If this processor does not process any method yet, the
+     * content will be empty.
      *
      * @return the scanned callees so far
      */
