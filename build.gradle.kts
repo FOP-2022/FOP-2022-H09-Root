@@ -1,7 +1,10 @@
+import org.sourcegrade.submitter.submit
+
 plugins {
     java
     application
     id("org.sourcegrade.style") version "1.2.0"
+    id("org.sourcegrade.submitter") version "0.4.0"
 }
 
 version = "1.1.0-SNAPSHOT"
@@ -9,6 +12,13 @@ version = "1.1.0-SNAPSHOT"
 repositories {
     mavenCentral()
     maven("https://s01.oss.sonatype.org/content/repositories/snapshots")
+}
+
+submit {
+    assignmentId = "h11"
+    studentId = "ab12cdef"
+    firstName = "sol_first"
+    lastName = "sol_last"
 }
 
 val grader: SourceSet by sourceSets.creating {
