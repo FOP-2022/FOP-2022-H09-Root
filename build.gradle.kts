@@ -12,8 +12,9 @@ repositories {
 }
 
 val grader: SourceSet by sourceSets.creating {
-    compileClasspath += sourceSets.test.get().compileClasspath
-    runtimeClasspath += output + compileClasspath
+    val test = sourceSets.test.get()
+    compileClasspath += test.compileClasspath
+    runtimeClasspath += output + compileClasspath + test.runtimeClasspath
 }
 
 dependencies {
