@@ -668,8 +668,7 @@ public final class TutorTest_H1_6 {
                  *
                  * @param parameters the parameters of the constructor
                  *
-                 * @return an instance of the object that is constructed by invoking the specified
-                 * constructor
+                 * @return an instance of the object that is constructed by invoking the specified constructor
                  */
                 private Object checkInvokeConstructor(final Object... parameters) {
                     final var constructor = getTestConstructor();
@@ -704,8 +703,7 @@ public final class TutorTest_H1_6 {
                  *
                  * @param parameters the parameters of the constructor
                  *
-                 * @return an instance of the object that is constructed by invoking the specified
-                 * constructor
+                 * @return an instance of the object that is constructed by invoking the specified constructor
                  */
                 private Object invokeConstructor(final Object... parameters) {
                     try {

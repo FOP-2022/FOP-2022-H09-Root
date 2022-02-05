@@ -404,8 +404,7 @@ public class MethodTester {
      * Returns the method identifier containing the name of the method and the similarity to accept
      * alternative identifiers.
      *
-     * @return method identifier containing the name of the method and the similarity to accept
-     * alternative identifiers
+     * @return method identifier containing the name of the method and the similarity to accept alternative identifiers
      */
     public IdentifierMatcher getMethodIdentifier() {
         return methodIdentifier;
@@ -606,8 +605,7 @@ public class MethodTester {
      * Returns {@code true} if the class tester used to invoke the method is not {@code null} and
      * can be resolved.
      *
-     * @return {@code true} if the class tester used to invoke the method is not {@code null} and
-     * can be resolved
+     * @return {@code true} if the class tester used to invoke the method is not {@code null} and can be resolved
      */
     public boolean classResolved() {
         return classTester != null && classTester.class_resolved();
