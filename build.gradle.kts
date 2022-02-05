@@ -77,7 +77,7 @@ tasks {
             from(grader.allSource)
         }
     }
-    create<Jar>("buildLibs") {
+    create<Jar>("graderLibs") {
         group = "build"
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         val runtimeDeps = sourceSets.main.get().runtimeClasspath.mapNotNull {
