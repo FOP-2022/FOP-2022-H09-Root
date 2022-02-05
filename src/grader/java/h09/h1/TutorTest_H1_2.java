@@ -88,8 +88,7 @@ public final class TutorTest_H1_2 {
      **********************************************************************/
 
     /**
-     * Defines the JUnit test cases related to the field used to access filter, map and fold
-     * operation.
+     * Defines the JUnit test cases related to the field used to access filter, map and fold operation.
      */
     @Nested
     @DisplayName("Criterion: Field traits")
