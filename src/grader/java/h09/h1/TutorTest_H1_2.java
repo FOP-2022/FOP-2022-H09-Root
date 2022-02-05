@@ -167,7 +167,7 @@ public final class TutorTest_H1_2 {
      **********************************************************************/
 
     /**
-     * Defines the JUnit test cases related to the method {@value  TutorConstants#H1_2_METHOD_NAME}.
+     * Defines the JUnit test cases related to the method {@value TutorConstants#H1_2_METHOD_NAME}.
      */
     @Nested
     @DisplayName("Criterion: Method apply")

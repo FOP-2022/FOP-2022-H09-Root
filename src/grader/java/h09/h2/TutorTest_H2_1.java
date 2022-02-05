@@ -165,7 +165,7 @@ public final class TutorTest_H2_1 {
      **********************************************************************/
 
     /**
-     * Defines the JUnit test cases related to the animal {@value  TutorConstants#H2_1_CLASS_NAME_10}.
+     * Defines the JUnit test cases related to the animal {@value TutorConstants#H2_1_CLASS_NAME_10}.
      */
     @Nested
     @DisplayName("Criterion: Class Rabbit")
@@ -318,8 +318,7 @@ public final class TutorTest_H2_1 {
          **********************************************************************/
 
         /**
-         * Defines the JUnit test cases related to the field related to {@value
-         * TutorConstants#H2_1_METHOD_NAME_9}.
+         * Defines the JUnit test cases related to the field related to {@value TutorConstants#H2_1_METHOD_NAME_9}.
          */
         @Nested
         @DisplayName("Criterion: Field int - Name of the individual")

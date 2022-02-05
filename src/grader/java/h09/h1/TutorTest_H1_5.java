@@ -214,7 +214,7 @@ public final class TutorTest_H1_5 {
      **********************************************************************/
 
     /**
-     * Defines the JUnit test cases related to the method {@value  TutorConstants#H1_5_METHOD_NAME_2}.
+     * Defines the JUnit test cases related to the method {@value TutorConstants#H1_5_METHOD_NAME_2}.
      */
     @Nested
     @DisplayName("Criterion: Method createFunctionWithFilterMapFoldAndCombine")

@@ -769,15 +769,15 @@ public final class TutorConstants {
     );
 
     /**
-     * The return type of the method {@value  H2_2_METHOD_NAME_1}.
+     * The return type of the method {@value H2_2_METHOD_NAME_1}.
      */
     public static final Class<?> H2_2_METHOD_RETURN_TYPE_1 = String.class;
     /**
-     * The return type of the method {@value  H2_2_METHOD_NAME_2}.
+     * The return type of the method {@value H2_2_METHOD_NAME_2}.
      */
     public static final Class<?> H2_2_METHOD_RETURN_TYPE_2 = List.class;
     /**
-     * The return type of the method {@value  H2_2_METHOD_NAME_3}.
+     * The return type of the method {@value H2_2_METHOD_NAME_3}.
      */
     public static final Class<?> H2_2_METHOD_RETURN_TYPE_3 = List.class;
 

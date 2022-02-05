@@ -26,7 +26,7 @@ public final class TutorClassTesters {
      **********************************************************************/
 
     /**
-     * The class tester for {@value  TutorConstants#H1_1_CLASS_NAME}.
+     * The class tester for {@value TutorConstants#H1_1_CLASS_NAME}.
      */
     public static final ClassTester<?> H1_1 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
@@ -35,7 +35,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H1_3_CLASS_NAME}.
+     * The class tester for {@value TutorConstants#H1_3_CLASS_NAME}.
      */
     public static final ClassTester<?> H1_2 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
@@ -44,7 +44,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H1_3_CLASS_NAME}.
+     * The class tester for {@value TutorConstants#H1_3_CLASS_NAME}.
      */
     public static final ClassTester<?> H1_3 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
@@ -55,7 +55,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H1_4_CLASS_NAME}.
+     * The class tester for {@value TutorConstants#H1_4_CLASS_NAME}.
      */
     public static final ClassTester<?> H1_4 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
@@ -66,7 +66,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H1_5_CLASS_NAME}.
+     * The class tester for {@value TutorConstants#H1_5_CLASS_NAME}.
      */
     public static final ClassTester<?> H1_5 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
@@ -83,7 +83,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H1_6_CLASS_NAME_1}.
+     * The class tester for {@value TutorConstants#H1_6_CLASS_NAME_1}.
      */
     public static final ClassTester<?> H1_6_1 = new ClassTester<>(
         TutorConstants.H1_PACKAGE_NAME,
@@ -96,7 +96,7 @@ public final class TutorClassTesters {
      **********************************************************************/
 
     /**
-     * The class tester for {@value  TutorConstants#H2_1_CLASS_NAME_1}.
+     * The class tester for {@value TutorConstants#H2_1_CLASS_NAME_1}.
      */
     public static final ClassTester<?> H2_1_1 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
@@ -105,7 +105,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H2_1_CLASS_NAME_2}.
+     * The class tester for {@value TutorConstants#H2_1_CLASS_NAME_2}.
      */
     public static final ClassTester<?> H2_1_2 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
@@ -114,7 +114,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H2_1_CLASS_NAME_3}.
+     * The class tester for {@value TutorConstants#H2_1_CLASS_NAME_3}.
      */
     public static final ClassTester<?> H2_1_3 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
@@ -123,7 +123,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H2_1_CLASS_NAME_4}.
+     * The class tester for {@value TutorConstants#H2_1_CLASS_NAME_4}.
      */
     public static final ClassTester<?> H2_1_4 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
@@ -132,7 +132,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H2_1_CLASS_NAME_5}.
+     * The class tester for {@value TutorConstants#H2_1_CLASS_NAME_5}.
      */
     public static final ClassTester<?> H2_1_5 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
@@ -141,7 +141,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H2_1_CLASS_NAME_6}.
+     * The class tester for {@value TutorConstants#H2_1_CLASS_NAME_6}.
      */
     public static final ClassTester<?> H2_1_6 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
@@ -150,7 +150,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H2_1_CLASS_NAME_7}.
+     * The class tester for {@value TutorConstants#H2_1_CLASS_NAME_7}.
      */
     public static final ClassTester<?> H2_1_7 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
@@ -159,7 +159,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H2_1_CLASS_NAME_7}.
+     * The class tester for {@value TutorConstants#H2_1_CLASS_NAME_7}.
      */
     public static final ClassTester<?> H2_1_8 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
@@ -168,7 +168,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H2_1_CLASS_NAME_9}.
+     * The class tester for {@value TutorConstants#H2_1_CLASS_NAME_9}.
      */
     public static final ClassTester<?> H2_1_9 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,
@@ -177,7 +177,7 @@ public final class TutorClassTesters {
     );
 
     /**
-     * The class tester for {@value  TutorConstants#H2_1_CLASS_NAME_10}.
+     * The class tester for {@value TutorConstants#H2_1_CLASS_NAME_10}.
      */
     public static final ClassTester<?> H2_1_10 = new ClassTester<>(
         TutorConstants.H2_PACKAGE_NAME,

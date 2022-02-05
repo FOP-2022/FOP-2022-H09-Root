@@ -33,7 +33,7 @@ final class TutorUtils_H1 {
     /**
      * Tests whether the class header type parameter matches the specified criterion.
      *
-     * <p>Type parameter: {@value  TutorConstants#H1_TYPE_PARAMETERS}
+     * <p>Type parameter: {@value TutorConstants#H1_TYPE_PARAMETERS}
      *
      * @param clazz the class to check
      */
@@ -161,7 +161,7 @@ final class TutorUtils_H1 {
      * Tests whether the constructor parameters are correct.
      *
      * @param constructor the constructor to check
-     * @param combine     if {@code true} the field {@value  TutorConstants#H1_4_FIELD_NAME} will
+     * @param combine     if {@code true} the field {@value TutorConstants#H1_4_FIELD_NAME} will
      *                    also be checked
      * @param onlyType    {@code true} if only the types should be checked
      */
@@ -197,7 +197,7 @@ final class TutorUtils_H1 {
      * Tests whether the constructor fields are correct.
      *
      * @param constructor the constructor to check
-     * @param combine     if {@code true} the field {@value  TutorConstants#H1_4_FIELD_NAME} will
+     * @param combine     if {@code true} the field {@value TutorConstants#H1_4_FIELD_NAME} will
      *                    also be checked
      */
     public static void assertConstructorFieldsH1_1(final Constructor<?> constructor,
