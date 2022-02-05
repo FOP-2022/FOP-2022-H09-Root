@@ -90,7 +90,7 @@ tasks {
             }
         }
         from(runtimeDeps)
-        archiveFileName.set("FOP-2022-H09${project.version}-libs.jar")
+        archiveFileName.set("FOP-2022-H09-${project.version}-libs.jar")
     }
     create("graderAll") {
         group = "build"
