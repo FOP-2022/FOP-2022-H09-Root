@@ -68,7 +68,7 @@ tasks {
     named("check") {
         dependsOn(graderTest)
     }
-    create<Jar>("graderJar") {
+    val graderJar by creating(Jar::class) {
         group = "build"
         afterEvaluate {
             archiveFileName.set("FOP-2022-H09-${project.version}.jar")
@@ -77,7 +77,7 @@ tasks {
             from(grader.allSource)
         }
     }
-    create<Jar>("graderLibs") {
+    val graderLibs by creating(Jar::class) {
         group = "build"
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         val runtimeDeps = grader.runtimeClasspath.mapNotNull {
@@ -91,6 +91,9 @@ tasks {
         }
         from(runtimeDeps)
         archiveFileName.set("h09-libs.jar")
+    }
+    create("graderAll") {
+        dependsOn(graderJar, graderLibs)
     }
     withType<JavaCompile> {
         options.encoding = "UTF-8"
