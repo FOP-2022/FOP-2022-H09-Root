@@ -15,7 +15,7 @@ repositories {
 }
 
 submit {
-    assignmentId = "h11"
+    assignmentId = "h09"
     studentId = "ab12cdef"
     firstName = "sol_first"
     lastName = "sol_last"
@@ -29,10 +29,10 @@ val grader: SourceSet by sourceSets.creating {
 
 dependencies {
     implementation("org.jetbrains:annotations:23.0.0")
-    "graderImplementation"("org.sourcegrade:jagr-launcher:0.4.0-SNAPSHOT")
+    "graderCompileOnly"("org.sourcegrade:jagr-launcher:0.4.0-SNAPSHOT")
     "graderImplementation"("fr.inria.gforge.spoon:spoon-core:10.0.0")
     "graderImplementation"("org.sourcegrade:docwatcher-api:0.1")
-    "graderImplementation"("org.mockito:mockito-core:4.2.0")
+    "graderImplementation"("org.mockito:mockito-core:4.3.1")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
 }
 
@@ -76,6 +76,21 @@ tasks {
             from(sourceSets.test.get().allSource)
             from(grader.allSource)
         }
+    }
+    create<Jar>("buildLibs") {
+        group = "build"
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        val runtimeDeps = sourceSets.main.get().runtimeClasspath.mapNotNull {
+            if (it.path.toLowerCase().contains("h09")) {
+                null
+            } else if (it.isDirectory) {
+                it
+            } else {
+                zipTree(it)
+            }
+        }
+        from(runtimeDeps)
+        archiveFileName.set("h09-libs.jar")
     }
     withType<JavaCompile> {
         options.encoding = "UTF-8"
