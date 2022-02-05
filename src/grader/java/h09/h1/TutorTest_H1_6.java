@@ -231,7 +231,7 @@ public final class TutorTest_H1_6 {
         }
 
         /**
-         * Defines the JUnit test cases related to the class {@value  TutorConstants#H1_6_CLASS_NAME_1}.
+         * Defines the JUnit test cases related to the class {@value TutorConstants#H1_6_CLASS_NAME_1}.
          */
         @Nested
         @DisplayName("Criterion: Test class - Person")
@@ -277,8 +277,7 @@ public final class TutorTest_H1_6 {
             }
 
             /**
-             * Defines the JUnit test cases related to the field {@value
-             * TutorConstants#H1_6_FIELD_NAME_1}.
+             * Defines the JUnit test cases related to the field {@value TutorConstants#H1_6_FIELD_NAME_1}.
              */
             @Nested
             @DisplayName("Criterion: Field lastName")
@@ -347,8 +346,7 @@ public final class TutorTest_H1_6 {
             }
 
             /**
-             * Defines the JUnit test cases related to the field {@value
-             * TutorConstants#H1_6_FIELD_NAME_2}.
+             * Defines the JUnit test cases related to the field {@value TutorConstants#H1_6_FIELD_NAME_2}.
              */
             @Nested
             @DisplayName("Criterion: Field firstName")
@@ -417,8 +415,7 @@ public final class TutorTest_H1_6 {
             }
 
             /**
-             * Defines the JUnit test cases related to the field {@value
-             * TutorConstants#H1_6_FIELD_NAME_3}.
+             * Defines the JUnit test cases related to the field {@value TutorConstants#H1_6_FIELD_NAME_3}.
              */
             @Nested
             @DisplayName("Criterion: Field street")
@@ -487,8 +484,7 @@ public final class TutorTest_H1_6 {
             }
 
             /**
-             * Defines the JUnit test cases related to the field {@value
-             * TutorConstants#H1_6_FIELD_NAME_4}.
+             * Defines the JUnit test cases related to the field {@value TutorConstants#H1_6_FIELD_NAME_4}.
              */
             @Nested
             @DisplayName("Criterion: Field houseNumber")
@@ -557,8 +553,7 @@ public final class TutorTest_H1_6 {
             }
 
             /**
-             * Defines the JUnit test cases related to the field {@value
-             * TutorConstants#H1_6_FIELD_NAME_5}.
+             * Defines the JUnit test cases related to the field {@value TutorConstants#H1_6_FIELD_NAME_5}.
              */
             @Nested
             @DisplayName("Criterion: Field postalCode")
@@ -667,7 +662,6 @@ public final class TutorTest_H1_6 {
                  * constructor.
                  *
                  * @param parameters the parameters of the constructor
-                 *
                  * @return an instance of the object that is constructed by invoking the specified constructor
                  */
                 private Object checkInvokeConstructor(final Object... parameters) {
@@ -702,7 +696,6 @@ public final class TutorTest_H1_6 {
                  * constructor.
                  *
                  * @param parameters the parameters of the constructor
-                 *
                  * @return an instance of the object that is constructed by invoking the specified constructor
                  */
                 private Object invokeConstructor(final Object... parameters) {
