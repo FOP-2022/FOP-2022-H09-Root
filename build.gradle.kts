@@ -80,7 +80,7 @@ tasks {
     create<Jar>("graderLibs") {
         group = "build"
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-        val runtimeDeps = sourceSets.main.get().runtimeClasspath.mapNotNull {
+        val runtimeDeps = grader.runtimeClasspath.mapNotNull {
             if (it.path.toLowerCase().contains("h09")) {
                 null
             } else if (it.isDirectory) {
